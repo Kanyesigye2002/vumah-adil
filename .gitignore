@@ -1,5 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+/.idea/**
 # dependencies
 /node_modules
 /.pnp
@@ -227,3 +228,4 @@ $RECYCLE.BIN/
 # .pnp.*
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows,react,yarn,node
+
