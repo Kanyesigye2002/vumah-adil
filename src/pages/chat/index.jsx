@@ -377,26 +377,26 @@ export default function Chat() {
 
             <div className="row Mercedes-car">
               <div className="col-md-6 mb-3">
-                <p>Start Date</p>
+                <p className="text-dark-white">Start Date</p>
               </div>
               <div className="col-md-6 mb-3 Mercedes-car-details">
                 <p className="Mercedes-car-details">10 April 2021</p>
               </div>
               <div className="col-md-6 mb-3">
-                <p>Return Date</p>
+                <p className="text-dark-white">Return Date</p>
               </div>
               <div className="col-md-6 mb-3 Mercedes-car-details">
                 <p className="Mercedes-car-details">20 April 2021</p>
               </div>
               <div className="col-md-6 mb-3">
-                <p>Booked for</p>
+                <p className="text-dark-white">Booked for</p>
               </div>
               <div className="col-md-6 mb-3 Mercedes-car-details">
                 <p className="Mercedes-car-details">10 Days</p>
               </div>
               <hr />
               <div className="col-md-6 mb-3">
-                <p>Total Cost</p>
+                <p className="text-dark-white">Total Cost</p>
               </div>
               <div className="col-md-6 mb-3 Mercedes-car-details">
                 <p className="Mercedes-car-details">£500</p>

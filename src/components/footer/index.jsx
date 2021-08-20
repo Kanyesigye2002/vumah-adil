@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Icon } from '@iconify/react';
+
 
 export default function Footer() {
   return (
@@ -61,13 +63,9 @@ export default function Footer() {
 
         <div className="row">
           <div className="col-md-4">
-            <div className="footer-copy-right mb-3 mb-md-0">
+            <div className="footer-copy-right mb-3 mb-md-0 footer-social-icon d-flex flex-column align-items-md-start align-items-center">
               <p>2021 Vumah. All rights preserved </p>
-            </div>
-          </div>
-          <div className="col-md-8">
-            <div className="footer-social-icon">
-              <ul className="d-flex justify-content-center justify-content-md-end">
+              <ul className="d-flex mt-2 p-0">
                 <li><a href="https://www.facebook.com/vumahltd" className="fb"><i
                   className="fab fa-facebook-f"></i></a></li>
                 <li><a href="https://twitter.com/vumahltd " className="twitter"><i
@@ -77,8 +75,34 @@ export default function Footer() {
               </ul>
             </div>
           </div>
+          <div className="col-md-8">
+            <div className="footer-social-icon d-flex justify-content-center justify-content-md-end">
+              <div className="dark-light-mode-main">
+                <label className="m-0">
+                  <input className='toggle-checkbox' type='checkbox' onChange={toggleDarkMode} />
+                  <div className='toggle-slot'>
+                    <div className='sun-icon-wrapper'>
+                      <Icon icon="feather-sun" className="sun-icon" />
+                    </div>
+                    <div className='toggle-button'></div>
+                    <div className='moon-icon-wrapper'>
+                      <Icon icon="feather-moon" className="moon-icon" />
+                    </div>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
   );
+
+  function toggleDarkMode(e) {
+    if (e.target.checked) {
+      document.body.classList.add('dark-theme');
+    } else {
+      document.body.classList.remove('dark-theme');
+    }
+  }
 }
