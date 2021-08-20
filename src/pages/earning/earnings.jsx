@@ -62,13 +62,13 @@ export default function Earnings() {
                           <img src={Mercedes} alt="car" />
                         </div>
                         <div className="bookingVechile-detail">
-                          <h2>BMW</h2>
+                          <h2 className="text-dark-white">BMW</h2>
                           <p className="mb-0">On Hold</p>
                           <a href="#" className="text-underline">Booking Details</a>
                         </div>
                       </div>
                     </th>
-                    <td>18/05/20 <br/> 4:00 AM</td>
+                    <td>18/05/20 <br /> 4:00 AM</td>
                     <td>£25.99</td>
                     <td>-£12</td>
                     <td>£78.17</td>
@@ -80,13 +80,13 @@ export default function Earnings() {
                           <img src={Mercedes} alt="car" />
                         </div>
                         <div className="bookingVechile-detail">
-                          <h2>BMW</h2>
+                          <h2 className="text-dark-white">BMW</h2>
                           <p className="mb-0">On Hold</p>
                           <a href="#" className="text-underline">Booking Details</a>
                         </div>
                       </div>
                     </th>
-                    <td>18/05/20 <br/> 4:00 PM</td>
+                    <td>18/05/20 <br /> 4:00 PM</td>
                     <td>£25.99</td>
                     <td>-£12</td>
                     <td>£78.17</td>
@@ -98,13 +98,13 @@ export default function Earnings() {
                           <img src={Mercedes} alt="car" />
                         </div>
                         <div className="bookingVechile-detail">
-                          <h2>BMW</h2>
+                          <h2 className="text-dark-white">BMW</h2>
                           <p className="mb-0">On Hold</p>
                           <a href="#" className="text-underline">Booking Details</a>
                         </div>
                       </div>
                     </th>
-                    <td>18/05/20 <br/> 4:00 AM</td>
+                    <td>18/05/20 <br /> 4:00 AM</td>
                     <td>£25.99</td>
                     <td>-£12</td>
                     <td>£78.17</td>
@@ -116,13 +116,13 @@ export default function Earnings() {
                           <img src={Mercedes} alt="car" />
                         </div>
                         <div className="bookingVechile-detail">
-                          <h2>BMW</h2>
+                          <h2 className="text-dark-white">BMW</h2>
                           <p className="mb-0">On Hold</p>
                           <a href="#" className="text-underline">Booking Details</a>
                         </div>
                       </div>
                     </th>
-                    <td>18/05/20 <br/> 4:00 PM</td>
+                    <td>18/05/20 <br /> 4:00 PM</td>
                     <td>£25.99</td>
                     <td>-£12</td>
                     <td>£78.17</td>
@@ -136,8 +136,8 @@ export default function Earnings() {
               <table className="table" cellpedding="0" cellspacing="0">
                 <thead>
                   <tr>
-                    <th scope="col">Bookings</th>
-                    <th scope="col">Date Time</th>
+                    <th scope="col" className="text-left-align">Bookings</th>
+                    <th scope="col">Date/Time</th>
                     <th scope="col">Amount</th>
                     <th scope="col">Fees</th>
                     <th scope="col">Net</th>
@@ -151,13 +151,13 @@ export default function Earnings() {
                           <img src={Mercedes} alt="car" />
                         </div>
                         <div className="bookingVechile-detail">
-                          <h2>BMW</h2>
+                          <h2 className="text-dark-white">BMW</h2>
                           <p>Processed</p>
-                          <a href="#">Booking Details</a>
+                          <a href="#" className="text-underline">Booking Details</a>
                         </div>
                       </div>
                     </th>
-                    <td>18/05/20 4:00</td>
+                    <td>18/05/20 <br /> 4:00 PM</td>
                     <td>£25.99</td>
                     <td>-£12</td>
                     <td>£78.17</td>
@@ -169,13 +169,13 @@ export default function Earnings() {
                           <img src={Mercedes} alt="car" />
                         </div>
                         <div className="bookingVechile-detail">
-                          <h2>BMW</h2>
+                          <h2 className="text-dark-white">BMW</h2>
                           <p>Processed</p>
-                          <a href="#">Booking Details</a>
+                          <a href="#" className="text-underline">Booking Details</a>
                         </div>
                       </div>
                     </th>
-                    <td>18/05/20 4:00</td>
+                    <td>18/05/20 <br /> 4:00 PM</td>
                     <td>£25.99</td>
                     <td>-£12</td>
                     <td>£78.17</td>
@@ -187,13 +187,13 @@ export default function Earnings() {
                           <img src={Mercedes} alt="car" />
                         </div>
                         <div className="bookingVechile-detail">
-                          <h2>BMW</h2>
+                          <h2 className="text-dark-white">BMW</h2>
                           <p>Processed</p>
-                          <a href="#">Booking Details</a>
+                          <a href="#" className="text-underline">Booking Details</a>
                         </div>
                       </div>
                     </th>
-                    <td>18/05/20 4:00</td>
+                    <td>18/05/20 <br /> 4:00PM</td>
                     <td>£25.99</td>
                     <td>-£12</td>
                     <td>£78.17</td>
@@ -205,13 +205,13 @@ export default function Earnings() {
                           <img src={Mercedes} alt="car" />
                         </div>
                         <div className="bookingVechile-detail">
-                          <h2>BMW</h2>
+                          <h2 className="text-dark-white">BMW</h2>
                           <p>Processed</p>
-                          <a href="#">Booking Details</a>
+                          <a href="#" className="text-underline">Booking Details</a>
                         </div>
                       </div>
                     </th>
-                    <td>18/05/20 4:00</td>
+                    <td>18/05/20 <br /> 4:00PM</td>
                     <td>£25.99</td>
                     <td>-£12</td>
                     <td>£78.17</td>

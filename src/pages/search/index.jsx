@@ -3,15 +3,18 @@ import React, { useState } from 'react';
 import { Menu, Dropdown } from 'antd';
 import GoogleMap from './map';
 import SplitPane from "react-split-pane";
-import RangePickerComponent from '../../components/rangePicker';
+import DateRangePicker from "react-bootstrap-daterangepicker";
+import moment from 'moment';
 import Mercedes from '../../assets/img/Mercedes-car.jpg';
 
 export default function Search() {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [showMap, setShowMap] = useState(false);
   const [selectedVehicle, setSelectedVehicle] = useState('Vehicle');
 
   const [selectedVehicleOnMap, setSelectedVehicleOnMap] = useState(null);
+
+  const [fromDate, setFromDate] = useState(moment().format('M/DD/YYYY (hh:mm)'));
+  const [toDate, setToDate] = useState(moment().format('M/DD/YYYY (hh:mm)'));
 
   const toggleMapClass = showMap ? 'open' : '';
 
@@ -47,25 +50,6 @@ export default function Search() {
                     {selectedVehicle} <i className="fas fa-caret-down"></i>
                   </a>
                 </Dropdown>
-                {/* <Dropdown isOpen={dropdownOpen} toggle={dropDownToggle}>
-                  <DropdownToggle caret className="btn dropdown-toggle">
-                    {selectedVehicle} <span className="caret"></span>
-                  </DropdownToggle>
-                  <DropdownMenu>
-                    <DropdownItem onClick={() => handleSelectedVehicleChange('Car')}>
-                      <i className="fas fa-car-side"></i>&nbsp;&nbsp;Car
-                    </DropdownItem>
-                    <DropdownItem onClick={() => handleSelectedVehicleChange('Motorbike')}>
-                      <i className="fas fa-motorcycle"></i>&nbsp;&nbsp;Motorbike
-                    </DropdownItem>
-                    <DropdownItem onClick={() => handleSelectedVehicleChange('Bicycle')}>
-                      <i className="fas fa-bicycle"></i>&nbsp;&nbsp;Bicycle
-                    </DropdownItem>
-                    <DropdownItem onClick={() => handleSelectedVehicleChange('Campervan')}>
-                      <i className="fas fa-rv"></i>&nbsp;&nbsp;Campervan
-                    </DropdownItem>
-                  </DropdownMenu>
-                </Dropdown> */}
               </div>
             </div>
             <div className="col-sm-6 col-md-4 col-lg-5 mb-3 mb-md-0">
@@ -74,7 +58,17 @@ export default function Search() {
               </div>
             </div>
             <div className="col-sm-6 col-md-3 col-lg-4 mb-3 mb-sm-0">
-              <RangePickerComponent className="homepage-datepicker" />
+              <DateRangePicker
+                initialSettings={{
+                  timePicker: true
+                }}
+                alwaysShowCalendars={true}
+                onEvent={handleEvent}
+              >
+                <div class="banner-search-field">
+                  <input type="text" name="daterange" value={`${fromDate} - ${toDate}`} />
+                </div>
+              </DateRangePicker>
             </div>
             <div className="col-sm-6 col-md-2 col-lg-1">
               <div className="banner-search-icon">
@@ -192,18 +186,18 @@ export default function Search() {
                 </div>}
               </div>
               <div className="search-filter-grid contact-form-field field-label padding-left-ten mb-5">
-                <p className="mb-2">Price</p>
-                <div className="d-flex align-items-center">
+                <p className="mb-2 text-dark-white">Price</p>
+                <div className="d-flex align-items-center text-dark-white">
                   <span className="margin-right-five"> Hourly:</span>
-                  £<input className="margin-right-five" />
+                  £<input className="margin-right-five primary-input" />
                   <span className="margin-right-five">to</span>
-                  £<input />
+                  £<input className="primary-input" />
                 </div>
-                <div className="d-flex align-items-center mt-3">
+                <div className="d-flex align-items-center mt-3 text-dark-white">
                   <span className="margin-right-five"> Daily:</span>
-                  £<input className="margin-right-five" />
+                  £<input className="margin-right-five primary-input" />
                   <span className="margin-right-five">to</span>
-                  £<input />
+                  £<input className="primary-input" />
                 </div>
               </div>
               <div className="toggle-double-grid">
@@ -300,15 +294,16 @@ export default function Search() {
     setSelectedVehicleOnMap(key);
   };
 
-  function dropDownToggle() {
-    setDropdownOpen(prevState => !prevState);
-  };
-
   function toggleShowMap() {
     setShowMap(prevState => !prevState);
   };
 
   function handleSelectedVehicleChange(value) {
     setSelectedVehicle(value);
+  };
+
+  function handleEvent(event, picker) {
+    setFromDate(picker.startDate.format('M/DD/YYYY (hh:mm)'));
+    setToDate(picker.endDate.format('M/DD/YYYY (hh:mm)'));
   };
 }

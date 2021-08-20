@@ -21,7 +21,7 @@ export default function Header() {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-md-4">
-              <div className="header-logo text-center text-md-left mb-4 mb-md-0">
+              <div className="header-logo text-md-left text-center mb-4 mb-md-0">
                 <Link to="/"><img src={Logo} alt="logo" /></Link>
               </div>
             </div>

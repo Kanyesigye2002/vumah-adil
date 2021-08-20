@@ -1,24 +1,22 @@
 import React, { useState } from 'react';
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, TabContent, TabPane, Nav, NavItem } from 'reactstrap';
 import Slider from "react-slick";
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, TabContent, TabPane, Nav, NavItem } from 'reactstrap';
+import DateRangePicker from "react-bootstrap-daterangepicker";
+import moment from 'moment';
 import BannerSlider1 from '../../assets/img/banner-slider-1.jpg';
 import BannerSlider2 from '../../assets/img/banner-slider-2.jpg';
 import BannerSlider3 from '../../assets/img/banner-slider-3.jpg';
 import BlogImage1 from '../../assets/img/blog-img-1.jpg';
 import BlogImage2 from '../../assets/img/blog-img-2.jpg';
 import classnames from 'classnames';
-import RangePickerComponent from '../../components/rangePicker';
+
 
 export default function Home() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [activeWhyUsTab, setActiveWhyUsTab] = useState('1');
 
-  const dropDownToggle = () => setDropdownOpen(prevState => !prevState);
-
-
-  const toggleWhyUsTab = tab => {
-    if (activeWhyUsTab !== tab) setActiveWhyUsTab(tab);
-  };
+  const [fromDate, setFromDate] = useState(moment().format('M/DD/YYYY (hh:mm)'));
+  const [toDate, setToDate] = useState(moment().format('M/DD/YYYY (hh:mm)'));
 
   return (
     <>
@@ -46,7 +44,17 @@ export default function Home() {
               </div>
             </div>
             <div className="col-sm-6 col-md-3 col-lg-4 mb-3 mb-sm-0">
-              <RangePickerComponent className="homepage-datepicker" />
+              <DateRangePicker
+                initialSettings={{
+                  timePicker: true
+                }}
+                alwaysShowCalendars={true}
+                onEvent={handleEvent}
+              >
+                <div class="banner-search-field">
+                  <input type="text" name="daterange" value={`${fromDate} - ${toDate}`} />
+                </div>
+              </DateRangePicker>
             </div>
             <div className="col-sm-6 col-md-2 col-lg-1">
               <div className="banner-search-icon">
@@ -582,4 +590,17 @@ export default function Home() {
       </section>
     </>
   );
+
+  function dropDownToggle() {
+    setDropdownOpen(prevState => !prevState);
+  };
+
+  function toggleWhyUsTab(tab) {
+    if (activeWhyUsTab !== tab) setActiveWhyUsTab(tab);
+  };
+
+  function handleEvent(event, picker) {
+    setFromDate(picker.startDate.format('M/DD/YYYY (hh:mm)'));
+    setToDate(picker.endDate.format('M/DD/YYYY (hh:mm)'));
+  }
 }

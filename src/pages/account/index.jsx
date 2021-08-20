@@ -64,7 +64,7 @@ export default function Account() {
                 <div className="status-number">
                   <p className="mb-3">Company House Number</p>
                   <div className="d-flex align-items-center">
-                    <span>00 44 303 123 4500</span>
+                    <span className="margin-right-ten">00 44 303 123 4500</span>
                     <p className="ml-3"><i className="fas fa-check margin-right-five"></i>Approved</p>
                   </div>
                 </div>
@@ -72,7 +72,7 @@ export default function Account() {
                   <div className="row">
                     <div className="col-md-12">
                       <div className="contact-form-field mb-2">
-                        <label>Licence Details</label>
+                        <label className="text-dark-white">Licence Details</label>
                       </div>
                       <div className="row">
                         <div className="col-md-6">
@@ -510,8 +510,8 @@ export default function Account() {
         <ModalHeader toggle={toggleAccountDeactivateModal} close={modalCloseBtn}></ModalHeader>
         <ModalBody>
           <div className="login-inner">
-            <h4 className="text-center mt-4">Are you sure?</h4>
-            <p className="mt-3">Deactivating will permanently remove your account from the platform. If you wish
+            <h4 className="text-center mt-4 text-dark-white">Are you sure?</h4>
+            <p className="mt-3 text-dark-white">Deactivating will permanently remove your account from the platform. If you wish
               to continue to use the platform after this action you will be required to create a new
               account
             </p>

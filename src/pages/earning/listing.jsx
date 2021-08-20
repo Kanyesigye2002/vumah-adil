@@ -1,13 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Modal, ModalHeader, ModalBody, TabContent, TabPane, Nav, NavItem, NavLink, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, } from 'reactstrap';
+import { Menu, Dropdown as AntDDropdown } from 'antd';
 import Chart from "chart.js/auto";
 import ImageUploader from "react-images-upload";
 import classnames from 'classnames';
+import DateRangePicker from "react-bootstrap-daterangepicker";
+import moment from 'moment';
 import CarListing from '../car-listing';
 import WaveGraph from '../../assets/img/graph-wave.png';
 import Mercedes from '../../assets/img/Mercedes-car.jpg';
 import * as _ from 'lodash';
-import RangePickerComponent from '../../components/rangePicker';
+
 
 export default function Listing() {
   const chartElementRef = useRef(null);
@@ -17,7 +20,6 @@ export default function Listing() {
   const [showCarListingModal, setShowCarListingModal] = useState(false);
 
   const [showTotalEarnings, setShowTotalEarnings] = useState(true);
-  const [showTotalTrips, setShowTotalTrips] = useState(true);
 
   const [selectedRows, setSelectedRows] = useState([]);
   const [allRowsSelected, setAllRowsSelected] = useState(false);
@@ -40,6 +42,9 @@ export default function Listing() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [filterDropdownOpen, setFilterDropdownOpen] = useState(false);
 
+  const [fromDate, setFromDate] = useState(moment().format('M/DD/YYYY (hh:mm)'));
+  const [toDate, setToDate] = useState(moment().format('M/DD/YYYY (hh:mm)'));
+
   const modalCloseBtn = <button type="button" className="btn close p-0" onClick={toggleAddListingModal}>
     <span aria-hidden="true"><i className="fas fa-times-circle fa-lg"></i></span>
   </button>;
@@ -54,7 +59,6 @@ export default function Listing() {
       new Chart(myChartRef, {
         type: 'doughnut',
         data: {
-          // labels: ["Car", "Motorbike", "Bicycle", "Campervan"],
           datasets: [{
             label: '# of Votes',
             data: [1000, 1000, 1000, 1000],
@@ -71,6 +75,26 @@ export default function Listing() {
     }
   }, [showListingContent]);
 
+  const menu = (
+    <Menu>
+      <Menu.Item key="0" onClick={() => onVehicleTypeChange('Car')}>
+        <i className="fas fa-car-side"></i>&nbsp;&nbsp;Car
+      </Menu.Item>
+      <Menu.Divider />
+      <Menu.Item key="1" onClick={() => onVehicleTypeChange('Motorbike')}>
+        <i className="fas fa-motorcycle"></i>&nbsp;&nbsp;Motorbike
+      </Menu.Item>
+      <Menu.Divider />
+      <Menu.Item key="3" onClick={() => onVehicleTypeChange('Bicycle')}>
+        <i className="fas fa-bicycle"></i>&nbsp;&nbsp;Bicycle
+      </Menu.Item>
+      <Menu.Divider />
+      <Menu.Item key="3" onClick={() => onVehicleTypeChange('Campervan')}>
+        <i className="fas fa-rv"></i>&nbsp;&nbsp;Campervan
+      </Menu.Item>
+    </Menu>
+  );
+
   return (
     <>
       <div className="statistic-graph mb-4">
@@ -82,12 +106,12 @@ export default function Listing() {
             </div>
           </div>
           <div className="col-sm-8 justify-content-center justify-content-sm-start">
-            <div className="d-flex justify-content-center justify-content-sm-end pr-4">
+            <div className="d-flex justify-content-center justify-content-sm-end margin-right-ten align-items-center">
 
               <div className="select-outer">
-                <div className="banner-search-dropdown dropdown">
+                <div className="banner-search-dropdown">
                   <Dropdown isOpen={filterDropdownOpen} toggle={toggleFilterDropDown}>
-                    <DropdownToggle>
+                    <DropdownToggle className="margin-right-ten">
                       Select
                     </DropdownToggle>
                     <DropdownMenu className="vumah-dropdown-menu">
@@ -98,7 +122,17 @@ export default function Listing() {
                 </div>
               </div>
               <div className="w-50">
-                <RangePickerComponent />
+                <DateRangePicker
+                  initialSettings={{
+                    timePicker: true
+                  }}
+                  alwaysShowCalendars={true}
+                  onEvent={handleEvent}
+                >
+                  <div class="banner-search-field">
+                    <input type="text" className="dark-input" name="daterange" value={`${fromDate} - ${toDate}`} />
+                  </div>
+                </DateRangePicker>
               </div>
             </div>
           </div>
@@ -260,28 +294,28 @@ export default function Listing() {
           </tbody>
         </table>}
         {!showListingContent && <>
-          <div class="summary-pie-cart">
+          <div className="summary-pie-cart">
             <canvas width="100%" height="100%" ref={chartElementRef}></canvas>
           </div>
           <div className="d-flex justify-content-center align-items-center mt-5">
             <div className="car-pie-chart margin-left-thirty">
               <div className="box" />
-              <p>Car</p>
+              <p className="text-dark-white">Car</p>
             </div>
 
             <div className="motorbike-pie-chart margin-left-thirty">
               <div className="box" />
-              <p>Motorbike</p>
+              <p className="text-dark-white">Motorbike</p>
             </div>
 
             <div className="bicycle-pie-chart margin-left-thirty">
               <div className="box" />
-              <p>Bicycle</p>
+              <p className="text-dark-white">Bicycle</p>
             </div>
 
             <div className="campervan-pie-chart margin-left-thirty">
               <div className="box" />
-              <p>Campervan</p>
+              <p className="text-dark-white">Campervan</p>
             </div>
           </div>
           <div class="summery-content mt-4 text-center-align">
@@ -307,7 +341,12 @@ export default function Listing() {
                   </div>
                   <div className="row">
                     <div className="col-md-12 contact-form-field mb-3">
-                      <Dropdown isOpen={dropdownOpen} toggle={toggleDropDown} color="link">
+                      <AntDDropdown overlay={menu} trigger={['click']}>
+                        <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+                          <input placeholder="Vehicle Type" value={vehicleType} />
+                        </a>
+                      </AntDDropdown>
+                      {/* <Dropdown isOpen={dropdownOpen} toggle={toggleDropDown} color="link">
                         <DropdownToggle className="w-100">
                           <input placeholder="Vehicle Type" value={vehicleType} />
                         </DropdownToggle>
@@ -325,18 +364,7 @@ export default function Listing() {
                             <i className="fas fa-rv"></i>&nbsp;&nbsp;Campervan
                           </DropdownItem>
                         </DropdownMenu>
-                      </Dropdown>
-
-                      {/* <div className="contact-form-field mb-3">
-                        <select placeholder="Vehicle Type" onChange={onVehicleTypeChange}>
-                          <option value=''>Vehicle Type</option>
-                          <option value='car'>Car</option>
-                          <option value='motorbike'>Motorbike</option>
-                          <option value='bicycle'>Bicycle</option>
-                          <option value='campervan'>Campervan</option>
-                        </select>
-                      </div> */}
-
+                      </Dropdown> */}
                     </div>
                     {vehicleType !== 'Bicycle' && <div className="col-md-12">
                       <div className="contact-form-field mb-3">
@@ -358,6 +386,22 @@ export default function Listing() {
                         <input type="text" placeholder="Model" />
                       </div>
                     </div>}
+                    {vehicleType === 'Car' && <div className="col-md-12">
+                      <div className="contact-form-field mb-3">
+                        <input type="text" placeholder="Body Type" />
+                      </div>
+                    </div>}
+                    {vehicleType !== 'Bicycle' && <div className="col-md-12">
+                      <div className="contact-form-field mb-3">
+                        <input type="text" placeholder="Fuel Type" />
+                      </div>
+                    </div>}
+                    {vehicleType !== 'Bicycle' && <div className="col-md-12">
+                      <div className="contact-form-field mb-3">
+                        <input type="text" placeholder="Gearbox" />
+                      </div>
+                    </div>}
+
                     <div className="col-md-12">
                       <div className="contact-form-field mb-3">
                         <input type="text" placeholder="Pick up location/address" />
@@ -908,4 +952,9 @@ export default function Listing() {
   function toggleFilterDropDown() {
     setFilterDropdownOpen(prevState => !prevState);
   }
+
+  function handleEvent(event, picker) {
+    setFromDate(picker.startDate.format('M/DD/YYYY (hh:mm)'));
+    setToDate(picker.endDate.format('M/DD/YYYY (hh:mm)'));
+  };
 }

@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
+import DateRangePicker from "react-bootstrap-daterangepicker";
+import moment from 'moment';
 import Mercedes from '../../assets/img/Mercedes-car.jpg';
-import DatePickerComponent from '../../components/datePicker';
+
 
 export default function Availability() {
   const [showChangeAvailabilityPopup, setShowChangeAvailabilityPopup] = useState(false);
   const [availability, setAvailability] = useState('');
+  const [weekDate, setWeekDate] = useState(moment().format('M/DD/YYYY'));
 
   const modalCloseBtn = <button type="button" className="btn close p-0" onClick={toggleShowChangeAvailabilityPopup}>
     <span aria-hidden="true"><i className="fas fa-times-circle fa-lg"></i></span>
@@ -18,14 +21,21 @@ export default function Availability() {
           <div className="col-md-12">
             <div className="overview-header d-flex justify-content-between">
               <h2 className="m-0 flex-grow-1">Availability</h2>
-              <div className="d-flex align-items-center w-25">
-                <p className="margin-right-five">Week</p>
-                <DatePickerComponent />
-                {/* <select>
-                  <option>09-08-11 / 15-08-11</option>
-                  <option>16-08-11 / 22-08-11</option>
-                  <option>23-08-11 / 29-08-11</option>
-                </select> */}
+              <div className="d-flex align-items-center w-35">
+                <p className="margin-right-five text-dark-white">Week</p>
+                <DateRangePicker
+                  initialSettings={{
+                    timePicker: false,
+                    singleDatePicker: true,
+                    showDropdowns: true,
+                  }}
+                  alwaysShowCalendars={true}
+                  onEvent={handleEvent}
+                >
+                  <div class="banner-search-field">
+                    <input type="text" name="daterange" value={weekDate} className="text-center-align" />
+                  </div>
+                </DateRangePicker>
               </div>
             </div>
           </div>
@@ -73,8 +83,8 @@ export default function Availability() {
                     <div className="bookingVechile-img margin-right-ten">
                       <img src={Mercedes} alt="car" />
                     </div>
-                    <div className="bookingVechile-detail mt-2 text-left-align">
-                      <h2>Mercedes</h2>
+                    <div className="bookingVechile-detail mt-2">
+                      <h2 className="text-dark-white">Mercedes</h2>
                       <p className="mb-0">£25.99/h</p>
                     </div>
                   </div>
@@ -109,7 +119,7 @@ export default function Availability() {
                       <img src={Mercedes} alt="car" />
                     </div>
                     <div className="bookingVechile-detail mt-2">
-                      <h2>Mercedes</h2>
+                      <h2 className="text-dark-white">Mercedes</h2>
                       <p className="mb-0">£25.99/h</p>
                     </div>
                   </div>
@@ -144,7 +154,7 @@ export default function Availability() {
                       <img src={Mercedes} alt="car" />
                     </div>
                     <div className="bookingVechile-detail mt-2">
-                      <h2>Mercedes</h2>
+                      <h2 className="text-dark-white">Mercedes</h2>
                       <p className="mb-0">£25.99/h</p>
                     </div>
                   </div>
@@ -179,7 +189,7 @@ export default function Availability() {
                       <img src={Mercedes} alt="car" />
                     </div>
                     <div className="bookingVechile-detail mt-2">
-                      <h2>Mercedes</h2>
+                      <h2 className="text-dark-white">Mercedes</h2>
                       <p className="mb-0">£25.99/h</p>
                     </div>
                   </div>
@@ -257,5 +267,10 @@ export default function Availability() {
   function onChangeAvailability(e) {
     const { value } = e.target;
     setAvailability(value);
+  };
+
+  function handleEvent(event, picker) {
+    console.log('picker', picker);
+    setWeekDate(picker.startDate.format('M/DD/YYYY'));
   };
 }

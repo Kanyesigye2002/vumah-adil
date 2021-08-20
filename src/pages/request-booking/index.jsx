@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, ModalHeader, ModalBody, Collapse } from 'reactstrap';
-import RangePickerComponent from '../../components/rangePicker';
+import DateRangePicker from "react-bootstrap-daterangepicker";
+import moment from 'moment';
 import Visa from '../../assets/img/visa.png';
 import Amex from '../../assets/img/amex-logo.png';
 import Paypal from '../../assets/img/paypal.png';
@@ -11,6 +12,9 @@ export default function RequestBooking() {
   const [showTermsModal, setShowTermsModal] = useState(false);
 
   const [showDateEditContent, setShowDateEditContent] = useState(false);
+
+  const [fromDate, setFromDate] = useState(moment().format('M/DD/YYYY (hh:mm)'));
+  const [toDate, setToDate] = useState(moment().format('M/DD/YYYY (hh:mm)'));
 
   const modalCloseBtn = <button type="button" className="btn close p-0" onClick={toggleTermsModal}>
     <span aria-hidden="true"><i className="fas fa-times-circle fa-lg"></i></span>
@@ -94,7 +98,7 @@ export default function RequestBooking() {
                   </div>
                   <hr />
                   <input type="checkbox" className="pointer margin-right-five" />
-                  <label className="mb-0 pointer">
+                  <label className="mb-0 pointer text-dark-white">
                     I accept the <span className="link-text pointer" onClick={toggleTermsModal}>terms and conditions</span> of the platform
                   </label>
                   <div className="contact-form-field submit-contact  mt-4">
@@ -123,16 +127,28 @@ export default function RequestBooking() {
                     <div className="col-md-6">
                       <h2>Dates</h2>
                       <p>27 Jun (10:00) - 9 July (10:00)</p>
-                      <Collapse isOpen={showDateEditContent}>
-                        <RangePickerComponent className="car-listing-datepicker mt-3" />
-                      </Collapse>
                     </div>
                     <div className="col-md-6 text-right-align">
                       <span className="secondary-color pointer" onClick={toggleShowEditDateContent}>Edit</span>
                     </div>
+                    <div className="col-md-12">
+                      <Collapse isOpen={showDateEditContent}>
+                        <DateRangePicker
+                          initialSettings={{
+                            timePicker: true
+                          }}
+                          alwaysShowCalendars={true}
+                          onEvent={handleEvent}
+                        >
+                          <div class="contact-form-field  field-label mt-3">
+                            <input type="text" name="daterange" value={`${fromDate} - ${toDate}`} />
+                          </div>
+                        </DateRangePicker>
+                      </Collapse>
+                    </div>
                   </div>
                 </div>
-                <h5 className="mb-4 request-booking">Total Booking Cost for 3 days 6hrs</h5>
+                <h5 className="mb-4 booking">Total Booking Cost for 3 days 6hrs</h5>
                 <div className="request-grid">
                   <div className="row mb-3">
                     <div className="col-md-6">
@@ -160,8 +176,8 @@ export default function RequestBooking() {
                   </div>
                 </div>
               </div>
-              <h5 className="mb-4 mt-4">Cancellation Policy</h5>
-              <p>
+              <h5 className="mb-4 mt-4 text-dark-white">Cancellation Policy</h5>
+              <p className="text-dark-white">
                 When booking a vehicle on the Vumah platform we allow free cancellations up to 24hrs
                 before the trip start to allow flexibility for our guests. If you choose to cancel for
                 any reason within the 24 hours period of the trip start, the guest will be subject to a
@@ -189,5 +205,10 @@ export default function RequestBooking() {
 
   function toggleShowEditDateContent() {
     setShowDateEditContent(!showDateEditContent);
+  };
+
+  function handleEvent(event, picker) {
+    setFromDate(picker.startDate.format('M/DD/YYYY (hh:mm)'));
+    setToDate(picker.endDate.format('M/DD/YYYY (hh:mm)'));
   };
 }

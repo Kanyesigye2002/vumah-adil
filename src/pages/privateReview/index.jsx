@@ -14,6 +14,8 @@ import ReviewBg from '../../assets/img/public-review-bg.jpg';
 import CompanyReview from '../../assets/img/company-review-img.jpg';
 import Mercedes from '../../assets/img/Mercedes-car.jpg';
 import CustomerReview from '../../assets/img/customer-review-img-1.png';
+import SecurityImage from '../../assets/img/security.png';
+
 
 export default function PrivateReview() {
   const [coverImage, setCoverImage] = useState(null);
@@ -49,19 +51,8 @@ export default function PrivateReview() {
                   </ul>
                 </div>
                 <div className="level-four d-flex justify-content-center justify-content-md-start align-items-center">
-                  <svg viewBox="0 0 1023.726 1321" className="margin-right-ten">
-                    <g id="Group_1" data-name="Group 1" transform="translate(-1941 465)">
-                      <g id="_152531" data-name="152531" transform="translate(1941 814.881)">
-                        <path id="Path_2" data-name="Path 2"
-                          d="M502.5-1279.4c-1.1.2-4.5.9-7.5,1.5-10.9,2-25.8,7.5-40,14.5-26.1,13-52,29.7-116.7,75.6-98.2,69.7-139.3,95.3-183.5,114.1-39.9,17.1-90.7,28.4-140,31.3-11.6.7-11.7.7-12.3,3.3C1.2-1032.9,0-988.1,0-946c0,73.3,1.6,114.8,8.5,226,5.2,82.1,7.2,106.8,10,120.7,9.9,49,44.9,135.9,80.3,199.3,30.6,54.9,82.8,129,127,180.4C288.1-147.2,375.1-64.2,439.5-15.7,448.3-9.1,457-3.1,458.8-2.3c1.8.7,106.7.7,124.1-.8l19.8-17.1c44.3-38,81.5-73.1,123.5-116.4C803.4-216.3,847.8-270,893.5-339c65.8-99.2,104.7-192.1,113.9-271.5,3.1-26.4,9.5-124.3,14.2-216,2.9-56.9,2.8-205.3-.1-212.7-1-2.6-6.8-3.8-18.3-3.8-34.8,0-85.8-11.6-130.2-29.7a588.876,588.876,0,0,1-67-33.4c-22.1-13.3-55.8-36.1-116-78.5-64.2-45.3-86.4-60.3-102.9-69.4-23.4-12.9-45.7-21.9-60.9-24.5C518.3-1279.9,507.2-1280.3,502.5-1279.4Z" />
-                        <path id="Path_3" data-name="Path 3" d="M63,0l63,44L1.063,44.25Z"
-                          transform="translate(584 41.119) rotate(180)" />
-                      </g>
-                      <path id="_Path_" data-name="&lt;Path&gt;"
-                        d="M318.19,296.32Q255.9,196,161.14,44.01c-.02-.01-.02-.02-.02-.03a85.821,85.821,0,1,0-149.85,83.7L220.8,466.22c.01.01.01.02.02.03,33.22,59.48,117.86,57.79,150.15,0,0-.01.01-.02.01-.03l95.2-153.81Q378.145,392.015,318.19,296.32ZM580.52,127.68a85.825,85.825,0,0,0-149.86-83.7.037.037,0,0,1-.01.03Q356.19,163.44,295.89,260.44c7.72,12.42,15.23,24.5,22.3,35.88q59.955,95.7,147.99,16.09Z"
-                        transform="translate(2156.645 -59.992)" fill="#fff" />
-                    </g>
-                  </svg>
+                  <img src={SecurityImage} alt="Security Image" className="margin-right-ten" />
+
                   <h2>Level 4 host</h2>
                 </div>
               </div>

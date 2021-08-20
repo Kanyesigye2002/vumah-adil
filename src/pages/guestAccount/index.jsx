@@ -86,8 +86,8 @@ export default function Account() {
                         <DropdownItem>Edit</DropdownItem>
                       </DropdownMenu>
                     </Dropdown>
-                    {showApprovalContent && <i className="fas fa-sort-up pointer" onClick={toggleShowApprovalContent}></i>}
-                    {!showApprovalContent && <i className="fas fa-sort-down pointer" onClick={toggleShowApprovalContent}></i>}
+                    {showApprovalContent && <i className="fas fa-sort-up pointer text-dark-white" onClick={toggleShowApprovalContent}></i>}
+                    {!showApprovalContent && <i className="fas fa-sort-down pointer text-dark-white" onClick={toggleShowApprovalContent}></i>}
                   </div>
                 </div>
                 <Collapse isOpen={showApprovalContent}>
@@ -161,8 +161,8 @@ export default function Account() {
                     </div>
                     <div className="row mt-4">
                       <div className="col-12">
-                        <span className="margin-right-five">Motorcycles License Types</span>
-                        <i className="fas fa-info-circle" id="approvalTooltip"></i>
+                        <span className="margin-right-five text-dark-white">Motorcycles License Types</span>
+                        <i className="fas fa-info-circle text-dark-white" id="approvalTooltip"></i>
                         <Tooltip placement="right" isOpen={approvalTooltipOpen} target="approvalTooltip" toggle={toggleApprovalTooltip}>
                           <p className="pt-3 pb-3">
                             If you have a motorcycle license please select which box applies to you:
@@ -471,8 +471,8 @@ export default function Account() {
         <ModalHeader toggle={toggleAccountDeactivateModal} close={modalCloseBtn}></ModalHeader>
         <ModalBody>
           <div className="login-inner">
-            <h4 className="text-center mt-4">Are you sure?</h4>
-            <p className="mt-3">Deactivating will permanently remove your account from the platform. If you wish
+            <h4 className="text-center mt-4 text-dark-white">Are you sure?</h4>
+            <p className="mt-3 text-dark-white">Deactivating will permanently remove your account from the platform. If you wish
               to continue to use the platform after this action you will be required to create a new
               account
             </p>

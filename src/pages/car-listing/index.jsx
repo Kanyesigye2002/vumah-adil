@@ -11,15 +11,20 @@ import {
   WhatsappIcon
 } from "react-share";
 import Slider from "react-slick";
+import DateRangePicker from "react-bootstrap-daterangepicker";
+import moment from 'moment';
 import TeslaCar from '../../assets/img/tesla-modal-car.jpg';
 import MercedesCar from '../../assets/img/Mercedes-car.jpg';
 import CustomerReview from '../../assets/img/customer-review-img-2.png';
 import CustomerReview1 from '../../assets/img/customer-review-img-1.png';
-import RangePickerComponent from '../../components/rangePicker';
+
 
 export default function CarListing(props) {
   const { hideSimilarCar, sliderClassName } = props;
   const [openSharePopover, setOpenSharePopover] = useState(false);
+
+  const [fromDate, setFromDate] = useState(moment().format('M/DD/YYYY (hh:mm)'));
+  const [toDate, setToDate] = useState(moment().format('M/DD/YYYY (hh:mm)'));
 
   const sliderClass = sliderClassName ? sliderClassName : 'carModal-slider';
 
@@ -27,7 +32,7 @@ export default function CarListing(props) {
     <section className="carModal-full-detail padd-bottom-60 padd-top-60">
       <div className="container">
         <div className="carModal-header mb-4" data-aos="fade-up">
-          <h2>Tesla Modal 3</h2>
+          <h2>Tesla Model 3</h2>
           <div className="d-flex">
             <p className="margin-right-ten"><i className="far fa-heart margin-right-five pointer"></i>Add to favourites</p>
             <p id="share-popover" className="pointer"> <i className="fas fa-share-alt margin-right-five pointer"></i>Share Profile</p>
@@ -137,8 +142,7 @@ export default function CarListing(props) {
                   </button>
                 </div>
               </div>
-              <p className="unlock-text"><a href="#login_popup" data-toggle="modal">Login</a> or <a
-                href="#signUp_popup" data-toggle="modal">Sign Up</a> to ask a public question</p>
+              <p className="unlock-text"><a>Login</a> or <a>Sign Up</a> to ask a public question</p>
             </div>
 
             <div className="location-map mb-4" data-aos="fade-up">
@@ -187,11 +191,21 @@ export default function CarListing(props) {
             <div className="pick-range-box" data-aos="fade-up">
               <div className="d-flex justify-content-between ml-1 mr-1">
                 <h2>£100/day (£24/hr)</h2>
-                <p>Mileage Inc: 10,000 km</p>
+                <p className="text-dark-white">Mileage Inc: 10,000 km</p>
               </div>
 
               <div className="mb-3">
-                <RangePickerComponent className="car-listing-datepicker" />
+                <DateRangePicker
+                  initialSettings={{
+                    timePicker: true
+                  }}
+                  alwaysShowCalendars={true}
+                  onEvent={handleEvent}
+                >
+                  <div class="contact-form-field field-label mb-3">
+                    <input type="text" name="daterange" value={`${fromDate} - ${toDate}`} />
+                  </div>
+                </DateRangePicker>
               </div>
               <div className="contact-form-field submit-contact">
                 <input type="Submit" value="Continue" />
@@ -353,5 +367,10 @@ export default function CarListing(props) {
 
   function toggleSharePopover() {
     setOpenSharePopover(!openSharePopover);
+  };
+
+  function handleEvent(event, picker) {
+    setFromDate(picker.startDate.format('M/DD/YYYY (hh:mm)'));
+    setToDate(picker.endDate.format('M/DD/YYYY (hh:mm)'));
   };
 }
