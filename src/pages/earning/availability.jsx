@@ -21,7 +21,7 @@ export default function Availability() {
           <div className="col-md-12">
             <div className="overview-header d-flex justify-content-between">
               <h2 className="m-0 flex-grow-1">Availability</h2>
-              <div className="d-flex align-items-center w-35">
+              <div className="d-flex align-items-center justify-content-end w-35">
                 <p className="margin-right-five text-dark-white">Week</p>
                 <DateRangePicker
                   initialSettings={{
