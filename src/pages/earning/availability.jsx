@@ -228,17 +228,17 @@ export default function Availability() {
         <ModalHeader toggle={toggleShowChangeAvailabilityPopup} close={modalCloseBtn}></ModalHeader>
         <ModalBody>
           <div className="login-inner">
-            <h4 className="text-center mt-4">Select Availability</h4>
+            <h4 className="text-center mt-4 text-dark-white">Select Availability</h4>
             <div className="contact-form-field radio-field available-all-day-radio mt-4">
               <input type="radio" id="t1" checked={availability === 'availAbleAllDay'} className="styled-checkbox availability-checkbox" value="availAbleAllDay" onChange={onChangeAvailability} />
-              <label htmlFor="t1" className="dark-color padding-left-thirty">Available All Day</label>
+              <label htmlFor="t1" className="text-dark-white padding-left-thirty">Available All Day</label>
             </div>
             <div className="contact-form-field radio-field custom-hours-radio mt-2">
               <input type="radio" id="t2" checked={availability === 'customHours'} className="styled-checkbox availability-checkbox" value="customHours" onChange={onChangeAvailability} />
-              <label htmlFor="t2" className="dark-color padding-left-thirty">Custom Hours</label>
+              <label htmlFor="t2" className="text-dark-white padding-left-thirty">Custom Hours</label>
             </div><div className="contact-form-field radio-field unavailable-radio mt-2">
               <input type="radio" id="t3" checked={availability === 'unavilable'} className="styled-checkbox availability-checkbox" value="unavilable" onChange={onChangeAvailability} />
-              <label htmlFor="t3" className="dark-color padding-left-thirty">Unavailable all day</label>
+              <label htmlFor="t3" className="text-dark-white padding-left-thirty">Unavailable all day</label>
             </div>
             {availability === 'customHours' && <div className="row mt-3">
               <div className="col-md-6 contact-form-field">

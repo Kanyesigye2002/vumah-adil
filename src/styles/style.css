@@ -3554,7 +3554,7 @@ section.Campervans {
 }
 
 .text-dark-white {
-  color: var(--black);
+  color: var(--black) !important;
 }
 
 /* Dark theme css start */
@@ -3578,7 +3578,7 @@ body.dark-theme .request-book-left p,
 body.dark-theme .request-book-left span,
 body.dark-theme .request-grid h2,
 body.dark-theme .text-dark-white {
-  color: var(--white);
+  color: var(--white) !important;
 }
 body.dark-theme .account-grid > h2,
 body.dark-theme .account-update-field h2,
@@ -4047,10 +4047,26 @@ body.dark-theme .show-chat-header {
   }
 }
 @media screen and (min-width: 767.98px) {
+  .text-right-xl-align {
+    text-align: right;
+  }
+  .margin-left-xl-ten {
+    margin-left: 10px;
+  }
+  .margin-left-xl-fourty-one {
+    margin-left: 41px;
+  }
   .text-md-left {
     text-align: left !important;
   }
+  .car-listing-checkbox:checked + label:after {
+    left: 15px;
+  }
+  .campervan-listing-checkbox:checked + label:after {
+    left: 45px;
+  }
 }
+
 @media screen and (max-width: 767.98px) {
   .banner-search-dropdown {
     padding: 0 0 0 10px;
@@ -4553,4 +4569,8 @@ h2.facilities {
   list-style: decimal;
   color: var(--black);
   line-height: 2;
+}
+
+.margin-bottom-minus-25 {
+  margin-bottom: -25px;
 }
