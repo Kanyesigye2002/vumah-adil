@@ -5,6 +5,7 @@ import CVVExampleImage from '../../assets/img/cvv-example.jpg';
 export default function Account() {
 
   const [showDeactivateAccountModal, setShowDeactivateAccountModal] = useState(false);
+  const [showSorryToSeeYouGoModal, setShowSorryToSeeYouGoModal] = useState(false);
   const [showAddBankDetailsModal, setShowAddBankDetailsModal] = useState(false);
   const [showUpdateBusinessDetailsModal, setShowUpdateBusinessDetailsModal] = useState(false);
   const [showUpdatePasswordModal, setShowUpdatePasswordModal] = useState(false);
@@ -478,9 +479,23 @@ export default function Account() {
             </p>
           </div>
           <div className="d-flex justify-content-center align-items-center mt-4">
-            <button className="common-btn margin-right-five" onClick={toggleAccountDeactivateModal}>Yes</button>
+            <button className="common-btn margin-right-five" onClick={toggleAccountDeactivateAndShowSorryToSeeYouGoModal}>Yes</button>
             <button className="common-btn" onClick={toggleAccountDeactivateModal}>No</button>
           </div>
+        </ModalBody>
+      </Modal>
+      {/* <!-- deactivate account modal --> */}
+
+      {/* <!-- deactivate account modal --> */}
+      <Modal isOpen={showSorryToSeeYouGoModal} toggle={toggleSorryToSeeYouGoModal} className='loginPopupMain add-listing-main'>
+        <ModalHeader toggle={toggleSorryToSeeYouGoModal} close={modalCloseBtn}></ModalHeader>
+        <ModalBody>
+          <div className="login-inner">
+            <h5 className="text-center mb-2 text-dark-white">Sorry to see you go!</h5>
+          </div>
+          {/* <div className="d-flex justify-content-center align-items-center mt-4">
+            <button className="common-btn margin-right-five" onClick={toggleSorryToSeeYouGoModal}>OK</button>
+          </div> */}
         </ModalBody>
       </Modal>
       {/* <!-- deactivate account modal --> */}
@@ -708,6 +723,17 @@ export default function Account() {
     setShowDeactivateAccountModal(!showDeactivateAccountModal);
   };
 
+  function toggleAccountDeactivateAndShowSorryToSeeYouGoModal(e) {
+    if (e) e.preventDefault();
+    setShowDeactivateAccountModal(false);
+    setShowSorryToSeeYouGoModal(true);
+  };
+
+  function toggleSorryToSeeYouGoModal(e) {
+    if (e) e.preventDefault();
+    setShowSorryToSeeYouGoModal(!showSorryToSeeYouGoModal);
+  };
+
   function toggleAddBankDetailsModal(e) {
     if (e) e.preventDefault();
     setShowAddBankDetailsModal(!showAddBankDetailsModal);
@@ -734,6 +760,7 @@ export default function Account() {
     setShowUpdateBusinessDetailsModal(false);
     setShowUpdatePasswordModal(false);
     setShowUpdateMobileModal(false);
+    setShowSorryToSeeYouGoModal(false);
   };
 
   function toggleBusinessInformationSection() {

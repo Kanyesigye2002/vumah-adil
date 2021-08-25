@@ -333,12 +333,10 @@ export default function Listing() {
             <TabContent activeTab={toggleListingActiveTab}>
               <TabPane tabId="1">
                 <div className="add-listing-list ad-list-onetab">
-                  <div className="d-flex justify-content-around">
-                    <div className="flex-grow-1">
-                      <h2 className="mb-5 text-center">New Vehicle Listing</h2>
-                    </div>
-                    <a className="save-draft-text">Save Draft</a>
+                  <div className="d-flex justify-content-end">
+                    <a className="save-draft-text margin-bottom-minus-25">Save Draft</a>
                   </div>
+                  <h2 className="mb-5 text-center">New Vehicle Listing</h2>
                   <div className="row">
                     <div className="col-md-12 contact-form-field mb-3">
                       <AntDDropdown overlay={menu} trigger={['click']}>
@@ -458,12 +456,10 @@ export default function Listing() {
 
               <TabPane tabId="2">
                 <div className="add-listing-list">
-                  <div className="d-flex justify-content-around">
-                    <div className="flex-grow-1">
-                      <h2 className="mb-3 text-center">Add Images</h2>
-                    </div>
-                    <a className="save-draft-text">Save Draft</a>
+                  <div className="d-flex justify-content-end">
+                    <a className="save-draft-text margin-bottom-minus-25">Save Draft</a>
                   </div>
+                  <h2 className="mb-3 text-center">Add Images</h2>
                   <ImageUploader
                     withIcon={true}
                     withPreview={true}
@@ -473,9 +469,9 @@ export default function Listing() {
                     label='Max file size: 5mb, accepted: jpg, gif, png'
                   />
                   {vehicleType === 'Car' && <>
-                    <h2 className="mt-5 text-center">Features</h2>
+                    <h2 className="mt-5 mb-4 text-center">Features</h2>
                     <div className="row mb-5">
-                      <div className="col-md-6">
+                      <div className="col-md-9">
                         <div className="contact-form-field checkbox-field">
                           <input type="checkbox" id="automatic-gearbox" name="automatic-gearbox" className="styled-checkbox" />
                           <label for="automatic-gearbox">
@@ -484,16 +480,16 @@ export default function Listing() {
                           </label>
                         </div>
                       </div>
-                      <div className="col-md-6">
-                        <div className="contact-form-field checkbox-field">
-                          <input type="checkbox" id="autopilot" name="autopilot" className="styled-checkbox" />
+                      <div className="col-md-3">
+                        <div className="contact-form-field checkbox-field text-right-xl-align">
+                          <input type="checkbox" id="autopilot" name="autopilot" className="styled-checkbox car-listing-checkbox" />
                           <label for="autopilot">
                             <i className="far fa-steering-wheel margin-right-five"></i>
                             Autopilot
                           </label>
                         </div>
                       </div>
-                      <div className="col-md-6">
+                      <div className="col-md-9">
                         <div className="contact-form-field checkbox-field">
                           <input type="checkbox" id="usb-input" name="usb-input" className="styled-checkbox" />
                           <label for="usb-input">
@@ -502,8 +498,8 @@ export default function Listing() {
                           </label>
                         </div>
                       </div>
-                      <div className="col-md-6">
-                        <div className="contact-form-field checkbox-field">
+                      <div className="col-md-3">
+                        <div className="contact-form-field checkbox-field margin-left-xl-ten">
                           <input type="checkbox" id="electric" name="electric" className="styled-checkbox" />
                           <label for="electric">
                             <i className="fas fa-bolt margin-right-five"></i>
@@ -511,7 +507,7 @@ export default function Listing() {
                           </label>
                         </div>
                       </div>
-                      <div className="col-md-6">
+                      <div className="col-md-9">
                         <div className="contact-form-field checkbox-field">
                           <input type="checkbox" id="gps" name="gps" className="styled-checkbox" />
                           <label for="gps">
@@ -520,9 +516,9 @@ export default function Listing() {
                           </label>
                         </div>
                       </div>
-                      <div className="col-md-6">
-                        <div className="contact-form-field checkbox-field">
-                          <input type="checkbox" id="bluetooth" name="bluetooth" className="styled-checkbox" />
+                      <div className="col-md-3">
+                        <div className="contact-form-field checkbox-field text-right-xl-align">
+                          <input type="checkbox" id="bluetooth" name="bluetooth" className="styled-checkbox car-listing-checkbox" />
                           <label for="bluetooth">
                             <i className="fab fa-bluetooth-b margin-right-five"></i>
                             Bluetooth
@@ -533,57 +529,57 @@ export default function Listing() {
                   </>}
 
                   {vehicleType === 'Campervan' && <>
-                    <h2 className="mt-5 facilities">Facilities</h2>
+                    <h2 className="mt-5 mb-4 text-center">Facilities</h2>
                     <div className="row mb-5">
-                      <div className="col-md-6">
+                      <div className="col-md-7">
                         <div className="contact-form-field checkbox-field">
                           <input type="checkbox" id="toilet" name="toilet" className="styled-checkbox" />
                           <label for="toilet">Toilet</label>
                         </div>
                       </div>
-                      <div className="col-md-6">
-                        <div className="contact-form-field checkbox-field">
+                      <div className="col-md-5">
+                        <div className="contact-form-field checkbox-field margin-left-xl-fourty-one">
                           <input type="checkbox" id="shower" name="shower" className="styled-checkbox" />
                           <label for="shower">Shower</label>
                         </div>
                       </div>
-                      <div className="col-md-6">
+                      <div className="col-md-7">
                         <div className="contact-form-field checkbox-field">
                           <input type="checkbox" id="kitchen-unit" name="kitchen-unit" className="styled-checkbox" />
                           <label for="kitchen-unit">Kitchen Unit</label>
                         </div>
                       </div>
-                      <div className="col-md-6">
-                        <div className="contact-form-field checkbox-field">
+                      <div className="col-md-5">
+                        <div className="contact-form-field checkbox-field margin-left-xl-fourty-one">
                           <input type="checkbox" id="hot-water" name="hot-water" className="styled-checkbox" />
                           <label for="hot-water">Hot Water</label>
                         </div>
                       </div>
-                      <div className="col-md-6">
+                      <div className="col-md-7">
                         <div className="contact-form-field checkbox-field">
                           <input type="checkbox" id="heating" name="heating" className="styled-checkbox" />
                           <label for="heating">Heating</label>
                         </div>
                       </div>
-                      <div className="col-md-6">
-                        <div className="contact-form-field checkbox-field">
-                          <input type="checkbox" id="suitable-for-tall-people" name="suitable-for-tall-people" className="styled-checkbox" />
+                      <div className="col-md-5">
+                        <div className="contact-form-field checkbox-field text-right-xl-align">
+                          <input type="checkbox" id="suitable-for-tall-people" name="suitable-for-tall-people" className="styled-checkbox campervan-listing-checkbox" />
                           <label for="suitable-for-tall-people">Suitable for tall people</label>
                         </div>
                       </div>
-                      <div className="col-md-6">
+                      <div className="col-md-7">
                         <div className="contact-form-field checkbox-field">
                           <input type="checkbox" id="bicycle-rack" name="bicycle-rack" className="styled-checkbox" />
                           <label for="bicycle-rack">Bicycle Rack</label>
                         </div>
                       </div>
-                      <div className="col-md-6">
-                        <div className="contact-form-field checkbox-field">
+                      <div className="col-md-5">
+                        <div className="contact-form-field checkbox-field margin-left-xl-fourty-one">
                           <input type="checkbox" id="ac-in-cabin" name="ac-in-cabin" className="styled-checkbox" />
                           <label for="ac-in-cabin">A/C in cabin</label>
                         </div>
                       </div>
-                      <div className="col-md-6">
+                      <div className="col-md-7">
                         <div className="contact-form-field checkbox-field">
                           <input type="checkbox" id="ac-in-cabin" name="ac-in-cabin" className="styled-checkbox" />
                           <label for="ac-in-motorhome-compartment">A/C in motorhome compartment</label>
@@ -606,12 +602,10 @@ export default function Listing() {
               </TabPane>
               <TabPane tabId="3">
                 <div className="add-listing-list">
-                  <div className="d-flex justify-content-around">
-                    <div className="flex-grow-1">
-                      <h2 className="mb-5 text-center">Add Listing</h2>
-                    </div>
-                    <a className="save-draft-text">Save Draft</a>
+                  <div className="d-flex justify-content-end">
+                    <a className="save-draft-text margin-bottom-minus-25">Save Draft</a>
                   </div>
+                  <h2 className="mb-5 text-center">Add Listing</h2>
                   <div className="cd-switch d-flex align-items-center mb-4">
                     <h2 className="m-0">I am always available</h2>
                     <div className="switch-field ml-4">
