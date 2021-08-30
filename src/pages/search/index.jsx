@@ -8,15 +8,11 @@ import moment from 'moment';
 import Mercedes from '../../assets/img/Mercedes-car.jpg';
 
 export default function Search() {
-  const [showMap, setShowMap] = useState(false);
   const [selectedVehicle, setSelectedVehicle] = useState('Vehicle');
-
+	const [selectedFilter, setSelectedFilter] = useState('Filter');
   const [selectedVehicleOnMap, setSelectedVehicleOnMap] = useState(null);
-
   const [fromDate, setFromDate] = useState(moment().format('M/DD/YYYY (hh:mm)'));
   const [toDate, setToDate] = useState(moment().format('M/DD/YYYY (hh:mm)'));
-
-  const toggleMapClass = showMap ? 'open' : '';
 
   const menu = (
     <Menu>
@@ -28,7 +24,7 @@ export default function Search() {
         <i className="fas fa-motorcycle"></i>&nbsp;&nbsp;Motorbike
       </Menu.Item>
       <Menu.Divider />
-      <Menu.Item key="3" onClick={() => handleSelectedVehicleChange('Bicycle')}>
+      <Menu.Item key="2" onClick={() => handleSelectedVehicleChange('Bicycle')}>
         <i className="fas fa-bicycle"></i>&nbsp;&nbsp;Bicycle
       </Menu.Item>
       <Menu.Divider />
@@ -38,6 +34,21 @@ export default function Search() {
     </Menu>
   );
 
+  const filter = (
+		<Menu>
+			<Menu.Item key="0" onClick={() => handleSelectedFilterChange('Filter')}>
+				Filter
+			</Menu.Item>
+			<Menu.Divider />
+			<Menu.Item key="1" onClick={() => handleSelectedFilterChange('Filter')}>
+				Filter
+			</Menu.Item>
+			<Menu.Divider />
+			<Menu.Item key="2" onClick={() => handleSelectedFilterChange('Filter')}>
+				Filter
+			</Menu.Item>
+	</Menu>
+  );
   return (
     <section className="search-main-header position-relative padd-bottom-60 padd-top-60">
       <div className="container">
@@ -78,23 +89,31 @@ export default function Search() {
             </div>
           </div>
         </div>
-        <div className={`map-toggle-main ${toggleMapClass}`}>
-          <SplitPane split="vertical" className="search-page-split-pane" defaultSize={showMap ? "50%" : "100%"}>
+        <div className="map-toggle-main open">
+          <SplitPane split="vertical" className="search-page-split-pane" defaultSize="65%">
             <div className="search-left">
               <div className="row mb-3 align-items-center">
-                <div className={showMap ? "col-md-4" : "col-md-3"}>
+                <div className="col-md-4">
                   <div className="search-filter-grid contact-form-field w-100">
-                    <div className="select-outer pr-0 filter-field">
+                    {/* <div className="select-outer pr-0 filter-field">
                       <i className="fas fa-sort-alt"></i>
                       <select>
                         <option>Filter</option>
                         <option>Filter</option>
                         <option>Filter</option>
                       </select>
-                    </div>
+                    </div> */}
+										<div className="filter-search-dropdown banner-search-dropdown">
+												{/* <i className="fas fa-sort-alt"></i> */}
+												<Dropdown overlay={filter} trigger={['click']}>
+													<a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+														{selectedFilter} <i className="fas fa-caret-down"></i>
+													</a>
+												</Dropdown>
+											</div>
                   </div>
                 </div>
-                <div className={showMap ? "col-md-4" : "col-md-3"}>
+                <div className="col-md-4">
                   <div className="search-filter-grid contact-form-field w-100">
                     <div className="select-outer pl-0 sortBy-field ">
                       <i className="fas fa-sort-alt"></i>
@@ -103,13 +122,6 @@ export default function Search() {
                         <option>Sort by</option>
                         <option>Sort by</option>
                       </select>
-                    </div>
-                  </div>
-                </div>
-                <div className={showMap ? "col-md-4" : "col-md-6"}>
-                  <div className="search-fiter-map-main">
-                    <div className="text-right-align margin-right-five">
-                      <button className="map-arrow-move" onClick={toggleShowMap}> <i className="fas fa-chevron-left"></i></button>
                     </div>
                   </div>
                 </div>
@@ -294,13 +306,14 @@ export default function Search() {
     setSelectedVehicleOnMap(key);
   };
 
-  function toggleShowMap() {
-    setShowMap(prevState => !prevState);
-  };
-
   function handleSelectedVehicleChange(value) {
     setSelectedVehicle(value);
   };
+
+	function handleSelectedFilterChange(value) {
+    setSelectedFilter(value);
+  };
+
 
   function handleEvent(event, picker) {
     setFromDate(picker.startDate.format('M/DD/YYYY (hh:mm)'));

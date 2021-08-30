@@ -6,7 +6,7 @@ export default function Marker(props) {
 
   return (
     <>
-      <img src="https://gdurl.com/9MFm" />
+      <div className="map-position-label">100$</div>
       {selectedVehicleOnMap === place.id && <InfoWindow place={place} />}
     </>
   );

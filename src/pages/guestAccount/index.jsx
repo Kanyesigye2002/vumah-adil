@@ -21,6 +21,7 @@ export default function Account() {
 
   const [approvalDropdownOpen, setApprovalDropdownOpen] = useState(false);
   const [approvalTooltipOpen, setApprovalTooltipOpen] = useState(false);
+  const [file, setFile] = useState("");
 
   const [imagesData, setImagesData] = useState({
     frontOfLicence: null,
@@ -30,6 +31,10 @@ export default function Account() {
   });
 
   const [selectLicenseType, setSelectLicenseType] = useState('');
+
+  const handleUplooad = (event) => {
+    setFile(event.target.files[0]);
+  }
 
   const modalCloseBtn = <button type="button" className="btn close p-0" onClick={closeAllModal}>
     <span aria-hidden="true"><i className="fas fa-times-circle fa-lg"></i></span>
@@ -45,14 +50,15 @@ export default function Account() {
           <div className="row">
             <div className="col-md-5">
               <div className="account-grid" data-aos="fade-up">
-                <h2>Contact information</h2>
                 <div className="account-profile-box mb-4">
                   <div className="circle account-profile">
-
+                    {file && (
+                      <img src={URL.createObjectURL(file)} alt={file.name} />
+                    )}
                   </div>
                   <div className="p-image account-profile-icon">
                     <label htmlFor="plus-up" className="m-0 pointer"><i className="fas fa-plus"></i></label>
-                    <input id="plus-up" className="file-upload" type="file" accept="image/*" />
+                    <input id="plus-up" onChange={handleUplooad} className="file-upload" type="file" accept="image/*" />
                   </div>
                 </div>
 
@@ -333,109 +339,6 @@ export default function Account() {
                       </tbody>
                     </table>
                   </div>
-                </div>
-              </div>
-              <div className="account-grid" data-aos="fade-up">
-                <div className="bank-details">
-                  <div className="d-flex align-items-center account-update-field mb-4 justify-content-between">
-                    <h2 className="m-0">Business Information</h2>
-                    <span className="pointer" onClick={toggleBusinessInformationSection}>
-                      <i className="fas fa-sort-down"></i>
-                    </span>
-                  </div>
-                  <Collapse isOpen={showBusinessInformationSection}>
-                    <div className="collapsed" id="collapseExample">
-                      <div className="row mb-2">
-                        <div className="col-sm-6 col-md-6 col-lg-6">
-                          <p>Legal Business Name <span className="float-sm-right">:</span></p>
-                        </div>
-                        <div className="col-sm-6 col-md-6 col-lg-6">
-                          <p>-</p>
-                        </div>
-                      </div>
-                      <div className="row mb-2">
-                        <div className="col-sm-6 col-md-6 col-lg-6">
-                          <p>business Phone Number <span className="float-sm-right">:</span></p>
-                        </div>
-                        <div className="col-sm-6 col-md-6 col-lg-6">
-                          <p>-</p>
-                        </div>
-                      </div>
-                      <div className="row mb-2">
-                        <div className="col-sm-6 col-md-6 col-lg-6">
-                          <p>Street Address <span className="float-sm-right">:</span></p>
-                        </div>
-                        <div className="col-sm-6 col-md-6 col-lg-6">
-                          <p>-</p>
-                        </div>
-                      </div>
-                      <div className="row mb-2">
-                        <div className="col-sm-6 col-md-6 col-lg-6">
-                          <p>Street Address2 <span className="float-sm-right">:</span></p>
-                        </div>
-                        <div className="col-sm-6 col-md-6 col-lg-6">
-                          <p>-</p>
-                        </div>
-                      </div>
-                      <div className="row mb-2">
-                        <div className="col-sm-6 col-md-6 col-lg-6">
-                          <p>City <span className="float-sm-right">:</span></p>
-                        </div>
-                        <div className="col-sm-6 col-md-6 col-lg-6">
-                          <p>-</p>
-                        </div>
-                      </div>
-                      <div className="row mb-2">
-                        <div className="col-sm-6 col-md-6 col-lg-6">
-                          <p>Country (Optional) <span className="float-sm-right">:</span></p>
-                        </div>
-                        <div className="col-sm-6 col-md-6 col-lg-6">
-                          <p>-</p>
-                        </div>
-                      </div>
-                      <div className="row mb-2">
-                        <div className="col-sm-6 col-md-6 col-lg-6">
-                          <p>Post Code<span className="float-sm-right">:</span></p>
-                        </div>
-                        <div className="col-sm-6 col-md-6 col-lg-6">
-                          <p>-</p>
-                        </div>
-                      </div>
-                      <div className="row mb-2">
-                        <div className="col-sm-6 col-md-6 col-lg-6">
-                          <p>Full Legal Name<span className="float-sm-right">:</span></p>
-                        </div>
-                        <div className="col-sm-6 col-md-6 col-lg-6">
-                          <p>-</p>
-                        </div>
-                      </div>
-                      <div className="row mb-2">
-                        <div className="col-sm-6 col-md-6 col-lg-6">
-                          <p>Full Address<span className="float-sm-right">:</span></p>
-                        </div>
-                        <div className="col-sm-6 col-md-6 col-lg-6">
-                          <p>-</p>
-                        </div>
-                      </div>
-                      <div className="row mb-2">
-                        <div className="col-sm-6 col-md-6 col-lg-6">
-                          <p>Business Number<span className="float-sm-right">:</span></p>
-                        </div>
-                        <div className="col-sm-6 col-md-6 col-lg-6">
-                          <p>-</p>
-                        </div>
-                      </div>
-                      <div className="row mb-2">
-                        <div className="col-sm-6 col-md-6 col-lg-6">
-                          <p>Email<span className="float-sm-right">:</span></p>
-                        </div>
-                        <div className="col-sm-6 col-md-6 col-lg-6">
-                          <p>-</p>
-                        </div>
-                      </div>
-                      <button className="common-btn mt-4" onClick={toggleUpdateBusinessModal}>Update</button>
-                    </div>
-                  </Collapse>
                 </div>
               </div>
               <div className="account-grid" data-aos="fade-up">

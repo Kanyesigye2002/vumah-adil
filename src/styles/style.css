@@ -689,6 +689,9 @@ body.dark-theme .header-menu-btn .dropdown-item:last-child {
 
   float: right;
 }
+.filter-search-dropdown {
+  float: left;
+}
 
 .select-outere {
   float: right;
@@ -4573,4 +4576,15 @@ h2.facilities {
 
 .margin-bottom-minus-25 {
   margin-bottom: -25px;
+}
+
+.map-position-label {
+  background-color:  var(--secondary-color);
+  color: var(--black);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  justify-content: center;
+  text-align: center;
+  padding-top: 10px;
 }

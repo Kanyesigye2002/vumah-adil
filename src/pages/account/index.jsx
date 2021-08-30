@@ -1,5 +1,7 @@
+import SkeletonAvatar from 'antd/lib/skeleton/Avatar';
 import React, { useState } from 'react';
 import { Modal, ModalHeader, ModalBody, Collapse } from 'reactstrap';
+import Avatar from '../../assets/img/avatar.png';
 
 export default function Account() {
 
@@ -10,12 +12,22 @@ export default function Account() {
   const [showUpdateBusinessDetailsModal, setShowUpdateBusinessDetailsModal] = useState(false);
   const [showUpdatePasswordModal, setShowUpdatePasswordModal] = useState(false);
   const [showUpdateMobileModal, setShowUpdateMobileModal] = useState(false);
+  const [file, setFile] = useState("");
+  const [avatar, setAvatar] = useState("");
 
   const [showBusinessInformationSection, setShowBusinessInformationSection] = useState(true);
 
   const [imagesData, setImagesData] = useState({
     frontOfLicence: null,
     backOfLicence: null
+  });
+
+  const handleUplooad = (event) => {
+    setFile(event.target.files[0]);
+  }
+
+  const handleProfileUpload = (event => {
+    setAvatar(event.target.files[0]);
   });
 
   const modalCloseBtn = <button type="button" className="btn close p-0" onClick={closeAllModal}>
@@ -34,11 +46,13 @@ export default function Account() {
               <div className="account-grid" data-aos="fade-up">
                 <div className="account-profile-box mb-4">
                   <div className="circle account-profile">
-
+                    {file && (
+                      <img src={URL.createObjectURL(file)} alt={file.name} />
+                    )}
                   </div>
                   <div className="p-image account-profile-icon">
                     <label htmlFor="plus-up" className="m-0 pointer"><i className="fas fa-plus"></i></label>
-                    <input id="plus-up" className="file-upload" type="file" accept="image/*" />
+                    <input id="plus-up" onChange={handleUplooad} className="file-upload" type="file" accept="image/*" />
                   </div>
                 </div>
 
@@ -551,11 +565,15 @@ export default function Account() {
             <div className="account-grid p-0 border-0">
               <div className="account-profile-box mb-4">
                 <div className="circle account-profile">
-
+                  {avatar ? (
+                      <img src={URL.createObjectURL(avatar)} alt={avatar.name} />
+                    ): (
+                      <img src={Avatar} alt="avatar" />
+                    )}
                 </div>
                 <div className="p-image account-profile-icon">
-                  <label for="plus-up" className="m-0"><i className="fas fa-plus"></i></label>
-                  <input id="plus-up" className="file-upload" type="file" accept="image/*" />
+                  <label for="avatar" className="m-0"><i className="fas fa-plus"></i></label>
+                  <input id="avatar" className="file-upload" onChange={handleProfileUpload} type="file" accept="image/*" />
                 </div>
               </div>
 
@@ -692,7 +710,7 @@ export default function Account() {
                 </div>
                 <div className="col-md-6">
                   <div className="contact-form-field mb-4 ">
-                    <input type="text" placeholder="Street Address2" />
+                    <input type="text" placeholder="Street Address 2" />
                   </div>
                 </div>
                 <div className="col-md-6">
@@ -710,24 +728,9 @@ export default function Account() {
                     <input type="text" placeholder="Post Code" />
                   </div>
                 </div>
-                <div className="col-md-6">
-                  <div className="contact-form-field mb-4 ">
-                    <input type="text" placeholder="Full Address" />
-                  </div>
-                </div>
-                <div className="col-md-6">
-                  <div className="contact-form-field mb-4 ">
-                    <input type="text" placeholder="Business Number" />
-                  </div>
-                </div>
-                <div className="col-md-6">
-                  <div className="contact-form-field mb-4 ">
-                    <input type="text" placeholder="Email" />
-                  </div>
-                </div>
               </div>
               <div className="contact-form-field submit-contact text-center mt-5">
-                <input type="Submit" value="Add" onClick={toggleUpdateBusinessModal} />
+                <input type="Submit" value="Save" onClick={toggleUpdateBusinessModal} />
               </div>
             </div>
           </form>
@@ -801,6 +804,7 @@ export default function Account() {
   function toggleAddStaffModal(e) {
     if (e) e.preventDefault();
     setShowAddStaffModal(!showAddStaffModal);
+    setAvatar("");
   }
 
   function toggleAddBankDetailsModal(e) {
