@@ -628,6 +628,9 @@ body.dark-theme .header-menu-btn .dropdown-item:last-child {
   top: 30px;
   box-shadow: 0 0 15px rgb(0 0 0 / 50%);
 }
+.banner-search-field {
+  position: relative;
+}
 .banner-search-field input {
   background-color: var(--white);
   width: 100%;
@@ -712,6 +715,67 @@ body.dark-theme .header-menu-btn .dropdown-item:last-child {
 .banner-search-dropdown a:hover {
   color: var(--secondary-color);
 }
+
+.banner-search-suggestions {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  left: 0;
+  padding: 15px;
+  position: absolute;
+  top: calc(100% + 20px);
+  width: 100%;
+}
+
+.banner-search-location {
+  align-items: center;
+  border-radius: 4px;
+  color: rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+  display: flex;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  line-height: 1;
+  margin-bottom: 15px;
+  padding: 5px 10px;
+  transition: 200ms background, 200ms box-shadow, 200ms color;
+  user-select: none;
+}
+
+.banner-search-location:last-child {
+  margin-bottom: 0;
+}
+
+.banner-search-location:hover,
+.banner-search-location:focus {
+  background: rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  color: #000000;
+}
+
+.banner-search-location:active {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.banner-search-location > svg {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  margin-right: 10px;
+  padding: 8px;
+  transition: 200ms background;
+  width: 40px;
+}
+
+.banner-search-location:hover > svg,
+.banner-search-location:focus > svg {
+  background: transparent;
+}
+
 .header-underline {
   width: 50px;
   height: 2px;
@@ -3383,36 +3447,34 @@ section.Campervans {
 .map-toggle-main.open .search-left {
   /* width: calc(100% - 400px); */
   width: 100%;
-  height: 720px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  padding-left: 5px;
+  padding-top: 20px;
 }
 .map-toggle-main .search-left {
-  width: 100%;
+  flex: 1;
 }
 .map-toggle-main.open .search-filter-map {
   display: block;
 }
 .map-toggle-main .search-filter-map {
-  height: 100%;
   transition: all 0.5s ease;
   border-radius: 10px;
   overflow: hidden;
-  width: 0;
   margin: 0 0 0 20px;
-  width: 100%;
+  flex: 1;
   display: none;
 }
+
+@media screen and (max-width: 1366px) {
+  .map-toggle-main .search-filter-map {
+    display: none !important;
+  }
+}
+
 .map-toggle-main.open .search-filter-grid {
   width: 33.33%;
   margin: 0 0 10px;
 }
-.search-filter-map .vumah-search-map {
-  height: 100%;
-  width: 100%;
-}
+
 .toggle-double-grid {
   display: flex;
   flex-wrap: wrap;

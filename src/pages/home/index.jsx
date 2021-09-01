@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Slider from "react-slick";
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, TabContent, TabPane, Nav, NavItem } from 'reactstrap';
 import DateRangePicker from "react-bootstrap-daterangepicker";
@@ -14,9 +14,20 @@ import classnames from 'classnames';
 export default function Home() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [activeWhyUsTab, setActiveWhyUsTab] = useState('1');
+  const [searchSuggestionsOpen, setSearchSuggestionsOpen] = useState(false);
 
   const [fromDate, setFromDate] = useState(moment().format('M/DD/YYYY (hh:mm)'));
   const [toDate, setToDate] = useState(moment().format('M/DD/YYYY (hh:mm)'));
+
+  const suggestionsList = [
+    'Manchester City, Manchester',
+    'Manchester',
+    'Manchester Central, Manchester',
+    'Manchester Airport, Manchester',
+    'Greater Manchester',
+  ];
+
+  const searchRef = useRef(null);
 
   return (
     <>
@@ -40,7 +51,42 @@ export default function Home() {
             </div>
             <div className="col-sm-6 col-md-4 col-lg-5 mb-3 mb-md-0">
               <div className="banner-search-field">
-                <input type="search" placeholder="Search for a city or a postcode" />
+                <input
+                  type="search"
+                  onChange={
+                    (event) => {
+                      setSearchSuggestionsOpen(event.target.value.length > 1);
+                    }
+                  }
+                  placeholder="Search for a city or a postcode"
+                  ref={ searchRef }
+                />
+                {
+                  searchSuggestionsOpen === true && (
+                    <div className="banner-search-suggestions">
+                      {
+                        suggestionsList.map((suggestion) => (
+                          <div
+                            className="banner-search-location"
+                            onClick={() => {
+                              setSearchSuggestionsOpen(false);
+                              searchRef.current.value = suggestion;
+                              searchRef.current.focus();
+                            }}
+                            key={suggestion}
+                            tabIndex="0"
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path>
+                              <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            { suggestion }
+                          </div>
+                        ))
+                      }
+                    </div>
+                  )
+                }
               </div>
             </div>
             <div className="col-sm-6 col-md-3 col-lg-4 mb-3 mb-sm-0">
