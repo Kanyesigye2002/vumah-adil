@@ -7,6 +7,8 @@ import Amex from '../../assets/img/amex-logo.png';
 import Paypal from '../../assets/img/paypal.png';
 import GooglePay from '../../assets/img/g-pay.png';
 import TeslaCar from '../../assets/img/tesla-modal-car.jpg';
+import { Link } from 'react-router-dom';
+import CompanyReview from '../../assets/img/company-review-img.jpg';
 
 export default function RequestBooking() {
   const [showTermsModal, setShowTermsModal] = useState(false);
@@ -99,10 +101,12 @@ export default function RequestBooking() {
                   <hr />
                   <input type="checkbox" className="pointer margin-right-five" />
                   <label className="mb-0 pointer text-dark-white">
-                    I accept the <span className="link-text pointer" onClick={toggleTermsModal}>terms and conditions</span> of the platform
+                    I accept the <Link className="link-text pointer" to="/tos">terms and conditions</Link> of the platform
                   </label>
                   <div className="contact-form-field submit-contact  mt-4">
-                    <input type="submit" value="Request to book" />
+                    <Link className="common-btn" to="/confirmation">
+                      Request to book
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -114,6 +118,10 @@ export default function RequestBooking() {
                     <img src={TeslaCar} alt="tesla car" />
                   </div>
                   <div className="request-product-right pl-4">
+                    <Link to="/public-review">
+                      <img src={CompanyReview} alt="company-review-img" className="profile-car" style={{width: '40px', height: 'auto', borderRadius: '99px', marginRight: '5px'}} />
+                      Name of Company
+                    </Link>
                     <h2>Tesla Modal 3</h2>
                     <div className="rated-person-info car-details-rating">
                       <h2><i className="fas fa-star margin-right-five"></i>5.0</h2>
@@ -187,15 +195,6 @@ export default function RequestBooking() {
           </div>
         </div>
       </div>
-
-      {/* <!-- deactivate account modal --> */}
-      <Modal isOpen={showTermsModal} toggle={toggleTermsModal} className='loginPopupMain add-listing-main'>
-        <ModalHeader toggle={toggleTermsModal} close={modalCloseBtn}></ModalHeader>
-        <ModalBody>
-          <p>Terms and conditions</p>
-        </ModalBody>
-      </Modal>
-      {/* <!-- deactivate account modal --> */}
     </>
   );
 

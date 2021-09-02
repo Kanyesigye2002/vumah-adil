@@ -29,10 +29,12 @@ const Routes = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/about-us" component={AboutUs} />
+
         <Route exact path="/account" component={Account} />
         <Route exact path="/guest-account" component={GuestAccount} />
         <Route exact path="/private-review" component={PrivateReview} />
         <Route exact path="/public-review" component={PublicReview} />
+
         <Route exact path="/car-listing" component={CarListing} />
         <Route exact path="/request-booking" component={RequestBooking} />
         <Route exact path="/confirmation" component={Confirmation} />
@@ -46,6 +48,8 @@ const Routes = () => {
         <Route exact path="/guest-guide" component={GuestGuide} />
         <Route exact path="/host-guide" component={HostGuide} />
         <Route exact path="/account-management-guide" component={AccountManagementGuide} />
+        
+        <Route exact path="/tos" component={Confirmation} />
       </Switch>
       <Footer />
     </Router>

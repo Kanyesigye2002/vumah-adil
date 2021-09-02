@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
 import { Modal, ModalHeader, ModalBody, Collapse, Tooltip, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Popover, PopoverBody } from 'reactstrap';
 import CVVExampleImage from '../../assets/img/cvv-example.jpg';
+import BankDetails from '../../components/bank-details';
 
 export default function Account() {
 
   const [showDeactivateAccountModal, setShowDeactivateAccountModal] = useState(false);
   const [showSorryToSeeYouGoModal, setShowSorryToSeeYouGoModal] = useState(false);
-  const [showAddBankDetailsModal, setShowAddBankDetailsModal] = useState(false);
   const [showUpdateBusinessDetailsModal, setShowUpdateBusinessDetailsModal] = useState(false);
   const [showUpdatePasswordModal, setShowUpdatePasswordModal] = useState(false);
   const [showUpdateMobileModal, setShowUpdateMobileModal] = useState(false);
 
   const [showBusinessInformationSection, setShowBusinessInformationSection] = useState(true);
   const [showApprovalContent, setShowApprovalContent] = useState(true);
-
-  const [openCVVPopover, setOpenCVVPopover] = useState(false);
 
   const [driverLicencetooltipOpen, setDriverLicencetooltipOpen] = useState(false);
   const [passportTooltipOpen, setPassportTooltipOpen] = useState(false);
@@ -194,153 +192,7 @@ export default function Account() {
                   </div>
                 </Collapse>
               </div>
-              <div className="account-grid" data-aos="fade-up">
-                <div className="bank-details">
-                  <div className="d-flex align-items-center account-update-field mb-4 justify-content-between ">
-                    <h2 className="m-0">Bank Details</h2>
-                    <button className="common-btn" onClick={toggleAddBankDetailsModal}>Add</button>
-                  </div>
-                  <div className="custom-table-main">
-                    <table className="table" cellpedding="0" cellspacing="0">
-                      <thead>
-                        <tr>
-                          <th scope="col"></th>
-                          <th scope="col">Card Number</th>
-                          <th scope="col">Name on card</th>
-                          <th scope="col">Expiry date</th>
-                          <th scope="col"></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">
-                            <div className="contact-form-field radio-field">
-                              <input type="radio" id="b1" name="radio-group" checked="" />
-                              <label htmlFor="b1"></label>
-                            </div>
-                          </th>
-                          <td>
-                            **** **** 1258
-                          </td>
-                          <td>
-                            John Smith
-                          </td>
-                          <td>01/2023</td>
-                          <td>
-                            <div className="dropdown table-row-popup">
-                              <button className="row-dot btn dropdown-toggle" type="button"
-                                id="dropdownMenuButton" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                <i className="fas fa-ellipsis-v"></i>
-                              </button>
-                              <div className="dropdown-menu  row-action"
-                                aria-labelledby="dropdownMenuButton">
-                                <a className="dropdown-item" data-toggle="modal"
-                                  data-target="#bankdetailpopup">Edit</a>
-                                <a className="dropdown-item">Delete</a>
-
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            <div className="contact-form-field radio-field">
-                              <input type="radio" id="b2" name="radio-group" checked="" />
-                              <label htmlFor="b2"></label>
-                            </div>
-                          </th>
-                          <td>
-                            **** **** 1258
-                          </td>
-                          <td>
-                            John Smith
-                          </td>
-                          <td>01/2023</td>
-                          <td>
-                            <div className="dropdown table-row-popup">
-                              <button className="row-dot btn dropdown-toggle" type="button"
-                                id="dropdownMenuButton" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                <i className="fas fa-ellipsis-v"></i>
-                              </button>
-                              <div className="dropdown-menu  row-action"
-                                aria-labelledby="dropdownMenuButton">
-                                <a className="dropdown-item" data-toggle="modal"
-                                  data-target="#bankdetailpopup">Edit</a>
-                                <a className="dropdown-item">Delete</a>
-
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            <div className="contact-form-field radio-field">
-                              <input type="radio" id="b3" name="radio-group" checked="" />
-                              <label htmlFor="b3"></label>
-                            </div>
-                          </th>
-                          <td>
-                            **** **** 1258
-                          </td>
-                          <td>
-                            John Smith
-                          </td>
-                          <td>01/2023</td>
-                          <td>
-                            <div className="dropdown table-row-popup">
-                              <button className="row-dot btn dropdown-toggle" type="button"
-                                id="dropdownMenuButton" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                <i className="fas fa-ellipsis-v"></i>
-                              </button>
-                              <div className="dropdown-menu  row-action"
-                                aria-labelledby="dropdownMenuButton">
-                                <a className="dropdown-item" data-toggle="modal"
-                                  data-target="#bankdetailpopup">Edit</a>
-                                <a className="dropdown-item">Delete</a>
-
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            <div className="contact-form-field radio-field">
-                              <input type="radio" id="b4" name="radio-group" checked={true} />
-                              <label htmlFor="b4"></label>
-                            </div>
-                          </th>
-                          <td>
-                            **** **** 1258
-                          </td>
-                          <td>
-                            John Smith
-                          </td>
-                          <td>01/2023</td>
-                          <td>
-                            <div className="dropdown table-row-popup">
-                              <button className="row-dot btn dropdown-toggle" type="button"
-                                id="dropdownMenuButton" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                <i className="fas fa-ellipsis-v"></i>
-                              </button>
-                              <div className="dropdown-menu  row-action"
-                                aria-labelledby="dropdownMenuButton">
-                                <a className="dropdown-item" data-toggle="modal"
-                                  data-target="#bankdetailpopup">Edit</a>
-                                <a className="dropdown-item">Delete</a>
-
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
+              <BankDetails />
               <div className="account-grid" data-aos="fade-up">
                 <div
                   className="d-flex align-items-center account-update-field mb-5 justify-content-between pr-sm-5 mr-sm-5">
@@ -402,106 +254,6 @@ export default function Account() {
         </ModalBody>
       </Modal>
       {/* <!-- deactivate account modal --> */}
-
-      {/* <!-- add bank details modal --> */}
-      <Modal isOpen={showAddBankDetailsModal} toggle={toggleAddBankDetailsModal} className='bank-detail-popup'>
-        <ModalHeader toggle={toggleAddBankDetailsModal} close={modalCloseBtn}></ModalHeader>
-        <ModalBody>
-          <div className="add-member-header text-center mb-5">
-            <h2>Add Card</h2>
-          </div>
-          <form>
-            <div className="account-grid p-0 border-0">
-              <div className="contact-form-field mb-4 ">
-                <input type="number" placeholder="Card Number" />
-              </div>
-              <div className="row">
-                <div className="col-md-6">
-                  <div className="contact-form-field mb-4 ">
-                    <input type="text" placeholder="Expiry Date" />
-                  </div>
-                </div>
-                <div className="col-md-6">
-                  <div className="contact-form-field mb-4">
-                    <div className="input-group mb-3">
-                      <input type="text" className="form-control" placeholder="Security Code"
-                        aria-label="Security Code" aria-describedby="cvv-details" />
-                      <div className="input-group-append">
-                        <span className="input-group-text h-100" id="cvv-details">
-                          <i className="fas fa-info-circle pointer"></i>
-                        </span>
-                        <Popover placement="bottom" isOpen={openCVVPopover} target="cvv-details" toggle={toggleCVVPopover} className="blog-card-grid">
-                          <PopoverBody>
-                            <img src={CVVExampleImage} className="mb-4" />
-                            <p>Visa, Mastercard, Discover or Maestro</p>
-                            <ul>
-                              <li>
-                                <i className="fas fa-circle margin-right-five fa-xs"></i>
-                                This 3-digit number is on the back of the card next to signature panel.
-                              </li>
-                            </ul>
-                            <p>American Express</p>
-                            <ul>
-                              <li>
-                                <i className="fas fa-circle margin-right-five fa-xs"></i>
-                                This 4-digit number is on the front of the card above the credit card number.
-                              </li>
-                            </ul>
-                          </PopoverBody>
-                        </Popover>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="row">
-                <div className="col-md-6">
-                  <div className="contact-form-field mb-4 ">
-                    <input type="text" placeholder="First Name" />
-                  </div>
-                </div>
-                <div className="col-md-6">
-                  <div className="contact-form-field mb-4 ">
-                    <input type="text" placeholder="Surname" />
-                  </div>
-                </div>
-              </div>
-              <div className="contact-form-field  checkbox-field">
-                <input type="checkbox" id="t3" name="" className="styled-checkbox" checked={true} />
-                <label for="t3">Same billing address as original</label>
-                <div className="mt-4 bill-show-form">
-                  <div className="contact-form-field mb-4 ">
-                    <input type="number" placeholder="Street Address" />
-                  </div>
-                  <div className="contact-form-field mb-4 ">
-                    <input type="text" placeholder="Street Address 2" />
-                  </div>
-                  <div className="contact-form-field mb-4 ">
-                    <input type="text" placeholder="City" />
-                  </div>
-                  <div className="contact-form-field mb-4 ">
-                    <div className="select-outer">
-                      <select>
-                        <option disabled selected hidden>Country (Optional)</option>
-                        <option>India</option>
-                        <option>UK</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div className="contact-form-field mb-4 ">
-                    <input type="text" placeholder="Post Code" />
-                  </div>
-                </div>
-              </div>
-              <div className="contact-form-field submit-contact text-center mt-4">
-                <input type="Submit" value="Add" onClick={toggleAddBankDetailsModal} />
-              </div>
-            </div>
-          </form>
-        </ModalBody>
-      </Modal>
-      {/* <!-- add bank details modal --> */}
 
       {/* <!-- update business information modal --> */}
       <Modal isOpen={showUpdateBusinessDetailsModal} toggle={toggleUpdateBusinessModal} className='bank-detail-popup add-licence update-business-dialog'>
@@ -637,11 +389,6 @@ export default function Account() {
     setShowSorryToSeeYouGoModal(!showSorryToSeeYouGoModal);
   };
 
-  function toggleAddBankDetailsModal(e) {
-    if (e) e.preventDefault();
-    setShowAddBankDetailsModal(!showAddBankDetailsModal);
-  };
-
   function toggleUpdateBusinessModal(e) {
     if (e) e.preventDefault();
     setShowUpdateBusinessDetailsModal(!showUpdateBusinessDetailsModal);
@@ -659,7 +406,7 @@ export default function Account() {
 
   function closeAllModal() {
     setShowDeactivateAccountModal(false);
-    setShowAddBankDetailsModal(false);
+    //setShowAddBankDetailsModal(false);
     setShowUpdateBusinessDetailsModal(false);
     setShowUpdatePasswordModal(false);
     setShowUpdateMobileModal(false);
@@ -698,10 +445,6 @@ export default function Account() {
   function onChangeSelectedLicenseType(e, name) {
     e.preventDefault();
     setSelectLicenseType(name);
-  };
-
-  function toggleCVVPopover() {
-    setOpenCVVPopover(!openCVVPopover);
   };
 
   function toggleShowApprovalContent() {

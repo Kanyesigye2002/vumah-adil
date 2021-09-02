@@ -1,12 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
+import { useLocation } from 'react-router-dom'
 
 
 export default function Footer() {
+  const location = useLocation();
+
   return (
     <footer className="footer-main">
-      <div className="container">
+      <div
+        className="container"
+        style={ location.pathname === '/search' ? { maxWidth: '1800px' } : {}}
+      >
         <div className="row pt-3 pb-4">
           <div className="col-sm-6 col-lg-3 mb-3 mb-lg-0">
             <div className="footer-grid">
@@ -14,10 +20,9 @@ export default function Footer() {
               <ul className="pl-0">
                 <li><Link to="/about-us">About us</Link></li>
                 <li><Link to="/career">Careers</Link></li>
-                <li>Partner with us</li>
-                <li>Terms & conditions</li>
-                <li>Privacy policy</li>
-
+                <li><Link to="/partnership">Partner with us</Link></li>
+                <li>Terms & Conditions</li>
+                <li>Privacy Policy</li>
               </ul>
             </div>
           </div>
@@ -26,11 +31,10 @@ export default function Footer() {
             <div className="footer-grid">
               <h5>Become a Host</h5>
               <ul>
-                <li>Start your business</li>
-                <li>Host support</li>
-                <li>Host ranking</li>
-                <li>Vehicle protection & insurance</li>
-
+                <li><Link to="/host-guide#create-a-listing">Start your business</Link></li>
+                <li><Link to="/support">Host support</Link></li>
+                <li><Link to="/host-guide#host-rankings-and-performance">Host ranking</Link></li>
+                <li><Link to="/host-guide#report-an-issue">Vehicle protection & insurance</Link></li>
               </ul>
             </div>
           </div>
@@ -38,10 +42,10 @@ export default function Footer() {
             <div className="footer-grid">
               <h5>Guest Support</h5>
               <ul>
-                <li>Kickstart your journey</li>
-                <li>Trouble with booking</li>
-                <li>Guest fees</li>
-                <li>Account safety</li>
+                <li><Link to="/guest-guide#getting-started-with-vumah">Kickstart your journey</Link></li>
+                <li><Link to="/guest-guide#trouble-with-booking">Trouble with booking</Link></li>
+                <li><Link to="/guest-guide#guest-fees">Guest fees</Link></li>
+                <li><Link to="/guest-guide#account-safety">Account safety</Link></li>
               </ul>
             </div>
           </div>
@@ -49,12 +53,11 @@ export default function Footer() {
             <div className="footer-grid">
               <h5>Support Centre</h5>
               <ul>
-                <li>Support page</li>
+                <li><Link to="/support">Support page</Link></li>
                 <li>Trust & safety</li>
                 <li>Cancellations</li>
                 <li>Covid-19 guidelines</li>
                 <li>FAQs</li>
-
               </ul>
             </div>
           </div>

@@ -9,6 +9,7 @@ import BannerSlider3 from '../../assets/img/banner-slider-3.jpg';
 import BlogImage1 from '../../assets/img/blog-img-1.jpg';
 import BlogImage2 from '../../assets/img/blog-img-2.jpg';
 import classnames from 'classnames';
+import { Link } from 'react-router-dom';
 
 
 export default function Home() {
@@ -102,12 +103,12 @@ export default function Home() {
                 </div>
               </DateRangePicker>
             </div>
-            <div className="col-sm-6 col-md-2 col-lg-1">
+            <Link className="col-sm-6 col-md-2 col-lg-1" to="/search">
               <div className="banner-search-icon">
                 <input type="submit" value="" className="w-auto" />
                 <i className="fas fa-search"></i>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
 

@@ -1909,7 +1909,7 @@ h5.booking {
 }
 .switch input:checked + .slider,
 .custom-table-main table tr:hover .switch input:checked + .slider {
-  background-color: var(--secondary-color);
+  background-color: #f6781094;
 }
 .red-switch.switch input + .slider:before {
   background-color: var(--red);
@@ -3480,10 +3480,16 @@ section.Campervans {
   flex-wrap: wrap;
 }
 .toggle-double-grid .company-product-list-grid {
+  cursor: pointer;
   width: 31.5%;
   margin-right: 25px;
   margin-bottom: 25px;
   background-color: var(--light-bg);
+  transition: 200ms border, 200ms transform;
+}
+.toggle-double-grid .company-product-list-grid.is-active {
+  border: 4px solid var(--secondary-color);
+  transform: scale(1.05);
 }
 .toggle-double-grid .company-product-list-grid:nth-child(3n) {
   margin-right: 0;
@@ -3491,6 +3497,13 @@ section.Campervans {
 .map-toggle-main.open .toggle-double-grid .company-product-list-grid {
   width: 48%;
 }
+@media screen and (max-width: 650px) {
+  .map-toggle-main.open .toggle-double-grid .company-product-list-grid {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
 .map-toggle-main.open
   .toggle-double-grid
   .company-product-list-grid:nth-child(3n) {

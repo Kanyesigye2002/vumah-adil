@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Modal, ModalHeader, ModalBody, TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
 import Logo from '../../assets/img/logo-main.png';
+import { useLocation } from 'react-router-dom'
 
 export default function Header() {
+  const location = useLocation();
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignupModal, setShowSignupModal] = useState(false);
 
@@ -18,7 +20,10 @@ export default function Header() {
   return (
     <>
       <header className="header-main">
-        <div className="container">
+        <div
+          className="container"
+          style={ location.pathname === '/search' ? { maxWidth: '1800px' } : {}}
+        >
           <div className="row align-items-center">
             <div className="col-md-4">
               <div className="header-logo text-md-left text-center mb-4 mb-md-0">

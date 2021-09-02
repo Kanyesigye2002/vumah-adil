@@ -17,6 +17,7 @@ import TeslaCar from '../../assets/img/tesla-modal-car.jpg';
 import MercedesCar from '../../assets/img/Mercedes-car.jpg';
 import CustomerReview from '../../assets/img/customer-review-img-2.png';
 import CustomerReview1 from '../../assets/img/customer-review-img-1.png';
+import { Link } from 'react-router-dom';
 
 
 export default function CarListing(props) {
@@ -207,8 +208,47 @@ export default function CarListing(props) {
                   </div>
                 </DateRangePicker>
               </div>
-              <div className="contact-form-field submit-contact">
-                <input type="Submit" value="Continue" />
+              <div className="contact-form-field submit-contact mb-4">
+                <Link className="common-btn" to="/request-booking">
+                  Continue
+                </Link>
+              </div>
+              <div style={{
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+              }}>
+                <p style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  Accommotation
+                  <span>
+                    $1,705
+                  </span>
+                </p>
+                <p style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  Montly discount: 40% off
+                  <span>
+                    -$682
+                  </span>
+                </p>
+                <p style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  Cleaning fee
+                  <span>
+                    $25
+                  </span>
+                </p>
+                <p style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  Service fee
+                  <span>
+                    $134
+                  </span>
+                </p>
+                <hr />
+                <b style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  Total
+                  <span>
+                    $1,182
+                  </span>
+                </b>
               </div>
             </div>
           </div>
