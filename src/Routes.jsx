@@ -21,6 +21,11 @@ import Search from './pages/search';
 import GuestGuide from './pages/blogs/guest';
 import HostGuide from './pages/blogs/hosts';
 import AccountManagementGuide from './pages/blogs/accountManagement';
+import TOS from './pages/blogs/tos';
+import Trust from './pages/blogs/trust';
+import Covid from './pages/blogs/covid';
+import FAQ from './pages/blogs/faq';
+import Privacy from './pages/blogs/privacy';
 
 const Routes = () => {
   return (
@@ -49,7 +54,11 @@ const Routes = () => {
         <Route exact path="/host-guide" component={HostGuide} />
         <Route exact path="/account-management-guide" component={AccountManagementGuide} />
         
-        <Route exact path="/tos" component={Confirmation} />
+        <Route exact path="/tos" component={TOS} />
+        <Route exact path="/privacy" component={Privacy} />
+        <Route exact path="/faq" component={FAQ} />
+        <Route exact path="/covid" component={Covid} />
+        <Route exact path="/trust" component={Trust} />
       </Switch>
       <Footer />
     </Router>

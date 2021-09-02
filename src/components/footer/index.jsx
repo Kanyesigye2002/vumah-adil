@@ -21,8 +21,8 @@ export default function Footer() {
                 <li><Link to="/about-us">About us</Link></li>
                 <li><Link to="/career">Careers</Link></li>
                 <li><Link to="/partnership">Partner with us</Link></li>
-                <li>Terms & Conditions</li>
-                <li>Privacy Policy</li>
+                <li><Link to="/tos">Terms & Conditions</Link></li>
+                <li><Link to="/privacy">Privacy Policy</Link></li>
               </ul>
             </div>
           </div>
@@ -54,10 +54,10 @@ export default function Footer() {
               <h5>Support Centre</h5>
               <ul>
                 <li><Link to="/support">Support page</Link></li>
-                <li>Trust & safety</li>
+                <li><Link to="/trust">Trust & safety</Link></li>
                 <li>Cancellations</li>
-                <li>Covid-19 guidelines</li>
-                <li>FAQs</li>
+                <li><Link to="/covid">Covid-19 guidelines</Link></li>
+                <li><Link to="/faq">FAQs</Link></li>
               </ul>
             </div>
           </div>
