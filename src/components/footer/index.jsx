@@ -82,7 +82,11 @@ export default function Footer() {
             <div className="footer-social-icon d-flex justify-content-center justify-content-md-end">
               <div className="dark-light-mode-main">
                 <label className="m-0">
-                  <input className='toggle-checkbox' type='checkbox' onChange={toggleDarkMode} />
+                  <input
+                    className='toggle-checkbox'
+                    type='checkbox'
+                    onChange={toggleDarkMode}
+                  />
                   <div className='toggle-slot'>
                     <div className='sun-icon-wrapper'>
                       <Icon icon="feather-sun" className="sun-icon" />

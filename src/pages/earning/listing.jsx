@@ -10,6 +10,7 @@ import CarListing from '../car-listing';
 import WaveGraph from '../../assets/img/graph-wave.png';
 import Mercedes from '../../assets/img/Mercedes-car.jpg';
 import * as _ from 'lodash';
+import { Line } from 'react-chartjs-2';
 
 
 export default function Listing() {
@@ -52,6 +53,50 @@ export default function Listing() {
   const carListingCloseBtn = <button type="button" className="btn close p-0" onClick={toggleCarListingModal}>
     <span aria-hidden="true"><i className="fas fa-times-circle fa-lg"></i></span>
   </button>;
+
+  const data = {
+    labels: ['1', '2', '3', '4', '5', '6'],
+    datasets: [
+      {
+        label: 'Line 1',
+        data: [12, 19, 3, 5, 2, 3],
+        fill: false,
+        backgroundColor: '#f67810',
+        borderColor: '#f678104f',
+      }, {
+        label: 'Line 2',
+        data: [8, 32, 8, 12, 16, 5],
+        fill: false,
+        backgroundColor: '#f67810',
+        borderColor: '#f678104f',
+      },
+    ],
+  };
+
+  const options = {
+    hover: {
+      mode: 'nearest',
+      intersect: false
+    },
+    plugins: {
+      legend: {
+        display: false
+      },
+      tooltip: {
+        mode: 'index',
+        intersect: false
+      }
+    },
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true,
+          },
+        },
+      ],
+    },
+  };
 
   useEffect(() => {
     if (!showListingContent) {
@@ -138,7 +183,8 @@ export default function Listing() {
           </div>
         </div>
         <div className="graph-wave">
-          <img src={WaveGraph} alt="graph-wave" width="100%" />
+          {/*<img src={WaveGraph} alt="graph-wave" width="100%" />*/}
+          <Line data={data} options={options} />
         </div>
       </div>
       <div className="custom-table-main">

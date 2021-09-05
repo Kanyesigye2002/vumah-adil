@@ -188,7 +188,7 @@ export default function BankDetails() {
                               e.stopPropagation();
                               dropDownToggle(index)
                           }}>
-                            <DropdownToggle caret={false} className="btn btn-light dropdown-toggle">
+                            <DropdownToggle className="btn btn-light dropdown-toggle bank-details-dropdown-toggle">
                               <i className="fas fa-ellipsis-v"></i>
                             </DropdownToggle>
                             <DropdownMenu>

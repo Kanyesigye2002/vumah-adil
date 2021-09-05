@@ -79,7 +79,7 @@ export default function CarListing(props) {
           </div>
         </Slider>
         <div className="row mb-5 mb-lg-0">
-          <div className="col-md-6 ">
+          <div className="col-md-7 ">
             <div className="rated-person-info d-flex mb-2 align-items-center mb-4" data-aos="fade-up">
               <div className="rated-person-img margin-right-ten">
                 <img src={CustomerReview} alt="rated-person" />
@@ -188,7 +188,7 @@ export default function CarListing(props) {
             </div>
 
           </div>
-          <div className="col-md-6">
+          <div className="col-md-4" style={{minWidth: '430px', marginLeft: 'auto'}}>
             <div className="pick-range-box" data-aos="fade-up">
               <div className="d-flex justify-content-between ml-1 mr-1">
                 <h2>£100/day (£24/hr)</h2>

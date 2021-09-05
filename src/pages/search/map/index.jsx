@@ -17,7 +17,7 @@ export default function Map(props) {
     <GoogleMapReact
       defaultZoom={12}
       defaultCenter={londonCenter}
-      // bootstrapURLKeys={{ key: process.env.REACT_APP_MAP_KEY }}
+      //bootstrapURLKeys={{ key: process.env.REACT_APP_MAP_KEY }}
       onChildClick={onClickMapImage}
     >
       {dummyData.map((place) => (

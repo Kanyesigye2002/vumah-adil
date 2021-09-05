@@ -1608,6 +1608,9 @@ body.dark-theme .header-menu-btn .dropdown-item:last-child {
   margin: 0 0 15px;
   line-height: 25px;
 }
+.bank-details-dropdown-toggle:after {
+  display: none;
+}
 .car-grid-tag li {
   background-color: var(--light-bg);
   display: inline-block;
@@ -2826,12 +2829,13 @@ span.three-dots {
   scrollbar-width: thin;
 }
 
-/* .dark-light-mode-main {
+.dark-light-mode-main {
   position: fixed;
   z-index: 999;
   bottom: 25px;
   right: 25px;
-} */
+}
+
 .dark-light-mode-main .toggle-checkbox {
   position: absolute;
   opacity: 0;
@@ -3459,12 +3463,11 @@ section.Campervans {
   transition: all 0.5s ease;
   border-radius: 10px;
   overflow: hidden;
-  margin: 0 0 0 20px;
   flex: 1;
-  display: none;
+  height: 100%;
 }
 
-@media screen and (max-width: 1366px) {
+@media screen and (max-width: 200px) {
   .map-toggle-main .search-filter-map {
     display: none !important;
   }
@@ -4662,4 +4665,25 @@ h2.facilities {
   justify-content: center;
   text-align: center;
   padding-top: 10px;
+}
+
+.company-product-list-grid {
+  margin-bottom: 25px !important;
+  margin-right: 25px !important;
+}
+
+.c1 .company-product-list-grid {
+  width: 100% !important;
+}
+
+.c2 .company-product-list-grid {
+  width: calc(50% - 25px) !important;
+}
+
+.c3 .company-product-list-grid {
+  width: calc(33% - 25px) !important;
+}
+
+.c4 .company-product-list-grid {
+  width: calc(25% - 25px) !important;
 }
