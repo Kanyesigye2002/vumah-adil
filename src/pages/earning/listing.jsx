@@ -12,6 +12,9 @@ import Mercedes from '../../assets/img/Mercedes-car.jpg';
 import * as _ from 'lodash';
 import { Line } from 'react-chartjs-2';
 
+import RUG from "react-upload-gallery";
+import "react-upload-gallery/dist/style.css";
+
 
 export default function Listing() {
   const chartElementRef = useRef(null);
@@ -55,21 +58,27 @@ export default function Listing() {
   </button>;
 
   const data = {
-    labels: ['1', '2', '3', '4', '5', '6'],
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
     datasets: [
       {
-        label: 'Line 1',
-        data: [12, 19, 3, 5, 2, 3],
+        label: 'Booking',
+        data: [3, 2, 4, 5, 6, 12, 24, 32, 45, 89, 72, 99],
+        fill: false,
+        backgroundColor: '#666666',
+        borderColor: '#2222224f',
+      }, {
+        label: 'Earning',
+        data: [6, 3, 2, 4, 10, 24, 38, 45, 65, 79, 87, 92],
         fill: false,
         backgroundColor: '#f67810',
         borderColor: '#f678104f',
       }, {
-        label: 'Line 2',
-        data: [8, 32, 8, 12, 16, 5],
+        label: 'Line 1',
+        data: [3, 2, 4, 5, 6, 12, 24, 32, 45, 89, 72, 99],
         fill: false,
-        backgroundColor: '#f67810',
-        borderColor: '#f678104f',
-      },
+        backgroundColor: '#fff',
+        borderColor: '#ffffff4f',
+      }
     ],
   };
 
@@ -88,13 +97,14 @@ export default function Listing() {
       }
     },
     scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true,
-          },
-        },
-      ],
+      y: {
+        ticks: {
+          beginAtZero: true,
+          callback: function(value, index, values) {
+            return value + '%';
+          }
+        }
+      },
     },
   };
 
@@ -108,10 +118,10 @@ export default function Listing() {
             label: '# of Votes',
             data: [1000, 1000, 1000, 1000],
             backgroundColor: [
-              '#36a2eb',
               '#f67810',
-              '#66f759',
-              '#faf287',
+              '#aa7548',
+              '#e39554',
+              '#b75b10'
             ],
             hoverOffset: 4
           }]
@@ -166,6 +176,7 @@ export default function Listing() {
                   </Dropdown>
                 </div>
               </div>
+                {/*
               <div className="w-50">
                 <DateRangePicker
                   initialSettings={{
@@ -179,6 +190,7 @@ export default function Listing() {
                   </div>
                 </DateRangePicker>
               </div>
+                */}
             </div>
           </div>
         </div>
@@ -506,6 +518,32 @@ export default function Listing() {
                     <a className="save-draft-text margin-bottom-minus-25">Save Draft</a>
                   </div>
                   <h2 className="mb-3 text-center">Add Images</h2>
+                    <RUG
+                      action="http://example.com/upload"
+                      initialState={[
+                        {
+                          name: "Item 1",
+                          size: "232kb",
+                          source:
+                            "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=4050&q=80"
+                        },
+                        {
+                          name: "Item 2",
+                          size: "23kb",
+                          source:
+                            "https://images.unsplash.com/photo-1508923567004-3a6b8004f3d7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1834&q=80"
+                        },
+                        {
+                          name: "Item 3",
+                          size: "222kb",
+                          source:
+                            "https://images.unsplash.com/photo-1541837283948-d4242eda4585?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1835&q=80"
+                        }
+                      ]}
+                    />
+
+
+                  {/*
                   <ImageUploader
                     withIcon={true}
                     withPreview={true}
@@ -514,6 +552,7 @@ export default function Listing() {
                     maxFileSize={5242880}
                     label='Max file size: 5mb, accepted: jpg, gif, png'
                   />
+                  */}
                   {vehicleType === 'Car' && <>
                     <h2 className="mt-5 mb-4 text-center">Features</h2>
                     <div className="row mb-5">

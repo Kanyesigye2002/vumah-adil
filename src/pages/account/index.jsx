@@ -16,7 +16,7 @@ export default function Account() {
   const [file, setFile] = useState("");
   const [avatar, setAvatar] = useState("");
 
-  const [showBusinessInformationSection, setShowBusinessInformationSection] = useState(true);
+  const [showBusinessInformationSection, setShowBusinessInformationSection] = useState(false);
 
   const [imagesData, setImagesData] = useState({
     frontOfLicence: null,

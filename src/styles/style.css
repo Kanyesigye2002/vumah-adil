@@ -727,6 +727,10 @@ body.dark-theme .header-menu-btn .dropdown-item:last-child {
   width: 100%;
 }
 
+body.dark-theme .banner-search-suggestions {
+  background: #1d1d2c;
+}
+
 .banner-search-location {
   align-items: center;
   border-radius: 4px;
@@ -743,6 +747,10 @@ body.dark-theme .header-menu-btn .dropdown-item:last-child {
   user-select: none;
 }
 
+body.dark-theme .banner-search-location {
+  color: rgba(255, 255, 255, 0.75);
+}
+
 .banner-search-location:last-child {
   margin-bottom: 0;
 }
@@ -752,6 +760,29 @@ body.dark-theme .header-menu-btn .dropdown-item:last-child {
   background: rgba(0, 0, 0, 0.05);
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   color: #000000;
+}
+
+body.dark-theme .banner-search-location:hover,
+body.dark-theme .banner-search-location:focus {
+  background: #28293d;
+  color: #ffffff;
+}
+
+body.dark-theme .my-button {
+  background: #1d1d2c;
+  background: #28293d;
+  color: rgba(255, 255, 255, 0.75);
+  border-color: transparent;
+}
+
+body.dark-theme .my-button:hover,
+body.dark-theme .bmy-button:focus {
+  background: #28293d;
+  color: #ffffff;
+}
+
+body.dark-theme .dropdown-menu.my-button {
+  background: #1d1d2c !important;
 }
 
 .banner-search-location:active {
@@ -1548,12 +1579,17 @@ body.dark-theme .header-menu-btn .dropdown-item:last-child {
 .search-product-list-grid {
   box-shadow: 1px 2.984px 14px rgb(0 0 0 / 27%);
   border-radius: 10px;
+  cursor: pointer !important;
   overflow: hidden;
-  background-color: #fff;
   width: 100%;
-  margin-right: 25px;
-  margin-bottom: 25px;
   background-color: var(--light-bg);
+  position: relative;
+  width: 260px;
+  z-index: 100;
+  top: 10px;
+  left: 50% !important;
+  transform: translateX(-50%);
+  padding: 10px;
 }
 
 .selected-product {
@@ -4657,14 +4693,16 @@ h2.facilities {
 }
 
 .map-position-label {
-  background-color:  var(--secondary-color);
+  background: var(--white);
   color: var(--black);
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  text-align: center;
-  padding-top: 10px;
+  min-height: 20px;
+  width: fit-content;
+  padding: 4px 8px;
+  border-radius: 10px;
+  font-weight: 600;
 }
 
 .company-product-list-grid {

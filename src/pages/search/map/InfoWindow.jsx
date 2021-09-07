@@ -17,16 +17,28 @@ export default function InfoWindow(props) {
   };
 
   return (
-    <div style={infoWindowStyle}>
-      <div className="search-product-list-grid">
-        <div className="search-product-list-img">
-          <img src={Mercedes} alt="mercedes-car" height={25} width={25} />
-        </div>
-        <div className="search-card-body">
-          <h2>{place.name}</h2>
-          <div className="search-card-footer d-flex justify-content-between mt-4 pt-2">
-            <h2>{place.price}</h2>
+    <div className="search-product-list-grid">
+      <div className="search-product-list-img">
+        <img src={Mercedes} alt="mercedes-car" height={25} width={25} style={{
+          borderRadius: '5px'
+        }} />
+      </div>
+      <div className="search-card-body">
+        <h2>{place.name}</h2>
+        <div style={{ display: 'flex' }}>
+          <div style={{ padding: '4px 8px', background: '#ddd', borderRadius: '4px', marginRight: '5px'}}>
+            ATM
           </div>
+          <div style={{ padding: '4px 8px', background: '#ddd', borderRadius: '4px', marginRight: '5px'}}>
+            Electric
+          </div>
+          <div style={{ padding: '4px 8px', background: '#ddd', borderRadius: '4px', marginRight: '5px'}}>
+            +4
+          </div>
+        </div>
+        <hr />
+        <div className="search-card-footer d-flex mt-4 pt-2 text-right" style={{width: '100%', justifyContent: 'flex-end'}}>
+          <h2>{place.price}</h2>
         </div>
       </div>
     </div>

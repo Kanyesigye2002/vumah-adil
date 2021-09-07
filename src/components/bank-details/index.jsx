@@ -77,7 +77,7 @@ export default function BankDetails() {
 
   let selectedDetails = bankDetails.find((item) => item.checked);
 
-  const primaryDetails = !selectedDetails ? null : <div style={{alignItems:'center', display:'flex', flexWrap:'wrap'}}>
+  const primaryDetails = !selectedDetails ? null : <div className="my-button" style={{alignItems:'center', display:'flex', flexWrap:'wrap'}}>
     <img src={
       selectedDetails.brand === 'visa'
         ? 'https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg'
@@ -109,7 +109,7 @@ export default function BankDetails() {
             <h2 className="m-0">Bank Details</h2>
             { bankDetails.length !== 0 && (bankDetailsList
               ? <button
-                  className="btn btn-light"
+                  className="btn btn-light my-button"
                   onClick={toggleBankDetailsList}
                   style={{marginLeft: 'auto', marginRight: '10px'}}
                 >
@@ -117,7 +117,7 @@ export default function BankDetails() {
                   <i className="fas fa-chevron-up" style={{marginLeft: '5px'}} />
                 </button>
               : <button
-                className="btn btn-light"
+                className="btn btn-light my-button"
                 onClick={toggleBankDetailsList}
                 style={{marginLeft: 'auto'}}
               >

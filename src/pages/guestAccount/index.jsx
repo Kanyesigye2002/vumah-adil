@@ -12,7 +12,7 @@ export default function Account() {
   const [showUpdateMobileModal, setShowUpdateMobileModal] = useState(false);
 
   const [showBusinessInformationSection, setShowBusinessInformationSection] = useState(true);
-  const [showApprovalContent, setShowApprovalContent] = useState(true);
+  const [showApprovalContent, setShowApprovalContent] = useState(false);
 
   const [driverLicencetooltipOpen, setDriverLicencetooltipOpen] = useState(false);
   const [passportTooltipOpen, setPassportTooltipOpen] = useState(false);
@@ -85,14 +85,9 @@ export default function Account() {
                     </div>
                     <Dropdown isOpen={approvalDropdownOpen} toggle={toggleApprovalDropdown}>
                       <DropdownToggle color="link">
-                        <i className="fas fa-ellipsis-v pointer secondary-color"></i>
+                        <i className="fas fa-ellipsis-v pointer secondary-color" onClick={toggleShowApprovalContent}></i>
                       </DropdownToggle>
-                      <DropdownMenu>
-                        <DropdownItem>Edit</DropdownItem>
-                      </DropdownMenu>
                     </Dropdown>
-                    {showApprovalContent && <i className="fas fa-sort-up pointer text-dark-white" onClick={toggleShowApprovalContent}></i>}
-                    {!showApprovalContent && <i className="fas fa-sort-down pointer text-dark-white" onClick={toggleShowApprovalContent}></i>}
                   </div>
                 </div>
                 <Collapse isOpen={showApprovalContent}>

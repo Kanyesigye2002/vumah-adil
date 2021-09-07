@@ -65,12 +65,17 @@ export default function Search() {
             onChange={handlePanelResize}
           >
             <div className="search-left">
-              <div className="row mb-3 align-items-center">
-                <div className="col-md-2">
+              <div className="row mb-3 align-items-center" style={{
+                alignItems: 'center',
+                display: 'flex',
+                flexWrap: 'wrap',
+              }}>
+                <div style={{ width: '140px', paddingRight: '0'}}>
                   <Dropdown isOpen={dropdownOpen} toggle={dropDownToggle}>
                     <DropdownToggle
-                      className="btn btn-light select-outer"
+                      className="btn btn-light select-outer my-button"
                       style={{
+                        borderRadius: '10px',
                         height: '50px',
                         paddingRight: '45px'
                       }}
@@ -85,7 +90,10 @@ export default function Search() {
                     </DropdownMenu>
                   </Dropdown>
                 </div>
-                <div className="col-md-4">
+                <div style={{
+                  flex: '1',
+                  minWidth: '200px'
+                }}>
                   <div className="banner-search-field">
                     <input
                       type="search"
@@ -94,13 +102,14 @@ export default function Search() {
                   </div>
                 </div>
 
-                <div className="col-md-3">
+                <div style={{ width: '160px', paddingRight: '0'}}>
                   <button
-                    className="btn btn-light select-outer"
+                    className="btn btn-light select-outer my-button"
                     onClick={
                       () => setShowFilters(!(showFilters))
                     }
                     style={{
+                      borderRadius: '10px',
                       height: '50px',
                       paddingRight: '45px'
                     }}
@@ -110,8 +119,10 @@ export default function Search() {
                   </button>
                 </div>
 
-                <div className="col-md-3">
-                  <div className="search-filter-grid contact-form-field w-100">
+                <div style={{ width: '180px', paddingLeft: '0'}}>
+                  <div className="search-filter-grid contact-form-field w-100" style={{
+                    margin: '0'
+                  }}>
                     <div className="select-outer pl-0 sortBy-field ">
                       <i className="fas fa-sort-alt"></i>
                       <select>
@@ -199,7 +210,7 @@ export default function Search() {
 
                     <Dropdown isOpen={dropdownOpen2} toggle={dropDownToggle2} style={{width: '33.33%', padding:'0 10px'}}>
                       <DropdownToggle
-                        className="btn btn-light select-outer w-100"
+                        className="btn btn-light select-outer w-100 my-button"
                         style={{
                           height: '50px',
                           paddingRight: '45px',
@@ -208,7 +219,7 @@ export default function Search() {
                       >
                         Price
                       </DropdownToggle>
-                      <DropdownMenu>
+                      <DropdownMenu className="my-button">
                         <div className="search-filter-grid contact-form-field field-label padding-left-ten py-1 px-3">
                           <div className="d-flex align-items-center text-dark-white">
                             <span className="margin-right-five"> Hourly:</span>
@@ -261,7 +272,7 @@ export default function Search() {
                     </ul>
                     <div className="comapany-card-footer d-flex justify-content-between mt-4 pt-2">
                       <span className="heart-review"><i className="fas fa-heart"></i></span>
-                      <h2>100/day(£24/hr)</h2>
+                      <h2>£100/day(£24/hr)</h2>
                     </div>
                   </div>
                 </Link>
@@ -289,7 +300,7 @@ export default function Search() {
                     </ul>
                     <div className="comapany-card-footer d-flex justify-content-between mt-4 pt-2">
                       <span className="heart-review"><i className="fas fa-heart"></i></span>
-                      <h2>100/day(£24/hr)</h2>
+                      <h2>£100/day(£24/hr)</h2>
                     </div>
                   </div>
                 </Link>
@@ -317,7 +328,7 @@ export default function Search() {
                     </ul>
                     <div className="comapany-card-footer d-flex justify-content-between mt-4 pt-2">
                       <span className="heart-review"><i className="fas fa-heart"></i></span>
-                      <h2>100/day(£24/hr)</h2>
+                      <h2>£100/day(£24/hr)</h2>
                     </div>
                   </div>
                 </Link>
@@ -345,7 +356,63 @@ export default function Search() {
                     </ul>
                     <div className="comapany-card-footer d-flex justify-content-between mt-4 pt-2">
                       <span className="heart-review"><i className="fas fa-heart"></i></span>
-                      <h2>100/day(£24/hr)</h2>
+                      <h2>£100/day(£24/hr)</h2>
+                    </div>
+                  </div>
+                </Link>
+
+                <Link
+                  className={selectedVehicleOnMap !== '5' ? 'company-product-list-grid' : 'company-product-list-grid is-active'}
+                  onMouseEnter={
+                    () => setSelectedVehicleOnMap('5')
+                  }
+                  onMouseLeave={
+                    () => setSelectedVehicleOnMap(null)
+                  }
+                  to="/car-listing"
+                >
+                  <div className="company-product-list-img">
+                    <img src={Mercedes} alt="mercedes-car" />
+                  </div>
+                  <div className="comapany-card-body">
+                    <h2>Mercedes-Benz S-class 2018</h2>
+                    <ul className="car-grid-tag" style={{paddingLeft: '0'}}>
+                      <li>ATM </li>
+                      <li>Electric</li>
+                      <li>Bluetooth</li>
+                      <li>+3</li>
+                    </ul>
+                    <div className="comapany-card-footer d-flex justify-content-between mt-4 pt-2">
+                      <span className="heart-review"><i className="fas fa-heart"></i></span>
+                      <h2>£100/day(£24/hr)</h2>
+                    </div>
+                  </div>
+                </Link>
+
+                <Link
+                  className={selectedVehicleOnMap !== '6' ? 'company-product-list-grid' : 'company-product-list-grid is-active'}
+                  onMouseEnter={
+                    () => setSelectedVehicleOnMap('6')
+                  }
+                  onMouseLeave={
+                    () => setSelectedVehicleOnMap(null)
+                  }
+                  to="/car-listing"
+                >
+                  <div className="company-product-list-img">
+                    <img src={Mercedes} alt="mercedes-car" />
+                  </div>
+                  <div className="comapany-card-body">
+                    <h2>Mercedes-Benz S-class 2018</h2>
+                    <ul className="car-grid-tag" style={{paddingLeft: '0'}}>
+                      <li>ATM </li>
+                      <li>Electric</li>
+                      <li>Bluetooth</li>
+                      <li>+3</li>
+                    </ul>
+                    <div className="comapany-card-footer d-flex justify-content-between mt-4 pt-2">
+                      <span className="heart-review"><i className="fas fa-heart"></i></span>
+                      <h2>£100/day(£24/hr)</h2>
                     </div>
                   </div>
                 </Link>

@@ -130,7 +130,7 @@ export default function PrivateReview() {
                   </ul>
                   <div className="comapany-card-footer d-flex justify-content-between mt-4 pt-2">
                     <span className="heart-review"><i className="fas fa-heart"></i></span>
-                    <h2>100/day(£24/hr)</h2>
+                    <h2>£100/day(£24/hr)</h2>
                   </div>
                 </div>
               </div>
@@ -150,7 +150,7 @@ export default function PrivateReview() {
                   </ul>
                   <div className="comapany-card-footer d-flex justify-content-between mt-4 pt-2">
                     <span className="heart-review"><i className="fas fa-heart"></i></span>
-                    <h2>100/day(£24/hr)</h2>
+                    <h2>£100/day(£24/hr)</h2>
                   </div>
                 </div>
               </div>
@@ -170,7 +170,7 @@ export default function PrivateReview() {
                   </ul>
                   <div className="comapany-card-footer d-flex justify-content-between mt-4 pt-2">
                     <span className="heart-review"><i className="fas fa-heart"></i></span>
-                    <h2>100/day(£24/hr)</h2>
+                    <h2>£100/day(£24/hr)</h2>
                   </div>
                 </div>
               </div>

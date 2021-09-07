@@ -6,7 +6,7 @@ export default function Marker(props) {
 
   return (
     <>
-      <div className="map-position-label">100$</div>
+      <div className="map-position-label">$100</div>
       {selectedVehicleOnMap === place.id && <InfoWindow place={place} />}
     </>
   );
