@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from 'react';
 import { Modal, ModalHeader, ModalBody, Collapse } from 'reactstrap';
 import DateRangePicker from "react-bootstrap-daterangepicker";
@@ -101,7 +102,7 @@ export default function RequestBooking() {
                   <hr />
                   <input type="checkbox" className="pointer margin-right-five" />
                   <label className="mb-0 pointer text-dark-white">
-                    I accept the <Link className="link-text pointer" to="/tos">terms and conditions</Link> of the platform
+                    I accept the <Link className="link-text pointer" to="/tos" target="_blank">terms and conditions</Link> of the platform
                   </label>
                   <div className="contact-form-field submit-contact  mt-4">
                     <Link className="common-btn" to="/confirmation">

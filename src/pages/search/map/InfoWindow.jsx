@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import Mercedes from '../../../assets/img/Mercedes-car.jpg';
 

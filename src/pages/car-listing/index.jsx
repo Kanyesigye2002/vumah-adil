@@ -37,25 +37,56 @@ export default function CarListing(props) {
           <div className="d-flex">
             <p className="margin-right-ten"><i className="far fa-heart margin-right-five pointer"></i>Add to favourites</p>
             <p id="share-popover" className="pointer"> <i className="fas fa-share-alt margin-right-five pointer"></i>Share Profile</p>
-            <Popover placement="bottom" isOpen={openSharePopover} target="share-popover" toggle={toggleSharePopover} className="blog-card-grid">
+            <Popover placement="bottom" isOpen={openSharePopover} target="share-popover" toggle={toggleSharePopover} className="blog-card-grid blog-card-grid--popover" style={{maxWidth:'500px'}}>
               <PopoverBody>
-                <h5 className="mb-3">Share</h5>
-                <WhatsappShareButton url={window.location} className="margin-right-ten">
-                  <WhatsappIcon size={32} round />
-                  <p>WhatsApp</p>
-                </WhatsappShareButton>
-                <FacebookShareButton url={window.location} className="margin-right-ten">
-                  <FacebookIcon size={32} round />
-                  <p>Facebook</p>
-                </FacebookShareButton>
-                <TwitterShareButton url={window.location} className="margin-right-ten">
-                  <TwitterIcon size={32} round />
-                  <p>Twitter</p>
-                </TwitterShareButton>
-                <EmailShareButton url={window.location} className="margin-right-ten">
-                  <EmailIcon size={32} round />
-                  <p>Email</p>
-                </EmailShareButton>
+                <h5 className="mb-3 ml-0 pl-0" style={{marginLeft: 0 }}>
+                  Share
+                </h5>
+                <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                  <WhatsappShareButton url={window.location} style={{marginRight: '20px' }}>
+                    <WhatsappIcon size={64} round />
+                    <p>WhatsApp</p>
+                  </WhatsappShareButton>
+                  <FacebookShareButton url={window.location} style={{marginRight: '20px' }}>
+                    <FacebookIcon size={64} round />
+                    <p>Facebook</p>
+                  </FacebookShareButton>
+                  <TwitterShareButton url={window.location} style={{marginRight: '20px' }}>
+                    <TwitterIcon size={64} round />
+                    <p>Twitter</p>
+                  </TwitterShareButton>
+                  <EmailShareButton url={window.location}>
+                    <EmailIcon size={64} round />
+                    <p>Email</p>
+                  </EmailShareButton>
+                </div>
+                <div style={{display: 'flex', position: 'relative'}} className="mt-3">
+                  <input
+                    type="text" readOnly={true}
+                    className="form-control"
+                    placeholder="URL"
+                    defaultValue={window.location}
+                    style={{
+                      cursor: 'pointer',
+                      paddingRight: '55px'
+                    }}
+                    onClick={(e) => {
+                      e.target.select();
+                      document.execCommand('copy');
+                    }}
+                  />
+                  <span style={{
+                    position: 'absolute',
+                    right: '10px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                    pointerEvents: 'none'
+                  }}>
+                    COPY
+                  </span>
+                </div>
               </PopoverBody>
             </Popover>
           </div>

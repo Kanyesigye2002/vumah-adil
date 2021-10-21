@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect, useRef } from 'react';
 import GoogleMap from './map';
 import SplitPane from "react-split-pane";

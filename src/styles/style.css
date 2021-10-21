@@ -781,6 +781,25 @@ body.dark-theme .bmy-button:focus {
   color: #ffffff;
 }
 
+body.dark-theme .my-button:not(a),
+body.dark-theme .my-button:not(button) {
+  background: transparent !important;
+}
+
+.booking-details-main > form {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 45px);
+}
+
+body.dark-theme .my-button:not(a):hover,
+body.dark-theme .my-button:not(a):focus,
+body.dark-theme .my-button:not(button):hover,
+body.dark-theme .my-button:not(button):focus {
+  color: rgba(255, 255, 255, 0.75) !important;
+  background: transparent !important;
+}
+
 body.dark-theme .dropdown-menu.my-button {
   background: #1d1d2c !important;
 }
@@ -1365,7 +1384,7 @@ body.dark-theme .dropdown-menu.my-button {
   border: 0;
 }
 .signUp-steps .radio-field {
-  background-color: rgb(0 0 0 / 12%);
+  background-color: rgb(0 0 0 / 10%);
   border-radius: 8px;
   padding: 20px 20px;
 }
@@ -1374,6 +1393,10 @@ body.dark-theme .dropdown-menu.my-button {
   position: absolute;
   left: -9999px;
 }
+body:not(.dark-theme) .radio-field label {
+  color: var(--primary-color) !important;
+}
+
 .radio-field [type="radio"]:checked + label,
 .radio-field [type="radio"]:not(:checked) + label {
   position: relative;
@@ -1394,6 +1417,7 @@ body.dark-theme .dropdown-menu.my-button {
   width: 22px;
   height: 22px;
   border-radius: 100%;
+  border: 1px solid var(--secondary-color);
   background: #dedede;
 }
 .custom-table-main
@@ -2865,12 +2889,14 @@ span.three-dots {
   scrollbar-width: thin;
 }
 
+/*
 .dark-light-mode-main {
   position: fixed;
   z-index: 999;
   bottom: 25px;
   right: 25px;
 }
+*/
 
 .dark-light-mode-main .toggle-checkbox {
   position: absolute;
@@ -3322,7 +3348,6 @@ button.qna-arrow:hover i {
   width: 100%;
   position: relative;
   overflow: hidden;
-  background-image: url("");
   background-color: #e4e4e4;
   background-position: center center;
   background-repeat: no-repeat;
@@ -4724,4 +4749,99 @@ h2.facilities {
 
 .c4 .company-product-list-grid {
   width: calc(25% - 25px) !important;
+}
+
+.Chat-list-main {
+  min-width: 400px;
+  width: 100%;
+}
+
+.show-chat-content {
+  
+}
+
+.booking-details-main {
+  max-width: 400px;
+  width: 100%;
+}
+
+.chat-profile-inner > img {
+  height: 45px;
+  min-height: 45px;
+  min-width: 45px;
+  object-fit: cover;
+  width: 45px;
+}
+
+.chat-profile > .notseenMessage {
+  display: none;
+}
+
+.friend-text {
+  margin-left: 25px;
+}
+
+.friend-list {
+  border-radius: 10px;
+  padding: 10px 20px;
+  transition: 200ms background;
+}
+
+.friend-list:hover {
+  background: lightgray;
+  cursor: pointer;
+}
+
+.chat-active-circle {
+  background: var(--secondary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  height: 15px;
+  width: 15px;
+  text-align: center;
+}
+
+.chat-bubble {
+  width: unset !important;
+}
+
+/*
+.friend-chat-list {
+  min-width: 400px;
+}
+
+.friend-list {
+  min-width: 400px;
+}
+*/
+
+.header-ads-manager {
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.header-coming-soon {
+  background: var(--primary-color);
+  border-radius: 5px;
+  color: rgba(255, 255, 255, 0.75) !important;
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+  left: 25px;
+  opacity: 0;
+  padding: 5px 10px;
+  position: absolute;
+  top: 35px;
+  transition: 200ms opacity;
+}
+
+.header-coming-soon:hover,
+.header-ads-manager:hover .header-coming-soon {
+  opacity: 1 !important;
+}
+
+.blog-card-grid--popover .popover {
+  max-width: 500px
 }

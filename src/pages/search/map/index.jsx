@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from 'react';
 import GoogleMapReact from 'google-map-react';
 import Marker from './Marker';
@@ -16,7 +17,7 @@ export default function Map(props) {
   return (
     <GoogleMapReact
       defaultZoom={12}
-      defaultCenter={londonCenter}
+      defaultCenter={londonCenter} 
       //bootstrapURLKeys={{ key: process.env.REACT_APP_MAP_KEY }}
       onChildClick={onClickMapImage}
     >

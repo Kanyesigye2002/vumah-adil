@@ -22,7 +22,7 @@ export default function Header() {
       <header className="header-main">
         <div
           className="container"
-          style={ location.pathname === '/search' ? { maxWidth: '1800px' } : {}}
+          style={ (location.pathname === '/search' || location.pathname === '/chat') ? { maxWidth: '1800px' } : {}}
         >
           <div className="row align-items-center">
             <div className="col-md-4">
@@ -37,9 +37,9 @@ export default function Header() {
                   <li><Link to="/landing-page" className="become-host">Become a host</Link></li>
                   <li><Link to="/about-us" className="about-us">About Us</Link></li>
                 </ul>
-                <div className="header-icon-pair d-flex align-items-center">
+                <div className="header-icon-pair d-flex align-items-center" onClick={toggleDropDown}>
                   <div className="header-menu-btn">
-                    <Dropdown isOpen={dropdownOpen} toggle={toggleDropDown}>
+                    <Dropdown isOpen={dropdownOpen} toggle={()=>{}}>
                       <DropdownToggle caret>
                         <i className="fa fa-bars"></i>
                       </DropdownToggle>
@@ -50,11 +50,14 @@ export default function Header() {
                         <DropdownItem>Notifications</DropdownItem>
                         <DropdownItem>Messages</DropdownItem>
                         <DropdownItem>Bookings</DropdownItem>
-                        <DropdownItem>Saved</DropdownItem>
+                        <DropdownItem>Favourites</DropdownItem>
                         <DropdownItem divider />
 
-                        <DropdownItem>Vechile Listings</DropdownItem>
-                        <DropdownItem disabled>Ads Manager</DropdownItem>
+                        <DropdownItem>Vehicle Listings</DropdownItem>
+                        <DropdownItem className="header-ads-manager">
+                          Ads Manager
+                          <span className="header-coming-soon">coming soon</span>
+                        </DropdownItem>
 
                         <DropdownItem divider />
 
@@ -113,11 +116,13 @@ export default function Header() {
                   <img src={Logo} alt="logo" />
                 </div>
                 <h2>Sign Up to your account</h2>
-                <div className="contact-form-field mb-3">
-                  <input type="text" placeholder="Enter name" />
+                <div className="contact-form-field mb-3 radio-field">
+                  <input type="radio" id="test1" name="radio-group" checked={true} />
+                  <label for="test1"><i className="fas fa-briefcase"></i> Business</label>
                 </div>
-                <div className="contact-form-field mb-3">
-                  <input type="text" placeholder="Last name" />
+                <div className="contact-form-field mb-3  radio-field">
+                  <input type="radio" id="test2" name="radio-group" />
+                  <label for="test2"><i className="fas fa-user"></i>Individual</label>
                 </div>
                 <button className="common-btn text-uppercase mt-4 btnNext" onClick={() => toggleSignUpTabs('2')}>Next</button>
               </TabPane>
@@ -126,13 +131,11 @@ export default function Header() {
                   <img src={Logo} alt="logo" />
                 </div>
                 <h2>Sign Up to your account</h2>
-                <div className="contact-form-field mb-3 radio-field">
-                  <input type="radio" id="test1" name="radio-group" checked={true} />
-                  <label for="test1"><i className="fas fa-briefcase"></i> Business</label>
+                <div className="contact-form-field mb-3">
+                  <input type="text" placeholder="Enter name" />
                 </div>
-                <div className="contact-form-field mb-3  radio-field">
-                  <input type="radio" id="test2" name="radio-group" />
-                  <label for="test2"><i className="fas fa-user"></i>Individual</label>
+                <div className="contact-form-field mb-3">
+                  <input type="text" placeholder="Last name" />
                 </div>
                 <button className="common-btn text-uppercase mt-4 btnNext" onClick={() => toggleSignUpTabs('3')}>Next</button>
               </TabPane>
@@ -221,7 +224,7 @@ export default function Header() {
                 </div>
                 <div className="contact-form-field  checkbox-field">
                   <input type="checkbox" id="t3" name="" className="styled-checkbox" />
-                  <label for="t3">I accept <a href="#terms-condition" data-toggle="modal">terms &
+                  <label for="t3">I accept <a href="/tos" target="_blank">terms &
                     conditions</a></label>
                 </div>
                 <div className="contact-form-field submit-contact text-center mt-4">
