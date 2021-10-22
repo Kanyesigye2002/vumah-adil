@@ -273,7 +273,23 @@ export default function Search() {
                     </ul>
                     <div className="comapany-card-footer d-flex justify-content-between mt-4 pt-2">
                       <span className="heart-review"><i className="fas fa-heart"></i></span>
-                      <h2>£100/day(£24/hr)</h2>
+                      <h2 style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'flex-end',
+                        textAlign: 'right'
+                      }}>
+                        <b>
+                          £24<span style={{fontWeight: '500'}}>/hr</span>
+                          <span style={{fontWeight: '500', marginLeft: '5px'}}>(£100/day)</span>
+                        </b>
+                        <small style={{
+                          opacity: '0.6',
+                          marginTop: '3px',
+                          fontSize: '13px',
+                          textDecoration: 'underline'
+                        }}>£653 total</small>
+                      </h2>
                     </div>
                   </div>
                 </Link>
@@ -301,7 +317,23 @@ export default function Search() {
                     </ul>
                     <div className="comapany-card-footer d-flex justify-content-between mt-4 pt-2">
                       <span className="heart-review"><i className="fas fa-heart"></i></span>
-                      <h2>£100/day(£24/hr)</h2>
+                      <h2 style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'flex-end',
+                        textAlign: 'right'
+                      }}>
+                        <b>
+                          £24<span style={{fontWeight: '500'}}>/hr</span>
+                          <span style={{fontWeight: '500', marginLeft: '5px'}}>(£100/day)</span>
+                        </b>
+                        <small style={{
+                          opacity: '0.6',
+                          marginTop: '3px',
+                          fontSize: '13px',
+                          textDecoration: 'underline'
+                        }}>£653 total</small>
+                      </h2>
                     </div>
                   </div>
                 </Link>
@@ -329,7 +361,23 @@ export default function Search() {
                     </ul>
                     <div className="comapany-card-footer d-flex justify-content-between mt-4 pt-2">
                       <span className="heart-review"><i className="fas fa-heart"></i></span>
-                      <h2>£100/day(£24/hr)</h2>
+                      <h2 style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'flex-end',
+                        textAlign: 'right'
+                      }}>
+                        <b>
+                          £24<span style={{fontWeight: '500'}}>/hr</span>
+                          <span style={{fontWeight: '500', marginLeft: '5px'}}>(£100/day)</span>
+                        </b>
+                        <small style={{
+                          opacity: '0.6',
+                          marginTop: '3px',
+                          fontSize: '13px',
+                          textDecoration: 'underline'
+                        }}>£653 total</small>
+                      </h2>
                     </div>
                   </div>
                 </Link>
@@ -357,7 +405,23 @@ export default function Search() {
                     </ul>
                     <div className="comapany-card-footer d-flex justify-content-between mt-4 pt-2">
                       <span className="heart-review"><i className="fas fa-heart"></i></span>
-                      <h2>£100/day(£24/hr)</h2>
+                      <h2 style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'flex-end',
+                        textAlign: 'right'
+                      }}>
+                        <b>
+                          £24<span style={{fontWeight: '500'}}>/hr</span>
+                          <span style={{fontWeight: '500', marginLeft: '5px'}}>(£100/day)</span>
+                        </b>
+                        <small style={{
+                          opacity: '0.6',
+                          marginTop: '3px',
+                          fontSize: '13px',
+                          textDecoration: 'underline'
+                        }}>£653 total</small>
+                      </h2>
                     </div>
                   </div>
                 </Link>
@@ -385,7 +449,23 @@ export default function Search() {
                     </ul>
                     <div className="comapany-card-footer d-flex justify-content-between mt-4 pt-2">
                       <span className="heart-review"><i className="fas fa-heart"></i></span>
-                      <h2>£100/day(£24/hr)</h2>
+                      <h2 style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'flex-end',
+                        textAlign: 'right'
+                      }}>
+                        <b>
+                          £24<span style={{fontWeight: '500'}}>/hr</span>
+                          <span style={{fontWeight: '500', marginLeft: '5px'}}>(£100/day)</span>
+                        </b>
+                        <small style={{
+                          opacity: '0.6',
+                          marginTop: '3px',
+                          fontSize: '13px',
+                          textDecoration: 'underline'
+                        }}>£653 total</small>
+                      </h2>
                     </div>
                   </div>
                 </Link>
@@ -413,7 +493,23 @@ export default function Search() {
                     </ul>
                     <div className="comapany-card-footer d-flex justify-content-between mt-4 pt-2">
                       <span className="heart-review"><i className="fas fa-heart"></i></span>
-                      <h2>£100/day(£24/hr)</h2>
+                      <h2 style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'flex-end',
+                        textAlign: 'right'
+                      }}>
+                        <b>
+                          £24<span style={{fontWeight: '500'}}>/hr</span>
+                          <span style={{fontWeight: '500', marginLeft: '5px'}}>(£100/day)</span>
+                        </b>
+                        <small style={{
+                          opacity: '0.6',
+                          marginTop: '3px',
+                          fontSize: '13px',
+                          textDecoration: 'underline'
+                        }}>£653 total</small>
+                      </h2>
                     </div>
                   </div>
                 </Link>

@@ -9,6 +9,11 @@ import CustomerReviewOne from '../../assets/img/customer-review-img-1.png';
 import CustomerReviewTwo from '../../assets/img/customer-review-img-2.png';
 import Mercedes from '../../assets/img/Mercedes-car.jpg';
 import CustomerReview from '../../assets/img/customer-review-img-1.png';
+import { TabContent, TabPane, Nav, NavItem, NavLink, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Menu, Dropdown as AntDDropdown } from 'antd';
+import RUG from "react-upload-gallery";
+import "react-upload-gallery/dist/style.css";
+import classnames from 'classnames';
 
 export default function Chat() {
   const [breakDownModal, setBreakDownModal] = useState(false);
@@ -17,9 +22,36 @@ export default function Chat() {
   const modalCloseBtn = <button type="button" className="btn close p-0" onClick={toggleBreakDownModal}>
     <span aria-hidden="true"><i className="fas fa-times-circle fa-lg"></i></span>
   </button>;
+  const [toggleListingActiveTab, setToggleListingActiveTab] = useState('1');
+  const [vehicleType, setVehicleType] = useState('');
+  const [pictures, setPictures] = useState([]);
+
+  const menu = (
+    <Menu>
+      <Menu.Item key="0" onClick={() => onVehicleTypeChange('Car')}>
+        <i className="fas fa-car-side"></i>&nbsp;&nbsp;Car
+      </Menu.Item>
+      <Menu.Divider />
+      <Menu.Item key="1" onClick={() => onVehicleTypeChange('Motorbike')}>
+        <i className="fas fa-motorcycle"></i>&nbsp;&nbsp;Motorbike
+      </Menu.Item>
+      <Menu.Divider />
+      <Menu.Item key="3" onClick={() => onVehicleTypeChange('Bicycle')}>
+        <i className="fas fa-bicycle"></i>&nbsp;&nbsp;Bicycle
+      </Menu.Item>
+      <Menu.Divider />
+      <Menu.Item key="3" onClick={() => onVehicleTypeChange('Campervan')}>
+        <i className="fas fa-rv"></i>&nbsp;&nbsp;Campervan
+      </Menu.Item>
+    </Menu>
+  );
 
   function toggleBreakDownModal() {
     setBreakDownModal(!breakDownModal);
+  };
+
+  function toggleAddListingTabs(tab) {
+    if (toggleListingActiveTab !== tab) setToggleListingActiveTab(tab);
   };
 
   const issues = [
@@ -41,24 +73,86 @@ export default function Chat() {
       <Modal isOpen={breakDownModal} toggle={toggleBreakDownModal} className='loginPopupMain add-listing-main'>
         <ModalHeader toggle={toggleBreakDownModal} close={modalCloseBtn}></ModalHeader>
         <ModalBody>
-          <div className="login-inner">
-            <h4 className="text-center mt-4 mb-4 text-dark-white">
-              Report Breakdown
-            </h4>
+          <div className="signUp-steps">
+            <TabContent activeTab={toggleListingActiveTab}>
+              <TabPane tabId="1">
+                <div className="add-listing-list ad-list-onetab">
+                  <h2 className="mb-5 text-center">Report Breakdown</h2>
+                  <div className="row">
+                    <div className="login-inner">
+                      {
+                        issues.map((issue) => <button
+                          className={selectedIssue === issue ? 'my-button btn btn-secondary' : 'my-button btn btn-outline-dark'}
+                          style={{margin: '5px', borderRadius: '9999px', padding: '6px 12px'}}
+                          onClick={() => setSelectedIssue(issue)}
+                        >
+                          {issue}
+                        </button>)
+                      }
+                    </div>
+                  </div>
+                  <div className="contact-form-field submit-contact text-center mt-4">
+                    <input type="Submit" value="Continue" className="list-next-btn" onClick={() => toggleAddListingTabs('2')} />
+                  </div>
+                </div>
+              </TabPane>
 
-            {
-              issues.map((issue) => <button
-                className={selectedIssue === issue ? 'my-button btn btn-secondary' : 'my-button btn btn-outline-dark'}
-                style={{margin: '5px', borderRadius: '9999px', padding: '6px 12px'}}
-                onClick={() => setSelectedIssue(issue)}
-              >
-                {issue}
-              </button>)
-            }
+              <TabPane tabId="2">
+                <div className="add-listing-list">
+                  <h2 className="mb-3 text-center">Add Images</h2>
 
-            <div className="contact-form-field submit-contact text-center p-2 mt-3">
-              <input type="submit" value="Continue" onClick={toggleBreakDownModal} />
-            </div>
+                  <div className="row mt-4">
+                    <div className="col-md-12">
+                      <div className="contact-form-field mb-3">
+                        <textarea placeholder="Additional details" style={{borderColor: 'var(--secondary-color)'}}></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <RUG
+                    action="http://example.com/upload"
+                    initialState={[
+                      {
+                        name: "Item 1",
+                        size: "232kb",
+                        source:
+                          "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=4050&q=80"
+                      },
+                      {
+                        name: "Item 2",
+                        size: "23kb",
+                        source:
+                          "https://images.unsplash.com/photo-1508923567004-3a6b8004f3d7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1834&q=80"
+                      }
+                    ]}
+                  />
+
+                  <div className="contact-form-field submit-contact text-center mt-4">
+                    <input type="Submit" value="Submit" className="list-next-btn" onClick={() => toggleAddListingTabs('3')} />
+                  </div>
+                </div>
+              </TabPane>
+
+              <TabPane tabId="3">
+                <div className="add-listing-list">
+                  <h2 className="mb-3 text-center">Your request has been submited.</h2>
+                </div>
+              </TabPane>
+            </TabContent>
+            {toggleListingActiveTab !== '3' && <Nav tabs className="d-flex justify-content-center border-none mt-4">
+              <NavItem>
+                <NavLink
+                  className={classnames({ active: toggleListingActiveTab === '1' }) + ' pointer'}
+                  onClick={() => toggleAddListingTabs('1')}
+                />
+              </NavItem>
+              <NavItem>
+                <NavLink
+                  className={classnames({ active: toggleListingActiveTab === '2' }) + ' pointer'}
+                  onClick={() => toggleAddListingTabs('2')}
+                />
+              </NavItem>
+            </Nav>}
           </div>
         </ModalBody>
       </Modal>

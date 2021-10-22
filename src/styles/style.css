@@ -4721,6 +4721,7 @@ h2.facilities {
   background: var(--white);
   color: var(--black);
   display: flex;
+  cursor: pointer;
   align-items: center;
   justify-content: center;
   min-height: 20px;
@@ -4728,6 +4729,17 @@ h2.facilities {
   padding: 4px 8px;
   border-radius: 10px;
   font-weight: 600;
+  transition: 200ms transform;
+}
+
+.map-position-label--active {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.map-position-label--active,
+.map-position-label:hover {
+  transform: scale(1.2);
 }
 
 .company-product-list-grid {

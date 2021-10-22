@@ -23,6 +23,7 @@ import { Link } from 'react-router-dom';
 export default function CarListing(props) {
   const { hideSimilarCar, sliderClassName } = props;
   const [openSharePopover, setOpenSharePopover] = useState(false);
+  const [addedToFav, setAddedToFav] = useState(false);
 
   const [fromDate, setFromDate] = useState(moment().format('M/DD/YYYY (hh:mm)'));
   const [toDate, setToDate] = useState(moment().format('M/DD/YYYY (hh:mm)'));
@@ -35,7 +36,17 @@ export default function CarListing(props) {
         <div className="carModal-header mb-4" data-aos="fade-up">
           <h2>Tesla Model 3</h2>
           <div className="d-flex">
-            <p className="margin-right-ten"><i className="far fa-heart margin-right-five pointer"></i>Add to favourites</p>
+            <p
+              className="margin-right-ten pointer"
+              onClick={() => setAddedToFav(!addedToFav)}
+              style={{color: addedToFav ? 'var(--secondary-color)' : null}}
+            >
+              <i
+                className="far fa-heart margin-right-five"
+                style={{fontWeight: addedToFav ? '600' : '400'}}
+              ></i>
+              Add to favourites
+            </p>
             <p id="share-popover" className="pointer"> <i className="fas fa-share-alt margin-right-five pointer"></i>Share Profile</p>
             <Popover placement="bottom" isOpen={openSharePopover} target="share-popover" toggle={toggleSharePopover} className="blog-card-grid blog-card-grid--popover" style={{maxWidth:'500px'}}>
               <PopoverBody>
@@ -165,16 +176,18 @@ export default function CarListing(props) {
                 </div>
                 <div className="col-md-6 d-flex justify-content-end Answers-lock">
                   <span title="Please login first to post">
-                    <i className="fas fa-lock"></i>
+                    <i className="fas fa-lock" style={{color: 'var(--secondary-color)'}}></i>
                   </span>
                   <button className="qna-arrow" type="button" data-toggle="collapse"
                     data-target="#collapseExample" aria-expanded="false"
                     aria-controls="collapseExample">
-                    <i className="fas fa-chevron-down"></i>
+                    <i className="fas fa-chevron-down" style={{color: 'var(--secondary-color)'}}></i>
                   </button>
                 </div>
               </div>
-              <p className="unlock-text"><a>Login</a> or <a>Sign Up</a> to ask a public question</p>
+              <p className="unlock-text">
+                <a href="#login" style={{color: 'var(--secondary-color)'}}>Login</a> or <a style={{color: 'var(--secondary-color)'}} href="#register">Sign Up</a> to ask a public question
+              </p>
             </div>
 
             <div className="location-map mb-4" data-aos="fade-up">
@@ -249,37 +262,46 @@ export default function CarListing(props) {
                 display: 'flex',
                 flexDirection: 'column',
               }}>
-                <p style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <p style={{ display: 'flex', justifyContent: 'space-between' }} className="my-button">
                   Accommotation
                   <span>
                     $1,705
                   </span>
                 </p>
-                <p style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <p style={{ display: 'flex', justifyContent: 'space-between' }} className="my-button">
                   Montly discount: 40% off
                   <span>
                     -$682
                   </span>
                 </p>
-                <p style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <p style={{ display: 'flex', justifyContent: 'space-between' }} className="my-button">
                   Cleaning fee
                   <span>
                     $25
                   </span>
                 </p>
-                <p style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <p style={{ display: 'flex', justifyContent: 'space-between' }} className="my-button">
                   Service fee
                   <span>
                     $134
                   </span>
                 </p>
                 <hr />
-                <b style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <b style={{ display: 'flex', justifyContent: 'space-between' }} className="my-button">
                   Total
                   <span>
                     $1,182
                   </span>
                 </b>
+              </div>
+            </div>
+
+            <div className="pick-range-box mt-4" data-aos="fade-up">
+              <div className="d-flex justify-content-between ml-1 mr-1" style={{ alignItems: 'center'}}>
+                <h2 className="m-0">Have questions?</h2>
+                <Link className="common-btn" to="/chat">
+                  Contact host
+                </Link>
               </div>
             </div>
           </div>

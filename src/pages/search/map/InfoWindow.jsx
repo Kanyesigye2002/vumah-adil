@@ -39,7 +39,23 @@ export default function InfoWindow(props) {
         </div>
         <hr />
         <div className="search-card-footer d-flex mt-4 pt-2 text-right" style={{width: '100%', justifyContent: 'flex-end'}}>
-          <h2>{place.price}</h2>
+          <h2 style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'flex-end',
+            textAlign: 'right'
+          }}>
+            <b>
+              £24<span style={{fontWeight: '500'}}>/hr</span>
+              <span style={{fontWeight: '500', marginLeft: '5px'}}>(£100/day)</span>
+            </b>
+            <small style={{
+              opacity: '0.6',
+              marginTop: '3px',
+              fontSize: '13px',
+              textDecoration: 'underline'
+            }}>£653 total</small>
+          </h2>
         </div>
       </div>
     </div>

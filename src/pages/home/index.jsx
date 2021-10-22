@@ -29,6 +29,7 @@ export default function Home() {
   ];
 
   const searchRef = useRef(null);
+  const [searchVehicle, setSearchVehicle] = useState('car');
 
   return (
     <>
@@ -39,13 +40,24 @@ export default function Home() {
               <div className="banner-search-dropdown dropdown">
                 <Dropdown isOpen={dropdownOpen} toggle={dropDownToggle}>
                   <DropdownToggle caret className="btn dropdown-toggle">
-                    Vehicle<span className="caret"></span>
+                    {
+                      searchVehicle === 'car'
+                        ? <><i className="fas fa-car-side" style={{marginRight: '5px'}}></i> Car</>
+                        : searchVehicle === 'motorbike'
+                          ? <><i className="fas fa-motorcycle" style={{marginRight: '5px'}}></i> Motorbike</>
+                          : searchVehicle === 'bicycle'
+                            ? <><i className="fas fa-bicycle" style={{marginRight: '5px'}}></i> Bicycle</>
+                            : searchVehicle === 'campervan'
+                              ? <><i className="fas fa-rv" style={{marginRight: '5px'}}></i> Campervan</>
+                              : <>Vehicle</>
+                    }
+                    <span className="caret"></span>
                   </DropdownToggle>
                   <DropdownMenu>
-                    <DropdownItem><i className="fas fa-car-side"></i>&nbsp;&nbsp;Car</DropdownItem>
-                    <DropdownItem><i className="fas fa-motorcycle"></i>&nbsp;&nbsp;Motorbike</DropdownItem>
-                    <DropdownItem><i className="fas fa-bicycle"></i>&nbsp;&nbsp;Bicycle</DropdownItem>
-                    <DropdownItem><i className="fas fa-rv"></i>&nbsp;&nbsp;Campervan</DropdownItem>
+                    <DropdownItem onClick={() => setSearchVehicle('car')}><i className="fas fa-car-side" style={{marginRight: '5px'}}></i> Car</DropdownItem>
+                    <DropdownItem onClick={() => setSearchVehicle('motorbike')}><i className="fas fa-motorcycle" style={{marginRight: '5px'}}></i> Motorbike</DropdownItem>
+                    <DropdownItem onClick={() => setSearchVehicle('bicycle')}><i className="fas fa-bicycle" style={{marginRight: '5px'}}></i> Bicycle</DropdownItem>
+                    <DropdownItem onClick={() => setSearchVehicle('campervan')}><i className="fas fa-rv" style={{marginRight: '5px'}}></i> Campervan</DropdownItem>
                   </DropdownMenu>
                 </Dropdown>
               </div>
@@ -213,7 +225,7 @@ export default function Home() {
           <div className="row pb-4" data-aos="fade-down">
             <div className="col-md-6 mb-4 mb-lg-0">
               <div className="why-us-list-main flex-wrap d-flex">
-                <Nav tabs>
+                <Nav tabs style={{borderBottom: 'none'}}>
                   <NavItem
                     className={classnames({ active: activeWhyUsTab === '1' }) + ' why-us-list'}
                     onClick={() => { toggleWhyUsTab('1'); }}
@@ -602,7 +614,7 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="text-center mt-4">
-                    <a className="common-btn" href="blog-detail-2.html">Read More</a>
+                    <Link className="common-btn" to="/blog-2">Read More</Link>
                   </div>
                 </div>
               </div>
@@ -627,7 +639,7 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="text-center mt-4">
-                    <a className="common-btn" href="blog-detail-1.html">Read More</a>
+                    <Link className="common-btn" to="/blog-1">Read More</Link>
                   </div>
                 </div>
               </div>

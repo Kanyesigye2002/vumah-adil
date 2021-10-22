@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React, {useEffect} from 'react';
+import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom';
 import Home from './pages/home';
 import AboutUs from './pages/about';
 import Account from './pages/account';
@@ -26,10 +26,23 @@ import Trust from './pages/blogs/trust';
 import Covid from './pages/blogs/covid';
 import FAQ from './pages/blogs/faq';
 import Privacy from './pages/blogs/privacy';
+import Blog1 from './pages/blogs/blog-1';
+import Blog2 from './pages/blogs/blog-2';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 const Routes = () => {
   return (
     <Router>
+      <ScrollToTop />
       <Header />
       <Switch>
         <Route exact path="/" component={Home} />
@@ -59,6 +72,8 @@ const Routes = () => {
         <Route exact path="/faq" component={FAQ} />
         <Route exact path="/covid" component={Covid} />
         <Route exact path="/trust" component={Trust} />
+        <Route exact path="/blog-1" component={Blog1} />
+        <Route exact path="/blog-2" component={Blog2} />
       </Switch>
       <Footer />
     </Router>

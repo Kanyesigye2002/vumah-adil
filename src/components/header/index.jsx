@@ -40,7 +40,7 @@ export default function Header() {
                 <div className="header-icon-pair d-flex align-items-center" onClick={toggleDropDown}>
                   <div className="header-menu-btn">
                     <Dropdown isOpen={dropdownOpen} toggle={()=>{}}>
-                      <DropdownToggle caret>
+                      <DropdownToggle caret style={{background: 'transparent'}}>
                         <i className="fa fa-bars"></i>
                       </DropdownToggle>
                       <DropdownMenu className="dropdown-menu">
