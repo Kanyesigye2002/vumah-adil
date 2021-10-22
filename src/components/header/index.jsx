@@ -5,6 +5,258 @@ import classnames from 'classnames';
 import Logo from '../../assets/img/logo-main.png';
 import { useLocation } from 'react-router-dom'
 
+const countryList = [
+	"Afghanistan",
+	"Albania",
+	"Algeria",
+	"American Samoa",
+	"Andorra",
+	"Angola",
+	"Anguilla",
+	"Antarctica",
+	"Antigua and Barbuda",
+	"Argentina",
+	"Armenia",
+	"Aruba",
+	"Australia",
+	"Austria",
+	"Azerbaijan",
+	"Bahamas (the)",
+	"Bahrain",
+	"Bangladesh",
+	"Barbados",
+	"Belarus",
+	"Belgium",
+	"Belize",
+	"Benin",
+	"Bermuda",
+	"Bhutan",
+	"Bolivia (Plurinational State of)",
+	"Bonaire, Sint Eustatius and Saba",
+	"Bosnia and Herzegovina",
+	"Botswana",
+	"Bouvet Island",
+	"Brazil",
+	"British Indian Ocean Territory (the)",
+	"Brunei Darussalam",
+	"Bulgaria",
+	"Burkina Faso",
+	"Burundi",
+	"Cabo Verde",
+	"Cambodia",
+	"Cameroon",
+	"Canada",
+	"Cayman Islands (the)",
+	"Central African Republic (the)",
+	"Chad",
+	"Chile",
+	"China",
+	"Christmas Island",
+	"Cocos (Keeling) Islands (the)",
+	"Colombia",
+	"Comoros (the)",
+	"Congo (the Democratic Republic of the)",
+	"Congo (the)",
+	"Cook Islands (the)",
+	"Costa Rica",
+	"Croatia",
+	"Cuba",
+	"Curaçao",
+	"Cyprus",
+	"Czechia",
+	"Côte d'Ivoire",
+	"Denmark",
+	"Djibouti",
+	"Dominica",
+	"Dominican Republic (the)",
+	"Ecuador",
+	"Egypt",
+	"El Salvador",
+	"Equatorial Guinea",
+	"Eritrea",
+	"Estonia",
+	"Eswatini",
+	"Ethiopia",
+	"Falkland Islands (the) [Malvinas]",
+	"Faroe Islands (the)",
+	"Fiji",
+	"Finland",
+	"France",
+	"French Guiana",
+	"French Polynesia",
+	"French Southern Territories (the)",
+	"Gabon",
+	"Gambia (the)",
+	"Georgia",
+	"Germany",
+	"Ghana",
+	"Gibraltar",
+	"Greece",
+	"Greenland",
+	"Grenada",
+	"Guadeloupe",
+	"Guam",
+	"Guatemala",
+	"Guernsey",
+	"Guinea",
+	"Guinea-Bissau",
+	"Guyana",
+	"Haiti",
+	"Heard Island and McDonald Islands",
+	"Holy See (the)",
+	"Honduras",
+	"Hong Kong",
+	"Hungary",
+	"Iceland",
+	"India",
+	"Indonesia",
+	"Iran (Islamic Republic of)",
+	"Iraq",
+	"Ireland",
+	"Isle of Man",
+	"Israel",
+	"Italy",
+	"Jamaica",
+	"Japan",
+	"Jersey",
+	"Jordan",
+	"Kazakhstan",
+	"Kenya",
+	"Kiribati",
+	"Korea (the Democratic People's Republic of)",
+	"Korea (the Republic of)",
+	"Kuwait",
+	"Kyrgyzstan",
+	"Lao People's Democratic Republic (the)",
+	"Latvia",
+	"Lebanon",
+	"Lesotho",
+	"Liberia",
+	"Libya",
+	"Liechtenstein",
+	"Lithuania",
+	"Luxembourg",
+	"Macao",
+	"Madagascar",
+	"Malawi",
+	"Malaysia",
+	"Maldives",
+	"Mali",
+	"Malta",
+	"Marshall Islands (the)",
+	"Martinique",
+	"Mauritania",
+	"Mauritius",
+	"Mayotte",
+	"Mexico",
+	"Micronesia (Federated States of)",
+	"Moldova (the Republic of)",
+	"Monaco",
+	"Mongolia",
+	"Montenegro",
+	"Montserrat",
+	"Morocco",
+	"Mozambique",
+	"Myanmar",
+	"Namibia",
+	"Nauru",
+	"Nepal",
+	"Netherlands (the)",
+	"New Caledonia",
+	"New Zealand",
+	"Nicaragua",
+	"Niger (the)",
+	"Nigeria",
+	"Niue",
+	"Norfolk Island",
+	"Northern Mariana Islands (the)",
+	"Norway",
+	"Oman",
+	"Pakistan",
+	"Palau",
+	"Palestine, State of",
+	"Panama",
+	"Papua New Guinea",
+	"Paraguay",
+	"Peru",
+	"Philippines (the)",
+	"Pitcairn",
+	"Poland",
+	"Portugal",
+	"Puerto Rico",
+	"Qatar",
+	"Republic of North Macedonia",
+	"Romania",
+	"Russian Federation (the)",
+	"Rwanda",
+	"Réunion",
+	"Saint Barthélemy",
+	"Saint Helena, Ascension and Tristan da Cunha",
+	"Saint Kitts and Nevis",
+	"Saint Lucia",
+	"Saint Martin (French part)",
+	"Saint Pierre and Miquelon",
+	"Saint Vincent and the Grenadines",
+	"Samoa",
+	"San Marino",
+	"Sao Tome and Principe",
+	"Saudi Arabia",
+	"Senegal",
+	"Serbia",
+	"Seychelles",
+	"Sierra Leone",
+	"Singapore",
+	"Sint Maarten (Dutch part)",
+	"Slovakia",
+	"Slovenia",
+	"Solomon Islands",
+	"Somalia",
+	"South Africa",
+	"South Georgia and the South Sandwich Islands",
+	"South Sudan",
+	"Spain",
+	"Sri Lanka",
+	"Sudan (the)",
+	"Suriname",
+	"Svalbard and Jan Mayen",
+	"Sweden",
+	"Switzerland",
+	"Syrian Arab Republic",
+	"Taiwan",
+	"Tajikistan",
+	"Tanzania, United Republic of",
+	"Thailand",
+	"Timor-Leste",
+	"Togo",
+	"Tokelau",
+	"Tonga",
+	"Trinidad and Tobago",
+	"Tunisia",
+	"Turkey",
+	"Turkmenistan",
+	"Turks and Caicos Islands (the)",
+	"Tuvalu",
+	"Uganda",
+	"Ukraine",
+	"United Arab Emirates (the)",
+	"United Kingdom of Great Britain and Northern Ireland (the)",
+	"United States Minor Outlying Islands (the)",
+	"United States of America (the)",
+	"Uruguay",
+	"Uzbekistan",
+	"Vanuatu",
+	"Venezuela (Bolivarian Republic of)",
+	"Viet Nam",
+	"Virgin Islands (British)",
+	"Virgin Islands (U.S.)",
+	"Wallis and Futuna",
+	"Western Sahara",
+	"Yemen",
+	"Zambia",
+	"Zimbabwe",
+	"Åland Islands"
+];
+
 export default function Header() {
   const location = useLocation();
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -12,6 +264,7 @@ export default function Header() {
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [signUpActiveTab, setSignUpActiveTab] = useState('1');
+  const [accountType, setAccountType] = useState('individual');
 
   const modalCloseBtn = <button type="button" className="btn close p-0" onClick={closeAllModal}>
     <span aria-hidden="true"><i className="fas fa-times-circle fa-lg"></i></span>
@@ -116,13 +369,13 @@ export default function Header() {
                   <img src={Logo} alt="logo" />
                 </div>
                 <h2>Sign Up to your account</h2>
-                <div className="contact-form-field mb-3 radio-field">
-                  <input type="radio" id="test1" name="radio-group" checked={true} />
-                  <label for="test1"><i className="fas fa-briefcase"></i> Business</label>
+                <div className="contact-form-field mb-3 radio-field pointer" onClick={()=>setAccountType('business')}>
+                  <input type="radio" id="test1" name="radio-group" checked={accountType==='business'} onChange={()=>setAccountType('business')} />
+                  <label for="test1"><i className="fas fa-briefcase" style={accountType==='business' ? {color: 'var(--secondary-color)'}:{}}></i> Business</label>
                 </div>
-                <div className="contact-form-field mb-3  radio-field">
-                  <input type="radio" id="test2" name="radio-group" />
-                  <label for="test2"><i className="fas fa-user"></i>Individual</label>
+                <div className="contact-form-field mb-3 radio-field pointer" onClick={()=>setAccountType('individual')}>
+                  <input type="radio" id="test2" name="radio-group" checked={accountType==='individual'} onChange={()=>setAccountType('individual')} />
+                  <label for="test2"><i className="fas fa-user" style={accountType==='individual' ? {color: 'var(--secondary-color)'}:{}}></i>Individual</label>
                 </div>
                 <button className="common-btn text-uppercase mt-4 btnNext" onClick={() => toggleSignUpTabs('2')}>Next</button>
               </TabPane>
@@ -132,88 +385,23 @@ export default function Header() {
                 </div>
                 <h2>Sign Up to your account</h2>
                 <div className="contact-form-field mb-3">
-                  <input type="text" placeholder="Enter name" />
-                </div>
-                <div className="contact-form-field mb-3">
-                  <input type="text" placeholder="Last name" />
-                </div>
-                <button className="common-btn text-uppercase mt-4 btnNext" onClick={() => toggleSignUpTabs('3')}>Next</button>
-              </TabPane>
-              <TabPane tabId="3">
-                <div className="login-logo">
-                  <img src={Logo} alt="logo" />
-                </div>
-                <h2>Sign Up to your account</h2>
-                <div className="contact-form-field mb-3">
-                  <input type="text" placeholder="Legal business name" />
-                </div>
-                <div className="contact-form-field mb-3">
-                  <input type="text" placeholder="Business phone number" />
-                </div>
-                <button className="common-btn text-uppercase mt-4 btnNext" onClick={() => toggleSignUpTabs('4')}>Next</button>
-              </TabPane>
-              <TabPane tabId="4">
-                <div className="login-logo">
-                  <img src={Logo} alt="logo" />
-                </div>
-                <h2>Sign Up to your account</h2>
-                <div className="contact-form-field mb-3">
-                  <input type="text" placeholder="Street address" />
-                </div>
-                <div className="contact-form-field mb-3">
-                  <input type="text" placeholder="Street address2" />
-                </div>
-                <div className="contact-form-field mb-3">
-                  <input type="text" placeholder="City" />
-                </div>
-                <div className="contact-form-field mb-3">
-                  <div className="select-outer">
-                    <select>
-                      <option disabled selected hidden>Country(optional)</option>
-                      <option>Indian</option>
-                      <option>USA</option>
-                    </select>
-                  </div>
-                </div>
-                <div className="contact-form-field mb-3">
-                  <input type="text" placeholder="Post Code" />
-                </div>
-                <button className="common-btn text-uppercase mt-4 btnNext" onClick={() => toggleSignUpTabs('5')}>Next</button>
-              </TabPane>
-              <TabPane tabId="5">
-                <div className="login-logo">
-                  <img src={Logo} alt="logo" />
-                </div>
-                <h2>Sign Up to your account</h2>
-                <div className="contact-form-field mb-3">
-                  <input type="text" placeholder="Full Legal Name" />
-                </div>
-                <div className="contact-form-field mb-3">
-                  <input type="text" placeholder="Full Address" />
-                </div>
-                <div className="contact-form-field mb-3">
-                  <input type="text" placeholder="Business Name" />
-                </div>
-                <div className="contact-form-field mb-3">
-                  <input type="email" placeholder="Email" />
-                </div>
-                <button className="common-btn text-uppercase mt-4 btnNext" onClick={() => toggleSignUpTabs('6')}>Next</button>
-              </TabPane>
-              <TabPane tabId="6">
-                <div className="login-logo">
-                  <img src={Logo} alt="logo" />
-                </div>
-                <h2>Sign Up to your account</h2>
-                <div className="contact-form-field mb-3">
                   <div className="select-outer">
                     <select>
                       <option disabled selected hidden>Title</option>
-                      <option>Title 1</option>
-                      <option>Title 2</option>
+                      <option>Mr</option>
+                      <option>Mrs</option>
+                      <option>Miss</option>
+                      <option>Ms</option>
+                      <option>Mx</option>
+                      <option>Sir</option>
+                      <option>Dr</option>
+                      <option>Cllr</option>
+                      <option>Lady</option>
+                      <option>Lord</option>
                     </select>
                   </div>
                 </div>
-                <div className="contact-form-field mb-4">
+                <div className="contact-form-field mb-3">
                   <div className="select-outer">
                     <select>
                       <option disabled selected hidden>Gender</option>
@@ -222,14 +410,61 @@ export default function Header() {
                     </select>
                   </div>
                 </div>
+                <div className="contact-form-field mb-3">
+                  <input type="text" placeholder="First Name" />
+                </div>
+                <div className="contact-form-field mb-3">
+                  <input type="text" placeholder="Last Name" />
+                </div>
+                {accountType==='business'&&<div className="contact-form-field mb-3">
+                  <input type="text" placeholder="Legal Business Name" />
+                </div>}
+                {accountType==='individual'&&<div className="contact-form-field mb-3">
+                  <input type="text" placeholder="Phone Number" />
+                </div>}
+                {accountType==='business'&&<div className="contact-form-field mb-3">
+                  <input type="text" placeholder="Business Phone Number" />
+                </div>}
+                {accountType==='business'&&<div className="contact-form-field mb-3">
+                  <input type="text" placeholder="Business Email Address" />
+                </div>}
+                <button className="common-btn text-uppercase mt-4 btnNext" onClick={() => toggleSignUpTabs('3')}>Next</button>
+              </TabPane>
+              <TabPane tabId="3">
+                <div className="login-logo">
+                  <img src={Logo} alt="logo" />
+                </div>
+                <h2>Sign Up to your account</h2>
+                {accountType==='individual'&&<div className="contact-form-field mb-3">
+                  <input type="text" placeholder="Street Address" />
+                </div>}
+                {accountType==='business'&&<div className="contact-form-field mb-3">
+                  <input type="text" placeholder="Business Address" />
+                </div>}
+                <div className="contact-form-field mb-3">
+                  <input type="text" placeholder="Street Address 2" />
+                </div>
+                <div className="contact-form-field mb-3">
+                  <input type="text" placeholder="City" />
+                </div>
+                <div className="contact-form-field mb-3">
+                  <div className="select-outer">
+                    <select>
+                      <option disabled selected hidden>Country (optional)</option>
+                      {countryList.map((c)=><option>{c}</option>)}
+                    </select>
+                  </div>
+                </div>
+                <div className="contact-form-field mb-3">
+                  <input type="text" placeholder="Post Code" />
+                </div>
                 <div className="contact-form-field  checkbox-field">
                   <input type="checkbox" id="t3" name="" className="styled-checkbox" />
-                  <label for="t3">I accept <a href="/tos" target="_blank">terms &
-                    conditions</a></label>
+                  <label for="t3">
+                    I accept the <a href="/tos" target="_blank">terms & conditions</a>
+                  </label>
                 </div>
-                <div className="contact-form-field submit-contact text-center mt-4">
-                  <input type="Submit" value="Submit" onClick={toggleSignupModal} />
-                </div>
+                <button className="common-btn text-uppercase mt-4 btnNext" onClick={toggleSignupModal}>Register</button>
               </TabPane>
             </TabContent>
             <Nav tabs className="mt-4 justify-content-center border-0">
@@ -251,27 +486,6 @@ export default function Header() {
                 <NavLink
                   className={classnames({ active: signUpActiveTab === '3' }) + ' pointer'}
                   onClick={() => { toggleSignUpTabs('3'); }}
-                >
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink
-                  className={classnames({ active: signUpActiveTab === '4' }) + ' pointer'}
-                  onClick={() => { toggleSignUpTabs('4'); }}
-                >
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink
-                  className={classnames({ active: signUpActiveTab === '5' }) + ' pointer'}
-                  onClick={() => { toggleSignUpTabs('5'); }}
-                >
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink
-                  className={classnames({ active: signUpActiveTab === '6' }) + ' pointer'}
-                  onClick={() => { toggleSignUpTabs('6'); }}
                 >
                 </NavLink>
               </NavItem>
