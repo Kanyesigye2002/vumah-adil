@@ -29,7 +29,7 @@ export default function Home() {
   ];
 
   const searchRef = useRef(null);
-  const [searchVehicle, setSearchVehicle] = useState('car');
+  const [searchVehicle, setSearchVehicle] = useState(null);
 
   return (
     <>
@@ -210,7 +210,7 @@ export default function Home() {
               The place to book your vehicle, and start your exciting adventure.
 
             </p>
-            <button className=" common-btn text-uppercase mt-4">Learn More</button>
+            <Link className=" common-btn text-uppercase mt-4" to="/about-us">Learn More</Link>
           </div>
         </div>
       </section>

@@ -120,7 +120,7 @@ export default function PrivateReview() {
                           cursor: 'pointer',
                           pointerEvents: 'none'
                         }}>
-                          COPY
+                          COPY LINK
                         </span>
                       </div>
                     </PopoverBody>

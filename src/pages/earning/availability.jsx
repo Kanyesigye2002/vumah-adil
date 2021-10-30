@@ -33,7 +33,7 @@ export default function Availability() {
                   onEvent={handleEvent}
                 >
                   <div class="banner-search-field">
-                    <input type="text" name="daterange" value={weekDate} className="text-center-align" />
+                    <input autoComplete={'off'} type="text" name="daterange" value={weekDate} className="text-center-align" />
                   </div>
                 </DateRangePicker>
               </div>
@@ -47,31 +47,31 @@ export default function Availability() {
                 <th scope="col">Listing</th>
                 <th scope="col">License Plate</th>
                 <th scope="col">
-                  Mon <br />
+                  Sun <br />
                   5th
                 </th>
                 <th scope="col">
-                  Tue <br />
+                  Mon <br />
                   6th
                 </th>
                 <th scope="col">
-                  Wed <br />
+                  Tue <br />
                   7th
                 </th>
                 <th scope="col">
-                  Thu <br />
+                  Wed <br />
                   8th
                 </th>
                 <th scope="col">
-                  Friday <br />
+                  Thu <br />
                   9th
                 </th>
                 <th scope="col">
-                  Sat <br />
+                  Friday <br />
                   10th
                 </th>
                 <th scope="col">
-                  Sun <br />
+                  Sat <br />
                   11th
                 </th>
               </tr>
@@ -84,8 +84,8 @@ export default function Availability() {
                       <img src={Mercedes} alt="car" />
                     </div>
                     <div className="bookingVechile-detail mt-2">
-                      <h2 className="text-dark-white">Mercedes</h2>
-                      <p className="mb-0">£25.99/h</p>
+                      <h2 className="text-dark-white" style={{ textAlign: 'left' }}>Mercedes</h2>
+                      <p className="mb-0" style={{ textAlign: 'left' }}>£25.99/h</p>
                     </div>
                   </div>
                 </th>
@@ -119,8 +119,8 @@ export default function Availability() {
                       <img src={Mercedes} alt="car" />
                     </div>
                     <div className="bookingVechile-detail mt-2">
-                      <h2 className="text-dark-white">Mercedes</h2>
-                      <p className="mb-0">£25.99/h</p>
+                      <h2 className="text-dark-white" style={{ textAlign: 'left' }}>Mercedes</h2>
+                      <p className="mb-0" style={{ textAlign: 'left' }}>£25.99/h</p>
                     </div>
                   </div>
                 </th>
@@ -154,8 +154,8 @@ export default function Availability() {
                       <img src={Mercedes} alt="car" />
                     </div>
                     <div className="bookingVechile-detail mt-2">
-                      <h2 className="text-dark-white">Mercedes</h2>
-                      <p className="mb-0">£25.99/h</p>
+                      <h2 className="text-dark-white" style={{ textAlign: 'left' }}>Mercedes</h2>
+                      <p className="mb-0" style={{ textAlign: 'left' }}>£25.99/h</p>
                     </div>
                   </div>
                 </th>
@@ -189,8 +189,8 @@ export default function Availability() {
                       <img src={Mercedes} alt="car" />
                     </div>
                     <div className="bookingVechile-detail mt-2">
-                      <h2 className="text-dark-white">Mercedes</h2>
-                      <p className="mb-0">£25.99/h</p>
+                      <h2 className="text-dark-white" style={{ textAlign: 'left' }}>Mercedes</h2>
+                      <p className="mb-0" style={{ textAlign: 'left' }}>£25.99/h</p>
                     </div>
                   </div>
                 </th>

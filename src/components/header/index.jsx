@@ -392,12 +392,7 @@ export default function Header() {
                       <option>Mrs</option>
                       <option>Miss</option>
                       <option>Ms</option>
-                      <option>Mx</option>
-                      <option>Sir</option>
-                      <option>Dr</option>
-                      <option>Cllr</option>
-                      <option>Lady</option>
-                      <option>Lord</option>
+                      <option>Other</option>
                     </select>
                   </div>
                 </div>
@@ -407,6 +402,7 @@ export default function Header() {
                       <option disabled selected hidden>Gender</option>
                       <option>Male</option>
                       <option>Female</option>
+                      <option>Other</option>
                     </select>
                   </div>
                 </div>

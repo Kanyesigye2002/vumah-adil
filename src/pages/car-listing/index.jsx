@@ -95,7 +95,7 @@ export default function CarListing(props) {
                     cursor: 'pointer',
                     pointerEvents: 'none'
                   }}>
-                    COPY
+                    COPY LINK
                   </span>
                 </div>
               </PopoverBody>
@@ -131,9 +131,9 @@ export default function CarListing(props) {
                 <h2>Car hosted by Karen</h2>
                 <p>Level 4 host</p>
                 <p className="unlock-text">
-                  <a href="public-review.html">
+                  <Link to="/public-review">
                     <u>View Profile</u>
-                  </a>
+                  </Link>
                 </p>
               </div>
             </div>

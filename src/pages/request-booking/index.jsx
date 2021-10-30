@@ -137,9 +137,6 @@ export default function RequestBooking() {
                       <h2>Dates</h2>
                       <p>27 Jun (10:00) - 9 July (10:00)</p>
                     </div>
-                    <div className="col-md-6 text-right-align">
-                      <span className="secondary-color pointer" onClick={toggleShowEditDateContent}>Edit</span>
-                    </div>
                     <div className="col-md-12">
                       <Collapse isOpen={showDateEditContent}>
                         <DateRangePicker
