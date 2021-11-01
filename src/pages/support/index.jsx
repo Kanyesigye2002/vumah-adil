@@ -1,14 +1,70 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
-import { HashLink as Link } from 'react-router-hash-link';
 import classnames from 'classnames';
+import { Link as RLink } from 'react-router-dom';
+
+function Link(props) {
+  function scrollToHash(runMore) {
+    if (props.to && props.to.includes('#')) {
+      const id = props.to.split('#');
+      if (id.length > 1) {
+        const el = document.getElementById(id[1]);
+
+        if (el) {
+          el.scrollIntoView();
+        }
+      }
+    }
+
+    if (runMore !== false) {
+      setTimeout(() => {
+        scrollToHash(false);
+      }, 50);
+
+      setTimeout(() => {
+        scrollToHash(false);
+      }, 100);
+
+      setTimeout(() => {
+        scrollToHash(false);
+      }, 150);
+
+      setTimeout(() => {
+        scrollToHash(false);
+      }, 200);
+    }
+  }
+
+  return <RLink onClick={scrollToHash} {...props} />;
+}
 
 export default function Support() {
   const [activeTab, setActiveTab] = useState('1');
 
   const toggle = tab => {
+    location.hash = tab;
     if (activeTab !== tab) setActiveTab(tab);
   };
+
+  if (location.hash === '#1') {
+    toggle('1');
+  } else if (location.hash === '#2') {
+    toggle('2');
+  } else if (location.hash === '#3') {
+    toggle('3');
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (location.hash === '#1') {
+        toggle('1');
+      } else if (location.hash === '#2') {
+        toggle('2');
+      } else if (location.hash === '#3') {
+        toggle('3');
+      }
+    }, 100);
+  });
 
   return (
     <section className="support-main padd-top-60 padd-bottom-60">
@@ -20,7 +76,7 @@ export default function Support() {
               <input type="search" placeholder="Keywords..." />
               <i className="fas fa-search"></i>
             </div>
-            <div className="support-search-btn">
+            <div className="support-search-btn text-center">
               Search
             </div>
           </div>

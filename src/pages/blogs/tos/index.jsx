@@ -8,270 +8,270 @@ export default function HostGuide() {
         <div className="row">
           <div className="col-md-3 support-sidebar">
             <div className="mb-5">
-              <Link to="/tos#introduction">
+              <Link to="/tos#1">
                 INTRODUCTION
               </Link>
             </div>
 
             <div className="mb-3">
-              <Link to="/tos#user-conduct-policies">
+              <Link to="/tos#2">
                 USER CONDUCT POLICIES
               </Link>
             </div>
             <div className="mb-3">
-              <Link to="/tos#host-rankings-and-performance">
+              <Link to="/tos#3">
                 Review Policy
               </Link>
             </div>
             <div className="mb-3">
-              <Link to="/tos#overview-of-fees-credits-bills">
+              <Link to="/tos#4">
                 Review Guidelines
               </Link>
             </div>
             <div className="mb-4">
-              <Link to="/tos#report-an-issue">
+              <Link to="/tos#5">
                 Removing a review
               </Link>
             </div>
 
             <div className="mb-4">
-              <Link to="/tos#late-return">
+              <Link to="/tos#6">
                 MODERATE CIRCUMSTANCES
               </Link>
             </div>
 
             <div className="mb-3">
-              <Link to="/tos#cancel-booking">
+              <Link to="/tos#7">
                 WHAT IS COVERED BY THE POLICY
               </Link>
             </div>
             <div className="mb-3">
-              <Link to="/tos#sales-tax-and-vat">
+              <Link to="/tos#8">
                 Scenarios when documentation will be required
               </Link>
             </div>
             <div className="mb-4">
-              <Link to="/tos#how-payments-work">
+              <Link to="/tos#9">
                 Scenarios when we do not require documentation
               </Link>
             </div>
 
             <div className="mb-4">
-              <Link to="/tos#">
+              <Link to="/tos#10">
                 SETTLEMENT TOOL / CLAIMS RESOLUTIONS CENTRE MISMANAGEMENT
               </Link>
             </div>
 
             <div className="mb-4">
-              <Link to="/tos#">
+              <Link to="/tos#11">
                 FORBIDDEN TRANSACTIONS
               </Link>
             </div>
 
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#12">
                 TRANSACTIONS PROHIBITED ON THE PLATFORM
               </Link>
             </div>
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#13">
                 Exceptions we allow
               </Link>
             </div>
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#14">
                 Extra information for Vumah’s hosts
               </Link>
             </div>
             <div className="mb-4">
-              <Link to="/tos#">
+              <Link to="/tos#15">
                 Extra information for guests
               </Link>
             </div>
 
             <div className="mb-4">
-              <Link to="/tos#">
+              <Link to="/tos#16">
                 DECENT NEIGHBOUR POLICY
               </Link>
             </div>
 
             <div className="mb-4">
-              <Link to="/tos#">
+              <Link to="/tos#17">
                 MODIFICATIONs
               </Link>
             </div>
 
             <div className="mb-4">
-              <Link to="/tos#">
+              <Link to="/tos#18">
                 ELIGIBILITY
               </Link>
             </div>
 
             <div className="mb-4">
-              <Link to="/tos#">
+              <Link to="/tos#19">
                 REGISTRATION
               </Link>
             </div>
 
             <div className="mb-4">
-              <Link to="/tos#">
+              <Link to="/tos#20">
                 VERIFICATION
               </Link>
             </div>
 
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#21">
                 DISPUTE SETTLEMENT
               </Link>
             </div>
             <div className="mb-4">
-              <Link to="/tos#">
+              <Link to="/tos#22">
                 Acceptable Dispute Resolution Methods
               </Link>
             </div>
 
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#23">
                 OTHER LEGAL MATTERS
               </Link>
             </div>
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#24">
                 Policy enforcement
               </Link>
             </div>
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#25">
                 Communication
               </Link>
             </div>
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#26">
                 Non-disparagement
               </Link>
             </div>
             <div className="mb-5">
-              <Link to="/tos#">
+              <Link to="/tos#27">
                 Insurance and protection plans
               </Link>
             </div>
   
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#28">
                 SPECIFIC TERMS FOR HOSTS
               </Link>
             </div>
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#29">
                 Host commitments
               </Link>
             </div>
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#30">
                 Information given at registration
               </Link>
             </div>
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#31">
                 Vumah photography
               </Link>
             </div>
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#32">
                 Vehicle availability
               </Link>
             </div>
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#33">
                 Pricing, earnings, and payments
               </Link>
             </div>
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#34">
                 Payment Processing
               </Link>
             </div>
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#35">
                 Maintenance
               </Link>
             </div>
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#36">
                 Reporting vehicle damage
               </Link>
             </div>
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#37">
                 Liability insurance
               </Link>
             </div>
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#38">
                 Other host-specific insurance matters
               </Link>
             </div>
             <div className="mb-5">
-              <Link to="/tos#">
+              <Link to="/tos#39">
                 Additional terms for Commercial/Business Hosts
               </Link>
             </div>
 
 
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#40">
                 SPECIFIC TERMS FOR GUESTS
               </Link>
             </div>
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#41">
                 Guest commitments
               </Link>
             </div>
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#42">
                 Guest financial responsibility for physical damage to the vehicle
               </Link>
             </div>
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#43">
                 Auto liability insurance
               </Link>
             </div>
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#44">
                 Booking with Commercial Hosts
               </Link>
             </div>
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#45">
                 Use of the vehicle
               </Link>
             </div>
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#46">
                 State of the vehicle and optional add-on
               </Link>
             </div>
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#47">
                 No accountability for mutual vehicles
               </Link>
             </div>
             <div className="mb-3">
-              <Link to="/tos#">
+              <Link to="/tos#48">
                 Accident reporting
               </Link>
             </div>
             <div>
-              <Link to="/tos#">
+              <Link to="/tos#49">
                 Stolen Vehicle
               </Link>
             </div>
           </div>
           <div className="col-md-8 guest-management padding-left-thirty">
             <div className="row">
-              <div className="col-12" id="vehicle-not-returned-in-right-state">
+              <div className="col-12" id="1">
                 <h2>
                   INTRODUCTION
                 </h2>
@@ -283,7 +283,7 @@ export default function HostGuide() {
                 </p>
               </div>
 
-              <div className="col-12 mt-4" id="vehicle-not-returned-in-right-state">
+              <div className="col-12 mt-4" id="2">
                 <h2>
                   USER CONDUCT POLICIES
                 </h2>
@@ -336,7 +336,7 @@ export default function HostGuide() {
                 </p>
               </div>
 
-              <div className="col-12 mt-4" id="vehicle-not-returned-in-right-state">
+              <div className="col-12 mt-4" id="3">
                 <h2>
                   Review Policy
                 </h2>
@@ -348,7 +348,7 @@ export default function HostGuide() {
                 </p>
               </div>
 
-              <div className="col-12 mt-4" id="vehicle-not-returned-in-right-state">
+              <div className="col-12 mt-4" id="4">
                 <h2>
                   Review Guidelines
                 </h2>
@@ -380,7 +380,7 @@ export default function HostGuide() {
                 </p>
               </div>
 
-              <div className="col-12 mt-4" id="create-a-listing">
+              <div className="col-12 mt-4" id="5">
                 <h2>Removing a review</h2>
                 <p className="ml-4">
                   We understand that both parties may have different opinions about their experience during a trip and that this may lead to misunderstandings. Due to these reasons, reviews are not removed unless:
@@ -395,7 +395,7 @@ export default function HostGuide() {
                 </ul>
               </div>
 
-              <div className="col-12 mt-5" id="host-rankings-and-performance">
+              <div className="col-12 mt-5" id="6">
                 <h2>MODERATE CIRCUMSTANCES</h2>
                 <p>
                   At Vumah, we believe there could be supervening incidents outside of your control that may force you to cancel a trip. Vumah operates a moderate circumstances policy which allows hosts and guests to receive a refund or a waiver of cancellation penalties when certain conditions apply. If your trip meets the criteria we will assist with the cancellation of the trip.
@@ -419,10 +419,10 @@ export default function HostGuide() {
                 </ul>
               </div>
 
-              <div className="col-12 mt-5" id="host-rankings-and-performance">
+              <div className="col-12 mt-5" id="7">
                 <h2>WHAT IS COVERED BY THE POLICY</h2>
                 
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="8">
                   Scenarios when documentation will be required
                 </h6>
                 <ul className="support-order-list">
@@ -448,7 +448,7 @@ export default function HostGuide() {
                   </li>
                 </ul>
 
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="9">
                   Scenarios when we do not require documentation
                 </h6>
                 <p className="mt-3">
@@ -471,7 +471,7 @@ export default function HostGuide() {
                 </p>
               </div>
 
-              <div className="col-12 mt-5" id="host-rankings-and-performance">
+              <div className="col-12 mt-5" id="10">
                 <h2>SETTLEMENT TOOL / CLAIMS RESOLUTIONS CENTRE MISMANAGEMENT</h2>
                 <ul className="support-order-list">
                   <li style={{listStyle: 'disc'}}>
@@ -486,14 +486,14 @@ export default function HostGuide() {
                 </ul>
               </div>
 
-              <div className="col-12 mt-5" id="host-rankings-and-performance">
+              <div className="col-12 mt-5" id="11">
                 <h2>FORBIDDEN TRANSACTIONS</h2>
                 <p className="mt-3">
                   Safety and security are Vumah’s top priority for the users on our platform. This is the reason that we strictly prohibit hosts and guests from requesting, accepting, or making payments outside of Vumah. By ensuring all transactions are made via the platform, Vumah can provide the best protection against fraud and allows the Customer Support team to verify pertinent information in the event of a dispute, no-show, or issue with a trip.
                 </p>
               </div>
 
-              <div className="col-12 mt-5" id="host-rankings-and-performance">
+              <div className="col-12 mt-5" id="12">
                 <h2>TRANSACTIONS PROHIBITED ON THE PLATFORM</h2>
                 <p className="mt-3">
                   Transactions which Vumah cannot guarantee or condone include, but are not limited to, paying for the following types of items outside of Vumah (i.e. via, cash, check, credit card, Square, Bitcoin, Venmo, or any other method of payment):
@@ -534,7 +534,7 @@ export default function HostGuide() {
                   </li>
                 </ul>
                 
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="13">
                   Exceptions we allow:
                 </h6>
                 <ul className="support-order-list">
@@ -549,14 +549,14 @@ export default function HostGuide() {
                   </li>
                 </ul>
                 
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="14">
                   Extra information for Vumah’s hosts
                 </h6>
                 <p className="mt-3">
                   Taking part in forbidden market transactions will revoke any Vumah-provided coverage such as liability insurance and physical damage protection. This includes the protection for any accidents, roadside assistance, damage claims, and any other support we would usually provide. This is due to payments made outside of the platform would make it difficult for Vumah to monitor and support. Depending on the situation this voids our ability to complete any transactions on the host’s behalf. Outside transactions restricts us from issuing any reimbursements for late returns, additional mileage fees, and tickets and tolls , as there would be no proof of payment the platform.
                 </p>
                 
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="15">
                   Extra information for guests
                 </h6>
                 <p className="mt-3">
@@ -570,14 +570,14 @@ export default function HostGuide() {
                 </p>
               </div>
 
-              <div className="col-12 mt-5" id="host-rankings-and-performance">
+              <div className="col-12 mt-5" id="16">
                 <h2>DECENT NEIGHBOUR POLICY</h2>
                 <p className="mt-3">
                   Hosts are encouraged to be decent neighbours by being mindful of parking and other restrictions in the hosts area, as there are communities that prohibit street parking for vehicles which engage in commercial activity. All hosts vehicles are encouraged to park on private property, to avoid parking problems for their neighbours. If we receive complaints regarding host parking, Vumah reserves the right to restrict these vehicles and accounts.
                 </p>
               </div>
 
-              <div className="col-12 mt-5" id="host-rankings-and-performance">
+              <div className="col-12 mt-5" id="17">
                 <h2>
                 MODIFICATIONs
                 </h2>
@@ -586,7 +586,7 @@ export default function HostGuide() {
                 </p>
               </div>
 
-              <div className="col-12 mt-5" id="host-rankings-and-performance">
+              <div className="col-12 mt-5" id="18">
                 <h2>
                 ELIGIBILITY
                 </h2>
@@ -595,7 +595,7 @@ export default function HostGuide() {
                 </p>
               </div>
 
-              <div className="col-12 mt-5" id="host-rankings-and-performance">
+              <div className="col-12 mt-5" id="19">
                 <h2>
                 REGISTRATION
                 </h2>
@@ -604,7 +604,7 @@ export default function HostGuide() {
                 </p>
               </div>
 
-              <div className="col-12 mt-5" id="host-rankings-and-performance">
+              <div className="col-12 mt-5" id="20">
                 <h2>
                 VERIFICATION
                 </h2>
@@ -624,14 +624,14 @@ export default function HostGuide() {
                 </p>
               </div>
 
-              <div className="col-12 mt-5" id="host-rankings-and-performance">
+              <div className="col-12 mt-5" id="21">
                 <h2>
                   DISPUTE SETTLEMENT
                 </h2>
                 <p className="mt-3">
                   At Vumah, we respect the individual choice of all users on the platform. You agree that, in the event of a grievance to explore the dispute settlement methods and channels provided. Any legal endeavor outside the platform and the options that we provide would be held null and void from the very beginning.
                 </p>
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="22">
                   Acceptable Dispute Resolution Methods:
                 </h6>
                 <p className="mt-3">
@@ -642,7 +642,7 @@ export default function HostGuide() {
                 </p>
               </div>
 
-              <div className="col-12 mt-5" id="host-rankings-and-performance">
+              <div className="col-12 mt-5" id="23">
                 <h2>
                   OTHER LEGAL MATTERS
                 </h2>
@@ -653,14 +653,14 @@ export default function HostGuide() {
                   Vumah has the right, at any moment, without giving prior notice, in accordance with applicable law, to have access removed or disabled to any content, at our sole discretion, if found to be in violation of these Terms and conditions, or harmful to the platform or the community. If we find that you have been abusing Vumah, the users on the platform, or any other person or violated Terms and conditions, we may, in our sole discretion suspend, limit, or remove your Vumah Account and access to the platform’s services, remove hosted content, deny a damage claim, remove or demote your listings and take technical and/or legal methods which shall prevent you from getting access to the Services on the platform. We have the right to deny or remove access to the Services we offer to anyone for any reason at our sole discretion to the full extent under the law.
                 </p>
           
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="24">
                   Policy enforcement
                 </h6>
                 <p className="mt-3">
                   Under certain circumstances, if an issue arises, we will consider looking into the user’s performance history and applying our Policies. We could also decide to be more lenient with enforcing policy to ensure we are taking the correct action, subject to our sole and absolute discretion.
                 </p>
   
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="25">
                   Communication
                 </h6>
                 <p className="mt-3">
@@ -670,14 +670,14 @@ export default function HostGuide() {
                   When you choose to use any of our communication, you authorize Vumah and its service providers, without further notice or warning and in our discretion, to monitor or record telephone conversations or live chat conversations, you or anyone who is calling in your place with Vumah or its agents for quality control and training purposes. Therefore, you acknowledge and understand that your communications with Vumah may be recorded, monitored, or overheard without further notice or warning. If you do not wish to have your call recorded, please contact us instead by sending an email.
                 </p>
     
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="26">
                   Non-disparagement
                 </h6>
                 <p className="mt-3">
                   The Parties agree that no action that will harm the reputation of the other Party, or anything leading to unwanted or unfavorable publicity should be taken.
                 </p>
 
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="27">
                   Insurance and protection plans
                 </h6>
                 <p className="mt-3">
@@ -688,7 +688,7 @@ export default function HostGuide() {
                 </p>
               </div>
 
-              <div className="col-12 mt-5" id="host-rankings-and-performance">
+              <div className="col-12 mt-5" id="28">
                 <h2>
                   SPECIFIC TERMS FOR HOSTS
                 </h2>
@@ -696,42 +696,42 @@ export default function HostGuide() {
                   The following sections also apply if you share your vehicle through the Services:
                 </p>
           
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="29">
                   Host commitments
                 </h6>
                 <p className="mt-3">
                   As a host, you acknowledge that you will give a safe and legitimately enlisted vehicle, with current license plates, with a clean (non-salvage/marked/written off) title, and in functional mechanical condition, with an MOT pass. You have to provide the vehicle on time, as agreed upon confirmation of the customer’s rental request, and you are responsible to ensure the customer receiving the vehicle at the time is the correct guest who is listed on the Services as an Approved Driver for the trip. You acknowledge that your listings will be honestly completed, and you will respect all portrayals made in your listings. You will not offer any vehicle or discretionary Additions that you do not yourself possess or have power to share or that may not be shared for compensation as per the terms and conditions of any concurrence with a third party, including, however not restricted to, a lease or financing arrangement. You will not offer any Addition that isn't protected, clean, and satisfactory for the utilization it is proposed. You will not offer any vehicle that is the subject of a missing or stolen vehicle filed report. You will not offer any vehicle that is the subject of a safety recall review without first appropriately tending to the issue subject to the recall review. You will not offer a vehicle that is not roadworthy (i.e., not "road legal") in the area where it is shared, and it will not have any illegal upgrades/modifications to any section of the vehicle.
                 </p>
   
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="30">
                   Information given at registration
                 </h6>
                 <p className="mt-3">
                   At the point when you pursue signing up for Vumah, you acknowledge you hold the responsibility to recognize traveler vehicle(s) that you want to list for sharing through the platform. Every vehicle must meet the conditions mentioned here. You may only utilize the platform regarding vehicles registered to you or in any case have all the essential rights and authorizations to share for compensation.
                 </p>
 
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="31">
                   Vumah photography
                 </h6>
                 <p className="mt-3">
                   Only you are liable for utilizing the Pictures uploaded regarding your Vumah listing and you concur that you will stop utilizing the Pictures on the off chance that they presently don't precisely represent your vehicle. You acknowledge that Vumah is the sole and exclusive proprietor - or exclusive licensee, as permitted by applicable law - of all right, title, and interest in all copyrights, trademark rights, and all remaining protected intellectual property rights, including the right of advertising, worldwide, in the Pictures whether you incorporate them for your listing, and you will take no legal action to challenge or object to the legitimacy of such rights or Vumah's possession or enrollment thereof. You recognize that Vumah may utilize the Pictures for promoting, marketing, business, and other business purposes in any media or platform, regardless of whether comparable to your listing or otherwise, without any additional notification or compensation. Further, you waive all rights to eminences, royalties, or moral rights you may have in the Pictures.
                 </p>
 
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="32">
                   Vehicle availability
                 </h6>
                 <p className="mt-3">
                   When a booking is made by a guest, and you "the host" accept the offer, you alone are responsible that the vehicle is accessible or deliver the vehicle to the guest. If you offer the guest the alternative to pick up your vehicle at an agreed specific location, you should ensure to supply the pickup location of the vehicle precisely to Vumah and guarantee that the vehicle is available at the agreed location toward the start of the booking time frame. To qualify for available protection plans, you hold the responsibility to verify at arrival that the guest has a current, valid driver’s license, matching the profile of the booking, before you provide the guest your vehicle, and ensure the driver’s license matches the name on the booking and that the person picking up the vehicle appears to match the photograph on a facially valid driver’s license.
                 </p>
 
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="33">
                   Pricing, earnings, and payments
                 </h6>
                 <p className="mt-3">
                   You will be able to set and modify the vehicle's listing price freely. Vumah will pay you the sum gathered from customers that book your vehicle, subtracted by the pertinent charges payable to Vumah. A current expense schedule can be found here. Vumah also reserves the right to subtract any outstanding amounts from your payment, should you owe Vumah money for any reason.
                 </p>
 
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="34">
                   Payment Processing
                 </h6>
                 <p className="mt-3">
@@ -741,14 +741,14 @@ export default function HostGuide() {
                   There is personal vehicle sharing legislation that may apply to you. More information is available here.
                 </p>
 
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="35">
                   Maintenance
                 </h6>
                 <p className="mt-3">
                   The maintenance requirements are as stated in the “Host Commitments” section above. Also, Vumah reserves all rights to notify you and possibly remove or decline to list your vehicle if Vumah believes that your vehicle does not follow government guidelines with regards to vehicle road standards until its concerns have been resolved. Vumah may, but does not commit to, undertake efforts to ensure the safety of vehicles booked through the Services. Learn more about our vehicle eligibility requirements here.
                 </p>
 
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="36">
                   Reporting vehicle damage
                 </h6>
                 <p className="mt-3">
@@ -758,21 +758,21 @@ export default function HostGuide() {
                   If you fail to notify Vumah or the third-party business, hosting the vehicle for the specific reservation, within a timely manner as previously stated in this paragraph, or if you do not provide sensible cooperation in the investigation by Vumah or third-party claims officials, we may not be able to determine the cause. In that case, you agree that we may decline any compensation or coverage for such damage.
                 </p>
 
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="37">
                   Liability insurance
                 </h6>
                 <p className="mt-3">
                   Vumah is not an insurance company which insures hosts or guests. Protection plans are provided via the business you are booking with. The business holds full responsibility to provide you with the necessary insurance in accordance with UK law.
                 </p>
 
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="38">
                   Other host-specific insurance matters
                 </h6>
                 <p className="mt-3">
                   You will maintain validly and up to date registration information and proof of insurance in any vehicle you share on the Services. You must maintain your own auto insurance policy for any vehicle you list on the Services and such policy must meet any minimum insurance levels required by law. You agree to provide Vumah with information regarding your auto insurance policy as may be requested and to keep such information up to date. Where not prohibited by law, you hereby appoint Vumah or a wholly-owned subsidiary of Vumah as your attorney-in-fact to file insurance claims, receiving insurance payment, otherwise administering an applicable insurance policy, and/or working with law enforcement, guests, or private entities to recover your vehicle, as necessary.
                 </p>
 
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="39">
                   Additional terms for Commercial/Business Hosts:
                 </h6>
                 <p className="mt-3">
@@ -803,7 +803,7 @@ export default function HostGuide() {
                 </p>
               </div>
 
-              <div className="col-12 mt-5" id="host-rankings-and-performance">
+              <div className="col-12 mt-5" id="40">
                 <h2>
                   SPECIFIC TERMS FOR GUESTS
                 </h2>
@@ -811,14 +811,14 @@ export default function HostGuide() {
                   The following sections also apply if you use Vumah’s platform services:
                 </p>
           
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="41">
                   Guest commitments
                 </h6>
                 <p className="mt-3">
                   As a customer, you acknowledge that you will be a legitimately licensed driver and present verification to the host or via the platform of an up-to-date, valid driver’s license. You will attend to the vehicle and any relevant accessories adequately and will take all practical precautions to return the vehicle and any applied features on time and in primarily the exact condition as accepted. You will not permit any individual other than a person(s) listed in the trip booking details as an Approved Driver to operate the vehicle you booked.
                 </p>
   
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="42">
                   Guest financial responsibility for physical damage to the vehicle
                 </h6>
                 <p className="mt-3">
@@ -839,7 +839,7 @@ export default function HostGuide() {
                   </li>
                 </ol>
 
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="43">
                   Auto liability insurance
                 </h6>
                 <p className="mt-3">
@@ -849,7 +849,7 @@ export default function HostGuide() {
                   If the guest has their insurance policy, it will be primary over the protection provided by the third-party insurance company selected, dependent upon on various conditions such as applicable laws, where the guest books the vehicle, and/or where the accident or damages happen. Terms and exclusions apply. Learn more about Guest protection plans including insurance in the UK. 
                 </p>
 
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="44">
                   Booking with Commercial Hosts
                 </h6>
                 <p className="mt-3">
@@ -859,14 +859,14 @@ export default function HostGuide() {
                   If you book with a Commercial Host, no third-party liability insurance, financial responsibility limitations for physical damage, or roadside assistance is made available via the Vumah platform services, Vumah Insurance Agency, LLC, or any third-party insurance partners, brokers, or suppliers. The Commercial Host will bill you specifically for any appropriate protection plan after booking, not through our platform. In these conditions, a Commercial Host may expect you to sign further paperwork, provide a deposit, or pay further fees, costs, or taxes after booking, for example when picking up the vehicle. A Commercial Host may also have added conditions that differ from Vumah conditions (like requiring a credit card deposit). By booking a vehicle where a Commercial Host is offering you insurance protection, you agree that the Commercial Host may apply additional terms and fees after booking.
                 </p>
 
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="45">
                   Use of the vehicle
                 </h6>
                 <p className="mt-3">
                   When you book a vehicle on the Services, you must use the vehicle only for your personal use and not for any commercial purposes (e.g. driving other passengers for a fee such as through Uber or Lyft or delivering food or other packages) unless you have express written permission from Vumah’s Legal Department in advance or as otherwise described here. You may not access a vehicle until the trip start time and you must return the vehicle on time and to the correct location. You must present the host with a current, valid driver’s license. You must exercise reasonable care in your use of the vehicle. You are required at all times to operate the vehicle safely and in compliance with all applicable laws, including without limitation, speed limits, and prohibitions on impaired or distracted driving. In the event Vumah has any concern about your use of a vehicle, Vumah may terminate your trip at its discretion at any time and require the return of the vehicle, including recovering the vehicle on behalf of the host. You are required to wear seat belts during the operation of the vehicle and to require that all of your passengers wear seat belts. You are also required to meet any laws or regulations concerning child safety seats and other protections for children. You must not leave the car unlocked or with the keys abandoned in the ignition. You must not engage in any prohibited uses with any vehicle you book through the Services. The prohibited uses list is not meant to be exhaustive. If you have any concerns about your planned use, please contact support.Vumah.com. If you misuse a vehicle, you will be fully financially responsible for any related claims, loss, or damage, and your protection plan may be voided. Guests also acknowledge that using a vehicle in a prohibited manner or otherwise breaching the Agreement may lower available liability coverage to legal minimum limits, or nullify coverage, and may furthermore nullify any comprehensive or collision protection and/or protection plan where allowed by applicable law.
                 </p>
 
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="46">
                   State of the vehicle and optional add-on
                 </h6>
                 <p className="mt-3">
@@ -876,21 +876,21 @@ export default function HostGuide() {
                   Moreover, please ensure that you complete a visual inspection before you begin your use of the vehicle. If you see any damage in your initial inspection, you should upload photos to the Vumah platform of such pre-existing damage at the start of your reservation to ensure you are not held responsible for pre-existing damage. Furthermore, If you find damage on your initial inspection and fail to report it, Vumah, third-party administrators, or insurance partners, may assume that the damage occurred during your reservation period. If, after your initial inspection, you believe that the vehicle is not safe to drive, please do not use the vehicle; instead, please contact the Vumah team directly.
                 </p>
 
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="47">
                   No accountability for mutual vehicles
                 </h6>
                 <p className="mt-3">
                   You accept that Vumah is not liable and will be not responsible for the roadworthiness, safety, legal standing of the vehicle ( if the vehicle is stolen or legally registered) of any vehicles shared via the Services beyond our policies that require hosts to ensure their vehicles are in safe and operable condition, legally registered to be driven on public roads, not subject to a missing or stolen vehicle report, have a clean title (e.g., non-salvaged/non-branded/non-washed/non-written off), not subject to any applicable safety recalls, and otherwise satisfy our eligibility requirements.
                 </p>
 
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="48">
                   Accident reporting
                 </h6>
                 <p className="mt-3">
                   If you chose the protection plan during the booking process for your preferred vehicle using the provided services, you must immediately report any damage to the vehicle you are using to Vumah at support.Vumah.co.uk. If there was an accident, you must directly report it the police. In addition, you will require all reasonable efforts to secure evidence from any available witnesses and to provide Vumah or third-party claims administrators with a written description of the incident and any other information requested, including identity and insurance information of any parties involved in the incident. Furthermore, you are also required to cooperate in any loss investigation conducted by Vumah, third party claims administrators, or insurers. Following incident occurrence, you may not continue to use the vehicle unless you have the explicit permission of Vumah staff. If you fail to report an accident or cooperate in an investigation may reduce or invalidate any protection plan received via the Services.
                 </p>
 
-                <h6 className="my-button mb-3 mt-5">
+                <h6 className="my-button mb-3 mt-5" id="49">
                   Stolen Vehicle
                 </h6>
                 <p className="mt-3">

@@ -1,8 +1,42 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link as RLink } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { useLocation } from 'react-router-dom'
 
+function Link(props) {
+  function scrollToHash(runMore) {
+    if (props.to && props.to.includes('#')) {
+      const id = props.to.split('#');
+      if (id.length > 1) {
+        const el = document.getElementById(id[1]);
+
+        if (el) {
+          el.scrollIntoView();
+        }
+      }
+    }
+
+    if (runMore !== false) {
+      setTimeout(() => {
+        scrollToHash(false);
+      }, 50);
+
+      setTimeout(() => {
+        scrollToHash(false);
+      }, 100);
+
+      setTimeout(() => {
+        scrollToHash(false);
+      }, 150);
+
+      setTimeout(() => {
+        scrollToHash(false);
+      }, 200);
+    }
+  }
+
+  return <RLink onClick={scrollToHash} {...props} />;
+}
 
 export default function Footer() {
   const location = useLocation();
@@ -32,9 +66,9 @@ export default function Footer() {
               <h5>Become a Host</h5>
               <ul>
                 <li><Link to="/host-guide#create-a-listing">Start your business</Link></li>
-                <li><Link to="/support">Host support</Link></li>
+                <li><Link to="/support#2">Host support</Link></li>
                 <li><Link to="/host-guide#host-rankings-and-performance">Host ranking</Link></li>
-                <li><Link to="/host-guide#report-an-issue">Vehicle protection & insurance</Link></li>
+                <li><Link to="/tos#37">Vehicle protection & insurance</Link></li>
               </ul>
             </div>
           </div>
@@ -53,9 +87,9 @@ export default function Footer() {
             <div className="footer-grid">
               <h5>Support Centre</h5>
               <ul>
-                <li><Link to="/support">Support page</Link></li>
+                <li><Link to="/support#1">Support page</Link></li>
                 <li><Link to="/trust">Trust & safety</Link></li>
-                <li>Cancellations</li>
+                <li><Link to="/tos#6">Cancellations</Link></li>
                 <li><Link to="/covid">Covid-19 guidelines</Link></li>
                 <li><Link to="/faq">FAQs</Link></li>
               </ul>

@@ -16,7 +16,7 @@ export default function LandingPage() {
               vehicles to verified and licensed users, and an all in one vehicle rental platform covering cars,
               bicycles, motorcycles, campervans and soon much more! Getting started is easy, sign up and get
               started today. </p>
-            <button className="get-started-btn common-btn" href="#signUp_popup" data-toggle="modal">Get started</button>
+            <a className="get-started-btn common-btn" href="#open-sign-up-modal" data-toggle="modal">Get started</a>
           </div>
         </div>
       </section>
@@ -37,7 +37,7 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="col-lg-2 text-center text-lg-right">
-                  <a className="host-btn common-btn" href="#signUp_popup" data-toggle="modal">HOST NOW</a>
+                  <a className="host-btn common-btn" href="#open-sign-up-modal" data-toggle="modal">HOST NOW</a>
                 </div>
               </div>
               <div className="row">
@@ -143,7 +143,7 @@ export default function LandingPage() {
                       </div>
                     </div>
                     <div className="col-lg-6 text-center text-lg-right">
-                      <a className="host-btn common-btn" href="#signUp_popup" data-toggle="modal">HOST NOW</a>
+                      <a className="host-btn common-btn" href="#open-sign-up-modal" data-toggle="modal">HOST NOW</a>
                     </div>
                   </div>
                 </div>

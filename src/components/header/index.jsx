@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Modal, ModalHeader, ModalBody, TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
@@ -270,6 +270,58 @@ export default function Header() {
     <span aria-hidden="true"><i className="fas fa-times-circle fa-lg"></i></span>
   </button>;
 
+	let trigger;
+
+	useEffect(() => {
+		if (window.location.hash === '#open-sign-up-modal' || trigger) {
+			setAccountType('business');
+			toggleSignUpTabs('2');
+			setShowSignupModal(true);
+			window.location.hash = '';
+			trigger = true;
+		}
+
+		setTimeout(() => {
+			if (window.location.hash === '#open-sign-up-modal' || trigger) {
+				setAccountType('business');
+				toggleSignUpTabs('2');
+				setShowSignupModal(true);
+				window.location.hash = '';
+				trigger = true;
+			}
+		}, 50);
+
+		setTimeout(() => {
+			if (window.location.hash === '#open-sign-up-modal' || trigger) {
+				setAccountType('business');
+				toggleSignUpTabs('2');
+				setShowSignupModal(true);
+				window.location.hash = '';
+				trigger = true;
+			}
+		}, 100);
+
+		setTimeout(() => {
+			if (window.location.hash === '#open-sign-up-modal' || trigger) {
+				setAccountType('business');
+				toggleSignUpTabs('2');
+				setShowSignupModal(true);
+				window.location.hash = '';
+				trigger = true;
+			}
+		}, 150);
+
+		setTimeout(() => {
+			if (window.location.hash === '#open-sign-up-modal' || trigger) {
+				setAccountType('business');
+				toggleSignUpTabs('2');
+				setShowSignupModal(true);
+				window.location.hash = '';
+				trigger = true;
+			}
+		}, 200);
+	});
+
   return (
     <>
       <header className="header-main">
@@ -299,24 +351,26 @@ export default function Header() {
                       <DropdownMenu className="dropdown-menu">
                         <DropdownItem onClick={toggleLoginModal}>Login</DropdownItem>
                         <DropdownItem onClick={toggleSignupModal}>Sign Up</DropdownItem>
-                        <DropdownItem>Profile</DropdownItem>
-                        <DropdownItem>Notifications</DropdownItem>
-                        <DropdownItem>Messages</DropdownItem>
-                        <DropdownItem>Bookings</DropdownItem>
-                        <DropdownItem>Favourites</DropdownItem>
+                        <DropdownItem style={{display: 'flex'}}>
+													<Link to="/public-review" style={{color: 'inherit', width: '100%'}}>Profile</Link>
+												</DropdownItem>
+                        <DropdownItem style={{display: 'flex'}}><Link to="/account" style={{color: 'inherit', width: '100%'}}>Notifications</Link></DropdownItem>
+                        <DropdownItem style={{display: 'flex'}}><Link to="/chat" style={{color: 'inherit', width: '100%'}}>Messages</Link></DropdownItem>
+                        <DropdownItem style={{display: 'flex'}}><Link to="/earning" style={{color: 'inherit', width: '100%'}}>Bookings</Link></DropdownItem>
+                        <DropdownItem style={{display: 'flex'}}><Link to="/account" style={{color: 'inherit', width: '100%'}}>Favourites</Link></DropdownItem>
                         <DropdownItem divider />
 
-                        <DropdownItem>Vehicle Listings</DropdownItem>
-                        <DropdownItem className="header-ads-manager">
+                        <DropdownItem style={{display: 'flex'}}><Link to="/earning" style={{color: 'inherit', width: '100%'}}>Vehicle Listings</Link></DropdownItem>
+                        <DropdownItem style={{display: 'flex'}} className="header-ads-manager">
                           Ads Manager
                           <span className="header-coming-soon">coming soon</span>
                         </DropdownItem>
 
                         <DropdownItem divider />
 
-                        <DropdownItem>Account</DropdownItem>
-                        <DropdownItem>Help</DropdownItem>
-                        <DropdownItem>Logout</DropdownItem>
+                        <DropdownItem style={{display: 'flex'}}><Link to="/account" style={{color: 'inherit', width: '100%'}}>Account</Link></DropdownItem>
+                        <DropdownItem style={{display: 'flex'}}><Link to="/support#1" style={{color: 'inherit', width: '100%'}}>Help</Link></DropdownItem>
+                        <DropdownItem style={{display: 'flex'}}><Link to="/" style={{color: 'inherit', width: '100%'}}>Logout</Link></DropdownItem>
 
                       </DropdownMenu>
                     </Dropdown>

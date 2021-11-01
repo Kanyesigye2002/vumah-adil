@@ -48,7 +48,7 @@ export default function GuestGuide() {
 
               <div className="col-12">
                 <h2>
-                  1: Join the Vumah Community
+                  Join the Vumah Community
                 </h2>
                 <p className="ml-4">
                   If you have not signed up to the Vumah platform yet, go www.vumah.com and click Sign Up found in the drop-down menu. After you sign up, you will only be able to reserve a vehicle once your account information has been completed and verified. The following steps will outline what is required before you can finally start your adventure!
@@ -62,7 +62,7 @@ export default function GuestGuide() {
                 </ol>
 
                 <h2 className="mt-5">
-                  2: Search for a suitable vehicle
+                  Search for a suitable vehicle
                 </h2>
                 <p className="ml-4">
                   Choosing a suitable vehicle might not always be the easiest thing. Especially when there are a lot of options to choose from on our platform. You can filter your choice, simply by following the steps below:
@@ -81,7 +81,7 @@ export default function GuestGuide() {
 
 
                 <h2 className="mt-5">
-                  3: Booking your vehicle
+                  Booking your vehicle
                 </h2>
                 <p className="ml-4">
                   <span className="text-underline">Pick Up & return location:</span> Once a booking has been made, you can then contact the host of the vehicle reserved and choose the best pick up & return location that suits you both.
@@ -95,7 +95,7 @@ export default function GuestGuide() {
 
 
                 <h2 className="mt-5">
-                  4: Picking Up the Vehicle
+                  Picking Up the Vehicle
                 </h2>
                 <p className="ml-4">
                   <b>Motor vehicle:</b> <br />
@@ -120,7 +120,7 @@ export default function GuestGuide() {
 
 
                 <h2 className="mt-5">
-                  5: Returning the vehicle
+                  Returning the vehicle
                 </h2>
                 <p className="ml-4">
                   You are responsible for returning the vehicle in the same condition in which you received it. You can document a vehicle by taking a photo, video, or any other suitable way.
@@ -142,7 +142,7 @@ export default function GuestGuide() {
                 </div>
               </div>
               <div className="col-12">
-                <h2>1: Host didn’t show up</h2>
+                <h2>Host didn’t show up</h2>
                 <p className="ml-4">
                   Has the host not shown up? When you arrive to pick up the vehicle and your host or the vehicle is not there, follow these guidelines:
                 </p>
@@ -154,7 +154,7 @@ export default function GuestGuide() {
                 </ol>
 
                 <h2 className="mt-5">
-                  2: Vehicle unsafe or unsatisfactory
+                  Vehicle unsafe or unsatisfactory
                 </h2>
                 <p className="ml-4">
                   When you meet your host in person, ask them to wait while you walk around the vehicle to check inside (depending on the vehicle type), outside, take pre-trip photos, and check the state of the vehicle in general.
@@ -170,7 +170,7 @@ export default function GuestGuide() {
 
 
                 <h2 className="mt-5">
-                  3: Extending your trip
+                  Extending your trip
                 </h2>
                 <p className="ml-4">
                   You can change the end time of your trip to keep the vehicle longer. To do that, you must submit a request via Vumah before the trip starts or while it is in progress. You will be unable to submit via the system once the trip has ended. A trip change is only valid if you make the request through Vumah and your host approves it.
@@ -181,7 +181,7 @@ export default function GuestGuide() {
 
 
                 <h2 className="mt-5">
-                  4: Late returns
+                  Late returns
                 </h2>
                 <p className="ml-4">
                   If you need more time for your trip, notify the host and request an extension.
@@ -205,7 +205,7 @@ export default function GuestGuide() {
                 </div>
               </div>
               <div className="col-12">
-                <h2>1: Avoiding additional charges</h2>
+                <h2>Avoiding additional charges</h2>
                 <p className="ml-4">
                   To avoid additional charges, make sure you read through our terms and conditions carefully, read the requirements when making a reservation and understand the does and do not as following:
                 </p>

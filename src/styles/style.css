@@ -845,6 +845,11 @@ body.dark-theme .dropdown-menu.my-button {
 .service-grid p {
   color: var(--primary-light-text-color);
 }
+.support-main :not(.support-sidebar) {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 .customer-support-main h2 {
   font-size: 25px;
   color: var(--primary-dark-color);
@@ -1006,6 +1011,30 @@ body.dark-theme .dropdown-menu.my-button {
   position: absolute;
   left: 30px;
   top: 23px;
+}
+.more-topic-grid a {
+  height: 100%;
+  width: 100%;
+}
+.more-topic-grid a > h4 {
+  text-align: left !important;
+  text-justify: unset !important;
+  line-height: 1.5;
+  margin-bottom: 0;
+  height: 100%;
+  width: 100%;
+  padding: 15px 20px;
+}
+.more-topic-grid {
+  display: flex;
+  background: #f0f0f0;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  height: 100%;
+}
+.dark-theme .more-topic-grid {
+  background: var(--primary-color);
+  border: 1px solid var(--primary-color);
 }
 .more-topic-grid h4 {
   font-size: 16px;

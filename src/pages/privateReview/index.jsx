@@ -108,7 +108,7 @@ export default function PrivateReview() {
                           defaultValue={window.location}
                           style={{
                             cursor: 'pointer',
-                            paddingRight: '55px'
+                            paddingRight: '95px'
                           }}
                           onClick={(e) => {
                             e.target.select();

@@ -1,35 +1,20 @@
-Landing Page
-- Dropdown vehicle by default
-
 Search Page
 - Double click selected vehicle
 - Sliders for entries
 - Hearts functionality (add to favorites)
 
-Car Listing
-- View Profile link broken
-
-Request Booking
-- Remove Edit button
-
 Sign Up
-- Title and Gender: Other
-- Remove Mr Mrs Miss Other
 - Add birthday dd/mm/yyyy underneath last name
 
 Chat
-- Breakdown: Remove default images
 - Camera icon for booking details
 - Dropdown (All, Request, etc) replace Chat with these values
 - Report guest/host modal (info to be provided)
 - Sepparate Messages pages
 
 Availability pages
-- Week: Remove autocomplete
 - Week: When clicking on a day, will automatically go to sunday (start of week)
-- Reorder Sunday first
 - Daily rates
-- Move it to the left (title, and rates below images)
 
 Earning pages
 - Date ranges (only dates)
@@ -42,22 +27,6 @@ Earning pages
 Earning pages / Add vehicle
 - Photos
 - Saved draft in red
-
-Support
-- Make it look better (boxes)
-- Justify content for support pages
-
-Header Menu
-- Add the Links in the dropdown
-
-Share Dropdonw
-- Copy to 'Copy Link'
-
-Become a host
-- All buttons will open Sign Up (business)
-
-Home
-- Learn more button will go to about us page
 
 Other Issues
 - Responsiveness
