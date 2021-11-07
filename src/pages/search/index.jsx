@@ -7,6 +7,7 @@ import moment from 'moment';
 import Mercedes from '../../assets/img/Mercedes-car.jpg';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, TabContent, TabPane, Nav, NavItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import Slider from "react-slick";
 
 export default function Search() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -45,8 +46,6 @@ export default function Search() {
         setPanelWidth(window.innerWidth);
       }
     }, true);
-
-    console.log(window.innerWidth);
   });
 
   return (
@@ -252,16 +251,34 @@ export default function Search() {
               >
                 <Link
                   className={selectedVehicleOnMap !== '1' ? 'company-product-list-grid' : 'company-product-list-grid is-active'}
-                  onMouseEnter={
-                    () => setSelectedVehicleOnMap('1')
-                  }
-                  onMouseLeave={
-                    () => setSelectedVehicleOnMap(null)
-                  }
+                  onClick={(event) => {
+                    if (selectedVehicleOnMap !== '1') {
+                      event.preventDefault();
+                      setSelectedVehicleOnMap('1');
+                    }
+                  }}
                   to="/car-listing"
                 >
                   <div className="company-product-list-img">
-                    <img src={Mercedes} alt="mercedes-car" />
+                    <Slider
+                      dots={true}
+                      infinite={true}
+                      speed={500}
+                      slidesToShow={1}
+                      slidesToScroll={1}
+                      className={'carModal-slider mb-5'}
+                      style={{borderRadius: '0', height: '100%'}}
+                    >
+                      <div>
+                        <img src={Mercedes} alt="car-modal-img" />
+                      </div>
+                      <div>
+                        <img src={Mercedes} alt="car-modal-img" />
+                      </div>
+                      <div>
+                        <img src={Mercedes} alt="car-modal-img" />
+                      </div>
+                    </Slider>
                   </div>
                   <div className="comapany-card-body">
                     <h2>Mercedes-Benz S-class 2018</h2>
@@ -272,7 +289,20 @@ export default function Search() {
                       <li>+3</li>
                     </ul>
                     <div className="comapany-card-footer d-flex justify-content-between mt-4 pt-2">
-                      <span className="heart-review"><i className="fas fa-heart"></i></span>
+                      <span className="heart-review">
+                        <i className="fas fa-heart" style={{fontWeight: 500}}
+                          onClick={(event) => {
+                            event.preventDefault();
+                            event.stopPropagation();
+
+                            if (event.currentTarget.style['font-weight'].toString() === '600') {
+                              event.currentTarget.style.fontWeight = 500;
+                            } else {
+                              event.currentTarget.style.fontWeight = 600;
+                            }
+                          }}
+                        ></i>
+                      </span>
                       <h2 style={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -296,16 +326,34 @@ export default function Search() {
 
                 <Link
                   className={selectedVehicleOnMap !== '2' ? 'company-product-list-grid' : 'company-product-list-grid is-active'}
-                  onMouseEnter={
-                    () => setSelectedVehicleOnMap('2')
-                  }
-                  onMouseLeave={
-                    () => setSelectedVehicleOnMap(null)
-                  }
+                  onClick={(event) => {
+                    if (selectedVehicleOnMap !== '2') {
+                      event.preventDefault();
+                      setSelectedVehicleOnMap('2');
+                    }
+                  }}
                   to="/car-listing"
                 >
                   <div className="company-product-list-img">
-                    <img src={Mercedes} alt="mercedes-car" />
+                    <Slider
+                      dots={true}
+                      infinite={true}
+                      speed={500}
+                      slidesToShow={1}
+                      slidesToScroll={1}
+                      className={'carModal-slider mb-5'}
+                      style={{borderRadius: '0', height: '100%'}}
+                    >
+                      <div>
+                        <img src={Mercedes} alt="car-modal-img" />
+                      </div>
+                      <div>
+                        <img src={Mercedes} alt="car-modal-img" />
+                      </div>
+                      <div>
+                        <img src={Mercedes} alt="car-modal-img" />
+                      </div>
+                    </Slider>
                   </div>
                   <div className="comapany-card-body">
                     <h2>Mercedes-Benz S-class 2018</h2>
@@ -316,7 +364,20 @@ export default function Search() {
                       <li>+3</li>
                     </ul>
                     <div className="comapany-card-footer d-flex justify-content-between mt-4 pt-2">
-                      <span className="heart-review"><i className="fas fa-heart"></i></span>
+                      <span className="heart-review">
+                        <i className="fas fa-heart" style={{fontWeight: 500}}
+                          onClick={(event) => {
+                            event.preventDefault();
+                            event.stopPropagation();
+
+                            if (event.currentTarget.style['font-weight'].toString() === '600') {
+                              event.currentTarget.style.fontWeight = 500;
+                            } else {
+                              event.currentTarget.style.fontWeight = 600;
+                            }
+                          }}
+                        ></i>
+                      </span>
                       <h2 style={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -340,16 +401,34 @@ export default function Search() {
 
                 <Link
                   className={selectedVehicleOnMap !== '3' ? 'company-product-list-grid' : 'company-product-list-grid is-active'}
-                  onMouseEnter={
-                    () => setSelectedVehicleOnMap('3')
-                  }
-                  onMouseLeave={
-                    () => setSelectedVehicleOnMap(null)
-                  }
+                  onClick={(event) => {
+                    if (selectedVehicleOnMap !== '3') {
+                      event.preventDefault();
+                      setSelectedVehicleOnMap('3');
+                    }
+                  }}
                   to="/car-listing"
                 >
                   <div className="company-product-list-img">
-                    <img src={Mercedes} alt="mercedes-car" />
+                    <Slider
+                      dots={true}
+                      infinite={true}
+                      speed={500}
+                      slidesToShow={1}
+                      slidesToScroll={1}
+                      className={'carModal-slider mb-5'}
+                      style={{borderRadius: '0', height: '100%'}}
+                    >
+                      <div>
+                        <img src={Mercedes} alt="car-modal-img" />
+                      </div>
+                      <div>
+                        <img src={Mercedes} alt="car-modal-img" />
+                      </div>
+                      <div>
+                        <img src={Mercedes} alt="car-modal-img" />
+                      </div>
+                    </Slider>
                   </div>
                   <div className="comapany-card-body">
                     <h2>Mercedes-Benz S-class 2018</h2>
@@ -360,7 +439,20 @@ export default function Search() {
                       <li>+3</li>
                     </ul>
                     <div className="comapany-card-footer d-flex justify-content-between mt-4 pt-2">
-                      <span className="heart-review"><i className="fas fa-heart"></i></span>
+                      <span className="heart-review">
+                        <i className="fas fa-heart" style={{fontWeight: 500}}
+                          onClick={(event) => {
+                            event.preventDefault();
+                            event.stopPropagation();
+
+                            if (event.currentTarget.style['font-weight'].toString() === '600') {
+                              event.currentTarget.style.fontWeight = 500;
+                            } else {
+                              event.currentTarget.style.fontWeight = 600;
+                            }
+                          }}
+                        ></i>
+                      </span>
                       <h2 style={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -384,16 +476,34 @@ export default function Search() {
 
                 <Link
                   className={selectedVehicleOnMap !== '4' ? 'company-product-list-grid' : 'company-product-list-grid is-active'}
-                  onMouseEnter={
-                    () => setSelectedVehicleOnMap('4')
-                  }
-                  onMouseLeave={
-                    () => setSelectedVehicleOnMap(null)
-                  }
+                  onClick={(event) => {
+                    if (selectedVehicleOnMap !== '4') {
+                      event.preventDefault();
+                      setSelectedVehicleOnMap('4');
+                    }
+                  }}
                   to="/car-listing"
                 >
                   <div className="company-product-list-img">
-                    <img src={Mercedes} alt="mercedes-car" />
+                    <Slider
+                      dots={true}
+                      infinite={true}
+                      speed={500}
+                      slidesToShow={1}
+                      slidesToScroll={1}
+                      className={'carModal-slider mb-5'}
+                      style={{borderRadius: '0', height: '100%'}}
+                    >
+                      <div>
+                        <img src={Mercedes} alt="car-modal-img" />
+                      </div>
+                      <div>
+                        <img src={Mercedes} alt="car-modal-img" />
+                      </div>
+                      <div>
+                        <img src={Mercedes} alt="car-modal-img" />
+                      </div>
+                    </Slider>
                   </div>
                   <div className="comapany-card-body">
                     <h2>Mercedes-Benz S-class 2018</h2>
@@ -404,7 +514,20 @@ export default function Search() {
                       <li>+3</li>
                     </ul>
                     <div className="comapany-card-footer d-flex justify-content-between mt-4 pt-2">
-                      <span className="heart-review"><i className="fas fa-heart"></i></span>
+                      <span className="heart-review">
+                        <i className="fas fa-heart" style={{fontWeight: 500}}
+                          onClick={(event) => {
+                            event.preventDefault();
+                            event.stopPropagation();
+
+                            if (event.currentTarget.style['font-weight'].toString() === '600') {
+                              event.currentTarget.style.fontWeight = 500;
+                            } else {
+                              event.currentTarget.style.fontWeight = 600;
+                            }
+                          }}
+                        ></i>
+                      </span>
                       <h2 style={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -428,16 +551,34 @@ export default function Search() {
 
                 <Link
                   className={selectedVehicleOnMap !== '5' ? 'company-product-list-grid' : 'company-product-list-grid is-active'}
-                  onMouseEnter={
-                    () => setSelectedVehicleOnMap('5')
-                  }
-                  onMouseLeave={
-                    () => setSelectedVehicleOnMap(null)
-                  }
+                  onClick={(event) => {
+                    if (selectedVehicleOnMap !== '5') {
+                      event.preventDefault();
+                      setSelectedVehicleOnMap('5');
+                    }
+                  }}
                   to="/car-listing"
                 >
                   <div className="company-product-list-img">
-                    <img src={Mercedes} alt="mercedes-car" />
+                    <Slider
+                      dots={true}
+                      infinite={true}
+                      speed={500}
+                      slidesToShow={1}
+                      slidesToScroll={1}
+                      className={'carModal-slider mb-5'}
+                      style={{borderRadius: '0', height: '100%'}}
+                    >
+                      <div>
+                        <img src={Mercedes} alt="car-modal-img" />
+                      </div>
+                      <div>
+                        <img src={Mercedes} alt="car-modal-img" />
+                      </div>
+                      <div>
+                        <img src={Mercedes} alt="car-modal-img" />
+                      </div>
+                    </Slider>
                   </div>
                   <div className="comapany-card-body">
                     <h2>Mercedes-Benz S-class 2018</h2>
@@ -448,7 +589,20 @@ export default function Search() {
                       <li>+3</li>
                     </ul>
                     <div className="comapany-card-footer d-flex justify-content-between mt-4 pt-2">
-                      <span className="heart-review"><i className="fas fa-heart"></i></span>
+                      <span className="heart-review">
+                        <i className="fas fa-heart" style={{fontWeight: 500}}
+                          onClick={(event) => {
+                            event.preventDefault();
+                            event.stopPropagation();
+
+                            if (event.currentTarget.style['font-weight'].toString() === '600') {
+                              event.currentTarget.style.fontWeight = 500;
+                            } else {
+                              event.currentTarget.style.fontWeight = 600;
+                            }
+                          }}
+                        ></i>
+                      </span>
                       <h2 style={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -472,16 +626,34 @@ export default function Search() {
 
                 <Link
                   className={selectedVehicleOnMap !== '6' ? 'company-product-list-grid' : 'company-product-list-grid is-active'}
-                  onMouseEnter={
-                    () => setSelectedVehicleOnMap('6')
-                  }
-                  onMouseLeave={
-                    () => setSelectedVehicleOnMap(null)
-                  }
+                  onClick={(event) => {
+                    if (selectedVehicleOnMap !== '6') {
+                      event.preventDefault();
+                      setSelectedVehicleOnMap('6');
+                    }
+                  }}
                   to="/car-listing"
                 >
                   <div className="company-product-list-img">
-                    <img src={Mercedes} alt="mercedes-car" />
+                    <Slider
+                      dots={true}
+                      infinite={true}
+                      speed={500}
+                      slidesToShow={1}
+                      slidesToScroll={1}
+                      className={'carModal-slider mb-5'}
+                      style={{borderRadius: '0', height: '100%'}}
+                    >
+                      <div>
+                        <img src={Mercedes} alt="car-modal-img" />
+                      </div>
+                      <div>
+                        <img src={Mercedes} alt="car-modal-img" />
+                      </div>
+                      <div>
+                        <img src={Mercedes} alt="car-modal-img" />
+                      </div>
+                    </Slider>
                   </div>
                   <div className="comapany-card-body">
                     <h2>Mercedes-Benz S-class 2018</h2>
@@ -492,7 +664,20 @@ export default function Search() {
                       <li>+3</li>
                     </ul>
                     <div className="comapany-card-footer d-flex justify-content-between mt-4 pt-2">
-                      <span className="heart-review"><i className="fas fa-heart"></i></span>
+                      <span className="heart-review">
+                        <i className="fas fa-heart" style={{fontWeight: 500}}
+                          onClick={(event) => {
+                            event.preventDefault();
+                            event.stopPropagation();
+
+                            if (event.currentTarget.style['font-weight'].toString() === '600') {
+                              event.currentTarget.style.fontWeight = 500;
+                            } else {
+                              event.currentTarget.style.fontWeight = 600;
+                            }
+                          }}
+                        ></i>
+                      </span>
                       <h2 style={{
                         display: 'flex',
                         flexDirection: 'column',

@@ -105,7 +105,8 @@ export default function Home() {
             <div className="col-sm-6 col-md-3 col-lg-4 mb-3 mb-sm-0">
               <DateRangePicker
                 initialSettings={{
-                  timePicker: true
+                  timePicker: true,
+                  timePickerIncrement: 15
                 }}
                 alwaysShowCalendars={true}
                 onEvent={handleEvent}

@@ -1,10 +1,13 @@
+Landing Page
+✓ 15min interval for date picker
+
 Search Page
-- Double click selected vehicle
-- Sliders for entries
-- Hearts functionality (add to favorites)
+✓ Double click selected vehicle
+✓ Sliders for entries
+✓ Hearts functionality (add to favorites)
 
 Sign Up
-- Add birthday dd/mm/yyyy underneath last name
+✓ Add birthday dd/mm/yyyy underneath last name
 
 Chat
 - Camera icon for booking details
@@ -13,7 +16,7 @@ Chat
 - Sepparate Messages pages
 
 Availability pages
-- Week: When clicking on a day, will automatically go to sunday (start of week)
+✓ Week: When clicking on a day, will automatically go to sunday (start of week)
 - Daily rates
 
 Earning pages

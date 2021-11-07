@@ -4,6 +4,8 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Modal, ModalHeade
 import classnames from 'classnames';
 import Logo from '../../assets/img/logo-main.png';
 import { useLocation } from 'react-router-dom'
+import DateRangePicker from "react-bootstrap-daterangepicker";
+import moment from 'moment';
 
 const countryList = [
 	"Afghanistan",
@@ -270,6 +272,8 @@ export default function Header() {
     <span aria-hidden="true"><i className="fas fa-times-circle fa-lg"></i></span>
   </button>;
 
+  const [fromDate, setFromDate] = useState('');
+
 	let trigger;
 
 	useEffect(() => {
@@ -466,6 +470,18 @@ export default function Header() {
                 <div className="contact-form-field mb-3">
                   <input type="text" placeholder="Last Name" />
                 </div>
+								<DateRangePicker
+									initialSettings={{
+										timePicker: false,
+										singleDatePicker: true
+									}}
+									alwaysShowCalendars={true}
+									onEvent={handleEvent}
+								>
+									<div className="contact-form-field mb-3">
+										<input type="text" placeholder="Birthday" value={fromDate} />
+									</div>
+								</DateRangePicker>
                 {accountType==='business'&&<div className="contact-form-field mb-3">
                   <input type="text" placeholder="Legal Business Name" />
                 </div>}
@@ -558,6 +574,15 @@ export default function Header() {
 
   function toggleSignupModal(e) {
     if (e) e.preventDefault();
+
+		if (showSignupModal) {
+			document.body.style.overflow = null;
+			document.getElementsByTagName('html')[0].style.overflow = null;
+		} else {
+			document.body.style.overflow = 'hidden';
+			document.getElementsByTagName('html')[0].style.overflow = 'hidden';
+		}
+
     setShowSignupModal(!showSignupModal);
   };
 
@@ -569,4 +594,8 @@ export default function Header() {
   function toggleSignUpTabs(tab) {
     if (signUpActiveTab !== tab) setSignUpActiveTab(tab);
   };
+
+  function handleEvent(event, picker) {
+    setFromDate(picker.startDate.format('M/DD/YYYY'));
+  }
 }

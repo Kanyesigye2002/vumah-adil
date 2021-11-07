@@ -28,6 +28,12 @@ export default function Availability() {
                     timePicker: false,
                     singleDatePicker: true,
                     showDropdowns: true,
+                    isInvalidDate: (date) => {
+                      if (date.day() === 0) {
+                        return false;
+                      }
+                      return true;
+                    }
                   }}
                   alwaysShowCalendars={true}
                   onEvent={handleEvent}
@@ -270,7 +276,9 @@ export default function Availability() {
   };
 
   function handleEvent(event, picker) {
-    console.log('picker', picker);
-    setWeekDate(picker.startDate.format('M/DD/YYYY'));
+    const dateee = moment(picker.startDate.unix() * 1000 - 1000 * 60 * 60 * 24 * picker.startDate.day());
+    picker.setEndDate(dateee);
+
+    setWeekDate(dateee.format('M/DD/YYYY'));
   };
 }
