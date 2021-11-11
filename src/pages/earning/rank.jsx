@@ -12,10 +12,15 @@ import DarkLineGraphLevelFour from '../../assets/img/line-graph-dark-level-4.png
 import LineGraphLevelFive from '../../assets/img/line-graph-level-5.png';
 import DarkLineGraphLevelFive from '../../assets/img/line-graph-dark-level-5.png';
 import SecurityImage from '../../assets/img/security.png';
+import DateRangePicker from "react-bootstrap-daterangepicker";
+import moment from 'moment';
 
 export default function Rank() {
   const [activeTab, setActiveTab] = useState('1');
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const [fromDate, setFromDate] = useState(moment().format('M/DD/YYYY'));
+  const [toDate, setToDate] = useState(moment().format('M/DD/YYYY'));
 
   return (
     <>
@@ -26,17 +31,17 @@ export default function Rank() {
               <h2 className="m-0">Host Ranking</h2>
               <div className="select-outere">
                 <div className="banner-search-dropdowne dropdown">
-
-                  <Dropdown isOpen={dropdownOpen} toggle={toggleDropdown} className="vumah-dropdown-menu">
-                    <DropdownToggle className="dropdown-toggle dropdown-header-button-gray">
-                      Date Range
-                    </DropdownToggle>
-                    <DropdownMenu>
-                      <DropdownItem className="dropdown-item vechiles">April 2021</DropdownItem>
-                      <DropdownItem className="dropdown-item vechiles">May 2021</DropdownItem>
-                      <DropdownItem className="dropdown-item vechiles">June 2021</DropdownItem>
-                    </DropdownMenu>
-                  </Dropdown>
+                  <DateRangePicker
+                    initialSettings={{
+                      timePicker: false
+                    }}
+                    alwaysShowCalendars={true}
+                    onEvent={handleEvent}
+                  >
+                    <div class="contact-form-field field-label mb-3">
+                      <input type="text" name="daterange" value={`${fromDate} - ${toDate}`} />
+                    </div>
+                  </DateRangePicker>
 
                   {/* <button id="options" aria-expanded="false" aria-haspopup="true"
                     role="button" data-toggle="dropdown" className=" btn dropdown-toggle">
@@ -568,5 +573,10 @@ export default function Rank() {
 
   function toggleDropdown() {
     setDropdownOpen(!dropdownOpen);
+  };
+
+  function handleEvent(event, picker) {
+    setFromDate(picker.startDate.format('M/DD/YYYY'));
+    setToDate(picker.endDate.format('M/DD/YYYY'));
   };
 }

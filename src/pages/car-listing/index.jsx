@@ -242,7 +242,8 @@ export default function CarListing(props) {
               <div className="mb-3">
                 <DateRangePicker
                   initialSettings={{
-                    timePicker: true
+                    timePicker: true,
+                    timePickerIncrement: 15
                   }}
                   alwaysShowCalendars={true}
                   onEvent={handleEvent}

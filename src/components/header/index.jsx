@@ -473,7 +473,12 @@ export default function Header() {
 								<DateRangePicker
 									initialSettings={{
 										timePicker: false,
-										singleDatePicker: true
+										singleDatePicker: true,
+										maxYear: new Date().getFullYear(),
+										maxDate: moment().format('MM/DD/') + `/${ (new Date().getFullYear()) - 18 }`,
+										showDropdowns: true,
+										endDate: moment().format('MM/DD/') + `/${ (new Date().getFullYear()) - 18 }`,
+										startDate: moment().format('MM/DD/') + `/${ (new Date().getFullYear()) - 18 }`
 									}}
 									alwaysShowCalendars={true}
 									onEvent={handleEvent}

@@ -25,6 +25,7 @@ export default function Chat() {
   const [toggleListingActiveTab, setToggleListingActiveTab] = useState('1');
   const [vehicleType, setVehicleType] = useState('');
   const [pictures, setPictures] = useState([]);
+  const [titleText, setTitleText] = useState('Chat');
 
   const menu = (
     <Menu>
@@ -148,15 +149,15 @@ export default function Chat() {
           <div className="d-lg-flex">
             <div className="Chat-list-main mb-4">
               <div className="chat-header d-flex justify-content-between align-items-center pb-4" style={{ display: 'none' }}>
-                <h2>Chat</h2>
+                <h2>{ titleText }</h2>
                 <div className="contact-form-field">
                   <div className="select-outer">
-                    <select>
-                      <option>All</option>
-                      <option>Requests</option>
-                      <option>Current</option>
-                      <option>Past</option>
-                      <option>Rejected</option>
+                    <select onInput={(event) => {setTitleText(event.target.value);}} style={{paddingRight: '35px'}}>
+                      <option value="Chat">All</option>
+                      <option value="Requests">Requests</option>
+                      <option value="Current">Current</option>
+                      <option value="Past">Past</option>
+                      <option value="Rejected">Rejected</option>
                     </select>
                   </div>
                 </div>
@@ -484,7 +485,10 @@ export default function Chat() {
               </div>
               <form>
                 <div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '10px', padding: '0 0 10px 0' }}>
-                  <img src={Mercedes} style={{ width: '120px', borderRadius: '10px' }} />
+                  <div className="image-with-camera">
+                    <img src={Mercedes} style={{ width: '120px', borderRadius: '10px' }} />
+                    <i className="fas fa-camera" />
+                  </div>
                   <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '20px' }}>
                     <h5 className="my-button" style={{ fontWeight: '600' }}>Mercedes Benz 2018</h5>
                     <p style={{ color: '#f67810', marginBottom: '10px', fontWeight: '500' }}>HL8 HXM</p>

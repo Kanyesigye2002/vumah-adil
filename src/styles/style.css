@@ -4886,3 +4886,69 @@ h2.facilities {
 .blog-card-grid--popover .popover {
   max-width: 500px
 }
+
+
+.company-product-list-img .slick-dots,
+.company-product-list-img .slick-arrow.slick-next,
+.company-product-list-img .slick-arrow.slick-prev {
+  opacity: 0.5;
+}
+
+.company-product-list-img:hover .slick-dots,
+.company-product-list-img:hover .slick-arrow.slick-next,
+.company-product-list-img:hover .slick-arrow.slick-prev {
+  opacity: 0.75;
+}
+
+.company-product-list-img .slick-dots:hover,
+.company-product-list-img .slick-arrow.slick-next:hover,
+.company-product-list-img .slick-arrow.slick-prev:hover {
+  opacity: 1;
+}
+
+.company-product-list-img .slick-arrow.slick-next,
+.company-product-list-img .slick-arrow.slick-prev {
+  height: 30px;
+  width: 30px;
+}
+
+.company-product-list-img .slick-arrow.slick-next {
+  right: 10px;
+}
+
+.company-product-list-img .slick-arrow.slick-prev {
+  left: 10px;
+}
+
+.company-product-list-img .slick-dots {
+  bottom: 10px;
+  transition: 200ms opacity;
+}
+
+.image-with-camera {
+  position: relative;
+  cursor: pointer;
+}
+
+.image-with-camera i {
+  color: #ffffff;
+  font-size: 24px;
+  left: 50%;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: 200ms opacity;
+}
+
+.image-with-camera img {
+  transition: 100ms filter;
+}
+
+.image-with-camera:hover img {
+  filter: grayscale(1) contrast(0.5);
+}
+
+.image-with-camera:hover i {
+  opacity: 1;
+}

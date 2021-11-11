@@ -1,35 +1,34 @@
-Landing Page
-✓ 15min interval for date picker
-
-Search Page
-✓ Double click selected vehicle
-✓ Sliders for entries
-✓ Hearts functionality (add to favorites)
-
-Sign Up
-✓ Add birthday dd/mm/yyyy underneath last name
-
 Chat
-- Camera icon for booking details
-- Dropdown (All, Request, etc) replace Chat with these values
+✓ Dropdown (All, Request, etc) replace Chat with these values
+✓ Camera icon for booking details
 - Report guest/host modal (info to be provided)
 - Sepparate Messages pages
 
 Availability pages
-✓ Week: When clicking on a day, will automatically go to sunday (start of week)
 - Daily rates
 
 Earning pages
-- Date ranges (only dates)
-- Select: Booking, Earnings
-- Line 1 when hover (remove it)
-- Summary: Total earnings/trips (switch)
-- Summery: Same color with the legend
-- Summery: Motorbike, 1.000 trips
+✓ Date ranges (only dates)
+✓ Select: Booking, Earnings
+✓ Line 1 when hover (remove it)
+✓ Summary: Total earnings/trips (switch)
+✓ Summery: Same color with the legend
+✓ Summery: Motorbike, 1.000 trips
+
+Search Page
+✓ SlideShow arrows too big
 
 Earning pages / Add vehicle
 - Photos
-- Saved draft in red
+✓ Saved draft in red
+- Week calendar picker select weeks only
+
+Home/About us/Support
+- Spacing between sections (screenshots on group)
 
 Other Issues
 - Responsiveness
+
+
+Reports:
+- messages page.odt

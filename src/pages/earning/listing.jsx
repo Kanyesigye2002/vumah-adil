@@ -10,7 +10,7 @@ import CarListing from '../car-listing';
 import WaveGraph from '../../assets/img/graph-wave.png';
 import Mercedes from '../../assets/img/Mercedes-car.jpg';
 import * as _ from 'lodash';
-import { Line } from 'react-chartjs-2';
+import { Line, Doughnut } from 'react-chartjs-2';
 
 import RUG from "react-upload-gallery";
 import "react-upload-gallery/dist/style.css";
@@ -45,6 +45,8 @@ export default function Listing() {
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [filterDropdownOpen, setFilterDropdownOpen] = useState(false);
+  const [chartInstance, setChartInstance] = useState(null);
+  const [statisticsFilter, setStatisticsFilter] = useState(null);
 
   const [fromDate, setFromDate] = useState(moment().format('M/DD/YYYY (hh:mm)'));
   const [toDate, setToDate] = useState(moment().format('M/DD/YYYY (hh:mm)'));
@@ -57,30 +59,78 @@ export default function Listing() {
     <span aria-hidden="true"><i className="fas fa-times-circle fa-lg"></i></span>
   </button>;
 
-  const data = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  const dataObject = {
+    labels: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December'
+    ],
     datasets: [
       {
         label: 'Booking',
-        data: [3, 2, 4, 5, 6, 12, 24, 32, 45, 89, 72, 99],
+        data: [ 3, 2, 4, 5, 6, 12, 24, 32, 45, 89, 72, 99 ],
         fill: false,
-        backgroundColor: '#666666',
-        borderColor: '#2222224f',
+        backgroundColor: '#444444',
+        borderColor: '#999999aa'
       }, {
         label: 'Earning',
-        data: [6, 3, 2, 4, 10, 24, 38, 45, 65, 79, 87, 92],
+        data: [ 6, 3, 2, 4, 10, 24, 38, 45, 65, 79, 87, 92 ],
         fill: false,
         backgroundColor: '#f67810',
-        borderColor: '#f678104f',
-      }, {
-        label: 'Line 1',
-        data: [3, 2, 4, 5, 6, 12, 24, 32, 45, 89, 72, 99],
-        fill: false,
-        backgroundColor: '#fff',
-        borderColor: '#ffffff4f',
+        borderColor: '#f678104f'
       }
     ],
   };
+
+  const [darkMode, setDarkMode] = useState(false);
+  const [data, setData] = useState(dataObject);
+
+  useEffect(() => {
+    if (statisticsFilter === null) {
+      setData(dataObject);
+    } else if (statisticsFilter === 'bookings') {
+      let object = JSON.parse(JSON.stringify(dataObject));
+      object.datasets = [ object.datasets[0] ];
+      setData(object);
+    } else if (statisticsFilter === 'earnings') {
+      let object = JSON.parse(JSON.stringify(dataObject));
+      object.datasets = [ object.datasets[1] ];
+      setData(object);
+    }
+
+    /*
+    if (darkMode === document.body.classList.contains('dark-theme')) {
+      return;
+    }
+
+    setDarkMode(document.body.classList.contains('dark-theme'));
+
+    if (document.body.classList.contains('dark-theme')) {
+      dataObject.datasets[0].backgroundColor = '#ff0000';
+      dataObject.datasets[0].borderColor = '#ff0000';
+
+      dataObject.datasets[1].backgroundColor = '#ff0000';
+      dataObject.datasets[1].borderColor = '#ff0000';
+    } else {
+      dataObject.datasets[0].backgroundColor = '#444444';
+      dataObject.datasets[0].borderColor = '#999999aa';
+
+      dataObject.datasets[1].backgroundColor = '#f67810';
+      dataObject.datasets[1].borderColor = '#f678104f';
+    }
+
+    setData(dataObject);
+    */
+  }, [statisticsFilter]);
 
   const options = {
     hover: {
@@ -104,18 +154,80 @@ export default function Listing() {
             return value + '%';
           }
         }
+      }
+    }
+  };
+
+  const data2Object = {
+    labels: ['Car', 'Motorbike', 'Bicycle', 'Campervan'],
+    datasets: [
+      {
+        label: 'Booking',
+        data: [ 2000, 1500, 2000, 1000 ],
+        fill: false,
+        backgroundColor: [
+          '#36a2eb',
+          '#f67810',
+          '#66f759',
+          '#faf287'
+        ]
+      }
+    ],
+  };
+
+  const [data2, setData2] = useState(data2Object);
+
+  const options2 = {
+    hover: {
+      mode: 'nearest',
+      intersect: false
+    },
+    plugins: {
+      legend: {
+        display: false
       },
+      tooltip: {
+        callbacks: {
+          label: (tooltipItem, data) => {
+            if (showTotalEarnings) {
+              return ` ${ tooltipItem.label }: £${ tooltipItem.raw }`;
+            } else {
+              return ` ${ tooltipItem.label }: ${ tooltipItem.raw } trips`;
+            }
+          }
+        }
+      }
+    },
+    scales: {
+      y: { display: false },
     },
   };
 
   useEffect(() => {
+    if (showTotalEarnings) {
+      data2Object.datasets[0].data = [ 2000, 1500, 2000, 1000 ];
+    } else {
+      data2Object.datasets[0].data = [ 200, 150, 110, 50 ];
+    }
+
+    setData2(data2Object);
+  }, [showTotalEarnings]);
+
+  /*
+  function renderChart() {
     if (!showListingContent) {
+      if (chartInstance) {
+        try {
+          chartInstance.destroy();
+        } catch(e) {}
+      }
+
       const myChartRef = chartElementRef.current.getContext("2d");
-      new Chart(myChartRef, {
+      const instance = new Chart(myChartRef, {
         type: 'doughnut',
         data: {
+          labels: ['Car', 'Motorbike', 'Bicycle', 'Campervan'],
           datasets: [{
-            label: '# of Votes',
             data: [1000, 1000, 1000, 1000],
             backgroundColor: [
               '#f67810',
@@ -126,9 +238,27 @@ export default function Listing() {
             hoverOffset: 4
           }]
         },
+        plugins: {
+          legend: {
+            display: true,
+            position: 'bottom'
+          },
+          
+        }
       });
+
+      setChartInstance(instance);
     }
+  }
+
+  useEffect(() => {
+    renderChart();
   }, [showListingContent]);
+
+  useEffect(() => {
+    renderChart();
+  }, [showTotalEarnings]);
+  */
 
   const menu = (
     <Menu>
@@ -162,35 +292,41 @@ export default function Listing() {
           </div>
           <div className="col-sm-8 justify-content-center justify-content-sm-start">
             <div className="d-flex justify-content-center justify-content-sm-end margin-right-ten align-items-center">
-
               <div className="select-outer">
                 <div className="banner-search-dropdown">
                   <Dropdown isOpen={filterDropdownOpen} toggle={toggleFilterDropDown}>
                     <DropdownToggle className="margin-right-ten">
-                      Select
+                      {
+                        (statisticsFilter === 'bookings')
+                          ? 'Bookings'
+                          : (statisticsFilter === 'earnings')
+                            ? 'Earnings'
+                            : 'All'
+                      }
                     </DropdownToggle>
                     <DropdownMenu className="vumah-dropdown-menu">
-                      <DropdownItem className="vechiles">Booking</DropdownItem>
-                      <DropdownItem className="vechiles">Earnings</DropdownItem>
+                      <DropdownItem className="vechiles" onClick={() => setStatisticsFilter(null)}>All</DropdownItem>
+                      <DropdownItem className="vechiles" onClick={() => setStatisticsFilter('bookings')}>Booking</DropdownItem>
+                      <DropdownItem className="vechiles" onClick={() => setStatisticsFilter('earnings')}>Earnings</DropdownItem>
                     </DropdownMenu>
                   </Dropdown>
                 </div>
               </div>
-                {/*
-              <div className="w-50">
-                <DateRangePicker
-                  initialSettings={{
-                    timePicker: true
-                  }}
-                  alwaysShowCalendars={true}
-                  onEvent={handleEvent}
-                >
-                  <div class="banner-search-field">
-                    <input type="text" className="dark-input" name="daterange" value={`${fromDate} - ${toDate}`} />
-                  </div>
-                </DateRangePicker>
-              </div>
-                */}
+              {/*
+                <div className="w-50">
+                  <DateRangePicker
+                    initialSettings={{
+                      timePicker: true
+                    }}
+                    alwaysShowCalendars={true}
+                    onEvent={handleEvent}
+                  >
+                    <div class="banner-search-field">
+                      <input type="text" className="dark-input" name="daterange" value={`${fromDate} - ${toDate}`} />
+                    </div>
+                  </DateRangePicker>
+                </div>
+              */}
             </div>
           </div>
         </div>
@@ -207,8 +343,10 @@ export default function Listing() {
                 <i className="fas fa-plus"></i>
               </button>}
               {!showListingContent && <>
-                <button className="common-btn Summary-btn margin-right-five" onClick={toggleShowTotalEarnings}>Total Earnings</button>
-                {/* <button className="common-btn Summary-btn" onClick={toggleShowTotalTrips}>Total Trips</button> */}
+                {showTotalEarnings
+                  ? <button className="common-btn Summary-btn margin-right-five" onClick={toggleShowTotalEarnings}>Total Trips</button>
+                  : <button className="common-btn Summary-btn" onClick={toggleShowTotalEarnings}>Total Earnings</button>
+                }
               </>}
             </div>
             <div className="col-8 col-md-6 text-right-align">
@@ -353,7 +491,7 @@ export default function Listing() {
         </table>}
         {!showListingContent && <>
           <div className="summary-pie-cart">
-            <canvas width="100%" height="100%" ref={chartElementRef}></canvas>
+            <Doughnut data={data2} options={options2} />
           </div>
           <div className="d-flex justify-content-center align-items-center mt-5">
             <div className="car-pie-chart margin-left-thirty">
@@ -377,8 +515,11 @@ export default function Listing() {
             </div>
           </div>
           <div class="summery-content mt-4 text-center-align">
-            {showTotalEarnings && <p class="total-earn">Total Earnings: £6500</p>}
-            <p class="total-Trip">Total Trips: 510</p>
+            {
+              showTotalEarnings
+              ? <p class="total-earn">Total Earnings: £6500</p>
+              : <p class="total-Trip">Total Trips: 510</p>
+            }
           </div>
         </>}
       </div>
@@ -392,7 +533,12 @@ export default function Listing() {
               <TabPane tabId="1">
                 <div className="add-listing-list ad-list-onetab">
                   <div className="d-flex justify-content-end">
-                    <a className="save-draft-text margin-bottom-minus-25">Save Draft</a>
+                    <a className="save-draft-text margin-bottom-minus-25" onClick={(e)=>{
+                      e.currentTarget.style.color = 'red';
+                      e.currentTarget.innerText = 'Saved Draft';
+                    }}>
+                      Save Draft
+                    </a>
                   </div>
                   <h2 className="mb-5 text-center">New Vehicle Listing</h2>
                   <div className="row">
@@ -515,7 +661,12 @@ export default function Listing() {
               <TabPane tabId="2">
                 <div className="add-listing-list">
                   <div className="d-flex justify-content-end">
-                    <a className="save-draft-text margin-bottom-minus-25">Save Draft</a>
+                    <a className="save-draft-text margin-bottom-minus-25" onClick={(e)=>{
+                      e.currentTarget.style.color = 'red';
+                      e.currentTarget.innerText = 'Saved Draft';
+                    }}>
+                      Save Draft
+                    </a>
                   </div>
                   <h2 className="mb-3 text-center">Add Images</h2>
                     <RUG
@@ -688,7 +839,12 @@ export default function Listing() {
               <TabPane tabId="3">
                 <div className="add-listing-list">
                   <div className="d-flex justify-content-end">
-                    <a className="save-draft-text margin-bottom-minus-25">Save Draft</a>
+                    <a className="save-draft-text margin-bottom-minus-25" onClick={(e)=>{
+                      e.currentTarget.style.color = 'red';
+                      e.currentTarget.innerText = 'Saved Draft';
+                    }}>
+                      Save Draft
+                    </a>
                   </div>
                   <h2 className="mb-5 text-center">Add Listing</h2>
                   <div className="cd-switch d-flex align-items-center mb-4">
