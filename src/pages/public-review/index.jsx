@@ -65,7 +65,7 @@ export default function PrivateReview() {
                       <input id="profile-image" className="car-file-upload" type="file" accept="image/*" onChange={onProfileImageChange} />
                     </div>
                   </div>
-                  <h2>Name of company </h2>
+                  <h2>Name of company</h2>
                 </div>
               </div>
               <div className="col-md-4 d-flex justify-content-center justify-content-md-end">
@@ -129,7 +129,7 @@ export default function PrivateReview() {
               </div>
             </div>
             <div className="company-info">
-              <p>I am self employed and mainly work in London as a property management consultant. I
+              <p style={{textAlign: 'justify'}}>I am self employed and mainly work in London as a property management consultant. I
                 fell in love with The Old School House while I was studying Zen Meditation in the Lake
                 District
                 The house is now my second home and provides a peaceful rural retreat. Set in the UNESCO

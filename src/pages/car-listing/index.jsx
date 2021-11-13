@@ -154,16 +154,16 @@ export default function CarListing(props) {
 
             <div className="carModal-header mb-4" data-aos="fade-up">
               <h2>Description</h2>
-              <p className="mb-4">Our Tesla comes with all the top of the line features. Our GOAL is to make
+              <p className="mb-4" style={{textAlign: 'justify'}}>Our Tesla comes with all the top of the line features. Our GOAL is to make
                 renting
                 this vehicle simple and easy for you . We can pick you up at the earport for a small
                 fee. The car comes with a full FREE charge anything after that is the guest
                 responsibity.
               </p>
-              <p className="mb-4">
+              <p className="mb-4" style={{textAlign: 'justify'}}>
                 Guest's Countries: Poland, Australia. Be the next.
               </p>
-              <p>Our Tesla comes with all the top of the line features. Our GOAL is to make renting
+              <p style={{textAlign: 'justify'}}>Our Tesla comes with all the top of the line features. Our GOAL is to make renting
                 this vehicle simple and easy for you . We can pick you up at the earport for a small
                 fee. The car comes with a full FREE charge anything after that is the guest
                 responsibity.
@@ -213,7 +213,7 @@ export default function CarListing(props) {
                     <p>January 2021</p>
                   </div>
                 </div>
-                <p>Great guy and great car! Could not be more pleased. Thank you!</p>
+                <p style={{textAlign: 'justify'}}>Great guy and great car! Could not be more pleased. Thank you!</p>
               </div>
               <div className="car-people-rating">
                 <div className="rated-person-info d-flex mb-2">
@@ -225,7 +225,7 @@ export default function CarListing(props) {
                     <p>January 2021</p>
                   </div>
                 </div>
-                <p>Great Car, and great hosts! Stephen was very accommodating and very flexible.
+                <p style={{textAlign: 'justify'}}>Great Car, and great hosts! Stephen was very accommodating and very flexible.
                   Would 10/10 rent again!
                 </p>
               </div>
@@ -300,7 +300,7 @@ export default function CarListing(props) {
             <div className="pick-range-box mt-4" data-aos="fade-up">
               <div className="d-flex justify-content-between ml-1 mr-1" style={{ alignItems: 'center'}}>
                 <h2 className="m-0">Have questions?</h2>
-                <Link className="common-btn" to="/chat">
+                <Link className="common-btn" to="/messages">
                   Contact host
                 </Link>
               </div>

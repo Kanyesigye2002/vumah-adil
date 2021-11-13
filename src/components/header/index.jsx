@@ -331,7 +331,7 @@ export default function Header() {
       <header className="header-main">
         <div
           className="container"
-          style={ (location.pathname === '/search' || location.pathname === '/chat') ? { maxWidth: '1800px' } : {}}
+          style={ (location.pathname === '/search' || location.pathname === '/chat' || location.pathname === '/messages') ? { maxWidth: '1800px' } : {}}
         >
           <div className="row align-items-center">
             <div className="col-md-4">
@@ -359,8 +359,8 @@ export default function Header() {
 													<Link to="/public-review" style={{color: 'inherit', width: '100%'}}>Profile</Link>
 												</DropdownItem>
                         <DropdownItem style={{display: 'flex'}}><Link to="/account" style={{color: 'inherit', width: '100%'}}>Notifications</Link></DropdownItem>
-                        <DropdownItem style={{display: 'flex'}}><Link to="/chat" style={{color: 'inherit', width: '100%'}}>Messages</Link></DropdownItem>
-                        <DropdownItem style={{display: 'flex'}}><Link to="/earning" style={{color: 'inherit', width: '100%'}}>Bookings</Link></DropdownItem>
+                        <DropdownItem style={{display: 'flex'}}><Link to="/messages" style={{color: 'inherit', width: '100%'}}>Messages</Link></DropdownItem>
+                        <DropdownItem style={{display: 'flex'}}><Link to="/chat" style={{color: 'inherit', width: '100%'}}>Bookings</Link></DropdownItem>
                         <DropdownItem style={{display: 'flex'}}><Link to="/account" style={{color: 'inherit', width: '100%'}}>Favourites</Link></DropdownItem>
                         <DropdownItem divider />
 

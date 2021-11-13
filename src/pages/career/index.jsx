@@ -15,7 +15,7 @@ export default function Career() {
           <div class="service-header  mb-4">
             <h2>Join Us</h2>
           </div>
-          <p>Here at Vumah, we have become a bridge that allows everyone to be able to rent the right vehicle, helping
+          <p style={{textAlign: 'justify'}}>Here at Vumah, we have become a bridge that allows everyone to be able to rent the right vehicle, helping
             them reach their ultimate travel experiences, via amazing hosts and businesses To that end, we aim to
             make exciting travels and great adventures as easily attainable as they should be.</p>
         </div>
@@ -87,7 +87,7 @@ export default function Career() {
             <div class="col-lg-7">
               <div class="company-value-text mb-5" data-aos="flip-left">
                 <h2>Company values</h2>
-                <p>
+                <p style={{textAlign: 'justify'}}>
                   Our team consists of individuals who are not only dedicated and committed to the vision of
                   Vumah but also enjoy the work that they do, creating change within the travel and tourism
                   industry. We believe in being of service to others to create the best possible experiences

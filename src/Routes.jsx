@@ -16,6 +16,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import Earning from './pages/earning';
 import Chat from './pages/chat';
+import Messages from './pages/messages';
 import Support from './pages/support';
 import Search from './pages/search';
 import GuestGuide from './pages/blogs/guest';
@@ -61,12 +62,13 @@ const Routes = () => {
         <Route exact path="/landing-page" component={LandingPage} />
         <Route exact path="/earning" component={Earning} />
         <Route exact path="/chat" component={Chat} />
+        <Route exact path="/messages" component={Messages} />
         <Route exact path="/support" component={Support} />
         <Route exact path="/search" component={Search} />
         <Route exact path="/guest-guide" component={GuestGuide} />
         <Route exact path="/host-guide" component={HostGuide} />
         <Route exact path="/account-management-guide" component={AccountManagementGuide} />
-        
+
         <Route exact path="/tos" component={TOS} />
         <Route exact path="/privacy" component={Privacy} />
         <Route exact path="/faq" component={FAQ} />

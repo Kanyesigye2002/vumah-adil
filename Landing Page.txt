@@ -1,34 +1,20 @@
 Chat
-✓ Dropdown (All, Request, etc) replace Chat with these values
-✓ Camera icon for booking details
 - Report guest/host modal (info to be provided)
 - Sepparate Messages pages
 
 Availability pages
 - Daily rates
 
-Earning pages
-✓ Date ranges (only dates)
-✓ Select: Booking, Earnings
-✓ Line 1 when hover (remove it)
-✓ Summary: Total earnings/trips (switch)
-✓ Summery: Same color with the legend
-✓ Summery: Motorbike, 1.000 trips
-
-Search Page
-✓ SlideShow arrows too big
-
 Earning pages / Add vehicle
 - Photos
-✓ Saved draft in red
-- Week calendar picker select weeks only
+✓ Week calendar picker select weeks only
 
 Home/About us/Support
-- Spacing between sections (screenshots on group)
+✓ Spacing between sections (screenshots on group)
 
 Other Issues
 - Responsiveness
 
-
 Reports:
 - messages page.odt
+- report.odt

@@ -183,7 +183,7 @@ export default function RequestBooking() {
                 </div>
               </div>
               <h5 className="mb-4 mt-4 text-dark-white">Cancellation Policy</h5>
-              <p className="text-dark-white">
+              <p className="text-dark-white" style={{textAlign: 'justify'}}>
                 When booking a vehicle on the Vumah platform we allow free cancellations up to 24hrs
                 before the trip start to allow flexibility for our guests. If you choose to cancel for
                 any reason within the 24 hours period of the trip start, the guest will be subject to a

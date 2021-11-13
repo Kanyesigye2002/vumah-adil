@@ -45,7 +45,7 @@ export default function Footer() {
     <footer className="footer-main">
       <div
         className="container"
-        style={ (false && (location.pathname === '/search' || location.pathname === '/chat')) ? { maxWidth: '1800px' } : {}}
+        style={ (false && (location.pathname === '/search' || location.pathname === '/chat' || location.pathname === '/messages')) ? { maxWidth: '1800px' } : {}}
       >
         <div className="row pt-3 pb-4">
           <div className="col-sm-6 col-lg-3 mb-3 mb-lg-0">

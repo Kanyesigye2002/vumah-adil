@@ -411,7 +411,7 @@ export default function Home() {
                       </svg>
                     </div>
                     <h2>Variety</h2>
-                    <p>
+                    <p style={{textAlign: 'justify'}}>
                       You can pick your favorite vehicle from an extensive range of cars, motorcycles, and
                       bicycles for any sort of tourist or traveler activity. We keep growing our fleet of
                       vehicles to provide multiple options so that our customers get exactly what they
@@ -432,7 +432,7 @@ export default function Home() {
                       </svg>
                     </div>
                     <h2>Trust and Safety</h2>
-                    <p>
+                    <p style={{textAlign: 'justify'}}>
                       The driver’s safety and the hosts’ trust are our top priorities. Our hosts are
                       trusted and verified, assuring your comfort and safety. Moreover, we ensure the
                       verification of our guests as well to encourage responsible participation in our
@@ -463,7 +463,7 @@ export default function Home() {
                       </svg>
                     </div>
                     <h2>Customer support</h2>
-                    <p>
+                    <p style={{textAlign: 'justify'}}>
                       We know uncertainties never knock. We provide customer support along with roadside
                       assistance to help you whenever you need it. Our skilled team is trained to
                       understand your
@@ -499,7 +499,7 @@ export default function Home() {
                       </svg>
                     </div>
                     <h2>Best Prices</h2>
-                    <p>
+                    <p style={{textAlign: 'justify'}}>
                       Traveling around is fun! Are you worried that renting will cost you more? Don’t
                       worry! We offer the best prices to let you enjoy your traveling experience without
                       burning a hole in your pocket. We also make sure to regularly improve our platform
@@ -555,7 +555,7 @@ export default function Home() {
                       </svg>
                     </div>
                     <h2>Convenience</h2>
-                    <p>
+                    <p style={{textAlign: 'justify'}}>
                       You can rent vehicles with us anytime. The pickup and drop off location are mutually
                       decided by the renter and rentee. Once you book a vehicle, you can reach out to the
                       owner and discuss these terms. Easy and convenient!
@@ -575,7 +575,7 @@ export default function Home() {
                       </svg>
                     </div>
                     <h2>Hassle Free</h2>
-                    <p>
+                    <p style={{textAlign: 'justify'}}>
                       Our team is devoted to giving you unbeatable value and peace of mind from booking
                       your own vehicle for the entirety of your journey. Our simple and hassle-free
                       approach will provide you the travel experience you’ve always dreamed of.
@@ -603,8 +603,8 @@ export default function Home() {
                 </div>
                 <div className="card-body justify-content-between d-flex flex-column">
                   <div>
-                    <h6> Top 5 places to visit <br /> in the UK</h6>
-                    <p>
+                    <h6> Top 5 places to visit in the UK</h6>
+                    <p style={{textAlign: 'justify'}}>
                       Looking for the next adventure in the UK? The UK is an easy place to explore its
                       beautiful diversity, thanks to its size you can be based in any city such as London
                       or
@@ -628,8 +628,7 @@ export default function Home() {
                 <div className="card-body justify-content-between d-flex flex-column">
                   <div>
                     <h6>Why Travel Is Important Today More Than Ever</h6>
-                    <p>
-
+                    <p style={{textAlign: 'justify'}}>
                       Traveling is a very important part of life as it is the best way to get out of the
                       busy
                       work life and a good remedy for stress, anxiety and depression. Improving mental and

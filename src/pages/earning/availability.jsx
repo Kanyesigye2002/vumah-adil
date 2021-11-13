@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import DateRangePicker from "react-bootstrap-daterangepicker";
 import moment from 'moment';
@@ -8,11 +8,39 @@ import Mercedes from '../../assets/img/Mercedes-car.jpg';
 export default function Availability() {
   const [showChangeAvailabilityPopup, setShowChangeAvailabilityPopup] = useState(false);
   const [availability, setAvailability] = useState('');
-  const [weekDate, setWeekDate] = useState(moment().format('M/DD/YYYY'));
+
+
+  const dateeeStart = moment(moment().unix() * 1000 - 1000 * 60 * 60 * 24 * moment().day());
+  const dateeeEnd = moment(moment().unix() * 1000 - 1000 * 60 * 60 * 24 * moment().day() + 1000 * 60 * 60 * 24 * 6);
+
+  const [endDate, setEndDate] = useState(dateeeEnd.format('M/DD/YYYY'));
+  const [startDate, setStartDate] = useState(dateeeStart.format('M/DD/YYYY'));
 
   const modalCloseBtn = <button type="button" className="btn close p-0" onClick={toggleShowChangeAvailabilityPopup}>
     <span aria-hidden="true"><i className="fas fa-times-circle fa-lg"></i></span>
   </button>;
+
+  useEffect(() => {
+    const myFunction = (event) => {
+      const tr = event.target.closest('#my-week-selector .drp-calendar .table-condensed tr');
+
+      if (tr !== null) {
+        tr.classList.add('active');
+        const children = Array.from(tr.children);
+
+        for (let index = 0; index < children.length; index++) {
+          children[index].classList.add('active');
+          //tr.children[index].classList.add('active');
+        }
+      }
+    };
+
+    document.addEventListener('mouseup', myFunction);
+
+    return function() {
+      document.removeEventListener('mouseup', myFunction);
+    };
+  });
 
   return (
     <>
@@ -21,25 +49,33 @@ export default function Availability() {
           <div className="col-md-12">
             <div className="overview-header d-flex justify-content-between">
               <h2 className="m-0 flex-grow-1">Availability</h2>
-              <div className="d-flex align-items-center justify-content-end w-35">
+              <div className="d-flex align-items-center justify-content-end w-35" style={{position:'relative'}}>
                 <p className="margin-right-five text-dark-white">Week</p>
                 <DateRangePicker
                   initialSettings={{
-                    timePicker: false,
                     singleDatePicker: true,
+                    parentEl: '#my-week-selector',
+                    timePicker: false,
                     showDropdowns: true,
-                    isInvalidDate: (date) => {
-                      if (date.day() === 0) {
-                        return false;
-                      }
-                      return true;
-                    }
+                    endDate: endDate,
+                    startDate: startDate
                   }}
                   alwaysShowCalendars={true}
                   onEvent={handleEvent}
                 >
+                  {/*
+                    initialSettings={{
+                      isInvalidDate: (date) => {
+                        if (date.day() === 0) {
+                          return false;
+                        }
+                        return true;
+                      }
+                    }}
+                  */}
                   <div class="banner-search-field">
-                    <input autoComplete={'off'} type="text" name="daterange" value={weekDate} className="text-center-align" />
+                    <input autoComplete={'off'} type="text" name="daterange" value={`${ startDate } - ${ endDate }`} className="text-center-align" />
+                    <div id="my-week-selector" style={{position:'absolute', top: '100%', left: 0}}></div>
                   </div>
                 </DateRangePicker>
               </div>
@@ -276,9 +312,13 @@ export default function Availability() {
   };
 
   function handleEvent(event, picker) {
-    const dateee = moment(picker.startDate.unix() * 1000 - 1000 * 60 * 60 * 24 * picker.startDate.day());
-    picker.setEndDate(dateee);
+    const dateeeStart = moment(picker.startDate.unix() * 1000 - 1000 * 60 * 60 * 24 * picker.startDate.day());
+    picker.setStartDate(dateeeStart);
 
-    setWeekDate(dateee.format('M/DD/YYYY'));
+    const dateeeEnd = moment(picker.startDate.unix() * 1000 - 1000 * 60 * 60 * 24 * picker.startDate.day() + 1000 * 60 * 60 * 24 * 6);
+    picker.setEndDate(dateeeEnd);
+
+    setStartDate(dateeeStart.format('M/DD/YYYY'));
+    setEndDate(dateeeEnd.format('M/DD/YYYY'));
   };
 }

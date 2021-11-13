@@ -523,7 +523,7 @@ export default function Rank() {
             </div>
             <div className="ranking-paragraph">
               <h2>What is the ranking system about?</h2>
-              <p className="logo-left-side-content">
+              <p style={{textAlign: 'justify'}} className="logo-left-side-content">
                 <img className="logo-side" src={SecurityImage} alt="Test Image" />
                 When a host first signs up with Vumah they start off as a level 0 Host.
                 There are 5 levels,
@@ -532,7 +532,7 @@ export default function Rank() {
                 month with each level having its own perks/rewards!
 
               </p>
-              <p>
+              <p style={{textAlign: 'justify'}}>
                 Once moving up a level, you have the following month to keep up with your
                 bookings,
                 if the numbers are not kept up with the required numbers for that level
@@ -545,14 +545,14 @@ export default function Rank() {
             </div>
             <div className="ranking-paragraph">
               <h2>Tips to stand out and get more bookings:</h2>
-              <ul className="padding-left-zero">
-                <li>
+              <ul className="padding-left-zero" style={{textAlign: 'justify'}}>
+                <li style={{textAlign: 'justify'}}>
                   Great pictures: Presentation is important and would encourage more users
                   to your
                   listings.
 
                 </li>
-                <li>
+                <li style={{textAlign: 'justify'}}>
                   Great experiences: Make sure you are responsive, on time and provide the
                   best
                   experience for your guests so they will leave good reviews, making you

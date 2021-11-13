@@ -17,14 +17,14 @@ export default function Blog1() {
                             </div>
                             <h2>Why Travel Is Important Today More Than Ever</h2>
 
-                            <p>
+                            <p style={{textAlign: 'justify'}}>
                                 Traveling is a very important part of life as it is the best way to get out of
                                 the busy work life and a good remedy for stress, anxiety and depression.
                                 Improving mental and physical health. Not only does travelling provide the
                                 opportunity to experience the beauty of nature
                             </p>
 
-                            <p class="impotant-box">
+                            <p class="impotant-box" style={{textAlign: 'justify'}}>
                                 Exploring new places has its advantages, as it allows us to forget our worries,
                                 problems, frustrations and fears. This allows us to broaden our horizon and move in
                                 new directions, unplugging from the struggles of life and enjoying what the world
@@ -40,7 +40,7 @@ export default function Blog1() {
                             </div>
                             <h2>1) Exploring new cuisines</h2>
 
-                            <p>
+                            <p style={{textAlign: 'justify'}}>
                                 Traveling provides the perfect opportunity to try new, great and authentic cuisines from
                                 different regions of the world. Bringing you unique flavours which never have
                                 experienced before! Don’t forget that travelling is never complete without trying the
@@ -57,17 +57,17 @@ export default function Blog1() {
                             </div>
                             <h2>2) New Cultures</h2>
 
-                            <p>
+                            <p style={{textAlign: 'justify'}}>
                                 Cultures are the characteristics formed by a society through their language, family
                                 values, geography and history. Exploring a different culture enriches the mind and soul,
                                 as It reinforces a whole experience and provides new perspective. Facing culture shock
                                 and having the chance to learn new skills and more about yourself.
                             </p>
-                            <p>
+                            <p style={{textAlign: 'justify'}}>
                                 Often the best way to experience a new culture is by spending some considerable time
                                 there. While a short visit may only give you a glimpse,
                             </p>
-                            <p>
+                            <p style={{textAlign: 'justify'}}>
                                 considering experiences such as work exchange programs would allow you more time to
                                 immerse yourself in a new culture.
                             </p>
@@ -75,7 +75,7 @@ export default function Blog1() {
                         <div class="blog-right-grid mb-5" data-aos="fade-up">
                             <h2>3) Self development</h2>
 
-                            <p>
+                            <p style={{textAlign: 'justify'}}>
                                 Traveling has also become known to be one of the best ways to enhance personal growth.
                                 It allows you to escape from your daily routines and step out your comfort zone as you
                                 move to a different environment, which gives a sense of independence. Each journey can
@@ -89,7 +89,7 @@ export default function Blog1() {
                         <div class="blog-right-grid mb-5" data-aos="fade-up">
                             <h2>4) Meeting new people</h2>
 
-                            <p>
+                            <p style={{textAlign: 'justify'}}>
                                 You can build new friendships and connections with people from different places around
                                 the world. Building networks and establishing connections is also one of the biggest
                                 benefits of travelling, as it expands your reach which can be a huge advantage in your

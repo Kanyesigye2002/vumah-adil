@@ -12,7 +12,7 @@ export default function LandingPage() {
         <div className="container w-100 h-100 position-relative">
           <div className="banner-content" data-aos="fade-up">
             <h1>Looking to become a host?</h1>
-            <p>The Vumah Platform is a community which allows businesses, and soon individuals to rent out their
+            <p style={{textAlign: 'justify'}}>The Vumah Platform is a community which allows businesses, and soon individuals to rent out their
               vehicles to verified and licensed users, and an all in one vehicle rental platform covering cars,
               bicycles, motorcycles, campervans and soon much more! Getting started is easy, sign up and get
               started today. </p>
@@ -32,7 +32,7 @@ export default function LandingPage() {
                 <div className="col-lg-10">
                   <div className="service-step-content">
                     <h2>1. List your vehicle for free</h2>
-                    <p>After you have signed up and been verified, you can start listing your vehicles on
+                    <p style={{textAlign: 'justify'}}>After you have signed up and been verified, you can start listing your vehicles on
                       the platform. Make sure to use your best pictures, presentation is key.</p>
                   </div>
                 </div>
@@ -63,7 +63,7 @@ export default function LandingPage() {
                 <div className="col-lg-6">
                   <div className="service-step-content">
                     <h2> 2. Choose what bookings to accept</h2>
-                    <p>When a user wants to book your vehicle, they will send a request which you can either
+                    <p style={{textAlign: 'justify'}}>When a user wants to book your vehicle, they will send a request which you can either
                       accept or decline. This allows flexibility for the hosts to choose when to accept
                       bookings at times most convenient.</p>
                     <p>&nbsp;</p>
@@ -80,9 +80,8 @@ export default function LandingPage() {
                 <div className="col-lg-6">
                   <div className="service-step-content">
                     <h2> 3. Get paid</h2>
-                    <p>After the trip is completed, we’ll release the payment after 24 hours which will go
+                    <p style={{textAlign: 'justify'}}>After the trip is completed, we’ll release the payment after 24 hours which will go
                       straight to your chosen account.</p>
-                    <p>&nbsp;</p>
                     <p>&nbsp;</p>
                     <p>&nbsp;</p>
                   </div>
@@ -102,24 +101,24 @@ export default function LandingPage() {
               <div className="container">
                 <div className="row mb-4">
                   <h2>Commercial hosts</h2>
-                  <p>
+                  <p style={{textAlign: 'justify'}}>
                     Join our company platform and immediately access a large variety of customers waiting to
                     rent your
                     vehicles!
                   </p>
-                  <p>
+                  <p style={{textAlign: 'justify'}}>
                     If you are in the vehicles rental business, you can expand your reach for new and
                     additional
                     customers after
                     creating a business account with us.
                   </p>
-                  <p>
+                  <p style={{textAlign: 'justify'}}>
                     Join Vumah today and start expanding your business via the services we provide on our
                     platform. Our
                     verified
                     users cannot wait to get in touch with you!
                   </p>
-                  <p>
+                  <p style={{textAlign: 'justify'}}>
                     The only thing you will need to start, as a business, is to provide your own insurance
                     cover for the
                     customers renting your vehicles through our platform.
@@ -134,7 +133,7 @@ export default function LandingPage() {
                     <div className="col-lg-6">
                       <div className="service-step-content text-center text-lg-left">
                         <h2>Ready to host ?</h2>
-                        <p>
+                        <p style={{textAlign: 'justify'}}>
                           Create a listing thats lifts your hosting style - we'll give you tips to
                           make your
                           place shne.

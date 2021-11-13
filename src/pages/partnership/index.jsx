@@ -17,7 +17,7 @@ export default function Partnership() {
         <div class="row pt-4">
           <div class="col-lg-6 mb-4 mb-lg-0">
             <div class="partnership-text text-center text-lg-left pr-lg-5" data-aos="fade-up">
-              <p class="mb-4">
+              <p class="mb-4" style={{textAlign: 'justify'}}>
                 Vumah is a vehicle rental platform which provides
                 flexibility, variety and convenience providing the
                 most vehicle options for visitors to create the best
@@ -26,7 +26,7 @@ export default function Partnership() {
                 and soon allowing vehicle rentals of all types on our
                 platform
               </p>
-              <p>
+              <p style={{textAlign: 'justify'}}>
                 We understand the importance of partnering and
                 networking with companies who share our vision in
                 making travelling the best experience it can be and

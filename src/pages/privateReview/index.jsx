@@ -133,7 +133,7 @@ export default function PrivateReview() {
               </div>
             </div>
             <div className="company-info">
-              <p>I am self employed and mainly work in London as a property management consultant. I
+              <p style={{textAlign: 'justify'}}>I am self employed and mainly work in London as a property management consultant. I
                 fell in love with The Old School House while I was studying Zen Meditation in the Lake
                 District
                 The house is now my second home and provides a peaceful rural retreat. Set in the UNESCO

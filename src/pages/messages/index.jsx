@@ -14,6 +14,10 @@ import { Menu, Dropdown as AntDDropdown } from 'antd';
 import RUG from "react-upload-gallery";
 import "react-upload-gallery/dist/style.css";
 import classnames from 'classnames';
+import { Link } from 'react-router-dom';
+import ReviewBg from '../../assets/img/public-review-bg.jpg';
+import CompanyReview from '../../assets/img/company-review-img.jpg';
+import SecurityImage from '../../assets/img/security.png';
 
 export default function Chat() {
   const [reportModal, setReportModal] = useState(false);
@@ -29,7 +33,7 @@ export default function Chat() {
   const [toggleListingActiveTab, setToggleListingActiveTab] = useState('1');
   const [vehicleType, setVehicleType] = useState('');
   const [pictures, setPictures] = useState([]);
-  const [titleText, setTitleText] = useState('Bookings');
+  const [titleText, setTitleText] = useState('Messages');
   const [toggleReportActiveTab, setToggleReportActiveTab] = useState('1');
 
   const menu = (
@@ -172,12 +176,12 @@ export default function Chat() {
                         <div className="select-outer">
                           <select style={{borderColor: 'var(--secondary-color)'}}>
                             <option disabled selected>Reason</option>
-                            <option>Guest is attempting to pay outside Vumah</option>
-                            <option>Different person showed up to collect the vehicle</option>
-                            <option>No response from the guest</option>
+                            <option>Host is attempting to collect fees outside Vumah</option>
+                            <option>I think they’re scamming me</option>
+                            <option>No response from the host</option>
                             <option>Technical issue</option>
+                            <option>Vehicle was not as described</option>
                             <option>Inappropriate behaviour</option>
-                            <option>Other (please explain in the description)</option>
                           </select>
                         </div>
                       </div>
@@ -249,11 +253,10 @@ export default function Chat() {
                 <div className="contact-form-field">
                   <div className="select-outer">
                     <select onInput={(event) => {setTitleText(event.target.value);}} style={{paddingRight: '35px'}}>
-                      <option value="Bookings">All</option>
-                      <option value="Requests">Requests</option>
-                      <option value="Current">Current</option>
-                      <option value="Past">Past</option>
-                      <option value="Rejected">Rejected</option>
+                      <option value="Messages">All</option>
+                      <option value="Read">Read</option>
+                      <option value="Unread">Unread</option>
+                      <option value="Starred">Starred</option>
                     </select>
                   </div>
                 </div>
@@ -479,65 +482,23 @@ export default function Chat() {
                     <div className=" chat-box left_pnnel d-flex">
                       <img src={Face} className="profile-image" />
                       <div className="chat-bubble chat-bubble--left p-0 my-button" style={{borderRadius: '10px', border: '1px solid grey'}}>
-                        <h6
-                          style={{
-                            borderBottom: '1px solid grey',
-                            minWidth: '400px',
-                            padding: '10px 20px',
-                          }} className="my-button"
-                        >
-                          Mercedes Benz 2018
-                        </h6>
-                        <p
-                          style={{
-                            minWidth: '300px',
-                            paddingBottom: '0',
-                            padding: '5px 20px',
-                          }}
-                        >
-                          Check-in:
-                          <span
-                            style={{
-                              color: '#F67810',
-                              marginLeft: '10px',
-                              letterSpacing: '-0.5px'
-                            }}
-                          >
-                            10 April 2021 - 06:30AM
-                          </span>
-                        </p>
-                        <p
-                          style={{
-                            borderBottom: '1px solid grey',
-                            minWidth: '300px',
-                            padding: '5px 20px',
-                          }}
-                        >
-                          Return Date:
-                          <span
-                            style={{
-                              color: '#F67810',
-                              marginLeft: '10px',
-                              letterSpacing: '-0.5px'
-                            }}
-                          >
-                            14 April 2021 - 07:00PM
-                          </span>
-                        </p>
-                        <div style={{
-                          marginLeft: 'auto',
-                          display: 'flex',
-                          textAlign: 'right',
-                          width: '100%',
-                          padding: '5px 10px'
-                        }}>
-                          <button className="btn btn-light my-button" style={{textDecoration: 'underline', paddingLeft: 0, marginLeft: 'auto'}}>
-                            Decline
-                          </button>
-                          <button className="btn common-btn my-button" style={{padding: '6px 20px'}}>
-                            Accept
-                          </button>
+                        <div style={{ display: 'flex', alignItems: 'flex-start', padding: '10px' }}>
+                          <div className="image-with-camera">
+                            <img src={Mercedes} style={{ width: '120px', height: 'auto', borderRadius: '10px' }} />
+                            <i className="fas fa-camera" />
+                          </div>
+                          <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '20px' }}>
+                            <h5 className="my-button" style={{ fontWeight: '600' }}>Mercedes Benz 2018</h5>
+                            <p style={{ color: '#f67810', fontWeight: '500' }}>HL8 HXM</p>
+                            <Link style={{ fontSize: '12px', color: 'var(--color-primary)', fontWeight: '500', textDecoration: 'underline', marginTop: '15px' }} to="/car-listing">View Vehicle</Link>
+                          </div>
                         </div>
+                      </div>
+                    </div>
+                    <div className=" chat-box left_pnnel d-flex mt-2">
+                      <img src={Face} className="profile-image" style={{opacity: 0}} />
+                      <div className="chat-bubble chat-bubble--left my-button" style={{borderTopLeftRadius: '10px', border: '1px solid grey'}}>
+                        Hey, I am interested in this car, I would need it for 3 days.
                       </div>
                     </div>
                   </div>
@@ -545,7 +506,7 @@ export default function Chat() {
                 <div className="row">
                   <div className="col-12 mb-3">
                     <center className="my-button" style={{width: '100%', fontSize: '12px'}}>
-                      The host accepted your booking request.
+                      The host accepted your message request.
                     </center>
                   </div>
                 </div>
@@ -554,7 +515,7 @@ export default function Chat() {
                     <div className="chat-box right_pnnel d-flex">
                       <img src={FaceOne} className="profile-image" />
                       <div className="chat-bubble chat-bubble_right" style={{ marginLeft: '10px'}}>
-                        Hello, thank you for booking from us.
+                        Hello, thank you for contacting us. The car is available, what is the check-in date?
                       </div>
                     </div>
                   </div>
@@ -576,10 +537,42 @@ export default function Chat() {
               </div>
             </div>
             <div className="booking-details-main" id="car-chat-page">
-              <div className="add-member-header mb-3">
-                <h2 style={{ fontWeight: '600' }}>Booking Details</h2>
-              </div>
               <form>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px', padding: '0 0 10px 0', flexDirection: 'column' }} className="add-member-header mb-2 mt-4">
+                  <img src={CompanyReview} alt="company-review-img" className="profile-car" style={{borderRadius: '9999px', width: '100px', height: '100px', objectFit: 'cover'}} />
+                  <h2 style={{ fontWeight: '600' }} className="mt-3 mb-2">Company Name</h2>
+                  <p className="my-button" className="my-button">
+                    <img src={SecurityImage} alt="Security Image" className="margin-right-ten" style={{width: '20px'}} />
+                    Level 4 host
+                  </p>
+                </div>
+
+                <hr />
+
+                <p className="my-button" style={{ padding: '0 0 10px 0' }}>
+                  <div
+                    className="company-review d-flex justify-content-center justify-content-md-start align-items-center">
+                    <ul className="d-flex p-0" style={{marginRight: '10px'}}>
+                      <li className="active"><i className="fas fa-star"></i></li>
+                      <li className="active"><i className="fas fa-star"></i></li>
+                      <li className="active"><i className="fas fa-star"></i></li>
+                      <li><i className="fas fa-star"></i></li>
+                      <li><i className="fas fa-star"></i></li>
+                    </ul>
+                    <h2>40 Reviews</h2>
+                  </div>
+                </p>
+                <p className="my-button" style={{ padding: '0 0 10px 0' }}>
+                  <i className="fas fa-check-circle margin-right-five" style={{color: 'var(--green)'}}></i> Avg response time 25hrs
+                </p>
+                <p className="my-button" className="my-button" style={{ padding: '0 0 30px 0' }}>
+                  <i className="fas fa-clock margin-right-five" style={{color: 'var(--secondary-color)'}}></i> 99% response rate
+                </p>
+
+                <div className="add-member-header mb-3 mt-1">
+                  <h2 style={{ fontWeight: '600' }}>Other vehicles</h2>
+                </div>
+
                 <div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '10px', padding: '0 0 10px 0' }}>
                   <div className="image-with-camera">
                     <img src={Mercedes} style={{ width: '120px', borderRadius: '10px' }} />
@@ -588,48 +581,36 @@ export default function Chat() {
                   <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '20px' }}>
                     <h5 className="my-button" style={{ fontWeight: '600' }}>Mercedes Benz 2018</h5>
                     <p style={{ color: '#f67810', marginBottom: '10px', fontWeight: '500' }}>HL8 HXM</p>
-                    <p className="my-button" style={{ display: 'flex', alignItems: 'center' }}>
-                      Booked by
-                      <img src={Face} alt="rated-person" style={{ width: '30px', marginLeft: '10px', marginRight: '5px', borderRadius: '9999px' }} />
-                      Thomas H.
-                    </p>
-                    <button className="btn btn-light my-button" style={{textDecoration: 'underline', marginLeft: 'auto', marginRight: 0, paddingRight: 0, fontSize:'14px'}} type="button" onClick={toggleReportModal}>
-                      Report guest
-                    </button>
+                    <Link style={{ fontSize: '12px', color: 'var(--color-primary)', fontWeight: '500', textDecoration: 'underline', marginTop: '8px' }} to="/car-listing">View Vehicle</Link>
                   </div>
                 </div>
-                <hr />
-                <p className="my-button" style={{ padding: '0 0 10px 0' }}>
-                  Checked in: <span style={{ color: '#f67810', fontWeight: '500' }}>10 April 2021 - 06:30AM</span>
-                </p>
-                <p className="my-button" style={{ padding: '0 0 10px 0' }}>
-                  Return Date: <span style={{ color: '#f67810', fontWeight: '500' }}>14 April 2021 - 07:00PM</span>
-                </p>
-                <p className="my-button" className="my-button" style={{ padding: '0 0 30px 0' }}>
-                  Booked for: <span style={{ color: '#f67810', fontWeight: '500' }}>5 days</span>
-                </p>
 
-                <div className="add-member-header mb-3 mt-5">
-                  <h2 style={{ fontWeight: '600' }}>Payment Details</h2>
+                <div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '10px', padding: '0 0 10px 0' }}>
+                  <div className="image-with-camera">
+                    <img src={Mercedes} style={{ width: '120px', borderRadius: '10px' }} />
+                    <i className="fas fa-camera" />
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '20px' }}>
+                    <h5 className="my-button" style={{ fontWeight: '600' }}>Mercedes Benz 2018</h5>
+                    <p style={{ color: '#f67810', marginBottom: '10px', fontWeight: '500' }}>HL8 HXM</p>
+                    <Link style={{ fontSize: '12px', color: 'var(--color-primary)', fontWeight: '500', textDecoration: 'underline', marginTop: '8px' }} to="/car-listing">View Vehicle</Link>
+                  </div>
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'flex-start', flexDirection: 'column', width: '200px' }}>
-                  <p className="my-button" style={{ padding: '0 30px 0 0' }}>
-                    Amount: <span style={{ color: '#f67810', fontWeight: '500', width: '70px', display: 'inline-block' }}>£25.99</span>
-                  </p>
-                  <p className="my-button" style={{ padding: '0 30px 0 0' }}>
-                    Fees: <span style={{ color: '#f67810', fontWeight: '500', width: '70px', display: 'inline-block' }}>-£7</span>
-                  </p>
-                  <hr style={{width: '200px', marginTop: '5px', marginBottom: '5px'}} />
-                  <p className="my-button" style={{ padding: '5px 30px 15px 0', fontWeight: '600' }}>
-                    Total: <span style={{ color: '#f67810', fontWeight: '600', width: '70px', display: 'inline-block' }}>£18.99</span>
-                  </p>
+                <div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '10px', padding: '0 0 30px 0' }}>
+                  <div className="image-with-camera">
+                    <img src={Mercedes} style={{ width: '120px', borderRadius: '10px' }} />
+                    <i className="fas fa-camera" />
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '20px' }}>
+                    <h5 className="my-button" style={{ fontWeight: '600' }}>Mercedes Benz 2018</h5>
+                    <p style={{ color: '#f67810', marginBottom: '10px', fontWeight: '500' }}>HL8 HXM</p>
+                    <Link style={{ fontSize: '12px', color: 'var(--color-primary)', fontWeight: '500', textDecoration: 'underline', marginTop: '8px' }} to="/car-listing">View Vehicle</Link>
+                  </div>
                 </div>
 
-                
-                <div className="mt-auto text-center">
-                  <button className="common-btn" type="button">Request Extra-Time</button>
-                  <button className="btn btn-light my-button" style={{textDecoration: 'underline', marginLeft: '10px'}} type="button" onClick={toggleBreakDownModal}>Break Down</button>
+                <div className="mt-auto text-center mt-4">
+                  <a href="/public-review" target="_blanc" className="common-btn btn" type="button">View Profile</a>
                 </div>
               </form>
             </div>

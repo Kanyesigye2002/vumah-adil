@@ -17,17 +17,17 @@ export default function Blog2() {
                         <div class="blog-right-grid mb-5" data-aos="fade-up">
                             <h2>Top 5 places to visit in the UK</h2>
 
-                            <p>
+                            <p style={{textAlign: 'justify'}}>
                                 Looking for the next adventure in the UK? The UK is an easy place to explore its
                                 beautiful diversity, thanks to its size you can be based in any city such as London or
                                 Manchester and simply take a car to explore other areas.
                             </p>
 
-                            <p class="impotant-box">
+                            <p class="impotant-box" style={{textAlign: 'justify'}}>
                                 From the capital, you can drive 2hrs to reach the beautiful beaches of Brighton, or to
                                 one of the country's most popular attractions, Stonehenge.
                             </p>
-                            <p>
+                            <p style={{textAlign: 'justify'}}>
                                 Plan your sightseeing adventures with our list of the top 5 places to visit in the UK.
                             </p>
                         </div>
@@ -37,14 +37,14 @@ export default function Blog2() {
                             <div class="blog-right-image">
                                 <img src={blogImg7} alt="blog"/>
                             </div>
-                            <p>
+                            <p style={{textAlign: 'justify'}}>
                                 London is a melting pot of culture and one of the top tourist destinations in the world,
                                 with plenty of attractions to keep you busy. If you are interested in learning about the
                                 UK's rich history, then you must visit the tower of London. Right beside the Tower
                                 Bridge, a former palace and prison includes has fascinating medieval treasures, displays
                                 of armour, and most of all it contains the home to the Crown Jewels, the Jewel house.
                             </p>
-                            <p>
+                            <p style={{textAlign: 'justify'}}>
                                 If you are a fan of the Royal Family you will want to head to the Buckingham Palace, and
                                 book a tour of the Palace's State Rooms, and don’t forget the iconic Big Ben and
                                 Parliament Buildings, as you do not want to miss these when you are in London!
@@ -56,16 +56,16 @@ export default function Blog2() {
                             <div class="blog-right-image">
                                 <img  src={blogImg1} alt="blog"/>
                             </div>
-                            <p>
+                            <p style={{textAlign: 'justify'}}>
                                 The capital of Scotland, also one of the most visited cities in the. Well known for
                                 their impressive historic buildings, and best known for their beautiful Edinburgh
                                 Castle.
                             </p>
-                            <p>
+                            <p style={{textAlign: 'justify'}}>
                                 From the castle, you can easily access other important historic sites within the city,
                                 such as the Old Town's Royal Mile with its fine architecture, cafés, and art galleries.
                             </p>
-                            <p>
+                            <p style={{textAlign: 'justify'}}>
                                 considering experiences such as work exchange programs would allow you more time to
                                 immerse yourself in a new culture.
                             </p>
@@ -75,7 +75,7 @@ export default function Blog2() {
                             <div class="blog-right-image">
                                 <img src={blogImg6} alt="blog"/>
                             </div>
-                            <p>
+                            <p style={{textAlign: 'justify'}}>
                                 Brighton is not your typical British seaside resort, take a look below the surface and
                                 you will find, great cuisines, vintage shops and many pubs. Come and explore the
                                 Victorian history of this city and attractions such as the Brighton Palace Pier, dig in
@@ -89,14 +89,14 @@ export default function Blog2() {
                             <div class="blog-right-image">
                                 <img src={blogImg8} alt="blog"/>
                             </div>
-                            <p>
+                            <p style={{textAlign: 'justify'}}>
                                 One of the oldest sites on the planet, covering an area of more than 20 square
                                 kilometres, Stonehenge has been a place of pilgrimage for more than 4,500 years. This
                                 site has been believed to be an ancient place of worship, but now magnificent monument
                                 attracting tourists all over the world. Make sure to plan ahead and purchase a ticket
                                 before they run out!
                             </p>
-                            <p>
+                            <p style={{textAlign: 'justify'}}>
                                 Also, with just 16-kilometre drive south of Stonehenge, you'll be able to visit one of
                                 the country's most famous cathedrals, which dates back to 1220 and was the home to an
                                 original Magna Carta.
@@ -107,7 +107,7 @@ export default function Blog2() {
                             <div class="blog-right-image">
                                 <img src={blogImg9} alt="blog"/>
                             </div>
-                            <p>
+                            <p style={{textAlign: 'justify'}}>
                                 York remains one of the top destinations to travel to, and the reason for this is
                                 because the city is known for having longest circuit of medieval city walls, which
                                 stretches nearly three miles, offering stunning views of the city. The city is also
