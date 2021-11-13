@@ -127,7 +127,16 @@ export default function Availability() {
                     </div>
                     <div className="bookingVechile-detail mt-2">
                       <h2 className="text-dark-white" style={{ textAlign: 'left' }}>Mercedes</h2>
-                      <p className="mb-0" style={{ textAlign: 'left' }}>£25.99/h</p>
+                      <p className="mb-0" style={{ textAlign: 'left' }}>
+                        <span style={{fontWeight: '500', marginRight: '5px'}}>£24/hr</span>
+                        (£100/day)
+                        <small style={{
+                          opacity: '0.9',
+                          marginTop: '3px',
+                          fontSize: '11px',
+                          textDecoration: 'underline'
+                        }}>£653 total</small>
+                      </p>
                     </div>
                   </div>
                 </th>
@@ -162,7 +171,16 @@ export default function Availability() {
                     </div>
                     <div className="bookingVechile-detail mt-2">
                       <h2 className="text-dark-white" style={{ textAlign: 'left' }}>Mercedes</h2>
-                      <p className="mb-0" style={{ textAlign: 'left' }}>£25.99/h</p>
+                      <p className="mb-0" style={{ textAlign: 'left' }}>
+                        <span style={{fontWeight: '500', marginRight: '5px'}}>£24/hr</span>
+                        (£100/day)
+                        <small style={{
+                          opacity: '0.9',
+                          marginTop: '3px',
+                          fontSize: '11px',
+                          textDecoration: 'underline'
+                        }}>£653 total</small>
+                      </p>
                     </div>
                   </div>
                 </th>
@@ -197,7 +215,16 @@ export default function Availability() {
                     </div>
                     <div className="bookingVechile-detail mt-2">
                       <h2 className="text-dark-white" style={{ textAlign: 'left' }}>Mercedes</h2>
-                      <p className="mb-0" style={{ textAlign: 'left' }}>£25.99/h</p>
+                      <p className="mb-0" style={{ textAlign: 'left' }}>
+                        <span style={{fontWeight: '500', marginRight: '5px'}}>£24/hr</span>
+                        (£100/day)
+                        <small style={{
+                          opacity: '0.9',
+                          marginTop: '3px',
+                          fontSize: '11px',
+                          textDecoration: 'underline'
+                        }}>£653 total</small>
+                      </p>
                     </div>
                   </div>
                 </th>
@@ -232,7 +259,16 @@ export default function Availability() {
                     </div>
                     <div className="bookingVechile-detail mt-2">
                       <h2 className="text-dark-white" style={{ textAlign: 'left' }}>Mercedes</h2>
-                      <p className="mb-0" style={{ textAlign: 'left' }}>£25.99/h</p>
+                      <p className="mb-0" style={{ textAlign: 'left' }}>
+                        <span style={{fontWeight: '500', marginRight: '5px'}}>£24/hr</span>
+                        (£100/day)
+                        <small style={{
+                          opacity: '0.9',
+                          marginTop: '3px',
+                          fontSize: '11px',
+                          textDecoration: 'underline'
+                        }}>£653 total</small>
+                      </p>
                     </div>
                   </div>
                 </th>

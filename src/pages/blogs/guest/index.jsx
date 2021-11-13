@@ -137,7 +137,7 @@ export default function GuestGuide() {
 
               {/* 2.	Trouble with your booking: */}
               <div className="col-12 mt-5" id="trouble-with-booking">
-                <div className="support-search-main text-center mb-4 mt-5">
+                <div className="support-search-main text-center mb-4 mt-5" style={{marginLeft: 0, marginRight: 0}}>
                   <h2>Trouble with your booking:</h2>
                 </div>
               </div>
@@ -200,7 +200,7 @@ export default function GuestGuide() {
 
               {/* 3. Guest Fees */}
               <div className="col-12 mt-5" id="guest-fees">
-                <div className="support-search-main text-center mb-4 mt-5">
+                <div className="support-search-main text-center mb-4 mt-5" style={{marginLeft: 0, marginRight: 0}}>
                   <h2>Guest Fees</h2>
                 </div>
               </div>
@@ -238,7 +238,7 @@ export default function GuestGuide() {
 
               {/* 4.	Breakdown */}
               <div className="col-12 mt-5" id="breakdown">
-                <div className="support-search-main text-center mb-4 mt-5">
+                <div className="support-search-main text-center mb-4 mt-5" style={{marginLeft: 0, marginRight: 0}}>
                   <h2>Breakdown</h2>
                 </div>
               </div>
@@ -297,7 +297,7 @@ export default function GuestGuide() {
 
               {/* 5.	Keeping your account safe */}
               <div className="col-12 mt-5" id="account-safety">
-                <div className="support-search-main text-center mb-4 mt-5">
+                <div className="support-search-main text-center mb-4 mt-5" style={{marginLeft: 0, marginRight: 0}}>
                   <h2>Keeping your account safe</h2>
                 </div>
               </div>

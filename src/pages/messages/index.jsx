@@ -543,7 +543,11 @@ export default function Chat() {
                   <h2 style={{ fontWeight: '600' }} className="mt-3 mb-2">Company Name</h2>
                   <p className="my-button" className="my-button">
                     <img src={SecurityImage} alt="Security Image" className="margin-right-ten" style={{width: '20px'}} />
-                    Level 4 host
+                    Level 4 host |
+
+                    <button onClick={toggleReportModal} style={{ fontSize: 'inherit', color: 'var(--color-primary)', fontWeight: '500', textDecoration: 'underline', marginLeft: '5px', border: 'none', background: 'inherit' }} type="button">
+                      Report
+                    </button>
                   </p>
                 </div>
 

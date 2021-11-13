@@ -213,8 +213,10 @@ export default function Search() {
                         className="btn btn-light select-outer w-100 my-button"
                         style={{
                           height: '50px',
+                          paddingLeft: '20px',
                           paddingRight: '45px',
-                          width: '100%'
+                          width: '100%',
+                          textAlign: 'left'
                         }}
                       >
                         Price

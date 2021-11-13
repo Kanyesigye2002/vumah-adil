@@ -4888,38 +4888,52 @@ h2.facilities {
 }
 
 
+.search-product-list-img .slick-dots,
+.search-product-list-img .slick-arrow.slick-next,
+.search-product-list-img .slick-arrow.slick-prev,
 .company-product-list-img .slick-dots,
 .company-product-list-img .slick-arrow.slick-next,
 .company-product-list-img .slick-arrow.slick-prev {
   opacity: 0.5;
 }
 
+.search-product-list-img:hover .slick-dots,
+.search-product-list-img:hover .slick-arrow.slick-next,
+.search-product-list-img:hover .slick-arrow.slick-prev,
 .company-product-list-img:hover .slick-dots,
 .company-product-list-img:hover .slick-arrow.slick-next,
 .company-product-list-img:hover .slick-arrow.slick-prev {
   opacity: 0.75;
 }
 
+.search-product-list-img .slick-dots:hover,
+.search-product-list-img .slick-arrow.slick-next:hover,
+.search-product-list-img .slick-arrow.slick-prev:hover,
 .company-product-list-img .slick-dots:hover,
 .company-product-list-img .slick-arrow.slick-next:hover,
 .company-product-list-img .slick-arrow.slick-prev:hover {
   opacity: 1;
 }
 
+.search-product-list-img .slick-arrow.slick-next,
+.search-product-list-img .slick-arrow.slick-prev,
 .company-product-list-img .slick-arrow.slick-next,
 .company-product-list-img .slick-arrow.slick-prev {
   height: 30px;
   width: 30px;
 }
 
+.search-product-list-img .slick-arrow.slick-next,
 .company-product-list-img .slick-arrow.slick-next {
   right: 10px;
 }
 
+.search-product-list-img .slick-arrow.slick-prev,
 .company-product-list-img .slick-arrow.slick-prev {
   left: 10px;
 }
 
+.search-product-list-img .slick-dots,
 .company-product-list-img .slick-dots {
   bottom: 10px;
   transition: 200ms opacity;

@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import Mercedes from '../../../assets/img/Mercedes-car.jpg';
+import Slider from "react-slick";
 
 export default function InfoWindow(props) {
   const { place } = props;
@@ -19,10 +20,26 @@ export default function InfoWindow(props) {
 
   return (
     <div className="search-product-list-grid">
-      <div className="search-product-list-img">
-        <img src={Mercedes} alt="mercedes-car" height={25} width={25} style={{
-          borderRadius: '5px'
-        }} />
+      <div className="search-product-list-img" style={{height: 'unset'}}>
+        <Slider
+          dots={true}
+          infinite={true}
+          speed={500}
+          slidesToShow={1}
+          slidesToScroll={1}
+          className={'carModal-slider'}
+          style={{borderRadius: '5px', height: '100%'}}
+        >
+          <div>
+            <img src={Mercedes} alt="car-modal-img" style={{borderRadius: '5px'}} />
+          </div>
+          <div>
+            <img src={Mercedes} alt="car-modal-img" style={{borderRadius: '5px'}} />
+          </div>
+          <div>
+            <img src={Mercedes} alt="car-modal-img" style={{borderRadius: '5px'}} />
+          </div>
+        </Slider>
       </div>
       <div className="search-card-body">
         <h2>{place.name}</h2>

@@ -46,10 +46,10 @@ export default function Listing() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [filterDropdownOpen, setFilterDropdownOpen] = useState(false);
   const [chartInstance, setChartInstance] = useState(null);
-  const [statisticsFilter, setStatisticsFilter] = useState(null);
+  const [statisticsFilter, setStatisticsFilter] = useState([true, true]);
 
-  const [fromDate, setFromDate] = useState(moment().format('M/DD/YYYY (hh:mm)'));
-  const [toDate, setToDate] = useState(moment().format('M/DD/YYYY (hh:mm)'));
+  const [fromDate, setFromDate] = useState(moment().format('M/DD/YYYY'));
+  const [toDate, setToDate] = useState(moment().format('M/DD/YYYY'));
 
   const modalCloseBtn = <button type="button" className="btn close p-0" onClick={toggleAddListingModal}>
     <span aria-hidden="true"><i className="fas fa-times-circle fa-lg"></i></span>
@@ -95,17 +95,19 @@ export default function Listing() {
   const [data, setData] = useState(dataObject);
 
   useEffect(() => {
-    if (statisticsFilter === null) {
-      setData(dataObject);
-    } else if (statisticsFilter === 'bookings') {
-      let object = JSON.parse(JSON.stringify(dataObject));
-      object.datasets = [ object.datasets[0] ];
-      setData(object);
-    } else if (statisticsFilter === 'earnings') {
-      let object = JSON.parse(JSON.stringify(dataObject));
-      object.datasets = [ object.datasets[1] ];
-      setData(object);
+    let object = JSON.parse(JSON.stringify(dataObject));
+    const newObj = [];
+
+    if (statisticsFilter[0]) {
+      newObj.push(object.datasets[0]);
     }
+
+    if (statisticsFilter[1]) {
+      newObj.push(object.datasets[1]);
+    }
+
+    object.datasets = newObj;
+    setData(object);
 
     /*
     if (darkMode === document.body.classList.contains('dark-theme')) {
@@ -292,22 +294,49 @@ export default function Listing() {
           </div>
           <div className="col-sm-8 justify-content-center justify-content-sm-start">
             <div className="d-flex justify-content-center justify-content-sm-end margin-right-ten align-items-center">
+              <div style={{position: 'relative'}}>
+                <DateRangePicker
+                  initialSettings={{
+                    timePicker: false,
+                    opens: 'left'
+                  }}
+                  alwaysShowCalendars={true}
+                  onEvent={handleEvent}
+                >
+                  <div class="contact-form-field field-label">
+                    <input type="text" name="daterange" value={`${fromDate} - ${toDate}`} style={{borderColor: '#f67810', height: '30px', textAlign: 'center', paddingLeft: '10px', paddingRight: '10px'}} />
+                  </div>
+                </DateRangePicker>
+              </div>
               <div className="select-outer">
                 <div className="banner-search-dropdown">
                   <Dropdown isOpen={filterDropdownOpen} toggle={toggleFilterDropDown}>
                     <DropdownToggle className="margin-right-ten">
                       {
-                        (statisticsFilter === 'bookings')
-                          ? 'Bookings'
-                          : (statisticsFilter === 'earnings')
-                            ? 'Earnings'
-                            : 'All'
+                        (statisticsFilter[0] && statisticsFilter[1])
+                          ? 'All'
+                          : (statisticsFilter[0])
+                            ? 'Bookings'
+                            : (statisticsFilter[1])
+                              ? 'Earnings'
+                              : 'Nothing'
                       }
                     </DropdownToggle>
                     <DropdownMenu className="vumah-dropdown-menu">
-                      <DropdownItem className="vechiles" onClick={() => setStatisticsFilter(null)}>All</DropdownItem>
-                      <DropdownItem className="vechiles" onClick={() => setStatisticsFilter('bookings')}>Booking</DropdownItem>
-                      <DropdownItem className="vechiles" onClick={() => setStatisticsFilter('earnings')}>Earnings</DropdownItem>
+                      <DropdownItem className="vechiles" onClick={() => setStatisticsFilter([!(statisticsFilter[0]), statisticsFilter[1]])} style={{display: 'flex'}}>
+                        <div className="contact-form-field checkbox-field" style={{width: 'unset'}}>
+                          <input className="styled-checkbox" id="bbb1" type="checkbox" checked={statisticsFilter[0]} />
+                          <label for="bbb1" />
+                        </div>
+                        Bookings
+                      </DropdownItem>
+                      <DropdownItem className="vechiles" onClick={() => setStatisticsFilter([statisticsFilter[0], !(statisticsFilter[1])])} style={{display: 'flex'}}>
+                        <div className="contact-form-field checkbox-field" style={{width: 'unset'}}>
+                          <input className="styled-checkbox" id="bbb2" type="checkbox" checked={statisticsFilter[1]} />
+                          <label for="bbb2" />
+                        </div>
+                        Earnings
+                      </DropdownItem>
                     </DropdownMenu>
                   </Dropdown>
                 </div>
@@ -1189,7 +1218,7 @@ export default function Listing() {
   }
 
   function handleEvent(event, picker) {
-    setFromDate(picker.startDate.format('M/DD/YYYY (hh:mm)'));
-    setToDate(picker.endDate.format('M/DD/YYYY (hh:mm)'));
+    setFromDate(picker.startDate.format('M/DD/YYYY'));
+    setToDate(picker.endDate.format('M/DD/YYYY'));
   };
 }

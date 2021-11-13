@@ -1,13 +1,12 @@
 Chat
-- Report guest/host modal (info to be provided)
-- Sepparate Messages pages
+✓ Report guest/host modal (info to be provided)
+✓ Sepparate Messages pages
 
 Availability pages
-- Daily rates
+✓ Daily rates
 
 Earning pages / Add vehicle
 - Photos
-✓ Week calendar picker select weeks only
 
 Home/About us/Support
 ✓ Spacing between sections (screenshots on group)
@@ -16,5 +15,5 @@ Other Issues
 - Responsiveness
 
 Reports:
-- messages page.odt
-- report.odt
+✓ messages page.odt
+✓ report.odt
