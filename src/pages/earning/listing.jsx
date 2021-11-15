@@ -48,7 +48,7 @@ export default function Listing() {
   const [chartInstance, setChartInstance] = useState(null);
   const [statisticsFilter, setStatisticsFilter] = useState([true, true]);
 
-  const [fromDate, setFromDate] = useState(moment().format('M/DD/YYYY'));
+  const [fromDate, setFromDate] = useState(moment(Date.now() - 1000 * 60 * 60 * 24 * 365).format('M/DD/YYYY'));
   const [toDate, setToDate] = useState(moment().format('M/DD/YYYY'));
 
   const modalCloseBtn = <button type="button" className="btn close p-0" onClick={toggleAddListingModal}>
@@ -298,7 +298,10 @@ export default function Listing() {
                 <DateRangePicker
                   initialSettings={{
                     timePicker: false,
-                    opens: 'left'
+                    opens: 'left',
+                    endDate: toDate,
+                    startDate: fromDate,
+                    maxDate: moment()
                   }}
                   alwaysShowCalendars={true}
                   onEvent={handleEvent}
@@ -323,14 +326,54 @@ export default function Listing() {
                       }
                     </DropdownToggle>
                     <DropdownMenu className="vumah-dropdown-menu">
-                      <DropdownItem className="vechiles" onClick={() => setStatisticsFilter([!(statisticsFilter[0]), statisticsFilter[1]])} style={{display: 'flex'}}>
+                      <DropdownItem className="vechiles" onMouseUp={() => {
+                        setStatisticsFilter([!(statisticsFilter[0]), statisticsFilter[1]]);
+                        setFilterDropdownOpen(true);
+
+                        setTimeout(() => {
+                          setFilterDropdownOpen(true);
+                        }, 10);
+
+                        setTimeout(() => {
+                          setFilterDropdownOpen(true);
+                        }, 25);
+
+                        setTimeout(() => {
+                          setFilterDropdownOpen(true);
+                        }, 50);
+
+                        setTimeout(() => {
+                          setFilterDropdownOpen(true);
+                        }, 100);
+                      }} style={{display: 'flex'}}>
                         <div className="contact-form-field checkbox-field" style={{width: 'unset'}}>
                           <input className="styled-checkbox" id="bbb1" type="checkbox" checked={statisticsFilter[0]} />
                           <label for="bbb1" />
                         </div>
                         Bookings
                       </DropdownItem>
-                      <DropdownItem className="vechiles" onClick={() => setStatisticsFilter([statisticsFilter[0], !(statisticsFilter[1])])} style={{display: 'flex'}}>
+                      <DropdownItem className="vechiles" onMouseUp={
+                        () => {
+                          setStatisticsFilter([statisticsFilter[0], !(statisticsFilter[1])]);
+                          setFilterDropdownOpen(true);
+
+                          setTimeout(() => {
+                            setFilterDropdownOpen(true);
+                          }, 10);
+  
+                          setTimeout(() => {
+                            setFilterDropdownOpen(true);
+                          }, 25);
+  
+                          setTimeout(() => {
+                            setFilterDropdownOpen(true);
+                          }, 50);
+  
+                          setTimeout(() => {
+                            setFilterDropdownOpen(true);
+                          }, 100);
+                        }
+                      } style={{display: 'flex'}}>
                         <div className="contact-form-field checkbox-field" style={{width: 'unset'}}>
                           <input className="styled-checkbox" id="bbb2" type="checkbox" checked={statisticsFilter[1]} />
                           <label for="bbb2" />
