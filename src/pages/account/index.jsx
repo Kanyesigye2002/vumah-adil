@@ -13,6 +13,8 @@ export default function Account() {
   const [showUpdateBusinessDetailsModal, setShowUpdateBusinessDetailsModal] = useState(false);
   const [showUpdatePasswordModal, setShowUpdatePasswordModal] = useState(false);
   const [showUpdateMobileModal, setShowUpdateMobileModal] = useState(false);
+  const [showPasswordWasUpdated, setShowPasswordWasUpdated] = useState(false);
+  const [showPhoneWasUpdated, setShowPhoneWasUpdated] = useState(false);
   const [file, setFile] = useState("");
   const [avatar, setAvatar] = useState("");
 
@@ -598,21 +600,29 @@ export default function Account() {
         <ModalHeader toggle={toggleUpdatePasswordModal} close={modalCloseBtn}></ModalHeader>
         <ModalBody>
           <div className="login-inner">
-            <form>
-              <h2>Update your Password</h2>
-              <div className="contact-form-field mb-3">
-                <input type="email" placeholder="Old Password" />
-              </div>
-              <div className="contact-form-field mb-4">
-                <input type="password" placeholder="New Password" />
-              </div>
-              <div className="contact-form-field mb-4">
-                <input type="password" placeholder="Confirm Password" />
-              </div>
-              <div className="contact-form-field submit-contact text-center p-2">
-                <input type="Submit" value="Update" onClick={toggleUpdatePasswordModal} />
-              </div>
-            </form>
+            {showPasswordWasUpdated
+              ? <form>
+                <h2 style={{maxWidth: '340px'}}>Please verify this change by clicking on the link sent to your email.</h2>
+                <div className="contact-form-field submit-contact text-center p-2">
+                  <input type="Submit" value="Okay" onClick={toggleUpdatePasswordModal} />
+                </div>
+              </form>
+              : <form>
+                <h2>Update your Password</h2>
+                <div className="contact-form-field mb-3">
+                  <input type="email" placeholder="Old Password" />
+                </div>
+                <div className="contact-form-field mb-4">
+                  <input type="password" placeholder="New Password" />
+                </div>
+                <div className="contact-form-field mb-4">
+                  <input type="password" placeholder="Confirm Password" />
+                </div>
+                <div className="contact-form-field submit-contact text-center p-2">
+                  <input type="Submit" value="Update" onClick={()=>setShowPasswordWasUpdated(true)} />
+                </div>
+              </form>
+            }
           </div>
         </ModalBody>
       </Modal>
@@ -623,15 +633,23 @@ export default function Account() {
         <ModalHeader toggle={toggleUpdateMobileModal} close={modalCloseBtn}></ModalHeader>
         <ModalBody>
           <div className="login-inner">
-            <form>
-              <h2>Update your Mobile Number</h2>
-              <div className="contact-form-field mb-3">
-                <input type="email" placeholder="New Number" />
-              </div>
-              <div className="contact-form-field submit-contact text-center p-2">
-                <input type="Submit" value="Update" onClick={toggleUpdateMobileModal} />
-              </div>
-            </form>
+            {showPhoneWasUpdated
+              ? <form>
+                <h2 style={{maxWidth: '340px'}}>Please verify this change by clicking on the link sent to your email.</h2>
+                <div className="contact-form-field submit-contact text-center p-2">
+                  <input type="Submit" value="Okay" onClick={toggleUpdateMobileModal} />
+                </div>
+              </form>
+              : <form>
+                <h2>Update your Mobile Number</h2>
+                <div className="contact-form-field mb-3">
+                  <input type="email" placeholder="New Number" />
+                </div>
+                <div className="contact-form-field submit-contact text-center p-2">
+                  <input type="Submit" value="Update" onClick={()=>setShowPhoneWasUpdated(true)} />
+                </div>
+              </form>
+            }
           </div>
         </ModalBody>
       </Modal>

@@ -3,11 +3,264 @@ import React, { useState } from 'react';
 import { Modal, ModalHeader, ModalBody, Collapse, Tooltip, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Popover, PopoverBody } from 'reactstrap';
 import CVVExampleImage from '../../assets/img/cvv-example.jpg';
 
+const countryList = [
+	"Afghanistan",
+	"Albania",
+	"Algeria",
+	"American Samoa",
+	"Andorra",
+	"Angola",
+	"Anguilla",
+	"Antarctica",
+	"Antigua and Barbuda",
+	"Argentina",
+	"Armenia",
+	"Aruba",
+	"Australia",
+	"Austria",
+	"Azerbaijan",
+	"Bahamas (the)",
+	"Bahrain",
+	"Bangladesh",
+	"Barbados",
+	"Belarus",
+	"Belgium",
+	"Belize",
+	"Benin",
+	"Bermuda",
+	"Bhutan",
+	"Bolivia (Plurinational State of)",
+	"Bonaire, Sint Eustatius and Saba",
+	"Bosnia and Herzegovina",
+	"Botswana",
+	"Bouvet Island",
+	"Brazil",
+	"British Indian Ocean Territory (the)",
+	"Brunei Darussalam",
+	"Bulgaria",
+	"Burkina Faso",
+	"Burundi",
+	"Cabo Verde",
+	"Cambodia",
+	"Cameroon",
+	"Canada",
+	"Cayman Islands (the)",
+	"Central African Republic (the)",
+	"Chad",
+	"Chile",
+	"China",
+	"Christmas Island",
+	"Cocos (Keeling) Islands (the)",
+	"Colombia",
+	"Comoros (the)",
+	"Congo (the Democratic Republic of the)",
+	"Congo (the)",
+	"Cook Islands (the)",
+	"Costa Rica",
+	"Croatia",
+	"Cuba",
+	"Curaçao",
+	"Cyprus",
+	"Czechia",
+	"Côte d'Ivoire",
+	"Denmark",
+	"Djibouti",
+	"Dominica",
+	"Dominican Republic (the)",
+	"Ecuador",
+	"Egypt",
+	"El Salvador",
+	"Equatorial Guinea",
+	"Eritrea",
+	"Estonia",
+	"Eswatini",
+	"Ethiopia",
+	"Falkland Islands (the) [Malvinas]",
+	"Faroe Islands (the)",
+	"Fiji",
+	"Finland",
+	"France",
+	"French Guiana",
+	"French Polynesia",
+	"French Southern Territories (the)",
+	"Gabon",
+	"Gambia (the)",
+	"Georgia",
+	"Germany",
+	"Ghana",
+	"Gibraltar",
+	"Greece",
+	"Greenland",
+	"Grenada",
+	"Guadeloupe",
+	"Guam",
+	"Guatemala",
+	"Guernsey",
+	"Guinea",
+	"Guinea-Bissau",
+	"Guyana",
+	"Haiti",
+	"Heard Island and McDonald Islands",
+	"Holy See (the)",
+	"Honduras",
+	"Hong Kong",
+	"Hungary",
+	"Iceland",
+	"India",
+	"Indonesia",
+	"Iran (Islamic Republic of)",
+	"Iraq",
+	"Ireland",
+	"Isle of Man",
+	"Israel",
+	"Italy",
+	"Jamaica",
+	"Japan",
+	"Jersey",
+	"Jordan",
+	"Kazakhstan",
+	"Kenya",
+	"Kiribati",
+	"Korea (the Democratic People's Republic of)",
+	"Korea (the Republic of)",
+	"Kuwait",
+	"Kyrgyzstan",
+	"Lao People's Democratic Republic (the)",
+	"Latvia",
+	"Lebanon",
+	"Lesotho",
+	"Liberia",
+	"Libya",
+	"Liechtenstein",
+	"Lithuania",
+	"Luxembourg",
+	"Macao",
+	"Madagascar",
+	"Malawi",
+	"Malaysia",
+	"Maldives",
+	"Mali",
+	"Malta",
+	"Marshall Islands (the)",
+	"Martinique",
+	"Mauritania",
+	"Mauritius",
+	"Mayotte",
+	"Mexico",
+	"Micronesia (Federated States of)",
+	"Moldova (the Republic of)",
+	"Monaco",
+	"Mongolia",
+	"Montenegro",
+	"Montserrat",
+	"Morocco",
+	"Mozambique",
+	"Myanmar",
+	"Namibia",
+	"Nauru",
+	"Nepal",
+	"Netherlands (the)",
+	"New Caledonia",
+	"New Zealand",
+	"Nicaragua",
+	"Niger (the)",
+	"Nigeria",
+	"Niue",
+	"Norfolk Island",
+	"Northern Mariana Islands (the)",
+	"Norway",
+	"Oman",
+	"Pakistan",
+	"Palau",
+	"Palestine, State of",
+	"Panama",
+	"Papua New Guinea",
+	"Paraguay",
+	"Peru",
+	"Philippines (the)",
+	"Pitcairn",
+	"Poland",
+	"Portugal",
+	"Puerto Rico",
+	"Qatar",
+	"Republic of North Macedonia",
+	"Romania",
+	"Russian Federation (the)",
+	"Rwanda",
+	"Réunion",
+	"Saint Barthélemy",
+	"Saint Helena, Ascension and Tristan da Cunha",
+	"Saint Kitts and Nevis",
+	"Saint Lucia",
+	"Saint Martin (French part)",
+	"Saint Pierre and Miquelon",
+	"Saint Vincent and the Grenadines",
+	"Samoa",
+	"San Marino",
+	"Sao Tome and Principe",
+	"Saudi Arabia",
+	"Senegal",
+	"Serbia",
+	"Seychelles",
+	"Sierra Leone",
+	"Singapore",
+	"Sint Maarten (Dutch part)",
+	"Slovakia",
+	"Slovenia",
+	"Solomon Islands",
+	"Somalia",
+	"South Africa",
+	"South Georgia and the South Sandwich Islands",
+	"South Sudan",
+	"Spain",
+	"Sri Lanka",
+	"Sudan (the)",
+	"Suriname",
+	"Svalbard and Jan Mayen",
+	"Sweden",
+	"Switzerland",
+	"Syrian Arab Republic",
+	"Taiwan",
+	"Tajikistan",
+	"Tanzania, United Republic of",
+	"Thailand",
+	"Timor-Leste",
+	"Togo",
+	"Tokelau",
+	"Tonga",
+	"Trinidad and Tobago",
+	"Tunisia",
+	"Turkey",
+	"Turkmenistan",
+	"Turks and Caicos Islands (the)",
+	"Tuvalu",
+	"Uganda",
+	"Ukraine",
+	"United Arab Emirates (the)",
+	"United Kingdom of Great Britain and Northern Ireland (the)",
+	"United States Minor Outlying Islands (the)",
+	"United States of America (the)",
+	"Uruguay",
+	"Uzbekistan",
+	"Vanuatu",
+	"Venezuela (Bolivarian Republic of)",
+	"Viet Nam",
+	"Virgin Islands (British)",
+	"Virgin Islands (U.S.)",
+	"Wallis and Futuna",
+	"Western Sahara",
+	"Yemen",
+	"Zambia",
+	"Zimbabwe",
+	"Åland Islands"
+];
+
 export default function BankDetails() {
   const [showAddBankDetailsModal, setShowAddBankDetailsModal] = useState(false);
   //const [dropdownOpen, setDropdownOpen] = useState(false);
   const [bankDetailsList, setBankDetailsList] = useState(false);
   const [openCVVPopover, setOpenCVVPopover] = useState(false);
+  const [openSameBillingAddress, setOpenSameBillingAddress] = useState(true);
   const [bankDetailsSelected, setBankDetailsSelected] = useState(0);
   const [, forceUpdate] = useState(0);
 
@@ -143,7 +396,7 @@ export default function BankDetails() {
                 <thead>
                   <tr>
                     <th scope="col"></th>
-                    <th scope="col">Brand</th>
+                    <th scope="col">Bank</th>
                     <th scope="col">Card Number</th>
                     <th scope="col">Name on Card</th>
                     <th scope="col">Expiry Date</th>
@@ -194,11 +447,11 @@ export default function BankDetails() {
                             </DropdownToggle>
                             <DropdownMenu>
                               <DropdownItem onClick={toggleAddBankDetailsModal}>
-                                <i className="fas fa-edit"></i>
+                                <i className="fas fa-edit" style={{minWidth: '25px'}}></i>
                                 Edit
                               </DropdownItem>
                               <DropdownItem onClick={()=>deleteCard(index)}>
-                                <i className="fas fa-trash"></i>
+                                <i className="fas fa-trash" style={{minWidth: '25px'}}></i>
                                 Delete
                               </DropdownItem>
                             </DropdownMenu>
@@ -278,33 +531,43 @@ export default function BankDetails() {
                   </div>
                 </div>
               </div>
-              <div className="contact-form-field  checkbox-field">
-                <input type="checkbox" id="t3" name="" className="styled-checkbox" checked={true} />
+              <div className="contact-form-field checkbox-field mb-3">
+                <input
+                  type="checkbox"
+                  id="t3"
+                  className="styled-checkbox"
+                  checked={openSameBillingAddress}
+                  onChange={(e) => {
+                    setOpenSameBillingAddress(e.currentTarget.checked)
+                  }}
+                />
                 <label for="t3">Same billing address as original</label>
-                <div className="mt-4 bill-show-form">
-                  <div className="contact-form-field mb-4 ">
-                    <input type="number" placeholder="Street Address" />
+              </div>
+
+              { !(openSameBillingAddress) && <>
+                  <div className="contact-form-field mb-3">
+                    <input type="text" placeholder="Street Address" />
                   </div>
-                  <div className="contact-form-field mb-4 ">
+                  <div className="contact-form-field mb-3">
                     <input type="text" placeholder="Street Address 2" />
                   </div>
-                  <div className="contact-form-field mb-4 ">
+                  <div className="contact-form-field mb-3">
                     <input type="text" placeholder="City" />
                   </div>
-                  <div className="contact-form-field mb-4 ">
+                  <div className="contact-form-field mb-3">
                     <div className="select-outer">
                       <select>
-                        <option disabled selected hidden>Country (Optional)</option>
-                        <option>India</option>
-                        <option>UK</option>
+                        <option disabled selected hidden>Country (optional)</option>
+                        {countryList.map((c)=><option>{c}</option>)}
                       </select>
                     </div>
                   </div>
-                  <div className="contact-form-field mb-4 ">
+                  <div className="contact-form-field mb-3">
                     <input type="text" placeholder="Post Code" />
                   </div>
-                </div>
-              </div>
+                </>
+              }
+
               <div className="contact-form-field submit-contact text-center mt-4">
                 <input type="Submit" value="Add" onClick={toggleAddBankDetailsModal} />
               </div>

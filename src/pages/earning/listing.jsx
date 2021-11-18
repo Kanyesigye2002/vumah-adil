@@ -468,6 +468,7 @@ export default function Listing() {
               <td>BMW</td>
               <td>
                 £600/hour
+                <br />
                 £600/day
               </td>
               <td>Booked</td>
@@ -496,6 +497,7 @@ export default function Listing() {
               <td>BMW</td>
               <td>
                 £600/hour
+                <br />
                 £600/day
               </td>
               <td>Booked</td>
@@ -524,6 +526,7 @@ export default function Listing() {
               <td>BMW</td>
               <td>
                 £600/hour
+                <br />
                 £600/day
               </td>
               <td>Booked</td>
@@ -552,6 +555,7 @@ export default function Listing() {
               <td>BMW</td>
               <td>
                 £600/hour
+                <br />
                 £600/day
               </td>
               <td>Booked</td>
@@ -987,7 +991,7 @@ export default function Listing() {
                   <div className="row">
                     <div className="col-md-4">
                       <div className="contact-form-field mb-3">
-                        <label>Wednessday</label>
+                        <label>Wednesday</label>
                         <div className="contact-form-field mb-3">
                           <div className="select-outer">
                             <select id="paragraphSpaceOPtion" value={availabilityDay['wednesday']} name="wednesday" onChange={onSelectionchange}>
