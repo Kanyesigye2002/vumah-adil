@@ -10,6 +10,7 @@ import BlogImage1 from '../../assets/img/blog-img-1.jpg';
 import BlogImage2 from '../../assets/img/blog-img-2.jpg';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';
+import useGoogle from "react-google-autocomplete/lib/usePlacesAutocompleteService";
 
 
 export default function Home() {
@@ -17,16 +18,16 @@ export default function Home() {
   const [activeWhyUsTab, setActiveWhyUsTab] = useState('1');
   const [searchSuggestionsOpen, setSearchSuggestionsOpen] = useState(false);
 
+  const { placePredictions, getPlacePredictions, isPlacePredictionsLoading, } = useGoogle({
+    apiKey: 'AIzaSyAfp5ZK1FeI94gQZE8ZC0nDrKqX8AS0E3U',
+    options: {
+      types: ["(regions)"],
+      componentRestrictions: { country: "uk" },
+    },
+  });
+
   const [fromDate, setFromDate] = useState(moment().format('M/DD/YYYY (hh:mm)'));
   const [toDate, setToDate] = useState(moment().format('M/DD/YYYY (hh:mm)'));
-
-  const suggestionsList = [
-    'Manchester City, Manchester',
-    'Manchester',
-    'Manchester Central, Manchester',
-    'Manchester Airport, Manchester',
-    'Greater Manchester',
-  ];
 
   const searchRef = useRef(null);
   const [searchVehicle, setSearchVehicle] = useState(null);
@@ -68,32 +69,33 @@ export default function Home() {
                   type="search"
                   onChange={
                     (event) => {
-                      setSearchSuggestionsOpen(event.target.value.length > 1);
+                      getPlacePredictions({ input: event.target.value });
+                      setSearchSuggestionsOpen(event.target.value.length > 0);
                     }
                   }
                   placeholder="Search for a city or a postcode"
                   ref={ searchRef }
                 />
                 {
-                  searchSuggestionsOpen === true && (
+                  searchSuggestionsOpen === true && placePredictions.length > 0 && (
                     <div className="banner-search-suggestions">
                       {
-                        suggestionsList.map((suggestion) => (
+                        placePredictions.map((suggestion, index) => (
                           <div
                             className="banner-search-location"
                             onClick={() => {
                               setSearchSuggestionsOpen(false);
-                              searchRef.current.value = suggestion;
+                              searchRef.current.value = suggestion.description;
                               searchRef.current.focus();
                             }}
-                            key={suggestion}
+                            key={index}
                             tabIndex="0"
                           >
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path>
                               <circle cx="12" cy="10" r="3"></circle>
                             </svg>
-                            { suggestion }
+                            { suggestion.description }
                           </div>
                         ))
                       }
@@ -111,15 +113,15 @@ export default function Home() {
                 alwaysShowCalendars={true}
                 onEvent={handleEvent}
               >
-                <div class="banner-search-field">
-                  <input type="text" name="daterange" value={`${fromDate} - ${toDate}`} />
+                <div className="banner-search-field">
+                  <input type="text" name="daterange" value={`${fromDate} - ${toDate}`} onChange={() => {}} />
                 </div>
               </DateRangePicker>
             </div>
             <Link className="col-sm-6 col-md-2 col-lg-1" to="/search">
               <div className="banner-search-icon">
                 <input type="submit" value="" className="w-auto" />
-                <i className="fas fa-search"></i>
+                <i className="fas fa-search"/>
               </div>
             </Link>
           </div>

@@ -8,6 +8,7 @@ import Mercedes from '../../assets/img/Mercedes-car.jpg';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, TabContent, TabPane, Nav, NavItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
+import useGoogle from "react-google-autocomplete/lib/usePlacesAutocompleteService";
 
 export default function Search() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -17,8 +18,18 @@ export default function Search() {
   const [selectedVehicleOnMap, setSelectedVehicleOnMap] = useState(null);
   const [fromDate, setFromDate] = useState(moment().format('M/DD/YYYY (hh:mm)'));
   const [toDate, setToDate] = useState(moment().format('M/DD/YYYY (hh:mm)'));
-
   const [showFilters, setShowFilters] = useState(false);
+
+  const [searchSuggestionsOpen, setSearchSuggestionsOpen] = useState(false);
+  const searchRef = useRef(null);
+
+  const { placePredictions, getPlacePredictions, isPlacePredictionsLoading, } = useGoogle({
+    apiKey: 'AIzaSyAfp5ZK1FeI94gQZE8ZC0nDrKqX8AS0E3U',
+    options: {
+      types: ["(regions)"],
+      componentRestrictions: { country: "uk" },
+    },
+  });
 
   const [panelWidth, setPanelWidth] = useState(
     window.innerWidth > 800 ? 800 : window.innerWidth
@@ -96,9 +107,42 @@ export default function Search() {
                 }}>
                   <div className="banner-search-field">
                     <input
-                      type="search"
-                      placeholder="Search for a city or a postcode"
+                        type="search"
+                        onChange={
+                          (event) => {
+                            getPlacePredictions({ input: event.target.value });
+                            setSearchSuggestionsOpen(event.target.value.length > 0);
+                          }
+                        }
+                        placeholder="Search for a city or a postcode"
+                        ref={ searchRef }
                     />
+                    {
+                      searchSuggestionsOpen === true && placePredictions.length > 0 && (
+                          <div className="banner-search-suggestions" style={{zIndex: '10'}}>
+                            {
+                              placePredictions.map((suggestion, index) => (
+                                  <div
+                                      className="banner-search-location"
+                                      onClick={() => {
+                                        setSearchSuggestionsOpen(false);
+                                        searchRef.current.value = suggestion.description;
+                                        searchRef.current.focus();
+                                      }}
+                                      key={index}
+                                      tabIndex="0"
+                                  >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path>
+                                      <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                    { suggestion.description }
+                                  </div>
+                              ))
+                            }
+                          </div>
+                      )
+                    }
                   </div>
                 </div>
 
@@ -134,7 +178,6 @@ export default function Search() {
                   </div>
                 </div>
               </div>
-
               {
                 showFilters && (
                   <div className="d-flex flex-wrap mb-4">
@@ -241,9 +284,7 @@ export default function Search() {
                   </div>
                 )
               }
-
-              <div
-                className={
+              <div className={
                   `toggle-double-grid ${
                     panelWidth > 1100 ? 'c4' :
                       panelWidth > 900 ? 'c3' :
@@ -551,155 +592,6 @@ export default function Search() {
                   </div>
                 </Link>
 
-                <Link
-                  className={selectedVehicleOnMap !== '5' ? 'company-product-list-grid' : 'company-product-list-grid is-active'}
-                  onClick={(event) => {
-                    if (selectedVehicleOnMap !== '5') {
-                      event.preventDefault();
-                      setSelectedVehicleOnMap('5');
-                    }
-                  }}
-                  to="/car-listing"
-                >
-                  <div className="company-product-list-img">
-                    <Slider
-                      dots={true}
-                      infinite={true}
-                      speed={500}
-                      slidesToShow={1}
-                      slidesToScroll={1}
-                      className={'carModal-slider mb-5'}
-                      style={{borderRadius: '0', height: '100%'}}
-                    >
-                      <div>
-                        <img src={Mercedes} alt="car-modal-img" />
-                      </div>
-                      <div>
-                        <img src={Mercedes} alt="car-modal-img" />
-                      </div>
-                      <div>
-                        <img src={Mercedes} alt="car-modal-img" />
-                      </div>
-                    </Slider>
-                  </div>
-                  <div className="comapany-card-body">
-                    <h2>Mercedes-Benz S-class 2018</h2>
-                    <ul className="car-grid-tag" style={{paddingLeft: '0'}}>
-                      <li>ATM </li>
-                      <li>Electric</li>
-                      <li>Bluetooth</li>
-                      <li>+3</li>
-                    </ul>
-                    <div className="comapany-card-footer d-flex justify-content-between mt-4 pt-2">
-                      <span className="heart-review">
-                        <i className="fas fa-heart" style={{fontWeight: 500}}
-                          onClick={(event) => {
-                            event.preventDefault();
-                            event.stopPropagation();
-
-                            if (event.currentTarget.style['font-weight'].toString() === '600') {
-                              event.currentTarget.style.fontWeight = 500;
-                            } else {
-                              event.currentTarget.style.fontWeight = 600;
-                            }
-                          }}
-                        ></i>
-                      </span>
-                      <h2 style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'flex-end',
-                        textAlign: 'right'
-                      }}>
-                        <b>
-                          £24<span style={{fontWeight: '500'}}>/hr</span>
-                          <span style={{fontWeight: '500', marginLeft: '5px'}}>(£100/day)</span>
-                        </b>
-                        <small style={{
-                          opacity: '0.6',
-                          marginTop: '3px',
-                          fontSize: '13px',
-                          textDecoration: 'underline'
-                        }}>£653 total</small>
-                      </h2>
-                    </div>
-                  </div>
-                </Link>
-
-                <Link
-                  className={selectedVehicleOnMap !== '6' ? 'company-product-list-grid' : 'company-product-list-grid is-active'}
-                  onClick={(event) => {
-                    if (selectedVehicleOnMap !== '6') {
-                      event.preventDefault();
-                      setSelectedVehicleOnMap('6');
-                    }
-                  }}
-                  to="/car-listing"
-                >
-                  <div className="company-product-list-img">
-                    <Slider
-                      dots={true}
-                      infinite={true}
-                      speed={500}
-                      slidesToShow={1}
-                      slidesToScroll={1}
-                      className={'carModal-slider mb-5'}
-                      style={{borderRadius: '0', height: '100%'}}
-                    >
-                      <div>
-                        <img src={Mercedes} alt="car-modal-img" />
-                      </div>
-                      <div>
-                        <img src={Mercedes} alt="car-modal-img" />
-                      </div>
-                      <div>
-                        <img src={Mercedes} alt="car-modal-img" />
-                      </div>
-                    </Slider>
-                  </div>
-                  <div className="comapany-card-body">
-                    <h2>Mercedes-Benz S-class 2018</h2>
-                    <ul className="car-grid-tag" style={{paddingLeft: '0'}}>
-                      <li>ATM </li>
-                      <li>Electric</li>
-                      <li>Bluetooth</li>
-                      <li>+3</li>
-                    </ul>
-                    <div className="comapany-card-footer d-flex justify-content-between mt-4 pt-2">
-                      <span className="heart-review">
-                        <i className="fas fa-heart" style={{fontWeight: 500}}
-                          onClick={(event) => {
-                            event.preventDefault();
-                            event.stopPropagation();
-
-                            if (event.currentTarget.style['font-weight'].toString() === '600') {
-                              event.currentTarget.style.fontWeight = 500;
-                            } else {
-                              event.currentTarget.style.fontWeight = 600;
-                            }
-                          }}
-                        ></i>
-                      </span>
-                      <h2 style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'flex-end',
-                        textAlign: 'right'
-                      }}>
-                        <b>
-                          £24<span style={{fontWeight: '500'}}>/hr</span>
-                          <span style={{fontWeight: '500', marginLeft: '5px'}}>(£100/day)</span>
-                        </b>
-                        <small style={{
-                          opacity: '0.6',
-                          marginTop: '3px',
-                          fontSize: '13px',
-                          textDecoration: 'underline'
-                        }}>£653 total</small>
-                      </h2>
-                    </div>
-                  </div>
-                </Link>
               </div>
             </div>
             <div className="search-filter-map">

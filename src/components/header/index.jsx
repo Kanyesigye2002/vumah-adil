@@ -522,7 +522,7 @@ export default function Header() {
                   <div className="select-outer">
                     <select>
                       <option disabled selected hidden>Country (optional)</option>
-                      {countryList.map((c)=><option>{c}</option>)}
+                      {countryList.map((c, index)=><option key={index}>{c}</option>)}
                     </select>
                   </div>
                 </div>
