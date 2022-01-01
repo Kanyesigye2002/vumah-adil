@@ -16,6 +16,7 @@ import "react-upload-gallery/dist/style.css";
 import classnames from 'classnames';
 
 export default function Chat() {
+
   const [reportModal, setReportModal] = useState(false);
   const [breakDownModal, setBreakDownModal] = useState(false);
   const [selectedIssue, setSelectedIssue] = useState('');

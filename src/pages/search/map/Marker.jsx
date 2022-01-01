@@ -1,8 +1,11 @@
 import React from 'react';
 import InfoWindow from './InfoWindow';
+import {useSelector} from "react-redux";
 
 export default function Marker(props) {
-  const { place, selectedVehicleOnMap } = props;
+  const { place } = props;
+
+    const selectedVehicleOnMap = useSelector(state => state.SelectedVehicleOnMap)
 
   return (
     <>

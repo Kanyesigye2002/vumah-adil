@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
-import Availability from './availability';
+import Availability from './availability.jsx';
 import Earnings from './earnings';
 import Listing from './listing';
 import Rank from './rank';
+import { Container } from '@mui/material';
 
 export default function Earning() {
   const [activeTab, setActiveTab] = useState('1');
 
   return (
     <section class="padd-top-60 padd-bottom-60">
-      <div class="container">
+      <Container maxWidth='1500px'>
         <div class="d-lg-flex w-100 overview-main" data-aos="fade-up">
           <Nav pills className="flex-lg-column">
             <NavItem>
@@ -62,7 +63,7 @@ export default function Earning() {
             </TabPane>
           </TabContent>
         </div>
-      </div>
+      </Container>
     </section>
   );
 

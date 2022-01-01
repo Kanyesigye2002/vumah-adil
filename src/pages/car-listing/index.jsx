@@ -18,6 +18,7 @@ import MercedesCar from '../../assets/img/Mercedes-car.jpg';
 import CustomerReview from '../../assets/img/customer-review-img-2.png';
 import CustomerReview1 from '../../assets/img/customer-review-img-1.png';
 import { Link } from 'react-router-dom';
+import GoogleMapReact from 'google-map-react';
 
 
 export default function CarListing(props) {
@@ -195,6 +196,12 @@ export default function CarListing(props) {
                 <h2>Location</h2>
               </div>
               <div className="location-map-inner">
+                {/*<GoogleMapReact*/}
+                {/*  defaultZoom={12}*/}
+                {/*  defaultCenter={[51.509865, -0.118092]}*/}
+                {/*>*/}
+                {/*  <div lat={51.536799} lng={ -0.118092} className={"map-position-label map-position-label--active"}>$100</div>*/}
+                {/*</GoogleMapReact>*/}
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9552296.05057121!2d-13.4308706529575!3d54.231356379299555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x25a3b1142c791a9%3A0xc4f8a0433288257a!2sUnited%20Kingdom!5e0!3m2!1sen!2sin!4v1623499420062!5m2!1sen!2sin"
                   width="100%" height="100%" style={{ border: 0 }} allowFullScreen="" loading="lazy"></iframe>

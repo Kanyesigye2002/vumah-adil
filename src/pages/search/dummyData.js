@@ -7,7 +7,7 @@ const dummyData = [{
     }
   },
   "id": "1",
-  "name": "Mercedes-Benz S-class 2018",
+  "name": "Mercedes-Benz S-class 2017",
   price: '£100/day(£24/hr)'
 },
 {

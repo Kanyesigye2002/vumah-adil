@@ -2,6 +2,11 @@
 import React, { useState } from 'react';
 import { Modal, ModalHeader, ModalBody, Collapse, Tooltip, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Popover, PopoverBody } from 'reactstrap';
 import CVVExampleImage from '../../assets/img/cvv-example.jpg';
+import UpdateUserInfo from '../../pages/account/UpdateUserInfo';
+import { Dialog, DialogContent, DialogTitle, IconButton, Toolbar } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { Close } from '@mui/icons-material';
+import AddBankCard from '../../pages/account/AddBankCard';
 
 const countryList = [
 	"Afghanistan",
@@ -255,7 +260,80 @@ const countryList = [
 	"Åland Islands"
 ];
 
+
+const APP_BAR_MOBILE = 64;
+const APP_BAR_DESKTOP = 88;
+
+const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
+	height: APP_BAR_MOBILE,
+	transition: theme.transitions.create(['height', 'background-color'], {
+		easing: theme.transitions.easing.easeInOut,
+		duration: theme.transitions.duration.shorter
+	}),
+	[theme.breakpoints.up('md')]: {
+		height: APP_BAR_DESKTOP
+	}
+}));
+
+const ToolbarShadowStyle = styled('div')(({ theme }) => ({
+	left: 0,
+	right: 0,
+	bottom: 0,
+	height: 24,
+	zIndex: -1,
+	margin: 'auto',
+	borderRadius: '50%',
+	position: 'absolute',
+	width: `calc(100% - 48px)`
+}));
+
+const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+	'& .MuiDialogContent-root': {
+		padding: theme.spacing(2)
+	},
+	'& .MuiDialogActions-root': {
+		padding: theme.spacing(1)
+	}
+}));
+
+const BootstrapDialogTitle = (props) => {
+	const { children, onClose, ...other } = props;
+
+	return (
+		<DialogTitle sx={{ m: 0, p: 2 }} {...other}>
+			{children}
+			{onClose ? (
+				<IconButton
+					aria-label='close'
+					onClick={onClose}
+					sx={{
+						position: 'absolute',
+						right: 8,
+						top: 8,
+						color: (theme) => theme.palette.grey[500]
+					}}
+				>
+					<Close />
+				</IconButton>
+			) : null}
+		</DialogTitle>
+	);
+};
+
 export default function BankDetails() {
+
+	const [userActions, setUserActions] = useState({ header: '', content: <></> });
+	const [openUserActions, setOpenUserActions] = React.useState(false);
+
+	const handleOpenUserActions = () => {
+		setOpenUserActions(true);
+	};
+
+	const handleCloseUserActions = () => {
+		setOpenUserActions(false);
+	};
+
+
   const [showAddBankDetailsModal, setShowAddBankDetailsModal] = useState(false);
   //const [dropdownOpen, setDropdownOpen] = useState(false);
   const [bankDetailsList, setBankDetailsList] = useState(false);
@@ -381,7 +459,10 @@ export default function BankDetails() {
             )}
 
             { (bankDetailsList || bankDetails.length === 0) &&
-              <button className="common-btn" onClick={toggleAddBankDetailsModal}>Add</button>
+              <button className="common-btn" onClick={() => {
+								setUserActions({ header: 'Add Card', content: <AddBankCard /> });
+								handleOpenUserActions();
+							}}>Add</button>
             }
           </div>
           <div className="custom-table-main">
@@ -466,6 +547,22 @@ export default function BankDetails() {
           </div>
         </div>
       </div>
+
+			{/* <!-- add listing modal --> */}
+			<BootstrapDialog
+				onClose={handleCloseUserActions}
+				aria-labelledby='customized-dialog-title'
+				open={openUserActions}
+			>
+				<BootstrapDialogTitle id='customized-dialog-title' onClose={handleCloseUserActions}>
+					{userActions.header}
+				</BootstrapDialogTitle>
+				<DialogContent dividers>
+					{userActions.content}
+				</DialogContent>
+			</BootstrapDialog>
+			{/* <!-- add listing modal --> */}
+
 
       {/* <!-- add bank details modal --> */}
       <Modal isOpen={showAddBankDetailsModal} toggle={toggleAddBankDetailsModal} className='bank-detail-popup'>
