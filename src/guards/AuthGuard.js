@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // hooks
 import useAuth from '../hooks/useAuth';
 // pages
-import Login from './Login';
+import UnauthorizedAccess from '../layouts/authGuard/UnauthorizedAccess';
 
 // ----------------------------------------------------------------------
 
@@ -21,7 +21,7 @@ export default function AuthGuard({ children }) {
     if (pathname !== requestedLocation) {
       setRequestedLocation(pathname);
     }
-    return <Login />;
+    return <UnauthorizedAccess />;
   }
 
   if (requestedLocation && pathname !== requestedLocation) {

@@ -11,14 +11,16 @@ export default function Earning() {
   const [activeTab, setActiveTab] = useState('1');
 
   return (
-    <section class="padd-top-60 padd-bottom-60">
-      <Container maxWidth='1500px'>
+    <section className="padd-top-60 padd-bottom-60">
+      <Container maxWidth="1500px">
         <div class="d-lg-flex w-100 overview-main" data-aos="fade-up">
           <Nav pills className="flex-lg-column">
             <NavItem>
               <NavLink
                 className={classnames({ active: activeTab === '1' }) + ' pointer'}
-                onClick={() => { toggle('1'); }}
+                onClick={() => {
+                  toggle('1');
+                }}
               >
                 My Listings
               </NavLink>
@@ -26,7 +28,9 @@ export default function Earning() {
             <NavItem>
               <NavLink
                 className={classnames({ active: activeTab === '2' }) + ' pointer'}
-                onClick={() => { toggle('2'); }}
+                onClick={() => {
+                  toggle('2');
+                }}
               >
                 Earnings
               </NavLink>
@@ -34,7 +38,9 @@ export default function Earning() {
             <NavItem>
               <NavLink
                 className={classnames({ active: activeTab === '3' }) + ' pointer'}
-                onClick={() => { toggle('3'); }}
+                onClick={() => {
+                  toggle('3');
+                }}
               >
                 Availability
               </NavLink>
@@ -42,7 +48,9 @@ export default function Earning() {
             <NavItem>
               <NavLink
                 className={classnames({ active: activeTab === '4' }) + ' pointer'}
-                onClick={() => { toggle('4'); }}
+                onClick={() => {
+                  toggle('4');
+                }}
               >
                 Rank
               </NavLink>
@@ -69,5 +77,5 @@ export default function Earning() {
 
   function toggle(tab) {
     if (activeTab !== tab) setActiveTab(tab);
-  };
+  }
 }

@@ -11,7 +11,9 @@ import {
   Stack,
   CardActionArea,
   Dialog,
-  DialogTitle, IconButton, DialogContent
+  DialogTitle,
+  IconButton,
+  DialogContent
 } from '@mui/material';
 // hooks
 import useOffSetTop from '../../hooks/useOffSetTop';
@@ -73,7 +75,7 @@ const BootstrapDialogTitle = (props) => {
       {children}
       {onClose ? (
         <IconButton
-          aria-label='close'
+          aria-label="close"
           onClick={onClose}
           sx={{
             position: 'absolute',
@@ -92,48 +94,56 @@ const BootstrapDialogTitle = (props) => {
 // ----------------------------------------------------------------------
 
 export default function MainNavbar() {
-
   const theme = useTheme();
 
   const { pathname } = useLocation();
-  const isChat = pathname === '/chat';
+  const isChat = pathname === '/bookings' || pathname === '/chat';
 
   return (
-    <AppBar sx={{ p: 1, bgcolor: theme.palette.mode === 'dark' ? '#28293d' : '#f8f9fa', boxShadow: isChat ? theme.customShadows.z1 : theme.customShadows.z8 }}>
+    <AppBar
+      sx={{
+        p: 1,
+        bgcolor: theme.palette.mode === 'dark' ? '#28293d' : '#f8f9fa',
+        boxShadow: isChat ? theme.customShadows.z1 : theme.customShadows.z8
+      }}
+    >
       <ToolbarStyle disableGutters sx={{ height: { md: APP_BAR_DESKTOP - 38 } }}>
-        <Container maxWidth='xl' sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-
-          <RouterLink to='/'>
-            <img src={Logo} height='70px' alt='logo' />
+        <Container maxWidth="xl" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <RouterLink to="/">
+            <img src={Logo} height="70px" alt="logo" />
           </RouterLink>
 
           <Box sx={{ flexGrow: 1 }} />
 
           <Button
-            color='primary'
-            variant='contained'
-            size='large' c
+            color="primary"
+            variant="contained"
+            size="large"
             omponent={RouterLink}
-            to='/landing-page'
+            to="/landing-page"
             sx={{ borderRadius: '100px', mx: 1, color: 'white', '&:hover': { color: 'white' } }}
           >
             Become a host
           </Button>
 
-
           <Button
-            color='primary'
-            variant='text'
-            size='large'
+            color="primary"
+            variant="text"
+            size="large"
             component={RouterLink}
-            to='/about-us'
-            sx={{ borderRadius: '100px', mr: 2, boxShadow: theme.customShadows.z1, color: 'primary', '&:hover': { color: 'primary.main' } }}
+            to="/about-us"
+            sx={{
+              borderRadius: '100px',
+              mr: 2,
+              boxShadow: theme.customShadows.z1,
+              color: 'primary',
+              '&:hover': { color: 'primary.main' }
+            }}
           >
             About Us
           </Button>
 
           <HeaderDropDown />
-
         </Container>
       </ToolbarStyle>
 

@@ -81,10 +81,10 @@ export default function AvailabilityListing() {
 
   const head = [
     {
-      id: 'listing',
+      id: 'image',
       numeric: false,
       disablePadding: false,
-      label: 'Listing'
+      label: 'Image'
     },
     {
       id: 'reg',
@@ -92,12 +92,6 @@ export default function AvailabilityListing() {
       disablePadding: false,
       label: 'License Plate'
     }
-    // {
-    //   id: 'actions',
-    //   numeric: false,
-    //   disablePadding: false,
-    //   label: 'Actions'
-    // }
   ];
 
   const content = [
@@ -144,7 +138,6 @@ export default function AvailabilityListing() {
 
     for (let i = 0; i < 7; i++) {
       const day = moment().add(i, 'days');
-      console.log(day.format('YYYY-MM-DD'));
 
       doDays.push({
         id: i,
@@ -155,8 +148,6 @@ export default function AvailabilityListing() {
     }
 
     setDays(doDays);
-
-    console.log('Days: ', doDays);
   }, []);
 
   const handleChangePage = (event, newPage) => {
@@ -177,19 +168,14 @@ export default function AvailabilityListing() {
   const SortingHead = (
     <TableHead>
       <TableRow>
-        {head.map((headCell) => (
+        {head.map((headCell, index) => (
           <TableCell
-            key={headCell.id}
+            key={index}
             align={headCell.numeric ? 'right' : 'left'}
             padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}
           >
-            <TableSortLabel
-              active={orderBy === headCell.id}
-              direction={orderBy === headCell.id ? order : 'asc'}
-              // onClick={handleRequestSort(event, headCell.id)}
-              // sx={{whiteSpace: 'nowrap'}}
-            >
+            <TableSortLabel active={orderBy === headCell.id} direction={orderBy === headCell.id ? order : 'asc'}>
               {headCell.label}
               {orderBy === headCell.id ? (
                 <Box component="span" sx={{ ...visuallyHidden }}>
@@ -199,8 +185,8 @@ export default function AvailabilityListing() {
             </TableSortLabel>
           </TableCell>
         ))}
-        {days.map((headCell) => (
-          <TableCell key={headCell.id} align="center" padding="normal" sortDirection={false}>
+        {days.map((headCell, index) => (
+          <TableCell key={index} align="center" padding="normal" sortDirection={false}>
             {headCell.day.format('ddd Do')}
           </TableCell>
         ))}
@@ -215,7 +201,7 @@ export default function AvailabilityListing() {
       ) : (
         <>
           <Scrollbar>
-            <SortingSelectingToolbar numSelected={0} title="Vehicles Availability" />
+            <SortingSelectingToolbar numSelected={0} title="Vehicles Availability" isVehicleTable={true} />
 
             {data && (
               <TableContainer sx={{ minWidth: 902 }}>
@@ -235,7 +221,7 @@ export default function AvailabilityListing() {
                             role="checkbox"
                             aria-checked={isItemSelected}
                             tabIndex={-1}
-                            key={row.id}
+                            key={index}
                             selected={isItemSelected}
                           >
                             <TableCell
@@ -274,10 +260,10 @@ export default function AvailabilityListing() {
                             <TableCell component="th" id={labelId} scope="row" padding="none">
                               {row.reg}
                             </TableCell>
-                            {row.availability.map((item) => {
+                            {row.availability.map((item, index) => {
                               if (item.label === days[0].day.format('dddd')) {
                                 return (
-                                  <TableCell align="center" sx={{ color: color(item.timeType) }}>
+                                  <TableCell align="center" sx={{ color: color(item.timeType) }} key={index}>
                                     {item.timeType === 'Custom Hours' ? (
                                       <>
                                         {new moment(item.dayStart).format('h:mm a')} <br />
@@ -291,10 +277,10 @@ export default function AvailabilityListing() {
                                 );
                               }
                             })}
-                            {row.availability.map((item) => {
+                            {row.availability.map((item, index) => {
                               if (item.label === days[1].day.format('dddd')) {
                                 return (
-                                  <TableCell align="center" sx={{ color: color(item.timeType) }}>
+                                  <TableCell align="center" sx={{ color: color(item.timeType) }} key={index}>
                                     {item.timeType === 'Custom Hours' ? (
                                       <>
                                         {new moment(item.dayStart).format('h:mm a')} <br />
@@ -308,10 +294,10 @@ export default function AvailabilityListing() {
                                 );
                               }
                             })}
-                            {row.availability.map((item) => {
+                            {row.availability.map((item, index) => {
                               if (item.label === days[2].day.format('dddd')) {
                                 return (
-                                  <TableCell align="center" sx={{ color: color(item.timeType) }}>
+                                  <TableCell align="center" sx={{ color: color(item.timeType) }} key={index}>
                                     {item.timeType === 'Custom Hours' ? (
                                       <>
                                         {new moment(item.dayStart).format('h:mm a')} <br />
@@ -325,10 +311,10 @@ export default function AvailabilityListing() {
                                 );
                               }
                             })}
-                            {row.availability.map((item) => {
+                            {row.availability.map((item, index) => {
                               if (item.label === days[3].day.format('dddd')) {
                                 return (
-                                  <TableCell align="center" sx={{ color: color(item.timeType) }}>
+                                  <TableCell align="center" sx={{ color: color(item.timeType) }} key={index}>
                                     {item.timeType === 'Custom Hours' ? (
                                       <>
                                         {new moment(item.dayStart).format('h:mm a')} <br />
@@ -342,10 +328,10 @@ export default function AvailabilityListing() {
                                 );
                               }
                             })}
-                            {row.availability.map((item) => {
+                            {row.availability.map((item, index) => {
                               if (item.label === days[4].day.format('dddd')) {
                                 return (
-                                  <TableCell align="center" sx={{ color: color(item.timeType) }}>
+                                  <TableCell align="center" sx={{ color: color(item.timeType) }} key={index}>
                                     {item.timeType === 'Custom Hours' ? (
                                       <>
                                         {new moment(item.dayStart).format('h:mm a')} <br />
@@ -359,10 +345,10 @@ export default function AvailabilityListing() {
                                 );
                               }
                             })}
-                            {row.availability.map((item) => {
+                            {row.availability.map((item, index) => {
                               if (item.label === days[5].day.format('dddd')) {
                                 return (
-                                  <TableCell align="center" sx={{ color: color(item.timeType) }}>
+                                  <TableCell align="center" sx={{ color: color(item.timeType) }} key={index}>
                                     {item.timeType === 'Custom Hours' ? (
                                       <>
                                         {new moment(item.dayStart).format('h:mm a')} <br />
@@ -376,10 +362,10 @@ export default function AvailabilityListing() {
                                 );
                               }
                             })}
-                            {row.availability.map((item) => {
+                            {row.availability.map((item, index) => {
                               if (item.label === days[6].day.format('dddd')) {
                                 return (
-                                  <TableCell align="center" sx={{ color: color(item.timeType) }}>
+                                  <TableCell align="center" sx={{ color: color(item.timeType) }} key={index}>
                                     {item.timeType === 'Custom Hours' ? (
                                       <>
                                         {new moment(item.dayStart).format('h:mm a')} <br />
@@ -416,10 +402,6 @@ export default function AvailabilityListing() {
             <>
               <Box sx={{ position: 'relative' }}>
                 <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', p: 5 }}>
-                  <motion.div variants={varBounceIn}>
-                    <SeverErrorIllustration sx={{ height: 200, my: { xs: 3, sm: 6 } }} />
-                  </motion.div>
-
                   <motion.div variants={varFadeInDown}>
                     <Typography variant="body1">There are no data for display</Typography>
                   </motion.div>

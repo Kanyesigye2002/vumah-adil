@@ -2,27 +2,27 @@ import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import {
   Alert,
-  Box, Button,
-  CircularProgress, Paper,
+  Box,
+  Button,
+  Paper,
   Stack,
   Step,
   StepConnector,
   stepConnectorClasses,
   StepLabel,
-  Stepper, TextField, Typography
+  Stepper,
+  TextField,
+  Typography
 } from '@mui/material';
 import { Check, Close } from '@mui/icons-material';
 import Scrollbar from '../../components/Scrollbar';
 import { useSnackbar } from 'notistack';
-import { isString } from 'lodash';
-import MyAvatar from '../../components/MyAvatar';
 import createAvatar from '../../utils/createAvatar';
 import { MAvatar, MIconButton } from '../../components/@material-extend';
 import PermissionsTable from './PermissionsTable';
-import { useLazyQuery, useMutation, useQuery } from '@apollo/client';
-import { CREATE_STAFF_MEMBER, GET_USER_BY_EMAIL, GET_USERS, GET_WEATHER_QUERY } from '../../graphql/Queries';
+import { useLazyQuery, useMutation } from '@apollo/client';
+import { CREATE_STAFF_MEMBER, GET_USER_BY_EMAIL } from '../../graphql/Queries';
 import { LoadingButton } from '@mui/lab';
-
 
 const STEPS = ['User Email', 'User details', 'User Permissions'];
 
@@ -73,13 +73,12 @@ const QontoStepIconRoot = styled('div')(({ theme, ownerState }) => ({
 function QontoStepIcon({ active, completed }) {
   return (
     <QontoStepIconRoot ownerState={{ active }}>
-      {completed ? <Check className='QontoStepIcon-completedIcon' /> : <div className='QontoStepIcon-circle' />}
+      {completed ? <Check className="QontoStepIcon-completedIcon" /> : <div className="QontoStepIcon-circle" />}
     </QontoStepIconRoot>
   );
 }
 
 function AddStaffMemberNew(props) {
-
   const [activeStep, setActiveStep] = useState(0);
   const [user, setUser] = useState({});
   const [email, setEmail] = useState('');
@@ -105,141 +104,136 @@ function AddStaffMemberNew(props) {
   const image = '/static/mock-images/avatars/avatar_default.jpg';
 
   const [CreateStaff] = useMutation(CREATE_STAFF_MEMBER, {
-    variables: {userName: user.userName, companyRoleGroup: permissions}
+    variables: { userName: user.userName, companyRoleGroup: permissions }
   });
 
-  const [GetUserByEmail, {loading}] = useLazyQuery(GET_USER_BY_EMAIL, {
-    variables: { email: email },
+  const [GetUserByEmail, { loading }] = useLazyQuery(GET_USER_BY_EMAIL, {
+    variables: { email: email }
   });
 
   const handleEmailCheck = () => {
-    GetUserByEmail().then(res => {
-
-      console.log(res)
-      if (res.data) {
-        setUser(res.data.GetUserByEmail)
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
-      }
-      if (res.error) {
-        console.log(res.error)
-        setLoadingStatus({ show: true, status: 'error', message: res.error.message })
-      }
-    }).catch(e => {
-      console.log(e)
-      setLoadingStatus({ show: true, status: 'error', message: e.message })
-    })
+    GetUserByEmail()
+      .then((res) => {
+        console.log(res);
+        if (res.data) {
+          setUser(res.data.GetUserByEmail);
+          setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        }
+        if (res.error) {
+          console.log(res.error);
+          setLoadingStatus({ show: true, status: 'error', message: res.error.message });
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+        setLoadingStatus({ show: true, status: 'error', message: e.message });
+      });
   };
 
-  const userEmailCheck = <>
-    <Typography variant='subtitle1' sx={{ color: 'text.secondary' }}>Enter Email for a valid user</Typography>
+  const userEmailCheck = (
+    <>
+      <Typography variant="subtitle1" sx={{ color: 'text.secondary' }}>
+        Enter Email for a valid user
+      </Typography>
 
-    <TextField
-      fullWidth
-      label='Email'
-      value={email}
-      onChange={event => {
-        setEmail(event.target.value)
-        setLoadingStatus({ ...loadingStatus, show: false })
-      }}
-    />
-  </>;
+      <TextField
+        fullWidth
+        label="Email"
+        value={email}
+        onChange={(event) => {
+          setEmail(event.target.value);
+          setLoadingStatus({ ...loadingStatus, show: false });
+        }}
+      />
+    </>
+  );
 
-  const userEmailCheckActions = <>
-    <Button disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 1 }}>
-      Back
-    </Button>
-    <Box sx={{ flexGrow: 1 }} />
-    <LoadingButton onClick={handleEmailCheck} variant='contained' loading={loading} sx={{mr: 1}}>
-      Check User
-    </LoadingButton>
-  </>;
+  const userEmailCheckActions = (
+    <>
+      <Button disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 1 }}>
+        Back
+      </Button>
+      <Box sx={{ flexGrow: 1 }} />
+      <LoadingButton onClick={handleEmailCheck} variant="contained" loading={loading} sx={{ mr: 1 }}>
+        Check User
+      </LoadingButton>
+    </>
+  );
 
-  const userDetails = <>
+  const userDetails = (
+    <>
+      <Paper sx={{ display: 'flex', justifyContent: 'center', py: 6, px: 4, minHeight: 200, bgcolor: 'grey.50012' }}>
+        <Stack spacing={4} sx={{ width: '100%' }}>
+          <MAvatar
+            src={image}
+            alt={'Allan'}
+            color={image ? 'default' : createAvatar('Allan Kanye').color}
+            sx={{ mx: 'auto', mb: 2, height: 100, width: 100, fontSize: '40px' }}
+          >
+            {createAvatar('Allan Kanye').name}
+          </MAvatar>
 
-    <Paper sx={{ display: 'flex', justifyContent: 'center', py: 6, px: 4, minHeight: 200, bgcolor: 'grey.50012' }}>
-      <Stack spacing={4} sx={{ width: '100%' }}>
+          <TextField fullWidth label="Email" value={user.email} />
 
-        <MAvatar
-          src={image}
-          alt={'Allan'}
-          color={image ? 'default' : createAvatar('Allan Kanye').color}
-          sx={{ mx: 'auto', mb: 2, height: 100, width: 100, fontSize: '40px' }}
-        >
-          {createAvatar('Allan Kanye').name}
-        </MAvatar>
+          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+            <TextField fullWidth type="text" label="First Name" value={user.firstName} />
 
-        <TextField
-          fullWidth
-          label='Email'
-          value={user.email}
-        />
-
-        <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-          <TextField
-            fullWidth
-            type='text'
-            label='First Name'
-            value={user.firstName}
-          />
-
-          <TextField
-            fullWidth
-            type='text'
-            label='Last Name'
-            value={user.lastName}
-          />
+            <TextField fullWidth type="text" label="Last Name" value={user.lastName} />
+          </Stack>
         </Stack>
-      </Stack>
-    </Paper>
+      </Paper>
+    </>
+  );
 
-  </>;
-
-  const userDetailsActions = <>
-    <Button disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 1 }}>
-      Back
-    </Button>
-    <Box sx={{ flexGrow: 1 }} />
-    <Button variant='contained' onClick={handleNext} sx={{ mr: 1 }}>
-      Next
-    </Button>
-  </>;
+  const userDetailsActions = (
+    <>
+      <Button disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 1 }}>
+        Back
+      </Button>
+      <Box sx={{ flexGrow: 1 }} />
+      <Button variant="contained" onClick={handleNext} sx={{ mr: 1 }}>
+        Next
+      </Button>
+    </>
+  );
 
   const handleSaveStaffMember = () => {
-
-    console.log( {userName: user.userName, companyRoleGroup: permissions} )
+    console.log({ userName: user.userName, companyRoleGroup: permissions });
 
     if (permissions !== {}) {
-      CreateStaff().then(res => {
-        console.log(res)
+      CreateStaff().then((res) => {
+        console.log(res);
 
         enqueueSnackbar('Staff member added successfully', {
           variant: 'success',
           action: (key) => (
-            <MIconButton size='small' onClick={() => closeSnackbar(key)}>
+            <MIconButton size="small" onClick={() => closeSnackbar(key)}>
               <Close />
             </MIconButton>
           )
-        })
+        });
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
       });
     }
+  };
 
+  const userPermissions = (
+    <>
+      <PermissionsTable setPermissions={setPermissions} permissions={permissions} />
+    </>
+  );
 
-  }
-
-  const userPermissions = <>
-    <PermissionsTable setPermissions={setPermissions}/>
-  </>;
-
-  const userPermissionsActions = <>
-    <Button disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 1 }}>
-      Back
-    </Button>
-    <Box sx={{ flexGrow: 1 }} />
-    <LoadingButton onClick={handleSaveStaffMember} variant='contained' loading={loading} sx={{mr: 1}}>
-      Save Staff Member
-    </LoadingButton>
-  </>;
+  const userPermissionsActions = (
+    <>
+      <Button disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 1 }}>
+        Back
+      </Button>
+      <Box sx={{ flexGrow: 1 }} />
+      <LoadingButton onClick={handleSaveStaffMember} variant="contained" loading={loading} sx={{ mr: 1 }}>
+        Save Staff Member
+      </LoadingButton>
+    </>
+  );
 
   function getStepContent(step) {
     switch (step) {
@@ -295,15 +289,13 @@ function AddStaffMemberNew(props) {
                 <Typography sx={{ my: 1 }}>All steps completed - you&apos;re finished</Typography>
               </Paper>
 
-              <Button color='inherit' onClick={handleReset} sx={{ mr: 1 }}>
+              <Button color="inherit" onClick={handleReset} sx={{ mr: 1 }}>
                 Reset
               </Button>
             </>
           ) : (
             <>
-
-              <Scrollbar sx={{ p: 1, height: loadingStatus.show ? '460px':'510px' }}>
-
+              <Scrollbar sx={{ p: 1, height: loadingStatus.show ? '460px' : '510px' }}>
                 <Stepper alternativeLabel activeStep={activeStep} connector={<QontoConnector />}>
                   {STEPS.map((label) => (
                     <Step key={label}>
@@ -312,23 +304,14 @@ function AddStaffMemberNew(props) {
                   ))}
                 </Stepper>
 
-                <Paper sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  p: 2,
-                  minHeight: 300
-                }}>
+                <Paper sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', p: 2, minHeight: 300 }}>
                   <Stack spacing={3} sx={{ width: '100%' }}>
                     {getStepContent(activeStep)}
                   </Stack>
                 </Paper>
               </Scrollbar>
 
-              <Box sx={{ textAlign: 'right', display: 'flex' }}>
-                {getStepActions(activeStep)}
-              </Box>
-
+              <Box sx={{ textAlign: 'right', display: 'flex' }}>{getStepActions(activeStep)}</Box>
             </>
           )}
         </Stack>

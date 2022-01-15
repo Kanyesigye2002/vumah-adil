@@ -64,7 +64,7 @@ import useDroidDialog from '../../hooks/useDroidDialog';
 
 // ----------------------------------------------------------------------
 
-const STEPS = ['Details', 'Location', 'Feature', 'Images', 'Availability'];
+const STEPS = ['Details', 'Location', 'Feature', 'Policy', 'Images', 'Availability'];
 
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -124,7 +124,7 @@ function AddVehicle() {
   const { onClose } = useDroidDialog();
 
   const [activeStep, setActiveStep] = useState(0);
-  const [vehicle, setVehicle] = useState({ status: false, data: {} });
+  const [vehicle, setVehicle] = useState({ status: true, data: {} });
 
   const [files, setFiles] = useState([]);
 
@@ -237,7 +237,7 @@ function AddVehicle() {
   const formik = useFormik({
     initialValues: {
       vehicleType: '',
-      reg: '',
+      reg: 'MA68HXM',
       make: '',
       model: '',
       fuelType: '',
@@ -246,6 +246,9 @@ function AddVehicle() {
       hourlyRates: '',
       dailyRates: '',
       description: '',
+      freeCancellation: true,
+      cancellationPercentage: '',
+      cancellationDescription: '',
       images: [],
       availability: [],
       features: [],
@@ -316,8 +319,6 @@ function AddVehicle() {
   const getVehicleDetails = () => {
     VehicleDetailsByReg().then((res) => {
       const data = res.data.VehicleDetailsByReg;
-
-      console.log('Response: ', res);
 
       setValues({
         ...values,
@@ -489,11 +490,7 @@ function AddVehicle() {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
-  const setUpLocation = (
-    <>
-      <LocationBox map={map} setMap={setMap} />
-    </>
-  );
+  const setUpLocation = <>{/*<LocationBox map={map} setMap={setMap} />*/}</>;
 
   const LocationSetUpAction = (
     <>
@@ -541,6 +538,72 @@ function AddVehicle() {
       </Button>
       <Box sx={{ flexGrow: 1 }} />
       <Button variant="contained" onClick={handleNextFeatures} sx={{ mr: 1 }}>
+        Next
+      </Button>
+    </>
+  );
+
+  const handleNextPolicy = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  const setUpPolicy = (
+    <>
+      <Stack alignItems="center" direction="row" spacing={0.5}>
+        <Checkbox
+          name="freeCancellation"
+          checked={values.freeCancellation}
+          {...getFieldProps('freeCancellation')}
+          error={Boolean(touched.freeCancellation && errors.freeCancellation)}
+          helperText={touched.freeCancellation && errors.freeCancellation}
+        />
+        <Typography variant="subtitle1" sx={{ color: 'text.secondary' }}>
+          Accept Free cancellation up to 24hrs before the trip start
+        </Typography>
+      </Stack>
+      {values.freeCancellation && (
+        <Typography variant="body1" fontWeight="light" sx={{ color: 'text.secondary' }}>
+          * When booking a vehicle on the Vumah platform we allow free cancellations up to 24hrs before the trip start
+          by default to allow flexibility for our guests. If you choose to cancel for any reason within the 24 hours
+          period of the trip start, the guest will be subject to a late cancellation fee and will be refunded the
+          remainder that is on hold.
+        </Typography>
+      )}
+      {!values.freeCancellation && (
+        <>
+          <FormControl fullWidth>
+            <InputLabel htmlFor="outlined-adornment-amount">Cancellation Percentage</InputLabel>
+            <OutlinedInput
+              id="outlined-adornment-amount"
+              label="Cancellation Percentage (%)"
+              {...getFieldProps('cancellationPercentage')}
+              error={Boolean(touched.cancellationPercentage && errors.cancellationPercentage)}
+              helperText={touched.cancellationPercentage && errors.cancellationPercentage}
+              endAdornment={<InputAdornment position="end">%</InputAdornment>}
+            />
+          </FormControl>
+          <TextField
+            id="outlined-multiline-static"
+            label="Policy Description"
+            fullWidth
+            multiline
+            rows={5}
+            {...getFieldProps('cancellationDescription')}
+            error={Boolean(touched.cancellationDescription && errors.cancellationDescription)}
+            helperText={touched.cancellationDescription && errors.cancellationDescription}
+          />{' '}
+        </>
+      )}
+    </>
+  );
+
+  const accountPolicy = (
+    <>
+      <Button disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 1 }}>
+        Back
+      </Button>
+      <Box sx={{ flexGrow: 1 }} />
+      <Button variant="contained" onClick={handleNextPolicy} sx={{ mr: 1 }}>
         Next
       </Button>
     </>
@@ -728,8 +791,10 @@ function AddVehicle() {
       case 2:
         return setUpFeatures;
       case 3:
-        return setUpUpLoadImages;
+        return setUpPolicy;
       case 4:
+        return setUpUpLoadImages;
+      case 5:
         return setUpAvailability;
       default:
         return AddVehicle;
@@ -745,8 +810,10 @@ function AddVehicle() {
       case 2:
         return accountFeatures;
       case 3:
-        return accountUpLoadImages;
+        return accountPolicy;
       case 4:
+        return accountUpLoadImages;
+      case 5:
         return accountAvailability;
       default:
         return AddVehicle;

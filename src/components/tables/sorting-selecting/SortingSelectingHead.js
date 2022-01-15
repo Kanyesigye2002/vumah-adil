@@ -16,6 +16,7 @@ SortingSelectingHead.propTypes = {
 };
 
 export default function SortingSelectingHead({
+  center,
   order,
   orderBy,
   rowCount,
@@ -26,6 +27,14 @@ export default function SortingSelectingHead({
 }) {
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
+  };
+
+  const getAlignment = (headCell) => {
+    if (center) {
+      return 'center';
+    } else {
+      return headCell.numeric ? 'right' : 'left';
+    }
   };
 
   return (
@@ -45,7 +54,7 @@ export default function SortingSelectingHead({
           <TableCell
             sx={{ p: '4px', py: 2 }}
             key={headCell.id}
-            align={headCell.numeric ? 'right' : 'left'}
+            align={getAlignment(headCell)}
             padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -54,7 +63,7 @@ export default function SortingSelectingHead({
                 active={orderBy === headCell.id}
                 direction={orderBy === headCell.id ? order : 'asc'}
                 onClick={createSortHandler(headCell.id)}
-                sx={{ whiteSpace: 'nowrap' }}
+                sx={{ whiteSpace: 'nowrap', textAlign: headCell.label === 'Image' ? 'center' : '' }}
               >
                 {headCell.label}
                 <>

@@ -69,14 +69,10 @@ function AuthProvider({ children }) {
 
   const [values, setValues] = useState({});
 
-  const {loading, error, data}  = useQuery(GET_CURRENT_USER)
+  const { loading, error, data } = useQuery(GET_CURRENT_USER);
 
-  useEffect( () => {
-
+  useEffect(() => {
     if (!loading) {
-
-      console.log("Response: ", loading, data, error)
-
       if (error !== undefined) {
         setSession(null);
         dispatch({ type: 'LOGOUT' });
@@ -113,12 +109,11 @@ function AuthProvider({ children }) {
   }, [data, error]);
 
   const setData = (res) => {
-
-    console.log('set data: ', res)
+    console.log('set data: ', res);
 
     const { token, user } = res.data.login;
 
-    console.log('step 1')
+    console.log('step 1');
 
     setSession(token);
     dispatch({
@@ -127,7 +122,7 @@ function AuthProvider({ children }) {
         user
       }
     });
-  }
+  };
 
   const login = async (email, password) => {
     const response = await axios.post('/api/account/login', {
@@ -135,7 +130,7 @@ function AuthProvider({ children }) {
       password
     });
 
-    console.log('login res', response)
+    console.log('login res', response);
 
     const { accessToken, user } = response.data;
 
@@ -149,11 +144,9 @@ function AuthProvider({ children }) {
   };
 
   const register = async (newValues) => {
-
-    setValues(newValues)
+    setValues(newValues);
 
     // await CreateUser()
-
   };
 
   const logout = async () => {

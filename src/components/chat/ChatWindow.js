@@ -1,116 +1,91 @@
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 // material
-import { Box, Divider, Stack } from '@mui/material';
+import { Box, Container, Divider, Stack, Typography } from '@mui/material';
 // redux
-import { useDispatch, useSelector } from '../../redux/store/store';
-import {
-  addRecipients,
-  onSendMessage,
-  getConversation,
-  getParticipants,
-  markConversationAsRead,
-  resetActiveConversation
-} from '../../redux/slices/chat';
+import { useDispatch, useSelector } from '../../redux/store';
 //
 import ChatRoom from './ChatRoom';
 import ChatMessageList from './ChatMessageList';
 import ChatHeaderDetail from './ChatHeaderDetail';
 import ChatMessageInput from './ChatMessageInput';
-import ChatHeaderCompose from './ChatHeaderCompose';
+import { useLazyQuery, useSubscription } from '@apollo/client';
+import { GET_USER_CONTACT_BY_ID, GET_USER_CONTACT_BY_ID_S, SEND_MESSAGE } from '../../graphql/Queries';
+import { motion } from 'framer-motion';
+import { varFadeInDown } from '../animate';
 
 // ----------------------------------------------------------------------
 
-const conversationSelector = (state) => {
-  const { conversations, activeConversationId } = state.chat;
-  const conversation = activeConversationId ? conversations.byId[activeConversationId] : null;
-  if (conversation) {
-    return conversation;
-  }
-  const initState = {
-    id: '',
-    messages: [],
-    participants: [],
-    unreadCount: 0,
-    type: ''
-  };
-  return initState;
-};
-
 export default function ChatWindow() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { pathname } = useLocation();
   const { conversationKey } = useParams();
-  const { contacts, recipients, participants, activeConversationId } = useSelector((state) => state.chat);
-  const conversation = useSelector((state) => conversationSelector(state));
+
+  const [GetUserContactById, { data, error, loading }] = useLazyQuery(GET_USER_CONTACT_BY_ID, {
+    variables: { id: conversationKey }
+  });
+
+  // const { data, error, loading } = useSubscription(GET_USER_CONTACT_BY_ID_S, {
+  //   variables: { id: conversationKey }
+  // });
+
+  console.log('Data: ', loading, data, error);
 
   const mode = conversationKey ? 'DETAIL' : 'COMPOSE';
-  const displayParticipants = participants.filter((item) => item.id !== '8864c717-587d-472a-929a-8e5f298024da-0');
 
   useEffect(() => {
     const getDetails = async () => {
-      dispatch(getParticipants(conversationKey));
       try {
-        await dispatch(getConversation(conversationKey));
+        await GetUserContactById();
       } catch (error) {
         console.error(error);
-        navigate('chat/new');
       }
     };
     if (conversationKey) {
-      getDetails();
-    } else if (activeConversationId) {
-      dispatch(resetActiveConversation());
+      getDetails().then(() => {});
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [conversationKey]);
 
-  useEffect(() => {
-    if (activeConversationId) {
-      dispatch(markConversationAsRead(activeConversationId));
-    }
-  }, [dispatch, activeConversationId]);
-
-  const handleAddRecipients = (recipients) => {
-    dispatch(addRecipients(recipients));
-  };
-
-  const handleSendMessage = async (value) => {
-    try {
-      dispatch(onSendMessage(value));
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
     <Stack sx={{ flexGrow: 1, minWidth: '1px' }}>
-
       <Box sx={{ flexGrow: 1, display: 'flex', overflow: 'hidden' }}>
+        {!conversationKey && (
+          <Container
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              p: 5,
+              width: '100%',
+              height: '100%'
+            }}
+          >
+            <motion.div variants={varFadeInDown}>
+              <Typography variant="body1">Select a Contact for display</Typography>
+            </motion.div>
+          </Container>
+        )}
 
-        <Stack sx={{ flexGrow: 1 }}>
+        {!loading && data && (
+          <>
+            <Stack sx={{ flexGrow: 1 }}>
+              {mode === 'DETAIL' && (
+                <>
+                  <ChatHeaderDetail conversation={data.GetUserContactById} />
 
-          {
-            mode === 'DETAIL' && <>
-              <ChatHeaderDetail participants={displayParticipants} />
+                  <Divider />
+                </>
+              )}
+              <ChatMessageList conversation={data.GetUserContactById} />
 
               <Divider />
-            </>
-          }
-          <ChatMessageList conversation={conversation} />
 
-          <Divider />
+              <ChatMessageInput conversationId={conversationKey} disabled={pathname === 'booking' || 'message'} />
+            </Stack>
 
-          <ChatMessageInput
-            conversationId={activeConversationId}
-            onSend={handleSendMessage}
-            disabled={pathname === 'chat/new'}
-          />
-        </Stack>
-
-        {mode === 'DETAIL' && <ChatRoom conversation={conversation} participants={displayParticipants} />}
-
+            {mode === 'DETAIL' && <ChatRoom contact={data.GetUserContactById} />}
+          </>
+        )}
       </Box>
     </Stack>
   );

@@ -11,20 +11,22 @@ import {
   Button,
   FormControl,
   IconButton,
-  InputAdornment, InputLabel, MenuItem,
-  Paper, Select,
+  InputAdornment,
+  InputLabel,
+  MenuItem,
+  Paper,
+  Select,
   Stack,
   TextField,
   Typography
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { useMutation } from '@apollo/client';
-import { SIGNUP, UPDATE_PASSWORD, UPDATE_USER } from '../../graphql/Queries';
+import { UPDATE_USER } from '../../graphql/Queries';
 import countries from '../../layouts/authGuard/countries';
 import useAuth from '../../hooks/useAuth';
 
-function UpdatePasswordModal(props) {
-
+function UpdatePasswordModal() {
   const { user } = useAuth();
 
   const isMountedRef = useIsMountedRef();
@@ -40,7 +42,6 @@ function UpdatePasswordModal(props) {
   });
 
   const formik = useFormik({
-
     initialValues: {
       id: user.id,
       address: user.address,
@@ -55,24 +56,26 @@ function UpdatePasswordModal(props) {
 
     onSubmit: async (values, { setErrors, setSubmitting }) => {
       try {
-        await UpdateUserInfo().then(res => {
-          console.log(res);
+        await UpdateUserInfo()
+          .then((res) => {
+            console.log(res);
 
-          enqueueSnackbar('User updated successfully', {
-            variant: 'success',
-            action: (key) => (
-              <MIconButton size='small' onClick={() => closeSnackbar(key)}>
-                <Close />
-              </MIconButton>
-            )
-          });
-          if (isMountedRef.current) {
+            enqueueSnackbar('User updated successfully', {
+              variant: 'success',
+              action: (key) => (
+                <MIconButton size="small" onClick={() => closeSnackbar(key)}>
+                  <Close />
+                </MIconButton>
+              )
+            });
+            if (isMountedRef.current) {
+              setSubmitting(false);
+            }
+          })
+          .catch((error) => {
+            setErrors({ afterSubmit: error.message });
             setSubmitting(false);
-          }
-        }).catch(error => {
-          setErrors({ afterSubmit: error.message });
-          setSubmitting(false);
-        });
+          });
       } catch (error) {
         console.error(error);
         if (isMountedRef.current) {
@@ -81,7 +84,6 @@ function UpdatePasswordModal(props) {
         }
       }
     }
-
   });
 
   const { errors, touched, values, isSubmitting, handleSubmit, getFieldProps } = formik;
@@ -93,32 +95,33 @@ function UpdatePasswordModal(props) {
   return (
     <>
       <FormikProvider value={formik}>
-        <Form autoComplete='off' noValidate onSubmit={handleSubmit}>
+        <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
           <Box sx={{ flexGrow: 1, display: 'flex', overflow: 'hidden' }}>
             <Stack spacing={2} sx={{ flexGrow: 1, width: '550px' }}>
-              {errors.afterSubmit && <Alert severity='error'>{errors.afterSubmit}</Alert>}
+              {errors.afterSubmit && <Alert severity="error">{errors.afterSubmit}</Alert>}
 
               <Paper
-                sx={{ display: 'flex', justifyContent: 'center', py: 6, px: 4, minHeight: 200, bgcolor: 'grey.50012' }}>
+                sx={{ display: 'flex', justifyContent: 'center', py: 6, px: 4, minHeight: 200, bgcolor: 'grey.50012' }}
+              >
                 <Stack spacing={4} sx={{ width: '100%' }}>
-
                   <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-                    {user.isBusiness &&
-                    <TextField
-                      fullWidth
-                      autoComplete='businessName'
-                      type='text'
-                      label='Business Name'
-                      {...getFieldProps('businessName')}
-                      error={Boolean(touched.businessName && errors.businessName)}
-                      helperText={touched.businessName && errors.businessName}
-                    />}
+                    {user.isBusiness && (
+                      <TextField
+                        fullWidth
+                        autoComplete="businessName"
+                        type="text"
+                        label="Business Name"
+                        {...getFieldProps('businessName')}
+                        error={Boolean(touched.businessName && errors.businessName)}
+                        helperText={touched.businessName && errors.businessName}
+                      />
+                    )}
 
                     <TextField
                       fullWidth
-                      autoComplete='city'
-                      type='text'
-                      label='City'
+                      autoComplete="city"
+                      type="text"
+                      label="City"
                       {...getFieldProps('city')}
                       error={Boolean(touched.city && errors.city)}
                       helperText={touched.city && errors.city}
@@ -128,9 +131,9 @@ function UpdatePasswordModal(props) {
                   <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
                     <TextField
                       fullWidth
-                      autoComplete='address'
-                      type='text'
-                      label='Street address 1'
+                      autoComplete="address"
+                      type="text"
+                      label="Street address 1"
                       {...getFieldProps('address')}
                       error={Boolean(touched.address && errors.address)}
                       helperText={touched.address && errors.address}
@@ -138,9 +141,9 @@ function UpdatePasswordModal(props) {
 
                     <TextField
                       fullWidth
-                      autoComplete='address2'
-                      type='text'
-                      label='Street address 2'
+                      autoComplete="address2"
+                      type="text"
+                      label="Street address 2"
                       {...getFieldProps('address2')}
                       error={Boolean(touched.address2 && errors.address2)}
                       helperText={touched.address2 && errors.address2}
@@ -150,33 +153,32 @@ function UpdatePasswordModal(props) {
                   <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
                     <TextField
                       fullWidth
-                      autoComplete='postalCode'
-                      type='number'
-                      label='Post Code'
+                      autoComplete="postalCode"
+                      type="number"
+                      label="Post Code"
                       {...getFieldProps('postalCode')}
                       error={Boolean(touched.postalCode && errors.postalCode)}
                       helperText={touched.postalCode && errors.postalCode}
                     />
 
                     <FormControl fullWidth>
-                      <InputLabel id='demo-simple-select-label'>Country</InputLabel>
+                      <InputLabel id="demo-simple-select-label">Country</InputLabel>
                       <Select
-                        labelId='demo-simple-select-label'
-                        id='demo-simple-select'
-                        label='Country'
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        label="Country"
                         {...getFieldProps('country')}
                       >
-                        {countries.map((country, index) => <MenuItem key={index}
-                                                                     value={country.label}>{country.label}</MenuItem>)}
+                        {countries.map((country, index) => (
+                          <MenuItem key={index} value={country.label}>
+                            {country.label}
+                          </MenuItem>
+                        ))}
                       </Select>
                     </FormControl>
                   </Stack>
 
-                  <LoadingButton
-                    size='large'
-                    type='submit'
-                    variant='contained'
-                    loading={isSubmitting} sx={{ mr: 1 }}>
+                  <LoadingButton size="large" type="submit" variant="contained" loading={isSubmitting} sx={{ mr: 1 }}>
                     Update Info
                   </LoadingButton>
                 </Stack>
