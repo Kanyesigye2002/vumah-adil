@@ -49,10 +49,10 @@ export default function LandingHero() {
       <section className="banner-slider-main position-relative">
         <div className="banner-overlay-search" data-aos="fade-up">
           <div className="row align-items-center">
-            <div className="col-sm-6 col-md-3 col-lg-2 mb-3 mb-md-0">
-              <div className="banner-search-dropdown dropdown">
+            <div className="col-sm-6 col-md-3 col-lg-3 mb-3 mb-md-0">
+              <div className="banner-search-dropdown dropdown w-100">
                 <Dropdown isOpen={dropdownOpen} toggle={dropDownToggle}>
-                  <DropdownToggle caret className="btn dropdown-toggle">
+                  <DropdownToggle caret className="btn dropdown-toggle w-100">
                     {
                       searchVehicle === 'car'
                         ? <><i className="fas fa-car-side"
@@ -87,7 +87,7 @@ export default function LandingHero() {
                 </Dropdown>
               </div>
             </div>
-            <div className="col-sm-6 col-md-4 col-lg-5 mb-3 mb-md-0">
+            <div className="col-sm-6 col-md-4 col-lg-4 mb-3 mb-md-0">
               <div className="banner-search-field">
                 <SearchBox/>
               </div>
@@ -123,6 +123,8 @@ export default function LandingHero() {
           speed={500}
           slidesToShow={1}
           slidesToScroll={1}
+          autoplay={true}
+          autoplaySpeed={5500}
           className='banner-slider-list'
         >
           <div className="banner-slider">

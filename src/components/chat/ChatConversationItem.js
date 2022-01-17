@@ -51,10 +51,10 @@ ChatConversationItem.propTypes = {
 export default function ChatConversationItem({ isSelected, conversation, isOpenSidebar, onSelectConversation }) {
   // const details = getDetails(conversation, '8864c717-587d-472a-929a-8e5f298024da-0');
   const details = conversation;
-  const lastActivity = conversation.lastActivity;
-  const isUnread = lastActivity.read;
 
   const { user } = useAuth();
+
+  console.log(conversation);
 
   const findParticipant = () => {
     if (user.id !== conversation.owner1.id) return conversation.owner1;
@@ -63,9 +63,13 @@ export default function ChatConversationItem({ isSelected, conversation, isOpenS
     return {};
   };
 
-  const participant = findParticipant();
-
+  // const displayLastActivity = last(conversation.messages).createdAt;
+  const displayLastActivity = conversation.lastActivity;
+  const isGroup = false;
+  const isUnread = conversation.unreadCount > 0;
   const isOnlineGroup = false;
+
+  const participant = findParticipant();
 
   return (
     <RootStyle
@@ -75,10 +79,32 @@ export default function ChatConversationItem({ isSelected, conversation, isOpenS
       }}
     >
       <ListItemAvatar>
-        <Box>
+        <Box
+          sx={{
+            ...(isGroup && {
+              position: 'relative',
+              width: AVATAR_SIZE,
+              height: AVATAR_SIZE,
+              '& .avatarWrapper': {
+                position: 'absolute',
+                width: AVATAR_SIZE_GROUP,
+                height: AVATAR_SIZE_GROUP,
+                '&:nth-of-type(1)': {
+                  left: 0,
+                  zIndex: 9,
+                  bottom: 2,
+                  '& .MuiAvatar-root': {
+                    border: (theme) => `solid 2px ${theme.palette.background.paper}`
+                  }
+                },
+                '&:nth-of-type(2)': { top: 2, right: 0 }
+              }
+            })
+          }}
+        >
           <AvatarWrapperStyle className="avatarWrapper" key={participant.id}>
             <Avatar alt={participant.userName} src={participant.avatar} />
-            <BadgeStatus status={participant.status} sx={{ right: 2, bottom: 2, position: 'absolute' }} />
+            {!isGroup && <BadgeStatus status={participant.status} sx={{ right: 2, bottom: 2, position: 'absolute' }} />}
           </AvatarWrapperStyle>
 
           {isOnlineGroup && <BadgeStatus status="online" sx={{ right: 2, bottom: 2, position: 'absolute' }} />}
@@ -93,7 +119,7 @@ export default function ChatConversationItem({ isSelected, conversation, isOpenS
               noWrap: true,
               variant: 'subtitle2'
             }}
-            secondary={lastActivity.message}
+            secondary={participant.email}
             secondaryTypographyProps={{
               noWrap: true,
               variant: isUnread ? 'subtitle2' : 'body2',
@@ -119,7 +145,7 @@ export default function ChatConversationItem({ isSelected, conversation, isOpenS
                 color: 'text.disabled'
               }}
             >
-              {formatDistanceToNowStrict(new Date(lastActivity.date), {
+              {formatDistanceToNowStrict(new Date(displayLastActivity), {
                 addSuffix: false
               })}
             </Box>

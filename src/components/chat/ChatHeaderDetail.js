@@ -13,7 +13,6 @@ import { fToNow } from '../../utils/formatTime';
 //
 import { MIconButton } from '../@material-extend';
 import BadgeStatus from '../BadgeStatus';
-import useAuth from '../../hooks/useAuth';
 
 // ----------------------------------------------------------------------
 
@@ -31,7 +30,9 @@ OneAvatar.propTypes = {
   participants: PropTypes.array
 };
 
-function OneAvatar({ participant }) {
+function OneAvatar({ participants }) {
+  const participant = [...participants][0];
+
   if (participant === undefined) {
     return null;
   }
@@ -39,14 +40,13 @@ function OneAvatar({ participant }) {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Box sx={{ position: 'relative' }}>
-        <Avatar src={participant.avatar} alt={participant.userName} />
+        <Avatar src={participant.avatar} alt={participant.name} />
         <BadgeStatus status={participant.status} sx={{ position: 'absolute', right: 2, bottom: 2 }} />
       </Box>
       <Box sx={{ ml: 2 }}>
-        <Typography variant="subtitle2">{participant.firstName + ' ' + participant.lastName}</Typography>
+        <Typography variant="subtitle2">{participant.name}</Typography>
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-          offline
-          {/*{participant.status !== 'offline' ? capitalCase(participant.status) : fToNow(participant.lastActivity)}*/}
+          {participant.status !== 'offline' ? capitalCase(participant.status) : fToNow(participant.lastActivity)}
         </Typography>
       </Box>
     </Box>
@@ -85,21 +85,12 @@ ChatHeaderDetail.propTypes = {
   participants: PropTypes.array
 };
 
-export default function ChatHeaderDetail({ conversation, ...other }) {
-  const { user } = useAuth();
-
-  const findParticipant = () => {
-    if (user.id !== conversation.owner1.id) return conversation.owner1;
-    if (user.id !== conversation.owner2.id) return conversation.owner2;
-
-    return {};
-  };
-
-  const participant = findParticipant();
+export default function ChatHeaderDetail({ participants, ...other }) {
+  const isGroup = participants.length > 1;
 
   return (
     <RootStyle {...other}>
-      <OneAvatar participant={participant} />
+      {isGroup ? <GroupAvatar participants={participants} /> : <OneAvatar participants={participants} />}
 
       <Box sx={{ flexGrow: 1 }} />
       {/*<MIconButton>*/}
@@ -108,9 +99,9 @@ export default function ChatHeaderDetail({ conversation, ...other }) {
       {/*<MIconButton>*/}
       {/*  <Icon icon={videoFill} width={20} height={20} />*/}
       {/*</MIconButton>*/}
-      <MIconButton>
-        <Icon icon={moreVerticalFill} width={20} height={20} />
-      </MIconButton>
+      {/*<MIconButton>*/}
+      {/*  <Icon icon={moreVerticalFill} width={20} height={20} />*/}
+      {/*</MIconButton>*/}
     </RootStyle>
   );
 }

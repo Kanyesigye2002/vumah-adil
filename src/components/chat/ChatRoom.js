@@ -1,32 +1,11 @@
 import PropTypes from 'prop-types';
 import { Icon } from '@iconify/react';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import arrowIosBackFill from '@iconify/icons-eva/arrow-ios-back-fill';
 import arrowIosForwardFill from '@iconify/icons-eva/arrow-ios-forward-fill';
 // material
 import { useTheme, styled } from '@mui/material/styles';
-import {
-  Box,
-  Drawer,
-  Divider,
-  Button,
-  IconButton,
-  useMediaQuery,
-  Stack,
-  Typography,
-  Tooltip,
-  ListItemText,
-  Menu,
-  MenuItem,
-  CardActionArea,
-  Chip,
-  Grid,
-  CardContent,
-  Card,
-  CardHeader,
-  Tab,
-  Tabs
-} from '@mui/material';
+import { Box, Drawer, Divider, IconButton, useMediaQuery } from '@mui/material';
 // components
 import { MHidden } from '../@material-extend';
 //
@@ -34,22 +13,10 @@ import ChatRoomAttachment from './ChatRoomAttachment';
 import ChatRoomOneParticipant from './ChatRoomOneParticipant';
 import ChatRoomGroupParticipant from './ChatRoomGroupParticipant';
 import Scrollbar from '../Scrollbar';
-import Mercedes from '../../assets/img/Mercedes-car.jpg';
-import Face from '../../assets/img/face.jpg';
-import { Close, FilterListRounded, VpnKey } from '@mui/icons-material';
-import FaceIcon from '@mui/icons-material/Face';
-import CarouselVehiclesView from '../VehicleCarousel/CarouselVehiclesView';
-import UpdatePhoneNumberModal from '../../pages/account/UpdatePhoneNumberModal';
-import useDroidDialog from '../../hooks/useDroidDialog';
-import ChangeBooking from '../../pages/requestBooking/ChangeBooking';
-import CancelBooking from '../../pages/requestBooking/CancelBooking';
-import { capitalCase } from 'change-case';
-import bellFill from '@iconify/icons-eva/bell-fill';
-import moment from 'moment';
 
 // ----------------------------------------------------------------------
 
-const DRAWER_WIDTH = 400;
+const DRAWER_WIDTH = 300;
 
 const ToggleButtonStyle = styled((props) => <IconButton disableRipple {...props} />)(({ theme }) => ({
   right: 0,
@@ -71,15 +38,22 @@ const ToggleButtonStyle = styled((props) => <IconButton disableRipple {...props}
 
 // ----------------------------------------------------------------------
 
-export default function ChatRoom({ contact }) {
-  const { onOpen } = useDroidDialog();
+ChatRoom.propTypes = {
+  conversation: PropTypes.object.isRequired,
+  participants: PropTypes.array.isRequired
+};
+
+export default function ChatRoom({ conversation, participants }) {
   const theme = useTheme();
 
-  const [currentTab, setCurrentTab] = useState('Booking Details');
-
   const [openSidebar, setOpenSidebar] = useState(true);
+  const [showInfo, setShowInfo] = useState(true);
+  const [selectUser, setSelectUser] = useState(null);
+  const [showAttachment, setShowAttachment] = useState(true);
+  const [showParticipants, setShowParticipants] = useState(true);
 
   const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
+  const isGroup = participants.length > 1;
 
   useEffect(() => {
     if (isMobile) {
@@ -100,160 +74,33 @@ export default function ChatRoom({ contact }) {
     setOpenSidebar((prev) => !prev);
   };
 
-  const getChipColor = (s) => {
-    if (s === 'Requested') return 'warning';
-    if (s === 'Ongoing') return 'info';
-    if (s === 'Completed') return 'success';
-    if (s === 'Declined') return 'error';
-    if (s === 'Canceled') return 'error';
+  const renderContent = (
+    <Scrollbar sx={{ p: 1, height: 1 }}>
+      {isGroup ? (
+        <ChatRoomGroupParticipant
+          selectUserId={selectUser}
+          participants={participants}
+          isCollapse={showParticipants}
+          onShowPopupUserInfo={(participantId) => setSelectUser(participantId)}
+          onCollapse={() => setShowParticipants((prev) => !prev)}
+        />
+      ) : (
+        <div>
+          <ChatRoomOneParticipant
+            participants={participants}
+            isCollapse={showInfo}
+            onCollapse={() => setShowInfo((prev) => !prev)}
+          />
+        </div>
+      )}
+      <Divider />
 
-    return 'warning';
-  };
-
-  const createBooking = (booking) => {
-    return (
-      <>
-        <CardActionArea
-          sx={{ px: 1, borderRadius: '8px', py: 1, border: '1px', borderStyle: 'solid', borderColor: 'primary.main' }}
-          onClick={() => {}}
-        >
-          <Stack alignItems="center" direction="row" spacing={0.5} sx={{ width: '100%' }}>
-            <img src={booking.vehicleRented.images[0]} style={{ width: '80px', borderRadius: '10px' }} alt="Vehicle" />
-            <Stack alignItems="flex-start" direction="column" spacing={0.5} sx={{ width: '100%' }}>
-              <Stack
-                alignItems="center"
-                justifyContent="space-between"
-                direction="row"
-                spacing={0.5}
-                sx={{ width: '100%' }}
-              >
-                <Typography variant="subtitle1">
-                  {booking.vehicleRented.make} - ( {booking.vehicleRented.reg} )
-                </Typography>
-                <Chip variant="outlined" label={`status: ${booking.status}`} color={getChipColor(booking.status)} />
-              </Stack>
-              <Stack
-                alignItems="center"
-                justifyContent="space-between"
-                direction="row"
-                spacing={0.5}
-                sx={{ width: '100%' }}
-              >
-                <Typography variant="body2">{moment(booking.endTime).format('dd/MM/yy(hh:mm)')}</Typography>
-                <Typography variant="body2">-</Typography>
-                <Typography variant="body2">{moment(booking.endTime).format('dd/MM/yy(hh:mm)')}</Typography>
-              </Stack>
-            </Stack>
-          </Stack>
-        </CardActionArea>
-      </>
-    );
-  };
-
-  const handleChangeTab = (event, newValue) => {
-    setCurrentTab(newValue);
-  };
-
-  const bookingsView = (
-    <>
-      <Stack alignItems="center" direction="column" spacing={0.5} sx={{ p: 2 }}>
-        <Stack alignItems="center" direction="column" spacing={1} sx={{ width: '100%' }}>
-          {contact.bookings.map((booking, index) => createBooking(booking))}
-        </Stack>
-      </Stack>
-    </>
-  );
-
-  const bookingDetailsView = (booking) => (
-    <>
-      <Stack alignItems="center" direction="column" spacing={0.5} sx={{ p: 3 }}>
-        <Stack alignItems="center" direction="column" spacing={0.5} sx={{ pt: 1, width: '100%' }}>
-          <Stack alignItems="flex-start" direction="row" spacing={0.5} sx={{ width: '100%', pb: 3 }}>
-            <img src={booking.vehicleRented.images[0]} style={{ width: '80px', borderRadius: '10px' }} alt="Vehicle" />
-            <Stack
-              alignItems="flex-start"
-              justifyContent="space-between"
-              direction="row"
-              spacing={0.5}
-              sx={{ width: '100%' }}
-            >
-              <Typography variant="subtitle1">
-                {booking.vehicleRented.make} - ( {booking.vehicleRented.reg} )
-              </Typography>
-              <Chip variant="outlined" label={`Status: ${booking.status}`} color={getChipColor(booking.status)} />
-            </Stack>
-          </Stack>
-          <Grid container sx={{ pb: 3 }}>
-            <Grid item xs={12} sm={5}>
-              <Stack alignItems="flex-start" direction="column" spacing={0.5}>
-                <Typography variant="subtitle2">Check in</Typography>
-                <Typography variant="body2">{moment(booking.startTime).format('ddd MMM yyyy - hh:mm')}</Typography>
-              </Stack>
-            </Grid>
-            <Grid item xs={12} sm={2} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Divider orientation="vertical" flexItem style={{ height: '100%' }} />
-            </Grid>
-            <Grid item xs={12} sm={5}>
-              <Stack alignItems="flex-start" direction="column" spacing={0.5}>
-                <Typography variant="subtitle2">Check out</Typography>
-                <Typography variant="body2">{moment(booking.endTime).format('ddd MMM yyyy - hh:mm')}</Typography>
-              </Stack>
-            </Grid>
-          </Grid>
-          <Card>
-            <CardHeader title="Booking Costs" />
-            <CardContent>
-              <Grid container spacing={1}>
-                <Grid item xs={10}>
-                  <Typography variant="body2">Vehicle Cost</Typography>
-                </Grid>
-                <Grid item xs={2}>
-                  <Typography variant="subtitle2">£120</Typography>
-                </Grid>
-                <Grid item xs={10}>
-                  <Typography variant="body2">Service Cost</Typography>
-                </Grid>
-                <Grid item xs={2}>
-                  <Typography variant="subtitle2">£20</Typography>
-                </Grid>
-                <Grid item xs={10}>
-                  <Typography variant="body2">Total Cost</Typography>
-                </Grid>
-                <Grid item xs={2}>
-                  <Typography variant="subtitle2">£140</Typography>
-                </Grid>
-              </Grid>
-            </CardContent>
-          </Card>
-          <Stack
-            alignItems="center"
-            justifyContent="space-between"
-            direction="row"
-            spacing={0.5}
-            sx={{ width: '100%', pt: 3 }}
-          >
-            <Button
-              variant="outlined"
-              size="large"
-              fullWidth
-              sx={{ borderRadius: '100px' }}
-              onClick={() => onOpen('Cancel Booking', <CancelBooking booking={booking} />)}
-            >
-              Cancel Booking
-            </Button>
-            <Button
-              variant="contained"
-              size="large"
-              fullWidth
-              sx={{ borderRadius: '100px', color: '#fff' }}
-              onClick={() => onOpen('Change Booking details', <ChangeBooking booking={booking} />)}
-            >
-              Change Booking
-            </Button>
-          </Stack>
-        </Stack>
-      </Stack>
-    </>
+      <ChatRoomAttachment
+        conversation={conversation}
+        isCollapse={showAttachment}
+        onCollapse={() => setShowAttachment((prev) => !prev)}
+      />
+    </Scrollbar>
   );
 
   return (
@@ -279,23 +126,7 @@ export default function ChatRoom({ contact }) {
             }
           }}
         >
-          <Stack spacing={2} sx={{ pt: 4 }}>
-            <Box sx={{ px: 2 }}>
-              <Tabs
-                value={currentTab}
-                scrollButtons="auto"
-                variant="scrollable"
-                allowScrollButtonsMobile
-                onChange={handleChangeTab}
-              >
-                <Tab disableRipple label={capitalCase('Booking Details')} value="Booking Details" />
-                <Tab disableRipple label={capitalCase('Bookings List')} value="Bookings List" />
-              </Tabs>
-            </Box>
-            {currentTab === 'Booking Details'
-              ? bookingDetailsView(contact.bookings[contact.bookings.length - 1])
-              : bookingsView}
-          </Stack>
+          {renderContent}
         </Drawer>
       </MHidden>
 
@@ -315,23 +146,7 @@ export default function ChatRoom({ contact }) {
             }
           }}
         >
-          <Stack spacing={2} sx={{ pt: 4 }}>
-            <Box sx={{ px: 2 }}>
-              <Tabs
-                value={currentTab}
-                scrollButtons="auto"
-                variant="scrollable"
-                allowScrollButtonsMobile
-                onChange={handleChangeTab}
-              >
-                <Tab disableRipple label={capitalCase('Booking Details')} value="Booking Details" />
-                <Tab disableRipple label={capitalCase('Bookings List')} value="Bookings List" />
-              </Tabs>
-            </Box>
-            {currentTab === 'Booking Details'
-              ? bookingDetailsView(contact.bookings[contact.bookings.length - 1])
-              : bookingsView}
-          </Stack>
+          {renderContent}
         </Drawer>
       </MHidden>
     </Box>

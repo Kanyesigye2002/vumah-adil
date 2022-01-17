@@ -46,7 +46,8 @@ export default function CarListing(props) {
                 className="far fa-heart margin-right-five"
                 style={{fontWeight: addedToFav ? '600' : '400'}}
               ></i>
-              Add to favourites
+            
+              {addedToFav?'Added to favourites':' Add to favourites'}
             </p>
             <p id="share-popover" className="pointer"> <i className="fas fa-share-alt margin-right-five pointer"></i>Share Profile</p>
             <Popover placement="bottom" isOpen={openSharePopover} target="share-popover" toggle={toggleSharePopover} className="blog-card-grid blog-card-grid--popover" style={{maxWidth:'500px'}}>
@@ -96,7 +97,7 @@ export default function CarListing(props) {
                     cursor: 'pointer',
                     pointerEvents: 'none'
                   }}>
-                    COPY LINK
+                   copy link
                   </span>
                 </div>
               </PopoverBody>
@@ -243,7 +244,7 @@ export default function CarListing(props) {
             <div className="pick-range-box" data-aos="fade-up">
               <div className="d-flex justify-content-between ml-1 mr-1">
                 <h2>£100/day (£24/hr)</h2>
-                <p className="text-dark-white">Mileage Inc: 10,000 km</p>
+                <p className="text-dark-white">millage Inc: 10,000 km</p>
               </div>
 
               <div className="mb-3">

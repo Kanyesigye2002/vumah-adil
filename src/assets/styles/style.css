@@ -82,6 +82,24 @@ body {
 .padd-bottom-60 {
   padding-bottom: 60px;
 }
+.banner-slider1 img {
+  width: 100%;
+}
+.slick-dots li button:before{
+  font-size: 20px;
+}
+.css-8n2ccj-MuiButtonBase-root-MuiButton-root,.css-bze18g-MuiButtonBase-root-MuiButton-root {
+  box-shadow: none;
+}
+
+.css-8n2ccj-MuiButtonBase-root-MuiButton-root:hover,
+.css-bze18g-MuiButtonBase-root-MuiButton-root:hover {
+  box-shadow: 0px 3px 1px -2px rgb(145 158 171 / 20%), 0px 2px 2px 0px rgb(145 158 171 / 14%), 0px 1px 5px 0px rgb(145 158 171 / 12%);
+  box-shadow: 0 8px 16px 0 rgb(246 120 16 / 24%);
+}
+.dark-theme .banner-slider1 * {
+  color: #fff;
+}
 
 /* header css */
 .header-main {
@@ -186,6 +204,10 @@ body.dark-theme .header-menu-btn .dropdown-item:last-child {
   background: transparent;
   color: var(--secondary-color);
 }
+.dark-theme .css-e7w14e-MuiTypography-root{color:#919eab}
+.dark-theme .css-ud4bg4-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root{color: #fff;}
+.dark-theme .css-12ra8sd-MuiTypography-root-MuiDialogTitle-root{color: #fff;}
+.dark-theme .css-1swivyk-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill{  -webkit-box-shadow: 0 0 0 100px #26985e inset;}
 .header-menu-list li a {
   font-size: 15px;
   color: var(--white);
@@ -223,12 +245,95 @@ body.dark-theme .header-menu-btn .dropdown-item:last-child {
   background-size: cover;
 }
 .banner-main {
-  background-image: url("../img/banner-bg.jpg");
+  background-image: url("../landingpage/banner-img.png");
   background-size: cover;
   height: 525px;
   justify-content: center;
   background-repeat: no-repeat;
 }
+.sliderBXlandingPage>div {
+  max-width: 590px;
+  margin: 120px 0px;
+  color: #fff;
+}
+.sliderBXlandingPage h1 {
+  color: #fff;
+  padding-bottom: 30px;
+  font-size: 48px;
+}
+.sliderBXlandingPage h1 span{color: rgb(246, 120, 16);}
+img.stepImg {
+  max-width: 120px;
+  margin: auto;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+
+.stepImgBox {
+  position: relative;
+}
+.stepImgBox.bxno:before{
+  content:none
+}
+.stepImgBox:before {
+  content: "";
+  /* border: 1px dashed #ddd; */
+  display: block;
+  border-bottom: dashed;
+  border-color: #dadada;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+}
+.stepSec {
+  padding: 15px;
+  text-align: center;
+}
+
+.stepSec {}
+
+.stepSec p {
+  text-align: justify;
+  text-align-last: center;
+}
+
+span.steps {
+  font-size: 19px;
+  color: #f67810;
+}
+
+span.heading {
+  font-size: 20px;
+  font-weight: 700;
+  max-width: 310px;
+  line-height: 1;
+  padding: 20px;
+  text-align: center;
+  margin: auto;
+  min-height: 80px;
+}
+.commercailBx{
+  background-image:url('../landingpage/Group 2609.png')
+}
+.commercial_sec{
+  background-image:url('../landingpage/Group 2628.png');
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: right;
+  z-index: 0;
+}
+.headyHostsec .container{background: url('../landingpage/Path 1317.png');
+  background-size: cover;
+  padding: 60px;
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+}
+.headyHostsec h2{color: #fff;}
+.headyHostsec P {padding: 20px;max-width: 600px ;margin:auto}
+.commercailBx p{margin-bottom: 10px;}
 .banner-content {
   padding: 25px;
   background-color: rgba(255, 255, 255, 0.8);
@@ -3565,7 +3670,7 @@ section.Campervans {
 }
 
 .map-toggle-main.open .search-filter-grid {
-  width: 33.33%;
+  width: 50%;
   margin: 0 0 10px;
 }
 

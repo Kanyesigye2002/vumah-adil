@@ -7,14 +7,7 @@ import {
   TableCell,
   TableContainer,
   Radio,
-  FormControlLabel,
-  RadioGroup,
-  IconButton,
-  Menu,
-  MenuItem,
-  Box,
-  Container,
-  Typography
+  FormControlLabel, RadioGroup, IconButton, Menu, MenuItem, Box, Container, Typography
 } from '@mui/material';
 // components
 import Scrollbar from '../../components/Scrollbar';
@@ -30,13 +23,62 @@ import { SeverErrorIllustration } from '../../assets';
 
 // ----------------------------------------------------------------------
 
-const options = ['Edit Permissions', 'Delete Member'];
+const BASIC_TABLE = [
+  {
+    id: 1,
+    // name: 'View Profile',
+    email: 'xan@gmail.com',
+    permission: 'Standard',
+    lastLogin: 'May 10 2021,02:30'
+  },
+  {
+    id: 1,
+    // name: 'View Profile',
+    email: 'xan@gmail.com',
+    permission: 'Standard',
+    lastLogin: 'May 10 2021,02:30'
+  },
+  {
+    id: 1,
+    // name: 'View Profile',
+    email: 'xan@gmail.com',
+    permission: 'Standard',
+    lastLogin: 'May 10 2021,02:30'
+  },
+  {
+    id: 1,
+    // name: 'View Profile',
+    email: 'xan@gmail.com',
+    permission: 'Standard',
+    lastLogin: 'May 10 2021,02:30'
+  },
+  {
+    id: 1,
+    // name: 'View Profile',
+    email: 'xan@gmail.com',
+    permission: 'Standard',
+    lastLogin: 'May 10 2021,02:30'
+  },
+  {
+    id: 1,
+    // name: 'View Profile',
+    email: 'xan@gmail.com',
+    permission: 'Standard',
+    lastLogin: 'May 10 2021,02:30'
+  }
+];
+
+const options = [
+  'Edit Permissions',
+  'Delete Member'
+];
 
 const ITEM_HEIGHT = 48;
 
 // ----------------------------------------------------------------------
 
 export default function StaffMembersListing() {
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -56,30 +98,23 @@ export default function StaffMembersListing() {
   return (
     <Scrollbar>
       <TableContainer sx={{ minWidth: 200, my: 3 }}>
-        <Table size="small">
+        <Table size='small'>
           <TableHead>
             <TableRow>
-              <TableCell />
+              <TableCell></TableCell>
               {/*<TableCell align='right'>Name</TableCell>*/}
-              <TableCell align="left" sx={{ p: '8px' }}>
-                Email
-              </TableCell>
-              <TableCell align="left" sx={{ p: '8px' }}>
-                Permissions
-              </TableCell>
-              <TableCell align="left" sx={{ p: '8px' }}>
-                Last Login
-              </TableCell>
-              <TableCell align="left" sx={{ p: '8px' }}>
-                Actions
-              </TableCell>
+              <TableCell align='left' sx={{ p: '8px' }}>Email</TableCell>
+              <TableCell align='left' sx={{ p: '8px' }}>Permissions</TableCell>
+              <TableCell align='left' sx={{ p: '8px' }}>Last Login</TableCell>
+              <TableCell align='left' sx={{ p: '8px' }}>Actions</TableCell>
             </TableRow>
           </TableHead>
-          {!loading && data && (
-            <TableBody>
-              {data.GetStaffMembers.map((row) => (
+          {!loading && data &&
+          <TableBody>
+            {
+              data.GetStaffMembers.map((row) => (
                 <TableRow key={row.id}>
-                  <TableCell component="th" scope="row" sx={{ whiteSpace: 'nowrap' }}>
+                  <TableCell component='th' scope='row' sx={{ whiteSpace: 'nowrap' }}>
                     <MAvatar
                       src={image}
                       alt={'Allan'}
@@ -90,28 +125,22 @@ export default function StaffMembersListing() {
                     </MAvatar>
                   </TableCell>
                   {/*<TableCell component='th' scope='row' sx={{ whiteSpace: 'nowrap' }}>{row.user.name}</TableCell>*/}
-                  <TableCell component="th" scope="row">
-                    {row.user.email}
-                  </TableCell>
-                  <TableCell component="th" scope="row">
-                    {row.roleGroup.name}
-                  </TableCell>
-                  <TableCell component="th" scope="row">
-                    {row.lastLogin}
-                  </TableCell>
-                  <TableCell align="center">
+                  <TableCell component='th' scope='row'>{row.user.email}</TableCell>
+                  <TableCell component='th' scope='row'>{row.roleGroup.name}</TableCell>
+                  <TableCell component='th' scope='row'>{row.lastLogin}</TableCell>
+                  <TableCell align='center'>
                     <IconButton
-                      aria-label="more"
-                      id="long-button"
-                      aria-controls="long-menu"
+                      aria-label='more'
+                      id='long-button'
+                      aria-controls='long-menu'
                       aria-expanded={open ? 'true' : undefined}
-                      aria-haspopup="true"
+                      aria-haspopup='true'
                       onClick={handleClick}
                     >
                       <MoreVert />
                     </IconButton>
                     <Menu
-                      id="long-menu"
+                      id='long-menu'
                       MenuListProps={{
                         'aria-labelledby': 'long-button'
                       }}
@@ -133,26 +162,29 @@ export default function StaffMembersListing() {
                     </Menu>
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          )}
+              ))
+            }
+          </TableBody>
+          }
         </Table>
       </TableContainer>
-      {!loading && data && (
-        <>
-          {data.GetStaffMembers.length < 1 && (
-            <>
-              <Box sx={{ position: 'relative' }}>
-                <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', p: 5 }}>
-                  <motion.div variants={varFadeInDown}>
-                    <Typography variant="body1">There are no staff members yet for display</Typography>
-                  </motion.div>
-                </Container>
-              </Box>
-            </>
-          )}
-        </>
-      )}
+      {!loading && data && <>
+        {data.GetStaffMembers.length < 1 && <>
+          <Box sx={{ position: 'relative' }}>
+            <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', p: 5 }}>
+              <motion.div variants={varBounceIn}>
+                <SeverErrorIllustration sx={{ height: 200, my: { xs: 3, sm: 6 } }} />
+              </motion.div>
+
+              <motion.div variants={varFadeInDown}>
+                <Typography variant='body1'>
+                  There are no data for display
+                </Typography>
+              </motion.div>
+            </Container>
+          </Box>
+        </>}
+      </>}
     </Scrollbar>
   );
 }

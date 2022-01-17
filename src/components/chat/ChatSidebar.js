@@ -7,20 +7,9 @@ import arrowIosBackFill from '@iconify/icons-eva/arrow-ios-back-fill';
 import arrowIosForwardFill from '@iconify/icons-eva/arrow-ios-forward-fill';
 // material
 import { useTheme, styled } from '@mui/material/styles';
-import {
-  Box,
-  useMediaQuery,
-  Stack,
-  Drawer,
-  IconButton,
-  Tooltip,
-  Button,
-  ListItemText,
-  Menu,
-  MenuItem
-} from '@mui/material';
+import { Box, useMediaQuery, Stack, Drawer, IconButton } from '@mui/material';
 // redux
-import { useSelector } from '../../redux/store';
+import { useSelector } from '../../redux/store/store';
 // utils
 import axios from '../../utils/axios';
 //
@@ -33,7 +22,6 @@ import ChatConversationList from './ChatConversationList';
 import { useQuery } from '@apollo/client';
 import { GET_USER_CONTACTS } from '../../graphql/Queries';
 import LoadingScreen from '../LoadingScreen';
-import { FilterListRounded } from '@mui/icons-material';
 
 // ----------------------------------------------------------------------
 
@@ -61,6 +49,8 @@ const ToggleButtonStyle = styled((props) => <IconButton disableRipple {...props}
 export default function ChatSidebar() {
   const { loading, error, data } = useQuery(GET_USER_CONTACTS);
 
+  console.log('chat contacts: ', loading, error, data);
+
   const theme = useTheme();
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -74,22 +64,6 @@ export default function ChatSidebar() {
   const displayResults = searchQuery && isSearchFocused;
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const isCollapse = !isMobile && !openSidebar;
-  const [isOpenList, setOpenList] = useState(null);
-  const [selectedIndex, setSelectedIndex] = useState(1);
-  const [isOpen, setOpen] = useState(null);
-
-  const handleClickListItem = (event) => {
-    setOpenList(event.currentTarget);
-  };
-  const handleClose = () => {
-    setOpen(null);
-  };
-  const handleMenuItemClick = (event, index) => {
-    setSelectedIndex(index);
-    setOpenList(null);
-  };
-
-  const OPTIONS = ['All', 'Requests', 'Ongoing', 'Complete', 'Rejected'];
 
   useEffect(() => {
     if (isMobile) {
@@ -161,7 +135,7 @@ export default function ChatSidebar() {
         <LoadingScreen />
       ) : (
         <>
-          <Box sx={{ py: 2, px: 1 }}>
+          <Box sx={{ py: 2, px: 3 }}>
             <Stack direction="row" alignItems="center" justifyContent="center">
               {!isCollapse && (
                 <>
@@ -170,48 +144,29 @@ export default function ChatSidebar() {
                 </>
               )}
 
-              {!isCollapse && (
-                <>
-                  <Tooltip title="Filter list">
-                    <Button variant="outlined" onClick={handleClickListItem} endIcon={<FilterListRounded />}>
-                      <ListItemText primary="" secondary={OPTIONS[selectedIndex]} />
-                    </Button>
-                  </Tooltip>
-                  <Menu
-                    keepMounted
-                    id="lock-menu"
-                    anchorEl={isOpenList}
-                    onClose={handleClose}
-                    open={Boolean(isOpenList)}
-                  >
-                    {OPTIONS.map((option, index) => (
-                      <MenuItem
-                        key={option}
-                        selected={index === selectedIndex}
-                        onClick={(event) => handleMenuItemClick(event, index)}
-                      >
-                        {option}
-                      </MenuItem>
-                    ))}
-                  </Menu>
-                </>
-              )}
+              <MIconButton onClick={handleToggleSidebar}>
+                <Icon width={20} height={20} icon={openSidebar ? arrowIosBackFill : arrowIosForwardFill} />
+              </MIconButton>
 
-              {isCollapse && (
-                <MIconButton onClick={handleToggleSidebar}>
-                  <Icon width={20} height={20} icon={openSidebar ? arrowIosBackFill : arrowIosForwardFill} />
+              {!isCollapse && (
+                <MIconButton
+                  // @ts-ignore
+                  to={'/chat/new'}
+                  component={RouterLink}
+                >
+                  <Icon icon={editFill} width={20} height={20} />
                 </MIconButton>
               )}
             </Stack>
 
-            {/*{!isCollapse && (*/}
-            {/*  <ChatContactSearch*/}
-            {/*    query={searchQuery}*/}
-            {/*    onFocus={handleSearchFocus}*/}
-            {/*    onChange={handleChangeSearch}*/}
-            {/*    onClickAway={handleClickAwaySearch}*/}
-            {/*  />*/}
-            {/*)}*/}
+            {!isCollapse && (
+              <ChatContactSearch
+                query={searchQuery}
+                onFocus={handleSearchFocus}
+                onChange={handleChangeSearch}
+                onClickAway={handleClickAwaySearch}
+              />
+            )}
           </Box>
 
           <Scrollbar>

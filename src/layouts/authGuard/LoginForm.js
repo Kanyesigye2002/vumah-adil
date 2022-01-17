@@ -26,15 +26,14 @@ import { MIconButton } from '../../components/@material-extend';
 import { useLazyQuery, useMutation, useQuery } from '@apollo/client';
 import { LOGIN } from '../../graphql/Queries';
 import useDroidDialog from '../../hooks/useDroidDialog';
-import { useDispatch } from 'react-redux';
 
 // ----------------------------------------------------------------------
 
 export default function LoginForm() {
-  const dispatch = useDispatch();
+
   const { setData } = useAuth();
 
-  const { onClose } = useDroidDialog();
+  const {onClose} = useDroidDialog()
 
   const isMountedRef = useIsMountedRef();
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
@@ -55,22 +54,16 @@ export default function LoginForm() {
     validationSchema: LoginSchema,
     onSubmit: async (values, { setErrors, setSubmitting, resetForm }) => {
       try {
-        await login().then((res) => {
-          console.log('Response Login: ', res);
+        await login().then(res => {
 
-          dispatch({
-            type: 'Token',
-            payload: res.data.login.token
-          });
+          setData(res)
 
-          setData(res);
-
-          onClose();
+          onClose()
 
           enqueueSnackbar('Login success', {
             variant: 'success',
             action: (key) => (
-              <MIconButton size="small" onClick={() => closeSnackbar(key)}>
+              <MIconButton size='small' onClick={() => closeSnackbar(key)}>
                 <Close />
               </MIconButton>
             )
@@ -78,7 +71,8 @@ export default function LoginForm() {
           if (isMountedRef.current) {
             setSubmitting(false);
           }
-        });
+
+        })
       } catch (error) {
         console.error(error.message);
         resetForm();
@@ -101,24 +95,20 @@ export default function LoginForm() {
   };
 
   return (
-    <div style={{ width: '400px' }}>
-      <Typography variant="h4" textAlign="center" sx={{ mt: 3, mb: 2, px: 2 }}>
-        Welcome back!
-      </Typography>
-      <Typography variant="h5" textAlign="center" sx={{ color: 'text.secondary', mb: 3, px: 2 }}>
-        Please login to your Account
-      </Typography>
+    <div style={{width: '400px'}}>
+      <Typography variant='h4' textAlign='center'  sx={{ mt: 3, mb: 2, px: 2 }}>Welcome back!</Typography>
+      <Typography variant='h5' textAlign='center'  sx={{ color: 'text.secondary', mb: 3, px: 2 }}>Please login to your Account</Typography>
 
       <FormikProvider value={formik}>
-        <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
-          <Stack spacing={3} sx={{ px: 4 }}>
-            {errors.afterSubmit && <Alert severity="error">{errors.afterSubmit}</Alert>}
+        <Form autoComplete='off' noValidate onSubmit={handleSubmit}>
+          <Stack spacing={3} sx={{px: 4}}>
+            {errors.afterSubmit && <Alert severity='error'>{errors.afterSubmit}</Alert>}
 
             <TextField
               fullWidth
-              autoComplete="username"
-              type="email"
-              label="Email address"
+              autoComplete='username'
+              type='email'
+              label='Email address'
               {...getFieldProps('email')}
               error={Boolean(touched.email && errors.email)}
               helperText={touched.email && errors.email}
@@ -126,14 +116,14 @@ export default function LoginForm() {
 
             <TextField
               fullWidth
-              autoComplete="current-password"
+              autoComplete='current-password'
               type={showPassword ? 'text' : 'password'}
-              label="Password"
+              label='Password'
               {...getFieldProps('password')}
               InputProps={{
                 endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton onClick={handleShowPassword} edge="end">
+                  <InputAdornment position='end'>
+                    <IconButton onClick={handleShowPassword} edge='end'>
                       {showPassword ? <Visibility /> : <VisibilityOff />}
                     </IconButton>
                   </InputAdornment>
@@ -144,18 +134,18 @@ export default function LoginForm() {
             />
           </Stack>
 
-          <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ my: 2, px: 4 }}>
+          <Stack direction='row' alignItems='center' justifyContent='space-between' sx={{ my: 2, px: 4 }}>
             <FormControlLabel
               control={<Checkbox {...getFieldProps('remember')} checked={values.remember} />}
-              label="Remember me"
+              label='Remember me'
             />
 
-            <Link component={RouterLink} variant="subtitle2" to={'/reset-password'}>
+            <Link component={RouterLink} variant='subtitle2' to={'/reset-password'}>
               Forgot password?
             </Link>
           </Stack>
 
-          <LoadingButton fullWidth size="large" type="submit" variant="contained" loading={isSubmitting} sx={{ mb: 5 }}>
+          <LoadingButton fullWidth size='large' type='submit' variant='contained' loading={isSubmitting} sx={{mb: 5}}>
             Login
           </LoadingButton>
         </Form>

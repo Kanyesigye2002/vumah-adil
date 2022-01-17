@@ -3,15 +3,6 @@ import { formatDistanceToNowStrict } from 'date-fns';
 // material
 import { styled } from '@mui/material/styles';
 import { Avatar, Box, Typography } from '@mui/material';
-import useAuth from '../../hooks/useAuth';
-import VehicleRequestMessage from './BookingMessages/VehicleRequestMessage';
-import BookingChangeRequest from './BookingMessages/BookingChangeRequest';
-import BookingCancel from './BookingMessages/BookingCancel';
-import BookingDeclined from './BookingMessages/BookingDeclined';
-import BookingRequest from './BookingMessages/BookingRequest';
-import BookingAccepted from './BookingMessages/BookingAccepted';
-import BookingRequestDeclined from './BookingMessages/BookingRequestDeclined';
-import BookingRequestAccepted from './BookingMessages/BookingRequestAccepted';
 
 // ----------------------------------------------------------------------
 
@@ -21,7 +12,7 @@ const RootStyle = styled('div')(({ theme }) => ({
 }));
 
 const ContentStyle = styled('div')(({ theme }) => ({
-  maxWidth: 460,
+  maxWidth: 320,
   padding: theme.spacing(1.5),
   marginTop: theme.spacing(0.5),
   borderRadius: theme.shape.borderRadius,
@@ -53,39 +44,16 @@ ChatMessageItem.propTypes = {
   onOpenLightbox: PropTypes.func
 };
 
-export default function ChatMessageItem({ message, onOpenLightbox }) {
-  const { user } = useAuth();
+export default function ChatMessageItem({ message, conversation, onOpenLightbox }) {
+  const sender = conversation.participants.find((participant) => participant.id === message.senderId);
+  const senderDetails =
+    message.senderId === '8864c717-587d-472a-929a-8e5f298024da-0'
+      ? { type: 'me' }
+      : { avatar: sender?.avatar, name: sender?.name };
 
-  const senderDetails = message.sender;
-
-  const isMe = message.sender.id === user.id;
+  const isMe = senderDetails.type === 'me';
   const isImage = message.contentType === 'image';
-  const firstName = message.sender.firstName;
-
-  const getMessageBody = () => {
-    console.log('Message: ', message);
-
-    if (message.booking !== null) {
-      if (message.booking.isAccepted) return <BookingAccepted message={message} />;
-      if (message.booking.isDeclined) return <BookingDeclined message={message} />;
-      return <BookingRequest message={message} />;
-    }
-    if (message.bookingChangeRequest !== null) {
-      if (message.bookingChangeRequest.isAccepted) return <BookingRequestAccepted message={message} />;
-      if (message.bookingChangeRequest.isDeclined) return <BookingRequestDeclined message={message} />;
-      return <BookingChangeRequest message={message} />;
-    }
-    if (message.cancelBooking !== null) return <BookingCancel message={message} />;
-    return (
-      <>
-        {isImage ? (
-          <MessageImgStyle alt="attachment" src={message.body} onClick={() => onOpenLightbox(message.body)} />
-        ) : (
-          <Typography variant="body2">{message.body}</Typography>
-        )}
-      </>
-    );
-  };
+  const firstName = senderDetails.name && senderDetails.name.split(' ')[0];
 
   return (
     <RootStyle>
@@ -97,8 +65,8 @@ export default function ChatMessageItem({ message, onOpenLightbox }) {
           })
         }}
       >
-        {!isMe && (
-          <Avatar alt={senderDetails.firstName} src={senderDetails.avatar} sx={{ width: 32, height: 32, mr: 2 }} />
+        {senderDetails.type !== 'me' && (
+          <Avatar alt={senderDetails.name} src={senderDetails.avatar} sx={{ width: 32, height: 32, mr: 2 }} />
         )}
 
         <div>
@@ -115,7 +83,11 @@ export default function ChatMessageItem({ message, onOpenLightbox }) {
               ...(isImage && { p: 0 })
             }}
           >
-            {getMessageBody()}
+            {isImage ? (
+              <MessageImgStyle alt="attachment" src={message.body} onClick={() => onOpenLightbox(message.body)} />
+            ) : (
+              <Typography variant="body2">{message.body}</Typography>
+            )}
           </ContentStyle>
         </div>
       </Box>

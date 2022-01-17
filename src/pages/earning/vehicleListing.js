@@ -41,8 +41,7 @@ const TABLE_HEAD = [
     label: 'Status'
   },
   {
-    id: false,
-    center: true,
+    id: 'image',
     numeric: false,
     disablePadding: false,
     label: 'Image'
@@ -53,6 +52,12 @@ const TABLE_HEAD = [
     disablePadding: false,
     label: 'Name'
   },
+  // {
+  //   id: 'availability',
+  //   numeric: false,
+  //   disablePadding: false,
+  //   label: 'Availability'
+  // },
   {
     id: 'reg',
     numeric: false,
@@ -189,7 +194,7 @@ export default function SortingSelecting() {
         <LoadingScreen />
       ) : (
         <>
-          <SortingSelectingToolbar numSelected={0} title={'Vehicle Listing'} isVehicleTable={true} />
+          <SortingSelectingToolbar numSelected={0} title={'Vehicle Listing'} />
 
           {data && (
             <>
@@ -272,8 +277,9 @@ export default function SortingSelecting() {
                                 )}
                               </TableCell>
                               <TableCell align="left" sx={{ px: 0 }}>
-                                {row.make} ({row.model})
+                                {row.make}
                               </TableCell>
+                              {/*<TableCell align='left'>{row.availability}</TableCell>*/}
                               <TableCell align="left" sx={{ px: 0 }}>
                                 {row.reg}
                               </TableCell>
@@ -305,6 +311,10 @@ export default function SortingSelecting() {
                   <>
                     <Box sx={{ position: 'relative' }}>
                       <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', p: 5 }}>
+                        <motion.div variants={varBounceIn}>
+                          <SeverErrorIllustration sx={{ height: 200, my: { xs: 3, sm: 6 } }} />
+                        </motion.div>
+
                         <motion.div variants={varFadeInDown}>
                           <Typography variant="body1">There are no vehicles on the account for display</Typography>
                         </motion.div>

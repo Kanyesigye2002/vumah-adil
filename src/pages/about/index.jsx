@@ -1,4 +1,9 @@
 import React from 'react';
+import Slider from 'react-slick';
+import car from '../../assets/rsz_about-car.png';
+import byke from '../../assets/rsz_about-bike.png';
+import camp from '../../assets/about-carvan.png';
+import cycle from '../../assets/rsz_1about-cycle.png';
 
 export default function About() {
   return (
@@ -49,7 +54,86 @@ export default function About() {
           </div>
         </div>
       </section>
-      <section className="car pt-5">
+     <div className="container mb-5 pb-4">
+     <Slider
+          dots={true}
+          infinite={true}
+          speed={500}
+          slidesToShow={1}
+          slidesToScroll={1}
+          autoplay={true}
+          autoplaySpeed={5500}
+          className='banner-slider-list'
+        >
+          <div className="banner-slider1">
+            <div className="row">
+              <div className="col-md-6">
+                <div className="text-container-landing-inner">
+                  <h1>Cars</h1>
+                  <p className="lead" style={{textAlign: 'justify'}}>Whether you need a luxurious car for a trip through the city or a sturdy one for
+                    mountain roads, we’ve got you covered. Pick from our impressive range of cars as per your needs
+                    and
+                    easily embark on your journey. Our car rental platform will ensure a smooth journey!</p>
+                </div>
+              </div>
+              <div className="col-md-6">
+                <img src={car} alt="" className='img-fluid' />
+              </div>
+            </div>
+          </div>
+          <div className="banner-slider1">
+            <div className="row">
+              <div className="col-md-6">
+                <div className="text-container-landing-inner">
+                <h1>Motorcycles</h1>
+            <p className="lead" style={{textAlign: 'justify'}}>If you’re a bike lover and want to roam around the city on a bike, you can easily
+              rent a
+              motorcycle with us. The Vumah platform will help you to choose your favorite bike and let
+              you
+              explore every nook and corner of your travel destinations.</p>
+                </div>
+              </div>
+              <div className="col-md-6">
+                <img src={byke} alt=""  className='img-fluid'/>
+              </div>
+            </div>
+          </div>
+          <div className="banner-slider1">
+            <div className="row">
+              <div className="col-md-6">
+                <div className="text-container-landing-inner">
+                <h1>Campervans</h1>
+                  <p className="lead" style={{textAlign: 'justify'}}>
+                    Whether it's a holiday with the family, a weekend away with friends, or doing a festival in style, the platform helps you find the perfect campervan for your adventure. They are set up and ready to go with everything you need
+                  </p>
+                </div>
+              </div>
+              <div className="col-md-6">
+                <img src={camp} alt="" />
+              </div>
+            </div>
+          </div>
+          <div className="banner-slider1">
+            <div className="row">
+              <div className="col-md-6">
+                <div className="text-container-landing-inner">
+                <h1>Even Bicycles</h1>
+            <p className="lead" style={{textAlign: 'justify'}}>Bicycles are convenient and let you tackle the busy routes easily. Ride through fields or brave challenging mountain terrains to
+              give
+              you an unforgettable cycling experience. Don’t wait any longer - Unleash the free spirit in you
+              by
+              easily renting your preferred bicycle with us. </p>
+                </div>
+              </div>
+              <div className="col-md-6">
+                <img src={cycle} alt="" />
+              </div>
+            </div>
+          </div>
+         
+        </Slider>
+     </div>
+      {/* <section className="car pt-5">
         <div className="text-container-landing vehicle-text-container">
           <div className="text-container-landing-inner">
             <h1>Cars</h1>
@@ -71,7 +155,7 @@ export default function About() {
               explore every nook and corner of your travel destinations.</p>
           </div>
         </div>
-      </section>
+      </section> 
 
       <section className="Campervans">
         <div className="text-container-landing vehicle-text-container">
@@ -95,6 +179,7 @@ export default function About() {
           </div>
         </div>
       </section>
+      */}
     </div>
   );
 }

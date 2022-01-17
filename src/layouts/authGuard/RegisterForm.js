@@ -16,16 +16,7 @@ import {
   FormControlLabel,
   FormControl,
   MenuItem,
-  FormLabel,
-  Grid,
-  Stack,
-  Alert,
-  TextField,
-  FormHelperText,
-  Select,
-  InputLabel,
-  InputAdornment,
-  IconButton
+  FormLabel, Grid, Stack, Alert, TextField, FormHelperText, Select, InputLabel, InputAdornment, IconButton
 } from '@mui/material';
 import { BusinessCenter, Close, Person, Check, Visibility, VisibilityOff } from '@mui/icons-material';
 import useAuth from '../../hooks/useAuth';
@@ -47,8 +38,6 @@ import { varBounceIn, varFadeInDown } from '../../components/animate';
 import { MailIllustration } from '../../assets';
 
 // ----------------------------------------------------------------------
-
-//href="https://mail.google.com/mail/u/kanyeallan@gmail.com/#search/from:support@stripe.com"
 
 const STEPS = ['Account Type', 'Account Details', 'Set up Location'];
 
@@ -99,18 +88,20 @@ const QontoStepIconRoot = styled('div')(({ theme, ownerState }) => ({
 function QontoStepIcon({ active, completed }) {
   return (
     <QontoStepIconRoot ownerState={{ active }}>
-      {completed ? <Check className="QontoStepIcon-completedIcon" /> : <div className="QontoStepIcon-circle" />}
+      {completed ? <Check className='QontoStepIcon-completedIcon' /> : <div className='QontoStepIcon-circle' />}
     </QontoStepIconRoot>
   );
 }
 
 export default function RegisterForm() {
+
   const [dataValues, setDataValues] = useState(0);
 
   const isMountedRef = useIsMountedRef();
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const [activeStep, setActiveStep] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
+  const [showPassword1, setShowPassword1] = useState(false);
   const [isBusiness, setIsBusiness] = useState(false);
 
   const RegisterSchema = Yup.object().shape({
@@ -152,26 +143,24 @@ export default function RegisterForm() {
     validationSchema: RegisterSchema,
     onSubmit: async (values, { setErrors, setSubmitting }) => {
       try {
-        await CreateUser()
-          .then((res) => {
-            setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        await CreateUser().then(res => {
+          setActiveStep((prevActiveStep) => prevActiveStep + 1);
 
-            enqueueSnackbar('Register success', {
-              variant: 'success',
-              action: (key) => (
-                <MIconButton size="small" onClick={() => closeSnackbar(key)}>
-                  <Close />
-                </MIconButton>
-              )
-            });
-            if (isMountedRef.current) {
-              setSubmitting(false);
-            }
-          })
-          .catch((error) => {
-            setErrors({ afterSubmit: error.message });
-            setSubmitting(false);
+          enqueueSnackbar('Register success', {
+            variant: 'success',
+            action: (key) => (
+              <MIconButton size='small' onClick={() => closeSnackbar(key)}>
+                <Close />
+              </MIconButton>
+            )
           });
+          if (isMountedRef.current) {
+            setSubmitting(false);
+          }
+        }).catch(error => {
+          setErrors({ afterSubmit: error.message });
+          setSubmitting(false);
+        })
       } catch (error) {
         if (isMountedRef.current) {
           setErrors({ afterSubmit: error.message });
@@ -190,6 +179,9 @@ export default function RegisterForm() {
   const handleShowPassword = () => {
     setShowPassword((show) => !show);
   };
+  const handleShowPassword1 = () => {
+    setShowPassword1((show) => !show);
+  };
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -203,281 +195,310 @@ export default function RegisterForm() {
     setActiveStep(0);
   };
 
-  const selectAccountType = (
-    <>
-      <FormControl sx={{ m: 3 }} component="fieldset" error={errors.isBusiness} variant="standard">
-        <FormLabel
-          component="legend"
-          sx={{
-            margin: '0',
-            fontWeight: '700',
-            lineHeight: '1.5',
-            fontSize: '1.25rem',
-            fontFamily: 'Public Sans,sans-serif',
-            textAlign: 'center'
-          }}
-        >
-          Choose Account Type
-        </FormLabel>
-        <RadioGroup aria-label="Account Type" {...getFieldProps('isBusiness')}>
-          <Grid container justifyContent="flex-start">
-            <Grid item xs={12}>
-              <Paper sx={{ display: 'flex', alignItems: 'center', p: 2, my: 1 }}>
-                <FormControlLabel value={true} control={<Radio />} label="" sx={{ mb: 0, mr: 0 }} />
-                <BusinessCenter sx={{ width: '30px', height: '30px' }} />
-                <Typography textAlign="center" style={{ margin: 8 }}>
-                  Business
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item xs={12}>
-              <Paper sx={{ display: 'flex', alignItems: 'center', p: 2, my: 1 }}>
-                <FormControlLabel value={false} control={<Radio />} label="" sx={{ mb: 0, mr: 0 }} />
-                <Person sx={{ width: '30px', height: '30px' }} />
-                <Typography textAlign="center" style={{ margin: 8 }}>
-                  Personal
-                </Typography>
-              </Paper>
-            </Grid>
+  const selectAccountType = <>
+    <FormControl
+      sx={{ m: 3 }}
+      component='fieldset'
+      error={errors.isBusiness}
+      variant='standard'
+    >
+      <FormLabel component='legend' sx={{
+        margin: '0',
+        fontWeight: '700',
+        lineHeight: '1.5',
+        fontSize: '1.25rem',
+        fontFamily: 'Public Sans,sans-serif',
+        textAlign: 'center'
+      }}>Choose Account Type</FormLabel>
+      <RadioGroup
+        aria-label='Account Type'
+        {...getFieldProps('isBusiness')}
+      >
+        <Grid container justifyContent='flex-start'>
+          <Grid item xs={12}>
+            <Paper sx={{ display: 'flex', alignItems: 'center', p: 2, my: 1 }}>
+              <FormControlLabel value={true} control={<Radio />} label='' sx={{ mb: 0, mr: 0 }} />
+              <BusinessCenter sx={{ width: '30px', height: '30px' }} />
+              <Typography textAlign='center' style={{ margin: 8 }}>
+                Business
+              </Typography>
+            </Paper>
           </Grid>
-        </RadioGroup>
-        <FormHelperText>{touched.isBusiness && errors.isBusiness}</FormHelperText>
-      </FormControl>
-    </>
-  );
+          <Grid item xs={12}>
+            <Paper sx={{ display: 'flex', alignItems: 'center', p: 2, my: 1 }}>
+              <FormControlLabel value={false} control={<Radio />} label='' sx={{ mb: 0, mr: 0 }} />
+              <Person sx={{ width: '30px', height: '30px' }} />
+              <Typography textAlign='center' style={{ margin: 8 }}>
+                Personal
+              </Typography>
+            </Paper>
+          </Grid>
+        </Grid>
+      </RadioGroup>
+      <FormHelperText>{touched.isBusiness && errors.isBusiness}</FormHelperText>
+    </FormControl>
+  </>;
 
   const handleNextAccountType = () => {
+
     setIsBusiness(values.isBusiness);
 
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
-  const accountTypeAction = (
-    <>
-      <Button disabled sx={{ mr: 1 }}>
-        Back
-      </Button>
-      <Box sx={{ flexGrow: 1 }} />
-      <Button variant="contained" onClick={handleNextAccountType} sx={{ mr: 1 }}>
-        Next
-      </Button>
-    </>
-  );
+  const accountTypeAction = <>
+    <Button disabled sx={{ mr: 1 }}>
+      Back
+    </Button>
+    <Box sx={{ flexGrow: 1 }} />
+    <Button variant='contained' onClick={handleNextAccountType} sx={{ mr: 1 }}>
+      Next
+    </Button>
+  </>;
 
-  const setUpAccountDetails = (
-    <>
-      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-        <TextField
-          fullWidth
-          label="First name"
-          {...getFieldProps('firstName')}
-          error={Boolean(touched.firstName && errors.firstName)}
-          helperText={touched.firstName && errors.firstName}
-        />
+  const setUpAccountDetails = <>
 
-        <TextField
+    <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+      <TextField
+        fullWidth
+        label='First Name'
+        {...getFieldProps('firstName')}
+        error={Boolean(touched.firstName && errors.firstName)}
+        helperText={touched.firstName && errors.firstName}
+      />
+
+      <TextField
+        fullWidth
+        label='Last Name'
+        {...getFieldProps('lastName')}
+        error={Boolean(touched.lastName && errors.lastName)}
+        helperText={touched.lastName && errors.lastName}
+      />
+    </Stack>
+
+    <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+
+      <FormControl fullWidth>
+        <InputLabel id='demo-simple-select-label'>Title</InputLabel>
+        <Select
+          labelId='demo-simple-select-label'
+          id='demo-simple-select'
+          label='Title'
+          {...getFieldProps('title')}
+        >
+          <MenuItem value='Mr'>Mr</MenuItem>
+          <MenuItem value='Mrs'>Mrs</MenuItem>
+          <MenuItem value='Miss'>Miss</MenuItem>
+          <MenuItem value='Ms'>Ms</MenuItem>
+          <MenuItem value='Other'>Other</MenuItem>
+        </Select>
+      </FormControl>
+
+      <FormControl fullWidth>
+        <InputLabel id='demo-simple-select-label'>Gender</InputLabel>
+        <Select
+          labelId='demo-simple-select-label'
+          id='demo-simple-select'
+          label='Gender'
+          {...getFieldProps('gender')}
+        >
+          <MenuItem value='Male'>Male</MenuItem>
+          <MenuItem value='Female'>Female</MenuItem>
+          <MenuItem value='Other'>Other</MenuItem>
+        </Select>
+      </FormControl>
+    </Stack>
+
+    <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+
+      <LocalizationProvider dateAdapter={AdapterMoment}>
+        <DatePicker
+          label='Date of Birth'
+          {...getFieldProps('birthDay')}
+          error={Boolean(touched.birthDay && errors.birthDay)}
+          helperText={touched.birthDay && errors.birthDay}
           fullWidth
-          label="Last name"
-          {...getFieldProps('lastName')}
-          error={Boolean(touched.lastName && errors.lastName)}
-          helperText={touched.lastName && errors.lastName}
+          renderInput={(params) => <TextField {...params} />}
         />
+      </LocalizationProvider>
+
+      <TextField
+        fullWidth
+        autoComplete='phoneNumber'
+        type='text'
+        label={isBusiness === 'true' ? 'Business Phone No.' : 'Personal Phone No.'}
+        {...getFieldProps('phoneNumber')}
+        error={Boolean(touched.phoneNumber && errors.phoneNumber)}
+        helperText={touched.phoneNumber && errors.phoneNumber}
+      />
+
+    </Stack>
+
+    {isBusiness === 'true' ? '' : ''}
+
+    {isBusiness === 'true' ? <>
+      <TextField
+        fullWidth
+        autoComplete='businessName'
+        type='text'
+        label='Business Name'
+        {...getFieldProps('businessName')}
+        error={Boolean(touched.businessName && errors.businessName)}
+        helperText={touched.businessName && errors.businessName}
+      />
+    </> : <></>}
+
+    <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+
+      <TextField
+        fullWidth
+        autoComplete='email'
+        type='email'
+        label={isBusiness === 'true' ? 'Business   email' : 'Email address'}
+        {...getFieldProps('email')}
+        error={Boolean(touched.email && errors.email)}
+        helperText={touched.email && errors.email}
+      />
+  <TextField
+        fullWidth
+        autoComplete='confirm-email'
+        type='email'
+        label={isBusiness === 'true' ? 'Confirm Business   email' : 'Confirm Email address'}
+        {...getFieldProps('email1')}
+        error={Boolean(touched.email && errors.email)}
+        helperText={touched.email && errors.email}
+      />
       </Stack>
-
       <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-        <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Title</InputLabel>
-          <Select labelId="demo-simple-select-label" id="demo-simple-select" label="Title" {...getFieldProps('title')}>
-            <MenuItem value="Mr">Mr</MenuItem>
-            <MenuItem value="Mrs">Mrs</MenuItem>
-            <MenuItem value="Miss">Miss</MenuItem>
-            <MenuItem value="Ms">Ms</MenuItem>
-            <MenuItem value="Others">Others</MenuItem>
-          </Select>
-        </FormControl>
+      <TextField
+        fullWidth
+        autoComplete='current-password'
+        type={showPassword ? 'text' : 'password'}
+        label='Password'
+        {...getFieldProps('password')}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position='end'>
+              <IconButton onClick={handleShowPassword} edge='end'>
+                {showPassword ? <Visibility /> : <VisibilityOff />}
+              </IconButton>
+            </InputAdornment>
+          )
+        }}
+        error={Boolean(touched.password && errors.password)}
+        helperText={touched.password && errors.password}
+      />
+       <TextField
+        fullWidth
+        autoComplete='confirm-password'
+        type={showPassword ? 'text' : 'password'}
+        label='Confirm Password'
+        {...getFieldProps('password1')}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position='end'>
+              <IconButton onClick={handleShowPassword1} edge='end'>
+                {showPassword1 ? <Visibility /> : <VisibilityOff />}
+              </IconButton>
+            </InputAdornment>
+          )
+        }}
+        error={Boolean(touched.password && errors.password)}
+        helperText={touched.password && errors.password}
+      />
+    </Stack>
 
-        <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Gender</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            label="Gender"
-            {...getFieldProps('gender')}
-          >
-            <MenuItem value="Male">Male</MenuItem>
-            <MenuItem value="Female">Female</MenuItem>
-            <MenuItem value="Others">Others</MenuItem>
-          </Select>
-        </FormControl>
-      </Stack>
-
-      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-        <LocalizationProvider dateAdapter={AdapterMoment}>
-          <DatePicker
-            label="Date of Birth"
-            {...getFieldProps('birthDay')}
-            error={Boolean(touched.birthDay && errors.birthDay)}
-            helperText={touched.birthDay && errors.birthDay}
-            fullWidth
-            renderInput={(params) => <TextField fullWidth {...params} />}
-          />
-        </LocalizationProvider>
-
-        <TextField
-          fullWidth
-          autoComplete="phoneNumber"
-          type="text"
-          label={isBusiness === 'true' ? 'Business Phone No.' : 'Personal Phone No.'}
-          {...getFieldProps('phoneNumber')}
-          error={Boolean(touched.phoneNumber && errors.phoneNumber)}
-          helperText={touched.phoneNumber && errors.phoneNumber}
-        />
-      </Stack>
-
-      {isBusiness === 'true' ? '' : ''}
-
-      {isBusiness === 'true' ? (
-        <>
-          <TextField
-            fullWidth
-            autoComplete="businessName"
-            type="text"
-            label="Business Name"
-            {...getFieldProps('businessName')}
-            error={Boolean(touched.businessName && errors.businessName)}
-            helperText={touched.businessName && errors.businessName}
-          />
-        </>
-      ) : (
-        <></>
-      )}
-
-      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-        <TextField
-          fullWidth
-          autoComplete="email"
-          type="email"
-          label={isBusiness === 'true' ? 'Bussiness email' : 'Email address'}
-          {...getFieldProps('email')}
-          error={Boolean(touched.email && errors.email)}
-          helperText={touched.email && errors.email}
-        />
-
-        <TextField
-          fullWidth
-          autoComplete="current-password"
-          type={showPassword ? 'text' : 'password'}
-          label="Password"
-          {...getFieldProps('password')}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton onClick={handleShowPassword} edge="end">
-                  {showPassword ? <Visibility /> : <VisibilityOff />}
-                </IconButton>
-              </InputAdornment>
-            )
-          }}
-          error={Boolean(touched.password && errors.password)}
-          helperText={touched.password && errors.password}
-        />
-      </Stack>
-    </>
-  );
+  </>;
 
   const handleNextAccountDetails = async () => {
+
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
-  const accountSetUpAction = (
-    <>
-      <Button disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 1 }}>
-        Back
-      </Button>
-      <Box sx={{ flexGrow: 1 }} />
-      <Button variant="contained" onClick={handleNextAccountDetails} sx={{ mr: 1 }}>
-        Next
-      </Button>
-    </>
-  );
+  const accountSetUpAction = <>
+    <Button disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 1 }}>
+      Back
+    </Button>
+    <Box sx={{ flexGrow: 1 }} />
+    <Button variant='contained' onClick={handleNextAccountDetails} sx={{ mr: 1 }}>
+      Next
+    </Button>
+  </>;
 
-  const setUpAccountLocation = (
-    <>
-      <TextField
-        fullWidth
-        autoComplete="address"
-        type="text"
-        label={isBusiness === 'true' ? 'Business St. address 1' : 'Street address 1'}
-        {...getFieldProps('address')}
-        error={Boolean(touched.address && errors.address)}
-        helperText={touched.address && errors.address}
-      />
+  const setUpAccountLocation = <>
 
-      <TextField
-        fullWidth
-        autoComplete="address2"
-        type="text"
-        label={isBusiness === 'true' ? 'Business St. address 2' : 'Street address 2'}
-        {...getFieldProps('address2')}
-        error={Boolean(touched.address2 && errors.address2)}
-        helperText={touched.address2 && errors.address2}
-      />
+    <TextField
+      fullWidth
+      autoComplete='address'
+      type='text'
+      label={isBusiness === 'true' ? 'Business St. Address 1' : 'Street Address 1'}
+      {...getFieldProps('address')}
+      error={Boolean(touched.address && errors.address)}
+      helperText={touched.address && errors.address}
+    />
 
-      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-        <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Country</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            label="Country"
-            {...getFieldProps('country')}
-          >
-            {countries.map((country, index) => (
-              <MenuItem key={index} value={country.label}>
-                {country.label}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
+    <TextField
+      fullWidth
+      autoComplete='address2'
+      type='text'
+      label={isBusiness === 'true' ? 'Business St. Address 2' : 'Street Address 2'}
+      {...getFieldProps('address2')}
+      error={Boolean(touched.address2 && errors.address2)}
+      helperText={touched.address2 && errors.address2}
+    />
 
-        <TextField
-          fullWidth
-          autoComplete="city"
-          type="text"
-          label="City"
-          {...getFieldProps('city')}
-          error={Boolean(touched.city && errors.city)}
-          helperText={touched.city && errors.city}
-        />
-      </Stack>
+    <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+
+      <FormControl fullWidth>
+        <InputLabel id='demo-simple-select-label'>Country</InputLabel>
+        <Select
+          labelId='demo-simple-select-label'
+          id='demo-simple-select'
+          label='Country'
+          {...getFieldProps('country')}
+        >
+          {countries.map((country, index) => <MenuItem key={index}
+                                                       value={country.label}>{country.label}</MenuItem>)}
+        </Select>
+      </FormControl>
 
       <TextField
         fullWidth
-        autoComplete="postalCode"
-        type="number"
-        label="Post Code"
-        {...getFieldProps('postalCode')}
-        error={Boolean(touched.postalCode && errors.postalCode)}
-        helperText={touched.postalCode && errors.postalCode}
+        autoComplete='city'
+        type='text'
+        label='City'
+        {...getFieldProps('city')}
+        error={Boolean(touched.city && errors.city)}
+        helperText={touched.city && errors.city}
       />
-    </>
-  );
+
+    </Stack>
+
+    <TextField
+      fullWidth
+      autoComplete='postalCode'
+      type='number'
+      label='Post Code'
+      {...getFieldProps('postalCode')}
+      error={Boolean(touched.postalCode && errors.postalCode)}
+      helperText={touched.postalCode && errors.postalCode}
+    />
+
+  </>;
 
   const handleNextAccountLocation = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
-  const accountLocationAction = (
-    <>
-      <Button disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 1 }}>
-        Back
-      </Button>
-      <Box sx={{ flexGrow: 1 }} />
-      <LoadingButton type="submit" variant="contained" loading={isSubmitting} sx={{ mr: 1 }}>
-        Register
-      </LoadingButton>
-    </>
-  );
+  const accountLocationAction = <>
+    <Button disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 1 }}>
+      Back
+    </Button>
+    <Box sx={{ flexGrow: 1 }} />
+    <LoadingButton type='submit' variant='contained' loading={isSubmitting} sx={{ mr: 1 }}>
+      Register
+    </LoadingButton>
+  </>;
 
   const SignUp = <>SignUp</>;
 
@@ -512,11 +533,13 @@ export default function RegisterForm() {
       {/*<Typography variant='h4' textAlign='center' sx={{ my: 5 }}>Sign Up your account</Typography>*/}
 
       <FormikProvider value={formik}>
-        <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
+        <Form autoComplete='off' noValidate onSubmit={handleSubmit}>
           <Box sx={{ flexGrow: 1, display: 'flex', overflow: 'hidden' }}>
             <Stack spacing={2} sx={{ flexGrow: 1, width: '550px' }}>
+
               {activeStep === STEPS.length ? (
                 <>
+
                   <Stepper alternativeLabel activeStep={activeStep} connector={<QontoConnector />}>
                     {STEPS.map((label) => (
                       <Step key={label}>
@@ -527,7 +550,8 @@ export default function RegisterForm() {
 
                   <Box sx={{ mb: 1 }} />
 
-                  <Stack direction="column" spacing={2}>
+                  <Stack direction='column' spacing={2}>
+
                     <Paper
                       sx={{
                         p: 3,
@@ -537,7 +561,7 @@ export default function RegisterForm() {
                       }}
                     >
                       <Stack spacing={3} sx={{ px: 4, justifyContent: 'center', textAlign: 'center' }}>
-                        <Alert severity="success">Email Sent</Alert>
+                        <Alert severity='success'>Email Sent</Alert>
 
                         <motion.div variants={varBounceIn}>
                           <MailIllustration sx={{ height: 100, my: { xs: 1, sm: 1 } }} />
@@ -545,27 +569,33 @@ export default function RegisterForm() {
 
                         <motion.div variants={varFadeInDown}>
                           <Paper sx={{ p: 1 }}>
-                            <Typography variant="body1">An email has been sent for verification</Typography>
+                            <Typography variant='body1'>
+                              An email has been sent for verification
+                            </Typography>
                           </Paper>
                         </motion.div>
 
                         <motion.div variants={varBounceIn}>
-                          <Button size="large" variant="contained" sx={{ m: 1 }}>
+                          <Button
+                            size='large'
+                            variant='contained'
+                            sx={{ m: 1 }}>
                             Check your email
                           </Button>
                         </motion.div>
                       </Stack>
                     </Paper>
 
-                    <Button color="inherit" onClick={handleReset} sx={{ mr: 1 }}>
+                    <Button color='inherit' onClick={handleReset} sx={{ mr: 1 }}>
                       Close
                     </Button>
+
                   </Stack>
                 </>
               ) : (
                 <>
                   <Scrollbar sx={{ p: 1, height: '500px' }}>
-                    {errors.afterSubmit && <Alert severity="error">{errors.afterSubmit}</Alert>}
+                    {errors.afterSubmit && <Alert severity='error'>{errors.afterSubmit}</Alert>}
 
                     <Stepper alternativeLabel activeStep={activeStep} connector={<QontoConnector />}>
                       {STEPS.map((label) => (
@@ -577,23 +607,23 @@ export default function RegisterForm() {
 
                     <Box sx={{ mb: 3 }} />
 
-                    <Paper
-                      sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        py: 3,
-                        px: 2,
-                        minHeight: 200,
-                        bgcolor: 'grey.50012'
-                      }}
-                    >
+                    <Paper sx={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      py: 3,
+                      px: 2,
+                      minHeight: 200,
+                      bgcolor: 'grey.50012'
+                    }}>
                       <Stack spacing={2} sx={{ width: '100%' }}>
                         {getStepContent(activeStep)}
                       </Stack>
                     </Paper>
                   </Scrollbar>
 
-                  <Box sx={{ textAlign: 'right', display: 'flex' }}>{getStepActions(activeStep)}</Box>
+                  <Box sx={{ textAlign: 'right', display: 'flex' }}>
+                    {getStepActions(activeStep)}
+                  </Box>
                 </>
               )}
             </Stack>

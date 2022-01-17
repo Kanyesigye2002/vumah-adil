@@ -21,7 +21,7 @@ const MOCK_CAROUSELS = [...Array(5)].map((_, index) => ({
 const RootStyle = styled('div')(({ theme }) => ({
   position: 'relative',
   '& .slick-list': {
-    boxShadow: theme.customShadows.z16
+    boxShadow: theme.customShadows.z16,
   }
 }));
 
@@ -32,12 +32,12 @@ CarouselItem.propTypes = {
 };
 
 function CarouselItem({ item }) {
-  const { url } = item;
+  const { image, title } = item;
 
-  return <Box component="img" alt={url} src={url} sx={{ width: '100%', height: 260, objectFit: 'cover' }} />;
+  return <Box component="img" alt={title} src={image} sx={{ width: '100%', height: 260, objectFit: 'cover' }} />;
 }
 
-export default function CarouselVehicles({ images }) {
+export default function CarouselVehicles() {
   const theme = useTheme();
   const carouselRef = useRef();
 
@@ -64,8 +64,8 @@ export default function CarouselVehicles({ images }) {
   return (
     <RootStyle>
       <Slider ref={carouselRef} {...settings}>
-        {images.map((item, index) => (
-          <CarouselItem key={index} item={item} />
+        {MOCK_CAROUSELS.map((item) => (
+          <CarouselItem key={item.title} item={item} />
         ))}
       </Slider>
       <CarouselControlsArrows onNext={handleNext} onPrevious={handlePrevious} />

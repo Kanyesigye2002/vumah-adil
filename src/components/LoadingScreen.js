@@ -4,7 +4,8 @@ import { motion } from 'framer-motion';
 // material
 import { alpha, styled, useTheme } from '@mui/material/styles';
 import { Box, GlobalStyles } from '@mui/material';
-
+// eslint-disable-next-line import/no-unresolved
+import Logo from '../assets/img/logo-main.png';
 // ----------------------------------------------------------------------
 
 const RootStyle = styled('div')(({ theme }) => ({
@@ -40,8 +41,9 @@ export default function LoadingScreen({ ...other }) {
       <ProgressBar />
 
       <RootStyle {...other}>
+      <img src={Logo} height='' alt='logo' />
 
-        <Box
+       <Box
           component={motion.div}
           animate={{
             scale: [1.2, 1, 1, 1.2, 1.2],
@@ -79,7 +81,8 @@ export default function LoadingScreen({ ...other }) {
             position: 'absolute',
             border: (theme) => `solid 8px ${alpha(theme.palette.primary.dark, 0.24)}`
           }}
-        />
+        /> 
+       
       </RootStyle>
     </>
   );

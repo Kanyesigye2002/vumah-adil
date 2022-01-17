@@ -45,7 +45,7 @@ function stableSort(array, comparator) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-export default function SortingSelecting({ head, content }) {
+export default function SortingSelecting({head, content}) {
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('calories');
   const [selected, setSelected] = useState([]);
@@ -117,7 +117,7 @@ export default function SortingSelecting({ head, content }) {
 
   return (
     <>
-      <SortingSelectingToolbar numSelected={0} title={'Vehicle Listing'} isVehicleTable={true} />
+      <SortingSelectingToolbar numSelected={0} title={'Vehicle Listing'} />
 
       <Scrollbar>
         <TableContainer sx={{ minWidth: 600 }}>
@@ -159,10 +159,10 @@ export default function SortingSelecting({ head, content }) {
                         scope="row"
                         padding="none"
                       >
-                        <Switch checked={isItemSelectedState} />
+                        <Switch checked={isItemSelectedState}/>
                       </TableCell>
                       <TableCell component="th" id={labelId} scope="row" padding="none">
-                        <div className="bookingVechile-img" style={{ margin: 2 }}>
+                        <div className="bookingVechile-img" style={{margin: 2}}>
                           <img src={Mercedes} alt="car" />
                         </div>
                       </TableCell>
@@ -171,11 +171,7 @@ export default function SortingSelecting({ head, content }) {
                       </TableCell>
                       <TableCell align="right">{row.availability}</TableCell>
                       <TableCell align="right">{row.reg}</TableCell>
-                      <TableCell align="right">
-                        {row.hourlyRate}
-                        <br />
-                        {row.dailyRate}
-                      </TableCell>
+                      <TableCell align="right">{row.hourlyRate}<br />{row.dailyRate}</TableCell>
                       <TableCell align="right">{row.trips}</TableCell>
                       <TableCell align="right">{row.earnings}</TableCell>
                     </TableRow>
@@ -184,7 +180,7 @@ export default function SortingSelecting({ head, content }) {
               {emptyRows > 0 && (
                 <TableRow
                   style={{
-                    height: 53 * emptyRows
+                    height: (53) * emptyRows
                   }}
                 >
                   <TableCell colSpan={6} />
@@ -205,7 +201,8 @@ export default function SortingSelecting({ head, content }) {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
-        <Box sx={{ px: 3, py: 1.5, top: 0, position: { md: 'absolute' } }} />
+        <Box sx={{ px: 3, py: 1.5, top: 0, position: { md: 'absolute' } }}/>
+
       </Box>
     </>
   );

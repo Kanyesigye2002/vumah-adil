@@ -10,11 +10,7 @@ import {
   TableCell,
   TableContainer,
   TablePagination,
-  FormControlLabel,
-  IconButton,
-  Paper,
-  Typography,
-  Container
+  FormControlLabel, IconButton, Paper, Typography, Container
 } from '@mui/material';
 // components
 import Scrollbar from '../../components/Scrollbar';
@@ -110,7 +106,7 @@ export default function EarningListing({ head, content, title }) {
 
   return (
     <>
-      <SortingSelectingToolbar numSelected={0} title={title} isVehicleTable={true} />
+      <SortingSelectingToolbar numSelected={0} title={title} />
 
       <Scrollbar>
         <TableContainer sx={{ minWidth: 600 }}>
@@ -135,35 +131,32 @@ export default function EarningListing({ head, content, title }) {
                   return (
                     <TableRow
                       hover
-                      role="checkbox"
+                      role='checkbox'
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={index}
+                      key={row.name}
                       selected={isItemSelected}
                     >
-                      <TableCell padding="checkbox">
+                      <TableCell padding='checkbox'>
                         <Checkbox checked={isItemSelected} onClick={(event) => handleClick(event, row.id)} />
                       </TableCell>
-                      <TableCell component="th" id={labelId} scope="row" padding="none">
-                        <div className="bookingVechile-img" style={{ margin: 2 }}>
-                          <img src={row.image} alt="car" />
+                      <TableCell component='th' id={labelId} scope='row' padding='none'>
+                        <div className='bookingVechile-img' style={{ margin: 2 }}>
+                          <img src={row.image} alt='car' />
                         </div>
                       </TableCell>
-                      <TableCell component="th" id={labelId} scope="row" padding="none">
+                      <TableCell component='th' id={labelId} scope='row' padding='none'>
                         {row.name}
                       </TableCell>
-                      <TableCell align="right">{row.date}</TableCell>
-                      <TableCell align="right">{row.amount}</TableCell>
-                      <TableCell align="right">{row.fee}</TableCell>
-                      <TableCell align="right">{row.net}</TableCell>
-                      <TableCell align="right">
-                        <IconButton>
-                          <Visibility />
-                        </IconButton>
-                      </TableCell>
+                      <TableCell align='right'>{row.date}</TableCell>
+                      <TableCell align='right'>{row.amount}</TableCell>
+                      <TableCell align='right'>{row.fee}</TableCell>
+                      <TableCell align='right'>{row.net}</TableCell>
+                      <TableCell align='right'><IconButton><Visibility /></IconButton></TableCell>
                     </TableRow>
                   );
-                })}
+                })
+              }
               {emptyRows > 0 && (
                 <TableRow
                   style={{
@@ -178,22 +171,26 @@ export default function EarningListing({ head, content, title }) {
         </TableContainer>
       </Scrollbar>
 
-      {content.length < 1 && (
-        <>
-          <Box sx={{ position: 'relative' }}>
-            <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', p: 5 }}>
-              <motion.div variants={varFadeInDown}>
-                <Typography variant="body1">There are no data for display</Typography>
-              </motion.div>
-            </Container>
-          </Box>
-        </>
-      )}
+      {content.length < 1 && <>
+        <Box sx={{ position: 'relative' }}>
+          <Container sx={{display: 'flex',flexDirection: 'column', alignItems: 'center', p: 5}}>
+            <motion.div variants={varBounceIn}>
+              <SeverErrorIllustration sx={{ height: 200, my: { xs: 3, sm: 6 } }} />
+            </motion.div>
+
+            <motion.div variants={varFadeInDown}>
+              <Typography variant='body1'>
+                There are no data for display
+              </Typography>
+            </motion.div>
+          </Container>
+        </Box>
+      </>}
 
       <Box sx={{ position: 'relative' }}>
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
-          component="div"
+          component='div'
           count={content.length}
           rowsPerPage={rowsPerPage}
           page={page}
@@ -201,6 +198,7 @@ export default function EarningListing({ head, content, title }) {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
         <Box sx={{ px: 3, py: 1.5, top: 0, position: { md: 'absolute' } }} />
+
       </Box>
     </>
   );

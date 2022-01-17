@@ -4,20 +4,7 @@ import trash2Fill from '@iconify/icons-eva/trash-2-fill';
 import roundFilterList from '@iconify/icons-ic/round-filter-list';
 // material
 import { useTheme, styled } from '@mui/material/styles';
-import {
-  Toolbar,
-  Tooltip,
-  Typography,
-  IconButton,
-  List,
-  ListItemButton,
-  ListItemText,
-  Menu,
-  MenuItem,
-  Button
-} from '@mui/material';
-import { useState } from 'react';
-import { FilterListRounded } from '@mui/icons-material';
+import { Toolbar, Tooltip, Typography, IconButton } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
@@ -34,26 +21,9 @@ SortingSelectingToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired
 };
 
-export default function SortingSelectingToolbar({ numSelected, title, isVehicleTable }) {
+export default function SortingSelectingToolbar({ numSelected, title }) {
   const theme = useTheme();
   const isLight = theme.palette.mode === 'light';
-
-  const [isOpenList, setOpenList] = useState(null);
-  const [selectedIndex, setSelectedIndex] = useState(1);
-  const [isOpen, setOpen] = useState(null);
-
-  const handleClickListItem = (event) => {
-    setOpenList(event.currentTarget);
-  };
-  const handleClose = () => {
-    setOpen(null);
-  };
-  const handleMenuItemClick = (event, index) => {
-    setSelectedIndex(index);
-    setOpenList(null);
-  };
-
-  const OPTIONS = ['All', 'Car', 'Motorcycle', 'Bicycle'];
 
   return (
     <RootStyle
@@ -74,25 +44,18 @@ export default function SortingSelectingToolbar({ numSelected, title, isVehicleT
         </Typography>
       )}
 
-      {isVehicleTable && (
-        <>
-          <Tooltip title="Filter list">
-            <Button variant="outlined" onClick={handleClickListItem} endIcon={<FilterListRounded />}>
-              <ListItemText primary="" secondary={OPTIONS[selectedIndex]} />
-            </Button>
-          </Tooltip>
-          <Menu keepMounted id="lock-menu" anchorEl={isOpenList} onClose={handleClose} open={Boolean(isOpenList)}>
-            {OPTIONS.map((option, index) => (
-              <MenuItem
-                key={option}
-                selected={index === selectedIndex}
-                onClick={(event) => handleMenuItemClick(event, index)}
-              >
-                {option}
-              </MenuItem>
-            ))}
-          </Menu>
-        </>
+      {numSelected > 0 ? (
+        <Tooltip title="Delete">
+          <IconButton>
+            <Icon icon={trash2Fill} />
+          </IconButton>
+        </Tooltip>
+      ) : (
+        <Tooltip title="Filter list">
+          <IconButton>
+            <Icon icon={roundFilterList} />
+          </IconButton>
+        </Tooltip>
       )}
     </RootStyle>
   );

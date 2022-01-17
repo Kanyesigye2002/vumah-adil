@@ -11,8 +11,6 @@ import { styled } from '@mui/material/styles';
 import { Input, Divider, IconButton, InputAdornment, Stack } from '@mui/material';
 //
 import EmojiPicker from '../EmojiPicker';
-import { useLazyQuery, useMutation } from '@apollo/client';
-import { SEND_MESSAGE } from '../../graphql/Queries';
 
 // ----------------------------------------------------------------------
 
@@ -32,37 +30,16 @@ ChatMessageInput.propTypes = {
   onSend: PropTypes.func
 };
 
-export default function ChatMessageInput({ disabled, conversationId, ...other }) {
+export default function ChatMessageInput({ disabled, conversationId, onSend, ...other }) {
   const fileInputRef = useRef(null);
-  const [message, setMessage] = useState({
-    body: '',
-    contentType: 'text',
-    attachments: [],
-    createdAt: new Date()
-  });
-
-  const [SendMessage] = useMutation(SEND_MESSAGE, {
-    variables: { contactID: conversationId, message: message }
-  });
-
-  const onSend = async () => {
-    try {
-      // dispatch(onSendMessage(value));
-      return await SendMessage();
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const [message, setMessage] = useState('');
 
   const handleAttach = () => {
     fileInputRef.current.click();
   };
 
   const handleChangeMessage = (event) => {
-    setMessage({
-      ...message,
-      body: event.target.value
-    });
+    setMessage(event.target.value);
   };
 
   const handleKeyUp = (event) => {
@@ -72,28 +49,21 @@ export default function ChatMessageInput({ disabled, conversationId, ...other })
   };
 
   const handleSend = () => {
-    if (!message.body) {
+    if (!message) {
       return '';
     }
-    const d = {
-      conversationId,
-      messageId: uuidv4(),
-      message,
-      contentType: 'text',
-      attachments: [],
-      createdAt: new Date(),
-      senderId: '8864c717-587d-472a-929a-8e5f298024da-0'
-    };
-
-    onSend().then((r) => {
-      console.log(r);
-      return setMessage({
-        body: '',
+    if (onSend) {
+      onSend({
+        conversationId,
+        messageId: uuidv4(),
+        message,
         contentType: 'text',
         attachments: [],
-        createdAt: new Date()
+        createdAt: new Date(),
+        senderId: '8864c717-587d-472a-929a-8e5f298024da-0'
       });
-    });
+    }
+    return setMessage('');
   };
 
   return (
@@ -101,14 +71,14 @@ export default function ChatMessageInput({ disabled, conversationId, ...other })
       <Input
         disabled={disabled}
         fullWidth
-        value={message.body}
+        value={message}
         disableUnderline
         onKeyUp={handleKeyUp}
         onChange={handleChangeMessage}
         placeholder="Type a message"
         startAdornment={
           <InputAdornment position="start">
-            <EmojiPicker disabled value={message.body} setValue={setMessage} />
+            <EmojiPicker disabled={disabled} value={message} setValue={setMessage} />
           </InputAdornment>
         }
         endAdornment={
@@ -129,7 +99,7 @@ export default function ChatMessageInput({ disabled, conversationId, ...other })
 
       <Divider orientation="vertical" flexItem />
 
-      <IconButton color="primary" disabled={!message.body} onClick={handleSend} sx={{ mx: 1 }}>
+      <IconButton color="primary" disabled={!message} onClick={handleSend} sx={{ mx: 1 }}>
         <Icon icon={roundSend} width={24} height={24} />
       </IconButton>
 
